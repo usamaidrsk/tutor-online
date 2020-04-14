@@ -1,0 +1,18 @@
+/* Dead Simple Grid (c) 2015 Vladimir Agafonkin
+   github.com/necolas/normalize.css
+*/
+
+.row .row { margin:  0 -1.5em; }
+.column   { padding: 0  1.5em; }
+
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media only screen { .column {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}}
