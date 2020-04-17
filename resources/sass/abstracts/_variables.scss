@@ -1,13 +1,30 @@
 $z-layers: (
-    "navbar": 150,
-    "pop-up": 250,
-    "overlay": 225,
-    "notification": 100,
+    'navbar': 150,
+    'pop-up': 250,
+    'overlay': 225,
+    'notification': 100,
 );
 
 $breakpoints: (
-    "tablet": 480px,
-    "desktop": 1025px,
+    'tablet': 480px,
+    'desktop': 1025px,
+);
+
+//
+// Spacing
+// ============================================================
+
+$spacer: 16rem;
+
+$spacers: (
+    'quarter': $spacer * 0.25,
+    'halve': $spacer / 2,
+    'zero': 0,
+    'one': $spacer,
+    'two': $spacer * 1.5,
+    'three': $spacer * 3,
+    'four': $spacer * 4,
+    'five': $spacer * 5,
 );
 
 /* --------------------------------- Colors --------------------------------- */
@@ -19,24 +36,24 @@ $red: #dc3545;
 $green: #38c172;
 $blue: #3490dc;
 $orange: #f6993f;
-$gray: #dcdcdd;
+$gray: #8a969c;
 $white: #fff;
 $black: #141414;
 
 $palette: (
-    "primary": $primary,
-    "secondary": $secondary,
-    "red": $red,
-    "green": $green,
-    "blue": $blue,
-    "orange": $orange,
-    "gray": $gray,
-    "white": $white,
-    "black": $black,
+    'primary': $primary,
+    'secondary': $secondary,
+    'red': $red,
+    'green': $green,
+    'blue': $blue,
+    'orange': $orange,
+    'gray': $gray,
+    'white': $white,
+    'black': $black,
 );
 
 $colors: (); // colors map
-$ratio: 10%; // Amount of tint/shade
+$ratio: 12%; // Amount of tint/shade
 
 // Generate color variants form base color palette
 // Following Material design system: https://material.io/design/color/
@@ -72,22 +89,22 @@ $ratio: 10%; // Amount of tint/shade
 
 /* ------------------------------- Typography ------------------------------- */
 
-$font-family-sans-serif: "Roboto", sans-serif;
-$font-color: color("gray", 900);
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-color: color('gray', 900);
 
 $font-weights: (
-    "thin": 100,
-    "light": 300,
-    "regular": 400,
-    "medium": 500,
-    "bold": 700,
-    "black": 900,
+    'thin': 100,
+    'light': 300,
+    'regular': 400,
+    'medium': 500,
+    'bold': 700,
+    'black': 900,
 );
 
 $font-sizes: (
-    "small": 11rem,
-    "medium": 16rem,
-    "large": 28rem,
+    'small': 11rem,
+    'medium': 16rem,
+    'large': 28rem,
 );
 
 /* -------------------------------- Elevation ------------------------------- */
