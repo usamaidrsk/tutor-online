@@ -35,17 +35,16 @@ export default {
         }
 
         const tagname = props.href ? 'a' : 'button'
-
         return h(
             tagname,
             {
+                ...data,
                 class: classes,
                 attrs: {
                     type: tagname === 'button' && props.type,
                     disabled: props.disabled || props.loading,
                     href: props.href,
                 },
-                ...data,
             },
             [
                 props.loading && h('span', { class: 'button__loader' }),
