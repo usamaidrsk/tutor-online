@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -15,7 +14,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'teachers',
     ],
 
     /*
@@ -38,7 +37,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'teachers',
         ],
 
         'api' => [
@@ -66,9 +65,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'teachers' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Teacher::class,
         ],
 
         // 'users' => [
@@ -93,8 +92,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'teachers' => [
+            'provider' => 'teachers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
@@ -113,5 +112,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];
