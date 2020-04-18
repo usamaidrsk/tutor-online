@@ -108,32 +108,3 @@ h6 {
         padding: 0;
     }
 }
-
-/* ------------------- This will be placed in other place ------------------- */
-
-#app {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    padding-top: 65px; /*  navbar heigth */
-    flex-grow: 1;
-}
-
-.navbar {
-    // @include elevation(3);
-    @include size(100%, 65px);
-    @include position(fixed, 0, 0);
-
-    background: color("white");
-    border-bottom: 1px solid color("gray");
-    z-index: get("navbar", $z-layers);
-}
-
-.footer {
-    height: 120px;
-    background: color("white");
-    border-top: 1px solid color("gray");
-}
