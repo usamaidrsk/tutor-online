@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ const mix = require("laravel-mix");
 
 mix.options({
     extractVueStyles: true,
-    globalVueStyles: "resources/sass/_globals.scss",
+    globalVueStyles: 'resources/sass/_globals.scss',
 })
-    .js("resources/js/app.js", "public/js")
-    .sass("resources/sass/app.scss", "public/css");
+    .js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
