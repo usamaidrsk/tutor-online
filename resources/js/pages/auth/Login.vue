@@ -14,7 +14,7 @@
                 required
                 autocomplete="email"
                 autofocus
-            ></app-input>
+            />
 
             <app-input
                 label="Contraseña"
@@ -22,14 +22,14 @@
                 type="password"
                 required
                 autocomplete="current-password"
-            ></app-input>
+            />
 
             <app-checkbox
                 :value="false"
                 v-model="form.remenber"
                 class="margin-bottom--halve"
                 label="Recordarme"
-            ></app-checkbox>
+            />
 
             <p class="text--right text--small margin-bottom--halve">
                 <a :href="$route('password.request')"
@@ -63,6 +63,21 @@ export default {
 
     methods: {
         async handleSubmit() {
+            if (this.loading) return
+
+            try {
+                this.loading = true
+                await this.$http.post('login', this.form)
+                window.location.href = this.$route('profile')
+            } catch (error) {
+                this.loading = false
+                console.error(error.response)
+                const { data } = error.response
+                this.error =
+                    data.errors.email[0] ||
+                    data.errors.password[0] ||
+                    data.message
+            }
         },
     },
 }
