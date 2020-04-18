@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\View;
 
 class LoginController extends Controller
 {
@@ -41,6 +40,6 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return View::component('auth.login', ['title' => 'Iniciar sesión']);
+        return view()->component('auth.login', ['title' => 'Iniciar sesión']);
     }
 }

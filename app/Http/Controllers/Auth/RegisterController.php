@@ -43,7 +43,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return View::component('auth.register', ['title' => 'Registrate']);
+        return view()->component('auth.register', ['title' => 'Registrate']);
     }
 
     /**

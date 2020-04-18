@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View;
 use Illuminate\View\Factory as ViewFactory;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $viewData = [],
             $componentData = []
         ) {
-            return View::make(
+            return view()->make(
                 'app',
                 ['name' => $name, 'data' => $componentData] + $viewData
             );
