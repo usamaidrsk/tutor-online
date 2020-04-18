@@ -1,32 +1,27 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+const Vue = require('vue')
+const axios = require('axios')
+const App = require('./App.vue').default
+const route = require('./route')
 
-require('./bootstrap');
+require('./components')
+require('./pages')
 
-window.Vue = require('vue');
+const root = document.getElementById('app')
+const { dataset } = root
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+axios.defaults.headers.common['X-CSRF-TOKEN'] = dataset.csrfToken
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+Vue.prototype.$http = axios
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.prototype.$auth = JSON.parse(dataset.auth)
+Vue.prototype.$route = route
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.config.productionTip = false
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+const Page = Vue.component(dataset.pageName.replace('.', '-'))
+const props = JSON.parse(dataset.routeData) || {}
 
 const app = new Vue({
-    el: '#app',
-});
+    el: root,
+    render: h => h(App, { scopedSlots: { default: () => h(Page, { props }) } }),
+})
