@@ -117,16 +117,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$checkbox-box-size: 28px;
-$checkbox-box-border-width: 2px;
-$checkbox-box-border-color: color('gray', 100);
-$checkbox-box-checked-border-color: color('primary');
-$checkbox-box-border-radius: 4px;
-
-$checkbox-label-color: color('gray', 400);
-$checkbox-label-font-weight: get('medium', $font-weights);
-$checkbox-label-font-size: 14px;
-
 .checkbox {
     margin-bottom: 15px;
     display: block;

@@ -56,15 +56,6 @@ export default {
 </script>
 
 <style lang="scss">
-$button-border-width: 1px;
-$button-border-radius: 4px;
-$button-height: 45px;
-$button-padding: 0 22px;
-
-$button-font-family: inherit;
-$button-font-size: 16px;
-$button-font-weight: get('regular', $font-weights);
-
 .button {
     position: relative;
     display: inline-block;

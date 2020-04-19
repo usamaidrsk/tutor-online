@@ -197,3 +197,55 @@ $shadow-key-ambient: (
     0 9px 44px 8px $shadow-key-ambient-opacity,
     0 9px 46px 8px $shadow-key-ambient-opacity
 );
+
+/* -------------------------------------------------------------------------- */
+/*                                 Components                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- Button --------------------------------- */
+$button-border-width: 1px;
+$button-border-radius: 4px;
+$button-height: 45px;
+$button-padding: 0 22px;
+$button-font-family: inherit;
+$button-font-size: 16px;
+$button-font-weight: get('regular', $font-weights);
+/* ---------------------------------- Input --------------------------------- */
+$input-background: color('white');
+$input-height: 38px;
+$input-padding-x: 9px;
+$input-padding-y: 0;
+$input-padding: $input-padding-y $input-padding-x;
+$input-margin-top: 10px;
+$input-margin-bottom: 15px;
+$input-invalid-color: color('red');
+$input-focus-color: color('primary');
+$input-border-width: 2px;
+$input-border-color: color('gray', 100);
+$input-hover-border-color: shade($input-border-color, 10%);
+$input-border-radius: 4px;
+$input-field-color: inherit;
+$input-field-font: inherit;
+$input-field-font-weight: get('light', $font-weights);
+$input-field-line-height: $input-height;
+$input-field-disabled-color: $input-border-color;
+$input-field-disabled-background: tint($input-border-color, 75%);
+$input-label-color: color('gray', 400);
+$input-label-font-weight: get('medium', $font-weights);
+$input-label-font-size: 14px;
+$input-error-color: $input-invalid-color;
+$input-error-font-size: 14px;
+$input-error-font-weight: get('medium', $font-weights);
+$input-helper-color: color('gray', 600);
+$input-helper-font-size: 12px;
+$input-placeholder-color: color('gray', 600);
+$input-placeholder-font-weight: get('light', $font-weights);
+/* -------------------------------- Checkbox -------------------------------- */
+$checkbox-box-size: 28px;
+$checkbox-box-border-width: 2px;
+$checkbox-box-border-color: color('gray', 100);
+$checkbox-box-checked-border-color: color('primary');
+$checkbox-box-border-radius: 4px;
+$checkbox-label-color: color('gray', 400);
+$checkbox-label-font-weight: get('medium', $font-weights);
+$checkbox-label-font-size: 14px;

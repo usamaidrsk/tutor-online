@@ -84,55 +84,6 @@ export default {
 </script>
 
 <style lang="scss">
-// General
-$input-background: color('white');
-$input-height: 38px;
-$input-padding-x: 9px;
-$input-padding-y: 0;
-$input-padding: $input-padding-y $input-padding-x;
-$input-margin-top: 10px;
-$input-margin-bottom: 15px;
-
-// Valid/Invalid
-$input-invalid-color: color('red');
-$input-focus-color: color('primary');
-
-// Borders
-$input-border-width: 2px;
-$input-border-color: color('gray', 100);
-$input-hover-border-color: shade($input-border-color, 10%);
-$input-border-radius: 4px;
-
-// Field
-$input-field-color: inherit;
-$input-field-font: inherit;
-$input-field-font-weight: get('light', $font-weights);
-$input-field-line-height: $input-height;
-
-$input-field-disabled-color: $input-border-color;
-$input-field-disabled-background: tint($input-border-color, 75%);
-
-// Label
-$input-label-color: color('gray', 400);
-$input-label-font-weight: get('medium', $font-weights);
-$input-label-font-size: 14px;
-
-// Error
-$input-error-color: $input-invalid-color;
-$input-error-font-size: 14px;
-$input-error-font-weight: get('medium', $font-weights);
-
-// Helper
-$input-helper-color: color('gray', 600);
-$input-helper-font-size: 12px;
-
-// Placeholder
-$input-placeholder-color: color('gray', 600);
-$input-placeholder-font-weight: get('light', $font-weights);
-
-// Icon
-$input-icon-color: shade($input-border-color, 25%);
-
 .input {
     @include margin($input-margin-top, false, $input-margin-bottom);
 
