@@ -10,7 +10,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name', 20);
+            $table->string('name', 25);
         });
     }
 
