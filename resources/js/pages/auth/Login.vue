@@ -7,7 +7,7 @@
                 <strong>{{ error }}</strong>
             </span>
 
-            <app-input
+            <Input
                 label="Email"
                 v-model="form.email"
                 type="email"
@@ -16,7 +16,7 @@
                 autofocus
             />
 
-            <app-input
+            <Input
                 label="Contraseña"
                 v-model="form.password"
                 type="password"
@@ -24,7 +24,7 @@
                 autocomplete="current-password"
             />
 
-            <app-checkbox
+            <Checkbox
                 :value="false"
                 v-model="form.remenber"
                 class="margin-bottom--halve"
