@@ -11,8 +11,8 @@
                         ti
                     </p>
                 </header>
-                <div class="a row margin-top--two">
-                    <div class="column">
+                <div class="row margin-top--two">
+                    <div class="col-xs-12 col-sm-7 col-lg-5">
                         <h6 class="margin--zero">Nacionalidad</h6>
 
                         <Select
@@ -22,11 +22,11 @@
                         />
                     </div>
 
-                    <div class="column">
+                    <div class="col-xs-12 col-sm-7 col-lg-6">
                         <h6 class="margin--zero">Fecha de nacimiento</h6>
 
                         <div class="row">
-                            <div class="column" style="width: 25%;">
+                            <div class="col-xs-3">
                                 <Input
                                     v-model="form.birthday[0]"
                                     type="number"
@@ -35,7 +35,7 @@
                                     placeholder="DD"
                                 />
                             </div>
-                            <div class="column" style="width: 25%;">
+                            <div class="col-xs-3">
                                 <Input
                                     v-model="form.birthday[1]"
                                     type="number"
@@ -44,7 +44,7 @@
                                     placeholder="MM"
                                 />
                             </div>
-                            <div class="column" style="width: 50%;">
+                            <div class="col-xs-6">
                                 <Input
                                     type="number"
                                     max="999999"
@@ -63,8 +63,7 @@
 
                 <div class="row">
                     <Checkbox
-                        class="column"
-                        style="width: 50%;"
+                        class="col-xs-12 col-sm-6"
                         v-for="(category, index) in categories"
                         v-model="form.category_ids"
                         :key="index"
@@ -98,30 +97,30 @@
                     Dirección
                 </h3>
 
-                <div class="b row">
-                    <div class="column">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
                         <Select
                             v-model="form.address.country_id"
                             label="país"
                             :options="countriesToOptions"
                         ></Select>
                     </div>
-                    <div class="column">
+                    <div class="col-xs-12 col-sm-6">
                         <Input v-model="form.address.city" label="cuidad" />
                     </div>
                 </div>
 
                 <Input v-model="form.address.line" label="dirección" textarea />
 
-                <div class="b row">
-                    <div class="column">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
                         <Input
                             v-model="form.address.zip_code"
                             label="código postal"
                             type="number"
                         />
                     </div>
-                    <div class="column">
+                    <div class="col-xs-12 col-sm-6">
                         <Input
                             v-model="form.address.state"
                             label="estado/provincia"
@@ -252,56 +251,11 @@ export default {
 <style lang="scss" scoped>
 form {
     margin: 0 auto;
-
     @include breakpoint('tablet') {
         width: 85%;
     }
     @include breakpoint('desktop') {
         width: 75%;
-    }
-}
-
-.a > .column:first-child {
-    padding: 0;
-    margin-right: 1.5em;
-
-    @include breakpoint('tablet') {
-        width: 300px;
-    }
-    @include breakpoint('desktop') {
-        width: 30%;
-    }
-}
-
-.a > .column:last-child {
-    @include breakpoint('tablet') {
-        width: 300px;
-    }
-}
-
-.phone-field {
-    width: 100%;
-    @include breakpoint('tablet') {
-        width: calc(50% - 1.5em);
-    }
-}
-
-// Address columns
-
-.b > .column {
-    margin: -10px 0;
-}
-.b > .column:first-child {
-    padding: 0;
-    @include breakpoint('tablet') {
-        padding-right: 1.5em;
-        width: 50%;
-    }
-}
-
-.b > .column:last-child {
-    @include breakpoint('tablet') {
-        width: 50%;
     }
 }
 
