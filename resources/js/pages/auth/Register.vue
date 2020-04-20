@@ -11,8 +11,8 @@
                 </p>
             </header>
 
-            <div class="row name-fields">
-                <div class="column">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
                     <Input
                         v-model="form.first_name"
                         label="nombres"
@@ -22,7 +22,7 @@
                         :error="errors.first('first_name')"
                     />
                 </div>
-                <div class="column">
+                <div class="col-xs-12 col-sm-6">
                     <Input
                         v-model="form.last_name"
                         label="apellidos"
@@ -50,14 +50,14 @@
                 required
             />
 
-            <div class="terms-disclaimer margin-top--two">
+            <div class="row margin-top--two">
                 <Checkbox
                     id="terms"
                     :value="false"
                     v-model="form.acceptTerms"
                 />
 
-                <!-- TODO: redirect to real  -->
+                <!-- TODO: redirect to real links -->
                 <label for="terms" class="text--small padding-top--quarter">
                     <span> Acepto los </span>
                     <a :href="route('home')" target="_blank"
@@ -119,16 +119,5 @@ export default {
     width: 490px;
     max-width: 100%;
     margin: 0 auto;
-}
-
-.name-fields {
-    margin-bottom: -10px;
-    & > .column {
-        width: 50%;
-    }
-}
-
-.terms-disclaimer {
-    display: flex;
 }
 </style>
