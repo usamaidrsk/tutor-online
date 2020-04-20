@@ -27,7 +27,7 @@
             <Checkbox
                 :value="false"
                 v-model="form.remenber"
-                class="margin-bottom--halve"
+                class="padding-top--quarter margin-bottom--halve"
                 label="Recordarme"
             />
 
@@ -37,9 +37,9 @@
                 >
             </p>
 
-            <app-button type="submit" block :loading="loading">
+            <Button type="submit" block :loading="loading">
                 <span>Iniciar</span>
-            </app-button>
+            </Button>
 
             <p class="text--center margin-top--two">
                 <span>¿Aún no eres miembro? </span>
@@ -71,7 +71,6 @@ export default {
                 window.location.href = route('profile')
             } catch (error) {
                 this.loading = false
-                console.error(error.response)
                 const { data } = error.response
                 this.error =
                     data.errors.email[0] ||

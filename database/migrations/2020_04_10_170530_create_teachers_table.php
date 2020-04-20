@@ -19,13 +19,14 @@ class CreateTeachersTable extends Migration
             $table->string('password', 255);
             $table->string('phone', 15)->nullable();
             $table->string('picture')->nullable();
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table
                 ->tinyInteger('country_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->nullable();
             $table->timestamps();
         });
     }

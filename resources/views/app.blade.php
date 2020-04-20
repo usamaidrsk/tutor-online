@@ -10,7 +10,10 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     {{-- <script src="{{ mix('js/manifest.js') }}" defer></script> --}}
+    {{-- <script src="{{ mix('js/vendor.js') }}" defer></script> --}}
     <script src="{{ mix('js/app.js') }}" defer></script>
+
+    @routes
 </head>
 <body>
     <div id="app"
@@ -19,7 +22,5 @@
         data-csrf-token="{{ csrf_token() }}"
         data-auth="{{ json_encode(['user' => Auth::user() ?? null]) }}"
     ></div>
-        window.routes = {!! collect(\Route::getRoutes())->mapWithKeys(function ($route) { return [$route->getName() => $route->uri()]; }) !!}
-    </script>
 </body>
 </html>

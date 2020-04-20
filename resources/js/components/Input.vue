@@ -1,8 +1,18 @@
 <template>
     <div :class="classes" :styles="styles">
         <label v-if="label" class="input__label">{{ label }}</label>
-        <input v-if="!textarea" v-model="innerValue" v-bind="attrs" />
-        <textarea v-else v-model="innerValue" v-bind="attrs"></textarea>
+        <input
+            v-if="!textarea"
+            v-model="innerValue"
+            v-bind="attrs"
+            v-on="listeners"
+        />
+        <textarea
+            v-else
+            v-model="innerValue"
+            v-bind="attrs"
+            v-on="listeners"
+        ></textarea>
         <span v-show="!isValid" class="input__error" role="alert">{{
             error
         }}</span>
@@ -37,7 +47,12 @@ export default {
 
     watch: {
         innerValue(value) {
+            this.$emit('change', value)
             this.$emit('input', value)
+        },
+
+        value(value) {
+            this.innerValue = value
         },
     },
 
@@ -77,6 +92,14 @@ export default {
                 },
                 type: this.type,
                 disabled: this.isDisabled,
+            }
+        },
+
+        listeners() {
+            return {
+                ...this.$listeners,
+                input: () => {},
+                change: () => {},
             }
         },
     },

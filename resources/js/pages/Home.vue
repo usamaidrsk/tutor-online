@@ -8,8 +8,8 @@
                 aliquid est alias doloremque obcaecati molestias, a harum fugiat
                 voluptatem numquam dolor ipsa.
             </p>
-                >Empezar</app-button
             <Button class="margin-top--one" :href="route('login')" outline
+                >Empezar</Button
             >
         </div>
     </div>

@@ -39,17 +39,19 @@ $navbar-heigth: 55px;
 
 main {
     padding-top: $navbar-heigth;
+    padding-bottom: get('four', $spacers);
     flex-grow: 1;
 
     & > .container {
         margin-top: get('two', $spacers);
-        @include breakpoint('desktop') {
+        @include breakpoint('tablet') {
             margin-top: get('three', $spacers);
         }
     }
 }
 
 .navbar {
+    // @include elevation(3);
     @include size(100%, $navbar-heigth);
     @include position(fixed, 0, 0);
 

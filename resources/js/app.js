@@ -1,17 +1,23 @@
-const Vue = require('vue')
-const axios = require('axios')
-const App = require('./App.vue').default
-const route = require('./route')
+import Vue from 'vue'
+import axios from 'axios'
+import App from './App.vue'
+import ErrorBag from './ErrorBag'
 
-require('./components')
-require('./pages')
+import './components'
+import './pages'
+
+window.ErrorBag = ErrorBag
 
 const root = document.getElementById('app')
 const { dataset } = root
 
-axios.defaults.headers.common['X-CSRF-TOKEN'] = dataset.csrfToken
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-Vue.prototype.$http = axios
+Vue.prototype.$http = axios.create({
+    baseURL: window.location.origin,
+    headers: {
+        'X-CSRF-TOKEN': dataset.csrfToken,
+        'X-Requested-With': 'XMLHttpRequest',
+    },
+})
 
 Vue.prototype.$auth = JSON.parse(dataset.auth)
 Vue.prototype.route = route
