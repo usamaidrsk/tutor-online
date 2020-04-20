@@ -15,5 +15,11 @@ mix.options({
     extractVueStyles: true,
     globalVueStyles: 'resources/sass/_globals.scss',
 })
+
+    // .extract(['vue', 'axios'])
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps(!mix.inProduction(), 'source-map')
+    .version()
+
+mix.disableNotifications()
