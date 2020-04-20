@@ -32,7 +32,7 @@
             />
 
             <p class="text--right text--small margin-bottom--halve">
-                <a :href="$route('password.request')"
+                <a :href="route('password.request')"
                     >¿Olvidaste tu contraseña?</a
                 >
             </p>
@@ -43,7 +43,7 @@
 
             <p class="text--center margin-top--two">
                 <span>¿Aún no eres miembro? </span>
-                <a :href="$route('register')">Registrate</a>
+                <a :href="route('register')">Registrate</a>
             </p>
         </form>
     </div>
@@ -67,8 +67,8 @@ export default {
 
             try {
                 this.loading = true
-                await this.$http.post('login', this.form)
-                window.location.href = this.$route('profile')
+                const response = await this.$http.post('login', this.form)
+                window.location.href = route('profile')
             } catch (error) {
                 this.loading = false
                 console.error(error.response)

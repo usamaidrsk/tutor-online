@@ -14,7 +14,7 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 Vue.prototype.$http = axios
 
 Vue.prototype.$auth = JSON.parse(dataset.auth)
-Vue.prototype.$route = route
+Vue.prototype.route = route
 
 Vue.config.productionTip = false
 
