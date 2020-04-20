@@ -1,8 +1,8 @@
 $z-layers: (
     'navbar': 150,
-    'pop-up': 250,
+    'modal': 250,
+    'pop-up': 125,
     'overlay': 225,
-    'notification': 100,
 );
 
 $breakpoints: (
@@ -226,7 +226,7 @@ $input-hover-border-color: shade($input-border-color, 10%);
 $input-border-radius: 4px;
 $input-field-color: inherit;
 $input-field-font: inherit;
-$input-field-font-weight: get('light', $font-weights);
+$input-field-font-weight: get('regular', $font-weights);
 $input-field-line-height: $input-height;
 $input-field-disabled-color: $input-border-color;
 $input-field-disabled-background: tint($input-border-color, 75%);
@@ -238,7 +238,7 @@ $input-error-font-size: 14px;
 $input-error-font-weight: get('medium', $font-weights);
 $input-helper-color: color('gray', 600);
 $input-helper-font-size: 12px;
-$input-placeholder-color: color('gray', 600);
+$input-placeholder-color: color('gray', 100);
 $input-placeholder-font-weight: get('light', $font-weights);
 /* -------------------------------- Checkbox -------------------------------- */
 $checkbox-box-size: 28px;
@@ -249,3 +249,13 @@ $checkbox-box-border-radius: 4px;
 $checkbox-label-color: color('gray', 400);
 $checkbox-label-font-weight: get('medium', $font-weights);
 $checkbox-label-font-size: 14px;
+/* --------------------------------- Select --------------------------------- */
+$select-arrow-size: 12px;
+$select-arrow-color: color('primary');
+$select-options-border-raduis: 3px;
+$select-options-max-height: 195px;
+$select-options-margin-top: 5px;
+$selected-option-hover-background: color('gray', 50);
+$select-option-selected-background: color('primary');
+$select-option-selected-color: yiq(color('primary'));
+$select-placeholder-color: color('gray', 300);
