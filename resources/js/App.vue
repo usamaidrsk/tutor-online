@@ -1,7 +1,9 @@
 <template>
     <div id="app">
         <!-- Header -->
-        <header class="navbar"></header>
+        <header class="navbar">
+            <Button v-if="$auth.user" @click="doLogout" flat>Salir</Button>
+        </header>
 
         <!-- Main -->
         <main>
@@ -16,7 +18,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+    methods: {
+        async doLogout() {
+            await this.$http.post('logout')
+            window.location.href = route('home')
+        },
+    },
+}
 </script>
 
 <style lang="scss" scoped>
