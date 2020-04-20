@@ -24,7 +24,7 @@ Vue.prototype.route = route
 
 Vue.config.productionTip = false
 
-const Page = Vue.component(dataset.pageName.replace('.', '-'))
+const Page = Vue.component(dataset.pageName.replace(/\./g, '_'))
 const props = JSON.parse(dataset.routeData) || {}
 
 const app = new Vue({
