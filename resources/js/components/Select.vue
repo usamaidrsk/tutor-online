@@ -11,7 +11,7 @@
                 @click.stop="doToggle"
             />
 
-            <!-- <Icon name="chevron-down" class="select__arrow" /> -->
+            <i class="select__arrow icon icon-down"></i>
 
             <ul
                 v-click-away="() => (isActive = false)"
@@ -132,15 +132,17 @@ export default {
 }
 
 .select__arrow {
-    @include position(absolute, null, null, 13px, 10px);
+    @include position(absolute, null, null, 10px, 10px);
 
     font-size: $select-arrow-size;
     color: $select-arrow-color;
     transition: transform 0.2s ease-out;
+    color: color('gray', 400);
     pointer-events: none;
 
     .select--is-active & {
         transform: rotateZ(180deg);
+        color: color('primary');
     }
 }
 
