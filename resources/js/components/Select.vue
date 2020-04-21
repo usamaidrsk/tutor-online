@@ -63,7 +63,7 @@ export default {
     }),
 
     created() {
-        const value = this.value.value || this.value
+        const value = (this.value && this.value.value) || this.value
         const options = this.normalizedOptions
 
         const option = options.find(opt => opt.value === value)
@@ -73,9 +73,16 @@ export default {
 
     watch: {
         selected(option) {
+            const { value } = this
             this.$emit(
                 'input',
-                typeof this.value === 'object' ? option : option.value
+                typeof (
+                    typeof value === 'number' ||
+                    value === null ||
+                    value === undefined
+                )
+                    ? option.value
+                    : option
             )
         },
     },
