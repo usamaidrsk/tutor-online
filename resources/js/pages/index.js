@@ -9,6 +9,8 @@ const kebabCase = string =>
 const files = require.context('./', true, /\.vue$/, 'lazy')
 
 files.keys().forEach(key => {
+    if (key.indexOf('_') > -1) return
+
     const filename = key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'))
     const path = key.slice(key.indexOf('/') + 1, key.lastIndexOf('/'))
     const name =
