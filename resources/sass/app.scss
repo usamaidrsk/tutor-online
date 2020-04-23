@@ -106,3 +106,23 @@ h6 {
         padding: 0;
     }
 }
+
+/* ---------------------------------- Error --------------------------------- */
+
+.error {
+    @extend .icon;
+    @extend .icon-alert;
+
+    display: block;
+    color: color('red');
+    font-weight: get('bold', $font-weights);
+    padding: get('one', $spacers);
+    margin: get('two', $spacers) 0;
+    border: 2px dashed color('red');
+
+    &::before {
+        font-size: get('large', $font-sizes);
+        padding-right: get('halve', $spacers);
+
+    }
+}

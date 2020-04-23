@@ -1,0 +1,76 @@
+<template>
+    <div class="questions">
+        <component
+            :is="'step-' + step"
+            v-bind="props"
+            :loading="loading"
+            :errors="errors"
+            @submit="handleSubmit"
+        ></component>
+    </div>
+</template>
+
+<script>
+import Step1 from './_questions/1'
+import Step2 from './_questions/2'
+import Step3 from './_questions/3'
+
+export default {
+    components: {
+        'step-1': Step1,
+        'step-2': Step2,
+        'step-3': Step3,
+    },
+
+    props: {
+        step: {
+            type: Number,
+            required: true,
+        },
+        props: {
+            type: Object,
+            required: true,
+        },
+    },
+
+    data: () => ({ loading: false, errors: new ErrorBag() }),
+
+    methods: {
+        async handleSubmit(data) {
+            if (this.loading) return
+
+            this.loading = true
+            this.errors.clear()
+
+            try {
+                await this.$http.post(`questions/${this.step}`, data)
+                window.location.href =
+                    this.step < 3
+                        ? route('questions', this.step + 1)
+                        : route('profile')
+            } catch (error) {
+                console.log(error.response)
+                if (error.response) {
+                    const { errors } = error.response.data
+                    this.errors.set(errors || {})
+                }
+            } finally {
+                this.loading = false
+            }
+        },
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.questions {
+    margin: 0 auto;
+
+    @include breakpoint('tablet') {
+        width: 85%;
+    }
+    @include breakpoint('desktop') {
+        width: 80%;
+    }
+}
+</style>

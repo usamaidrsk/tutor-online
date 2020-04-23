@@ -1,19 +1,24 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Checkbox.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Questions.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _questions_1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_questions/1 */ "./resources/js/pages/_questions/1.vue");
+/* harmony import */ var _questions_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_questions/2 */ "./resources/js/pages/_questions/2.vue");
+/* harmony import */ var _questions_3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_questions/3 */ "./resources/js/pages/_questions/3.vue");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 //
 //
@@ -27,98 +32,95 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  inheritAttrs: false,
-  model: {
-    prop: 'model'
+  components: {
+    'step-1': _questions_1__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'step-2': _questions_2__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'step-3': _questions_3__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
-    label: String,
-    value: [String, Number, Boolean],
-    model: {
-      validator: function validator(value) {
-        return value === null || typeof value === 'boolean' || Array.isArray(value);
-      }
+    step: {
+      type: Number,
+      required: true
     },
-    checked: Boolean,
-    disabled: Boolean
+    props: {
+      type: Object,
+      required: true
+    }
   },
-  data: function data(self) {
+  data: function data() {
     return {
-      shouldBeChecked: self.checked
+      loading: false,
+      errors: new ErrorBag()
     };
   },
-  watch: {
-    checked: function checked(value, old) {
-      if (value !== old) this.shouldBeChecked = value;
-    }
-  },
   methods: {
-    handleChange: function handleChange() {
-      var value = this.innerValue;
-      if (this.shouldBeChecked) this.shouldBeChecked = false;
+    handleSubmit: function handleSubmit(data) {
+      var _this = this;
 
-      if (this.value) {
-        if (!Array.isArray(value)) value = [];
-        if (this.isChecked) value.splice(value.indexOf(this.value), 1);else value.push(this.value);
-        this.$emit('change', this.isChecked ? null : this.value);
-      } else {
-        value = !value;
-        this.$emit('change', value);
-      }
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var errors;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.loading) {
+                  _context.next = 2;
+                  break;
+                }
 
-      if (this.CheckboxGroup) this.CheckboxGroup.handleChange(value);else this.$emit('input', value);
-    }
-  },
-  computed: {
-    classes: function classes() {
-      return {
-        checkbox: true,
-        'checkbox--is-checked': this.isChecked,
-        'checkbox--is-disabled': this.isDisabled
-      };
-    },
-    listeners: function listeners() {
-      return _objectSpread({}, this.$listeners, {
-        change: this.handleChange,
-        input: function input() {}
-      });
-    },
-    innerValue: function innerValue() {
-      return this.model === undefined ? this.CheckboxGroup && this.CheckboxGroup.value : this.model;
-    },
-    isChecked: function isChecked() {
-      var value = this.innerValue;
-      var isChecked; // If not v-model given return `checked` attr value
+                return _context.abrupt("return");
 
-      if (value === undefined) return this.checked;
-      if (typeof value === 'boolean') isChecked = value;else if (Array.isArray(value)) isChecked = value.includes(this.value);else isChecked = !!value;
+              case 2:
+                _this.loading = true;
 
-      if (this.shouldBeChecked) {
-        if (!isChecked) this.handleChange();
-        return true;
-      }
+                _this.errors.clear();
 
-      return isChecked;
-    },
-    isDisabled: function isDisabled() {
-      return this.CheckboxGroup ? this.CheckboxGroup.disabled || this.disabled : this.disabled;
+                _context.prev = 4;
+                _context.next = 7;
+                return _this.$http.post("questions/".concat(_this.step), data);
+
+              case 7:
+                window.location.href = route('questions', _this.step + 1);
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](4);
+
+                if (_context.t0.response) {
+                  errors = _context.t0.response.data.errors;
+                  console.log(_context.t0.response);
+
+                  _this.errors.set(errors);
+                }
+
+              case 13:
+                _context.prev = 13;
+                _this.loading = false;
+                return _context.finish(13);
+
+              case 16:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[4, 10, 13, 16]]);
+      }))();
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--7-4!./node_modules/sass-resources-loader/lib/loader.js??ref--7-5!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--7-4!./node_modules/sass-resources-loader/lib/loader.js??ref--7-5!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -127,22 +129,22 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.checkbox[data-v-90aed0a4] {\n  margin-bottom: 15px;\n  display: block;\n}\ninput[data-v-90aed0a4] {\n  position: absolute;\n  opacity: 0;\n  pointer-events: none;\n  z-index: -1;\n}\n.checkbox__container[data-v-90aed0a4] {\n  display: inline-flex;\n  align-items: center;\n  cursor: pointer;\n}\n.checkbox__container:hover .checkbox__box[data-v-90aed0a4], .checkbox__container:active .checkbox__box[data-v-90aed0a4], .checkbox__container:focus .checkbox__box[data-v-90aed0a4] {\n  border-color: #4dccbd;\n}\n.checkbox__label[data-v-90aed0a4] {\n  text-transform: uppercase;\n  color: #98a3a8;\n  font-size: 14px;\n  font-weight: 500;\n}\n.checkbox__box[data-v-90aed0a4] {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  border: 2px solid #c2c8cc;\n  border-radius: 4px;\n  margin-right: 8px;\n  flex-shrink: 0;\n  transition-property: background border-color;\n  transition-duration: 0.2s;\n}\n.checkbox--is-checked .checkbox__box[data-v-90aed0a4] {\n  border-color: #4dccbd;\n}\n.checkbox--is-checked .checkbox__box[data-v-90aed0a4]::before {\n  width: 18.2px;\n  height: 18.2px;\n  background: #4dccbd;\n}\n.checkbox--is-disabled .checkbox__box[data-v-90aed0a4] {\n  border-color: #c2c8cc !important;\n  background: #e1e4e6 !important;\n}\n.checkbox--is-disabled .checkbox__box[data-v-90aed0a4]::before {\n  transform: scale(0);\n}\n.checkbox__box[data-v-90aed0a4]::before {\n  content: \"\";\n  position: absolute;\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 0;\n  height: 0;\n  border-radius: 2px;\n  transition-property: width, height;\n  transition-duration: 0.2s;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.questions[data-v-a7d3a8d8] {\n  margin: 0 auto;\n}\n@media (min-width: 480px) {\n.questions[data-v-a7d3a8d8] {\n    width: 85%;\n}\n}\n@media (min-width: 1025px) {\n.questions[data-v-a7d3a8d8] {\n    width: 75%;\n}\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/extract-text-webpack-plugin/dist/loader.js??ref--7-0!./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--7-4!./node_modules/sass-resources-loader/lib/loader.js??ref--7-5!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/extract-text-webpack-plugin/dist/loader.js??ref--7-0!./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--7-4!./node_modules/sass-resources-loader/lib/loader.js??ref--7-5!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-3!../../../node_modules/sass-loader/dist/cjs.js??ref--7-4!../../../node_modules/sass-resources-loader/lib/loader.js??ref--7-5!../../../node_modules/vue-loader/lib??vue-loader-options!./Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-3!../../../node_modules/sass-loader/dist/cjs.js??ref--7-4!../../../node_modules/sass-resources-loader/lib/loader.js??ref--7-5!../../../node_modules/vue-loader/lib??vue-loader-options!./Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -164,10 +166,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -179,37 +181,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: _vm.classes }, [
-    _c("label", { staticClass: "checkbox__container" }, [
+  return _c(
+    "div",
+    { staticClass: "questions" },
+    [
       _c(
-        "input",
-        _vm._g(
-          _vm._b(
-            {
-              attrs: {
-                type: "checkbox",
-                disabled: _vm.isDisabled,
-                "data-test": "checkbox"
-              },
-              domProps: { value: _vm.value, checked: _vm.isChecked }
-            },
-            "input",
-            _vm.$attrs,
-            false
-          ),
-          _vm.listeners
+        "step-" + _vm.step,
+        _vm._b(
+          {
+            tag: "component",
+            attrs: { loading: _vm.loading, errors: _vm.errors },
+            on: { submit: _vm.handleSubmit }
+          },
+          "component",
+          _vm.props,
+          false
         )
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "checkbox__box" }),
-      _vm._v(" "),
-      _c(
-        "span",
-        { staticClass: "checkbox__label", attrs: { "data-test": "label" } },
-        [_vm._v(_vm._s(_vm.label))]
       )
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -218,18 +209,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/Checkbox.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Checkbox.vue ***!
-  \**********************************************/
+/***/ "./resources/js/pages/Questions.vue":
+/*!******************************************!*\
+  !*** ./resources/js/pages/Questions.vue ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true& */ "./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true&");
-/* harmony import */ var _Checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Checkbox.vue?vue&type=script&lang=js& */ "./resources/js/components/Checkbox.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& */ "./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&");
+/* harmony import */ var _Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true& */ "./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true&");
+/* harmony import */ var _Questions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Questions.vue?vue&type=script&lang=js& */ "./resources/js/pages/Questions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& */ "./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -240,66 +231,66 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _Checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Questions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "90aed0a4",
+  "a7d3a8d8",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Checkbox.vue"
+component.options.__file = "resources/js/pages/Questions.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Checkbox.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/Checkbox.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/pages/Questions.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/pages/Questions.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Checkbox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Questions.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/extract-text-webpack-plugin/dist/loader.js??ref--7-0!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-3!../../../node_modules/sass-loader/dist/cjs.js??ref--7-4!../../../node_modules/sass-resources-loader/lib/loader.js??ref--7-5!../../../node_modules/vue-loader/lib??vue-loader-options!./Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true& */ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=style&index=0&id=90aed0a4&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_style_index_0_id_90aed0a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/extract-text-webpack-plugin/dist/loader.js??ref--7-0!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-3!../../../node_modules/sass-loader/dist/cjs.js??ref--7-4!../../../node_modules/sass-resources-loader/lib/loader.js??ref--7-5!../../../node_modules/vue-loader/lib??vue-loader-options!./Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true& */ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-resources-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=style&index=0&id=a7d3a8d8&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_7_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_7_4_node_modules_sass_resources_loader_lib_loader_js_ref_7_5_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_style_index_0_id_a7d3a8d8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true& ***!
+  \*************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Checkbox.vue?vue&type=template&id=90aed0a4&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Questions.vue?vue&type=template&id=a7d3a8d8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Checkbox_vue_vue_type_template_id_90aed0a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Questions_vue_vue_type_template_id_a7d3a8d8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -15,15 +15,15 @@
 }
 main[data-v-f348271a] {
   padding-top: 55px;
-  padding-bottom: 64rem;
+  padding-bottom: 4rem;
   flex-grow: 1;
 }
 main > .container[data-v-f348271a] {
-  margin-top: 24rem;
+  margin-top: 1.5rem;
 }
 @media (min-width: 480px) {
 main > .container[data-v-f348271a] {
-    margin-top: 48rem;
+    margin-top: 3rem;
 }
 }
 .navbar[data-v-f348271a] {
@@ -40,7 +40,9 @@ main > .container[data-v-f348271a] {
   height: 120px;
   background: white;
   border-top: 1px solid #d0d5d7;
-}/* http://meyerweb.com/eric/tools/css/reset/ 
+}@charset "UTF-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -1361,6 +1363,129 @@ template {
   }
 }
 
+@font-face {
+  font-family: "icons";
+  src: url(/fonts/icons.eot?4b71396165e626502023628893eed9f0);
+  src: url(/fonts/icons.eot?4b71396165e626502023628893eed9f0) format("embedded-opentype"), url(/fonts/icons.woff2?d70d4a2397f58789f295aba21806cb1c) format("woff2"), url(/fonts/icons.woff?410c125429bdd20a67dffbfcc06f8e79) format("woff"), url(/fonts/icons.ttf?3b70317553ce0351443692856e14b928) format("truetype"), url(/fonts/icons.svg?b4855f52938e7369c20a44317479b8fa) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'icons';
+    src: url('../font/icons.svg?21288852#icons') format('svg');
+  }
+}
+*/
+
+.icon:before,
+.error:before {
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-map:before {
+  content: "\E800";
+}
+
+/* '' */
+
+.icon-gift:before {
+  content: "\E801";
+}
+
+/* '' */
+
+.icon-mail:before {
+  content: "\E802";
+}
+
+/* '' */
+
+.icon-x:before {
+  content: "\E804";
+}
+
+/* '' */
+
+.icon-alert:before,
+.error:before {
+  content: "\E805";
+}
+
+/* '' */
+
+.icon-clock:before {
+  content: "\E806";
+}
+
+/* '' */
+
+.icon-download:before {
+  content: "\E807";
+}
+
+/* '' */
+
+.icon-user:before {
+  content: "\E808";
+}
+
+/* '' */
+
+.icon-down:before {
+  content: "\F004";
+}
+
+/* '' */
+
+.icon-up:before {
+  content: "\F005";
+}
+
+/* '' */
+
+.icon-right:before {
+  content: "\F006";
+}
+
+/* '' */
+
+.icon-left:before {
+  content: "\F007";
+}
+
+/* '' */
+
 /* --------------------------------- Colors --------------------------------- */
 
 /* ------------------------------- Typography ------------------------------- */
@@ -1442,15 +1567,15 @@ template {
 }
 
 .text--small {
-  font-size: 14rem !important;
+  font-size: 0.8rem !important;
 }
 
 .text--medium {
-  font-size: 16rem !important;
+  font-size: 1rem !important;
 }
 
 .text--large {
-  font-size: 28rem !important;
+  font-size: 1.3rem !important;
 }
 
 .text--left {
@@ -1488,83 +1613,83 @@ template {
 }
 
 .margin--quarter {
-  margin: 4rem !important;
+  margin: 0.25rem !important;
 }
 
 .margin-top--quarter {
-  margin-top: 4rem !important;
+  margin-top: 0.25rem !important;
 }
 
 .margin-left--quarter {
-  margin-left: 4rem !important;
+  margin-left: 0.25rem !important;
 }
 
 .margin-bottom--quarter {
-  margin-bottom: 4rem !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .margin-right--quarter {
-  margin-right: 4rem !important;
+  margin-right: 0.25rem !important;
 }
 
 .padding--quarter {
-  padding: 4rem !important;
+  padding: 0.25rem !important;
 }
 
 .padding-top--quarter {
-  padding-top: 4rem !important;
+  padding-top: 0.25rem !important;
 }
 
 .padding-left--quarter {
-  padding-left: 4rem !important;
+  padding-left: 0.25rem !important;
 }
 
 .padding-bottom--quarter {
-  padding-bottom: 4rem !important;
+  padding-bottom: 0.25rem !important;
 }
 
 .padding-right--quarter {
-  padding-right: 4rem !important;
+  padding-right: 0.25rem !important;
 }
 
 .margin--halve {
-  margin: 8rem !important;
+  margin: 0.5rem !important;
 }
 
 .margin-top--halve {
-  margin-top: 8rem !important;
+  margin-top: 0.5rem !important;
 }
 
 .margin-left--halve {
-  margin-left: 8rem !important;
+  margin-left: 0.5rem !important;
 }
 
 .margin-bottom--halve {
-  margin-bottom: 8rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .margin-right--halve {
-  margin-right: 8rem !important;
+  margin-right: 0.5rem !important;
 }
 
 .padding--halve {
-  padding: 8rem !important;
+  padding: 0.5rem !important;
 }
 
 .padding-top--halve {
-  padding-top: 8rem !important;
+  padding-top: 0.5rem !important;
 }
 
 .padding-left--halve {
-  padding-left: 8rem !important;
+  padding-left: 0.5rem !important;
 }
 
 .padding-bottom--halve {
-  padding-bottom: 8rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .padding-right--halve {
-  padding-right: 8rem !important;
+  padding-right: 0.5rem !important;
 }
 
 .margin--zero {
@@ -1608,203 +1733,203 @@ template {
 }
 
 .margin--one {
-  margin: 16rem !important;
+  margin: 1rem !important;
 }
 
 .margin-top--one {
-  margin-top: 16rem !important;
+  margin-top: 1rem !important;
 }
 
 .margin-left--one {
-  margin-left: 16rem !important;
+  margin-left: 1rem !important;
 }
 
 .margin-bottom--one {
-  margin-bottom: 16rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .margin-right--one {
-  margin-right: 16rem !important;
+  margin-right: 1rem !important;
 }
 
 .padding--one {
-  padding: 16rem !important;
+  padding: 1rem !important;
 }
 
 .padding-top--one {
-  padding-top: 16rem !important;
+  padding-top: 1rem !important;
 }
 
 .padding-left--one {
-  padding-left: 16rem !important;
+  padding-left: 1rem !important;
 }
 
 .padding-bottom--one {
-  padding-bottom: 16rem !important;
+  padding-bottom: 1rem !important;
 }
 
 .padding-right--one {
-  padding-right: 16rem !important;
+  padding-right: 1rem !important;
 }
 
 .margin--two {
-  margin: 24rem !important;
+  margin: 1.5rem !important;
 }
 
 .margin-top--two {
-  margin-top: 24rem !important;
+  margin-top: 1.5rem !important;
 }
 
 .margin-left--two {
-  margin-left: 24rem !important;
+  margin-left: 1.5rem !important;
 }
 
 .margin-bottom--two {
-  margin-bottom: 24rem !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .margin-right--two {
-  margin-right: 24rem !important;
+  margin-right: 1.5rem !important;
 }
 
 .padding--two {
-  padding: 24rem !important;
+  padding: 1.5rem !important;
 }
 
 .padding-top--two {
-  padding-top: 24rem !important;
+  padding-top: 1.5rem !important;
 }
 
 .padding-left--two {
-  padding-left: 24rem !important;
+  padding-left: 1.5rem !important;
 }
 
 .padding-bottom--two {
-  padding-bottom: 24rem !important;
+  padding-bottom: 1.5rem !important;
 }
 
 .padding-right--two {
-  padding-right: 24rem !important;
+  padding-right: 1.5rem !important;
 }
 
 .margin--three {
-  margin: 48rem !important;
+  margin: 3rem !important;
 }
 
 .margin-top--three {
-  margin-top: 48rem !important;
+  margin-top: 3rem !important;
 }
 
 .margin-left--three {
-  margin-left: 48rem !important;
+  margin-left: 3rem !important;
 }
 
 .margin-bottom--three {
-  margin-bottom: 48rem !important;
+  margin-bottom: 3rem !important;
 }
 
 .margin-right--three {
-  margin-right: 48rem !important;
+  margin-right: 3rem !important;
 }
 
 .padding--three {
-  padding: 48rem !important;
+  padding: 3rem !important;
 }
 
 .padding-top--three {
-  padding-top: 48rem !important;
+  padding-top: 3rem !important;
 }
 
 .padding-left--three {
-  padding-left: 48rem !important;
+  padding-left: 3rem !important;
 }
 
 .padding-bottom--three {
-  padding-bottom: 48rem !important;
+  padding-bottom: 3rem !important;
 }
 
 .padding-right--three {
-  padding-right: 48rem !important;
+  padding-right: 3rem !important;
 }
 
 .margin--four {
-  margin: 64rem !important;
+  margin: 4rem !important;
 }
 
 .margin-top--four {
-  margin-top: 64rem !important;
+  margin-top: 4rem !important;
 }
 
 .margin-left--four {
-  margin-left: 64rem !important;
+  margin-left: 4rem !important;
 }
 
 .margin-bottom--four {
-  margin-bottom: 64rem !important;
+  margin-bottom: 4rem !important;
 }
 
 .margin-right--four {
-  margin-right: 64rem !important;
+  margin-right: 4rem !important;
 }
 
 .padding--four {
-  padding: 64rem !important;
+  padding: 4rem !important;
 }
 
 .padding-top--four {
-  padding-top: 64rem !important;
+  padding-top: 4rem !important;
 }
 
 .padding-left--four {
-  padding-left: 64rem !important;
+  padding-left: 4rem !important;
 }
 
 .padding-bottom--four {
-  padding-bottom: 64rem !important;
+  padding-bottom: 4rem !important;
 }
 
 .padding-right--four {
-  padding-right: 64rem !important;
+  padding-right: 4rem !important;
 }
 
 .margin--five {
-  margin: 80rem !important;
+  margin: 5rem !important;
 }
 
 .margin-top--five {
-  margin-top: 80rem !important;
+  margin-top: 5rem !important;
 }
 
 .margin-left--five {
-  margin-left: 80rem !important;
+  margin-left: 5rem !important;
 }
 
 .margin-bottom--five {
-  margin-bottom: 80rem !important;
+  margin-bottom: 5rem !important;
 }
 
 .margin-right--five {
-  margin-right: 80rem !important;
+  margin-right: 5rem !important;
 }
 
 .padding--five {
-  padding: 80rem !important;
+  padding: 5rem !important;
 }
 
 .padding-top--five {
-  padding-top: 80rem !important;
+  padding-top: 5rem !important;
 }
 
 .padding-left--five {
-  padding-left: 80rem !important;
+  padding-left: 5rem !important;
 }
 
 .padding-bottom--five {
-  padding-bottom: 80rem !important;
+  padding-bottom: 5rem !important;
 }
 
 .padding-right--five {
-  padding-right: 80rem !important;
+  padding-right: 5rem !important;
 }
 
 *,
@@ -1816,12 +1941,12 @@ template {
 }
 
 html {
-  font-size: 0.9px;
+  font-size: 16px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 16rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #484e51;
   line-height: 1.5;
@@ -1866,41 +1991,41 @@ h6 {
   font-weight: 700;
   color: #303030;
   margin-top: 0;
-  margin-bottom: 24rem;
+  margin-bottom: 1.5rem;
 }
 
 h1 {
-  font-size: 38rem;
+  font-size: 2.5rem;
   line-height: 1.2;
-  letter-spacing: -1rem;
+  letter-spacing: -1px;
 }
 
 h2 {
-  font-size: 35rem;
+  font-size: 2rem;
   line-height: 1.25;
-  letter-spacing: -1rem;
+  letter-spacing: -1px;
 }
 
 h3 {
-  font-size: 28rem;
+  font-size: 1.7rem;
   line-height: 1.3;
-  letter-spacing: -1rem;
+  letter-spacing: -1px;
 }
 
 h4 {
-  font-size: 24rem;
+  font-size: 1.5rem;
   line-height: 1.35;
-  letter-spacing: -0.8rem;
+  letter-spacing: -0.8px;
 }
 
 h5 {
-  font-size: 18rem;
+  font-size: 1.2rem;
   line-height: 1.5;
-  letter-spacing: -0.5rem;
+  letter-spacing: -0.5px;
 }
 
 h6 {
-  font-size: 15rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   letter-spacing: 0;
 }
@@ -1912,7 +2037,7 @@ h6 {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 20rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 480px) {
@@ -1920,6 +2045,22 @@ h6 {
     width: 85%;
     padding: 0;
   }
+}
+
+/* ---------------------------------- Error --------------------------------- */
+
+.error {
+  display: block;
+  color: #dc3545;
+  font-weight: 700;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border: 2px dashed #dc3545;
+}
+
+.error::before {
+  font-size: 1.3rem;
+  padding-right: 0.5rem;
 }
 
 

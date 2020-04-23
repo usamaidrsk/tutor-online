@@ -15585,23 +15585,18 @@ var ErrorBag = /*#__PURE__*/function () {
 
     _classCallCheck(this, ErrorBag);
 
-    this.setErrors(errors);
+    this.set(errors);
   }
 
   _createClass(ErrorBag, [{
-    key: "hasErrors",
-    value: function hasErrors() {
+    key: "any",
+    value: function any() {
       return !!this.keys.length;
     }
   }, {
-    key: "hasError",
-    value: function hasError(key) {
+    key: "has",
+    value: function has(key) {
       return this.keys.indexOf(key) > -1;
-    }
-  }, {
-    key: "firstKey",
-    value: function firstKey() {
-      return this.keys[0];
     }
   }, {
     key: "first",
@@ -15609,19 +15604,14 @@ var ErrorBag = /*#__PURE__*/function () {
       return this.errors[key] ? this.errors[key][0] : undefined;
     }
   }, {
-    key: "setErrors",
-    value: function setErrors(errors) {
+    key: "set",
+    value: function set(errors) {
       this.errors = errors;
-    }
-  }, {
-    key: "clearAll",
-    value: function clearAll() {
-      this.setErrors({});
     }
   }, {
     key: "clear",
     value: function clear(key) {
-      return delete this.errors[key];
+      if (key) return delete this.errors[key];else this.set({});
     }
   }, {
     key: "keys",
@@ -15674,7 +15664,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPO
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$auth = JSON.parse(dataset.auth);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.route = route;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
-var Page = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(dataset.pageName.replace('.', '-'));
+var Page = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(dataset.pageName.replace(/\./g, '_'));
 var props = JSON.parse(dataset.routeData) || {};
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: root,
@@ -15703,23 +15693,23 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		7,
-		16
+		9,
+		19
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		7,
-		10
+		9,
+		14
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		7,
-		11
+		9,
+		15
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		7,
-		9
+		9,
+		13
 	]
 };
 function webpackAsyncContext(req) {
@@ -15777,27 +15767,42 @@ files.keys().forEach(function (key) {
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		7,
-		12
-	],
-	"./PostRegistration.vue": [
-		"./resources/js/pages/PostRegistration.vue",
-		7,
-		13
+		9,
+		16
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		8
+		10
+	],
+	"./Questions.vue": [
+		"./resources/js/pages/Questions.vue",
+		9,
+		0,
+		2,
+		11
+	],
+	"./_questions/1.vue": [
+		"./resources/js/pages/_questions/1.vue",
+		0
+	],
+	"./_questions/2.vue": [
+		"./resources/js/pages/_questions/2.vue",
+		3
+	],
+	"./_questions/3.vue": [
+		"./resources/js/pages/_questions/3.vue",
+		9,
+		2
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		7,
-		14
+		9,
+		17
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		7,
-		15
+		9,
+		18
 	]
 };
 function webpackAsyncContext(req) {
@@ -15831,10 +15836,18 @@ module.exports = webpackAsyncContext;
 
 var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
+var kebabCase = function kebabCase(string) {
+  return string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase();
+};
+
 var files = __webpack_require__("./resources/js/pages lazy recursive \\.vue$");
 
 files.keys().forEach(function (key) {
-  Vue.component(key.slice(key.indexOf('/') + 1, key.lastIndexOf('.')).toLowerCase().replace('/', '-'), function () {
+  if (key.indexOf('_') > -1) return;
+  var filename = key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'));
+  var path = key.slice(key.indexOf('/') + 1, key.lastIndexOf('/'));
+  var name = (path ? path.replace(/\//g, '_') + '_' : '') + kebabCase(filename);
+  Vue.component(name, function () {
     return files(key);
   });
 });

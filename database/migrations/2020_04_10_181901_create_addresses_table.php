@@ -10,14 +10,15 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('line', 100);
-            $table->string('state', 50);
-            $table->string('city', 50);
-            $table->string('zip_code', 10);
+            $table->string('line', 100)->nullable();
+            $table->string('state', 50)->nullable();
+            $table->string('city', 50)->nullable();
+            $table->string('zip_code', 10)->nullable();
             $table
                 ->tinyInteger('country_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->nullable();
             $table
                 ->integer('teacher_id')
                 ->unsigned()

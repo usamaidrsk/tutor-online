@@ -20,6 +20,7 @@ class CreateTeachersTable extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('picture')->nullable();
             $table->date('birthday')->nullable();
+            $table->boolean('answered_questions')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table

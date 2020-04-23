@@ -104,10 +104,10 @@ export default {
             try {
                 this.loading = true
                 await this.$http.post('register', this.form)
-                window.location.href = route('post-register')
+                window.location.href = route('questions', 1)
             } catch (error) {
                 this.loading = false
-                this.errors.setErrors(error.response.data.errors)
+                this.errors.set(error.response.data.errors)
             }
         },
     },
