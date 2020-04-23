@@ -1,9 +1,9 @@
 class ErrorBag {
     constructor(errors = {}) {
-        this.setErrors(errors)
+        this.set(errors)
     }
 
-    hasErrors() {
+    any() {
         return !!this.keys.length
     }
 
@@ -11,28 +11,20 @@ class ErrorBag {
         return Object.keys(this.errors)
     }
 
-    hasError(key) {
+    has(key) {
         return this.keys.indexOf(key) > -1
     }
-
-    firstKey() {
-        return this.keys[0]
-    }
-
     first(key) {
         return this.errors[key] ? this.errors[key][0] : undefined
     }
 
-    setErrors(errors) {
+    set(errors) {
         this.errors = errors
     }
 
-    clearAll() {
-        this.setErrors({})
-    }
-
     clear(key) {
-        return delete this.errors[key]
+        if (key) return delete this.errors[key]
+        else this.set({})
     }
 }
 
