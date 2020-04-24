@@ -64,7 +64,21 @@
         </div>
 
         <div class="margin-top--two">
-            <h4 class="margin-bottom--zero">Adjuntar archivos</h4>
+            <h4 class="margin-bottom--halve">Adjuntar archivos</h4>
+            <table class="margin-bottom--two">
+                <tr>
+                    <td class="padding-right--one">Número máximo:</td>
+                    <td>{{ files.length }}/{{ MAX_FILE_NUM }}</td>
+                </tr>
+                <tr>
+                    <td class="padding-right--one">Peso limite:</td>
+                    <td>{{ maxFileSize }}</td>
+                </tr>
+                <tr>
+                    <td class="padding-right--one">Formatos:</td>
+                    <td>{{ allowedFileExtensions.toUpperCase() }}</td>
+                </tr>
+            </table>
 
             <span v-if="errors.has('files')" class="error" role="alert">{{
                 errors.first('files')
@@ -73,29 +87,23 @@
             <div class="row margin-top--one">
                 <div class="col-xs-12 col-md-6">
                     <label class="box" for="files" ref="box">
-                        <i class="icon icon-files"></i>
-                        <input
-                            class="box__input"
-                            id="files"
-                            name="files"
-                            type="file"
-                            multiple
-                            @change="handleFilesUpload"
-                            :accept="allowedFileExtensions"
-                        />
+                        <div class="box__container">
+                            <input
+                                class="box__input"
+                                id="files"
+                                type="file"
+                                multiple
+                                @change="handleFilesUpload"
+                                :accept="allowedFileExtensions"
+                            />
 
-                        <label for="files"
-                            ><strong>Elige un archivo</strong> o arrastralo
-                            hasta aquí</label
-                        >
+                            <i class="box__icon icon icon-files"></i>
 
-                        <ul>
-                            <li>Limite: {{ maxFileSize }}</li>
-                            <li>
-                                Formatos:
-                                {{ allowedFileExtensions.toUpperCase() }}
-                            </li>
-                        </ul>
+                            <label for="files" class="box__label"
+                                ><strong>Elige un archivo</strong> o arrastralo
+                                hasta aquí</label
+                            >
+                        </div>
                     </label>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -263,33 +271,34 @@ form {
 .box {
     height: 270px;
     display: block;
-    position: relative;
     color: color('gray', 600);
+    background: color('gray', 50, 0.1);
     border: 3px dashed color('gray', 100);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.box__input {
+    @include hide-visually;
+}
+
+.box__container {
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+    align-items: center;
     text-align: center;
+    color: color('gray');
+}
 
-    label strong {
-        color: color('primary');
-        cursor: pointer;
-    }
+.box__icon {
+    display: block;
+    font-size: 6rem;
+}
 
-    ul {
-        width: 100%;
-        position: absolute;
-        bottom: get('one', $spacers);
-    }
-
-    .box__input {
-        @include hide-visually;
-    }
-
-    .icon {
-        color: color('primary');
-        display: block;
-        font-size: 6rem;
-    }
+.box__label {
+    cursor: pointer;
 }
 
 footer {
@@ -311,10 +320,6 @@ footer {
     font-weight: get('bold', $font-weights);
     border-bottom: 1px solid color('gray', 300);
     color: color('black');
-}
-
-.budget__currency {
-    //
 }
 
 .budget__field {
