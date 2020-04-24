@@ -249,6 +249,16 @@ $checkbox-box-border-radius: 4px;
 $checkbox-label-color: $input-label-color;
 $checkbox-label-font-weight: $input-label-font-weight;
 $checkbox-label-font-size: 14px;
+/* ---------------------------------- Radio --------------------------------- */
+$radio-circle-size: 28px;
+$radio-circle-border-width: 2px;
+$radio-circle-border-color: $input-border-color;
+$radio-circle-checked-border-color: color('primary');
+$radio-knob-size: 18px;
+$radio-knob-background: color('primary');
+$radio-label-color: $input-label-color;
+$radio-label-font-weight: $input-label-font-weight;
+$radio-label-font-size: 14px;
 /* --------------------------------- Select --------------------------------- */
 $select-arrow-size: 12px;
 $select-arrow-color: color('primary');
