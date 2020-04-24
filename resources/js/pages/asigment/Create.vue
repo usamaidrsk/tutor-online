@@ -186,17 +186,7 @@ export default {
 
         box.ondrop = e => {
             e.preventDefault()
-
-            const { files } = e.dataTransfer
-            this.files.push(
-                ...[].slice.call(files, 0).filter(({ name }) => {
-                    return (
-                        this.ALLOWED_FILE_EXTENSIONS.indexOf(
-                            name.slice(name.lastIndexOf('.') + 1)
-                        ) > -1
-                    )
-                })
-            )
+            this.addFiles(e.dataTransfer.files)
         }
     },
 
@@ -246,8 +236,26 @@ export default {
         },
 
         handleFilesUpload(e) {
-            const { files } = e.target
-            this.files.push(...[].slice.call(files, 0))
+            this.addFiles(e.target.files)
+            e.target.file = null
+        },
+
+        addFiles(files) {
+            const diff = this.MAX_FILE_NUM - this.files.length
+
+            if (diff < 0) return
+
+            files = [].slice.call(files, 0, diff)
+
+            files = files.filter(file => {
+                if (file.size > this.MAX_FILE_SIZE) return false
+
+                const { name } = file
+                const ext = name.slice(name.lastIndexOf('.') + 1)
+                return this.ALLOWED_FILE_EXTENSIONS.indexOf(ext) > -1
+            })
+
+            this.files.push(...files)
         },
 
         removeFile(index) {
