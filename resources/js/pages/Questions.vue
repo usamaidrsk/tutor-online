@@ -51,6 +51,7 @@ export default {
             } catch (error) {
                 console.log(error.response)
                 if (error.response) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
                     const { errors } = error.response.data
                     this.errors.set(errors || {})
                 }
