@@ -15693,23 +15693,33 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		9,
-		19
+		12,
+		26
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		9,
-		14
+		12,
+		18
+	],
+	"./File.vue": [
+		"./resources/js/components/File.vue",
+		12,
+		19
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		9,
-		15
+		12,
+		20
+	],
+	"./Radio.vue": [
+		"./resources/js/components/Radio.vue",
+		12,
+		21
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		9,
-		13
+		12,
+		17
 	]
 };
 function webpackAsyncContext(req) {
@@ -15767,42 +15777,51 @@ files.keys().forEach(function (key) {
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		9,
-		16
+		12,
+		22
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		10
+		13
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		9,
-		0,
+		12,
+		1,
 		2,
-		11
+		16
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
-		0
+		2
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		3
+		14
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		9,
-		2
+		12,
+		1
+	],
+	"./asigment/Create.vue": [
+		"./resources/js/pages/asigment/Create.vue",
+		12,
+		23
+	],
+	"./asigment/Show.vue": [
+		"./resources/js/pages/asigment/Show.vue",
+		15
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		9,
-		17
+		12,
+		24
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		9,
-		18
+		12,
+		25
 	]
 };
 function webpackAsyncContext(req) {
