@@ -7,6 +7,9 @@ use DB;
 
 class QuestionsController extends Controller
 {
+    const MAX_PICTURE_SIZE = 100 * 1024; // 100 KB
+    const ALLOWED_PICTURE_EXTENSIONS = ['png', 'jpg', 'jpeg'];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -50,6 +53,14 @@ class QuestionsController extends Controller
                     'levels' => DB::table('levels')->get(),
                 ];
                 break;
+
+            case 3:
+                $props += [
+                    'MAX_PICTURE_SIZE' => $this::MAX_PICTURE_SIZE,
+                    'ALLOWED_PICTURE_EXTENSIONS' =>
+                        $this::ALLOWED_PICTURE_EXTENSIONS,
+                ];
+                break;
         }
 
         return view()->component(
@@ -91,7 +102,11 @@ class QuestionsController extends Controller
 
             case 3:
                 $rules = [
-                    'picture' => 'required|image|mimes:jpeg,png,jpg|max:100',
+                    'picture' =>
+                        'required|image|mimes:' .
+                        implode(',', $this::ALLOWED_PICTURE_EXTENSIONS) .
+                        '|max:' .
+                        $this::MAX_PICTURE_SIZE / 1024,
                 ];
                 break;
         }

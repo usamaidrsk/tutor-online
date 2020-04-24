@@ -8,7 +8,7 @@
             <input
                 type="file"
                 @change="handleImage"
-                accept=".jpg, .jpeg, .png"
+                :accept="allowedExtension"
             />
         </label>
 
@@ -39,11 +39,11 @@
 </template>
 
 <script>
-const MAX_FILE_SIZE = 1024 * 100 // 100KB
-
 export default {
     props: {
         old: Object,
+        ALLOWED_PICTURE_EXTENSIONS: Array,
+        MAX_PICTURE_SIZE: Number,
         loading: Boolean,
         errors: ErrorBag,
     },
@@ -56,7 +56,13 @@ export default {
 
     computed: {
         maxSizeToKbs() {
-            return MAX_FILE_SIZE / 1024 + 'KB'
+            return this.MAX_PICTURE_SIZE / 1024 + 'KB'
+        },
+
+        allowedExtension() {
+            return this.ALLOWED_PICTURE_EXTENSIONS.map(key => '.' + key).join(
+                ','
+            )
         },
     },
 
@@ -81,7 +87,7 @@ export default {
 
             if (!image) return
 
-            if (image.size > MAX_FILE_SIZE) {
+            if (image.size > this.MAX_PICTURE_SIZE) {
                 this.error = `La imagen no debe pesar mas de ${this.maxSizeToKbs}`
                 return
             }

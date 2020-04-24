@@ -1,14 +1,10 @@
 <template>
     <form class="questions" @submit.prevent="handleSubmit">
-        <h1 class="margin-bottom--three">
-            Infomación de contacto
-        </h1>
+        <h1 class="margin-bottom--three">Infomación de contacto</h1>
 
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h5 class="margin-bottom--zero">
-                    Número de teléfono
-                </h5>
+                <h5 class="margin-bottom--zero">Teléfono</h5>
 
                 <Input
                     v-model="form.phone"
