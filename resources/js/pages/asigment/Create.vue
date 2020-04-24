@@ -198,7 +198,9 @@ export default {
         },
 
         maxFileSize() {
-            return this.MAX_FILE_SIZE / 1024 / 1024 + 'MB'
+            const size = this.MAX_FILE_SIZE / 1024
+            if (size < 700) return size + 'KB'
+            else return size / 1024 + 'MB'
         },
     },
 

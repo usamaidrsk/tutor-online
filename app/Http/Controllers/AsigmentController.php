@@ -9,7 +9,7 @@ use DB;
 class AsigmentController extends Controller
 {
     const ALLOWED_FILE_EXTENSIONS = ['pdf', 'png', 'jpg', 'jpeg'];
-    const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+    const MAX_FILE_SIZE = 500 * 1024; // 500KB
     const MAX_FILE_NUM = 3;
 
     public function create()
