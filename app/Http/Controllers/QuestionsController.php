@@ -18,22 +18,31 @@ class QuestionsController extends Controller
 
     public function index(int $step)
     {
+        // Redirect to profile if user has already
+        //  completed this process
         if (auth()->user()->answered_questions) {
             return redirect('profile');
         }
 
+        // Set `answers` session variable to an array
+        // in case this is the first time the use visits
+        // this page
         if (!session()->has('answers')) {
             session()->put('answers', []);
         }
 
+        // Redirect back if tries to get to an
+        // step before answering the previous one
         if ($step > 1 && !isset(session()->get('answers')[$step - 2])) {
             return redirect('questions/' . ($step - 1));
         }
 
+        // Get anwers from previous step
         $old = (object) (session()->get('answers')[$step - 1] ?? []);
 
         $props = [];
 
+        // Get specific props data to requeste step
         switch ($step) {
             case 1:
             case 2:
@@ -41,6 +50,7 @@ class QuestionsController extends Controller
                     'countries' => DB::table('countries')
                         ->get()
                         ->map(function ($country) {
+                            // Map countries array to be usable by Select component
                             return [
                                 'value' => $country->id,
                                 'label' => $country->name,
@@ -113,27 +123,33 @@ class QuestionsController extends Controller
                 break;
         }
 
-        $validatedData = request()->validate($rules, $messages);
+        request()->validate($rules, $messages); // Validate input with step rules
 
-        if ($step < 3) {
+        // If is no the last question persist given input
+        // in a session varible to be used later
+        if ($step < $this::TOTAL_STEPS) {
             $answers = session()->get('answers') ?? [];
             $answers[$step - 1] = request()->all();
             session()->put('answers', $answers);
             return;
         }
 
+        // Finally, if last step was submited store all given answers
+
         $user = auth()->user();
         $answers = session()->get('answers');
         $input = array_merge($answers[0], $answers[1]);
         $picture = request()->file('picture');
 
-        // #1
+        // #1 | Store general information
+
         $user->country_id = $input['country'];
         $user->birthday = \Carbon\Carbon::parse($input['birthday']);
         $user->levels()->sync($input['levels']);
         $user->categories()->sync($input['categories']);
 
-        // #2
+        // #2 | Store given phone and address
+
         $user->phone = $input['phone'];
 
         $address = $input['address'];
@@ -145,8 +161,8 @@ class QuestionsController extends Controller
             'country_id' => $address['country'],
         ]);
 
-        // #3
         $user->picture = $picture->store('pictures');
+        // #3 | Resize and save user picture
 
         $user->answered_questions = true;
         $user->save();

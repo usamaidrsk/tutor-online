@@ -47,7 +47,8 @@ export default {
             this.errors.clear()
 
             try {
-                await this.$http.post(`questions/${this.step}`, data)
+                const url = route('questions', this.step)
+                await this.$http.post(url, data)
                 window.location.href =
                     this.step < this.TOTAL_STEPS
                         ? route('questions', this.step + 1)
