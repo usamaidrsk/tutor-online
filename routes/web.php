@@ -16,6 +16,7 @@ Route::post('/questions/{step}', 'QuestionsController@store')
     ->name('questions');
 
 Route::get('/asigment/create', 'AsigmentController@create')->name(
-    'create-asigment'
+    'asigment.create'
 );
-Route::post('/asigment', 'AsigmentController@store')->name('store-asigment');
+Route::get('/asigment/{id}', 'AsigmentController@show')->name('asigment.show');
+Route::post('/asigment', 'AsigmentController@store')->name('asigment.store');

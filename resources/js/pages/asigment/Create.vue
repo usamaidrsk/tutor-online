@@ -220,6 +220,8 @@ export default {
                 )
 
                 await this.$http.post(route('store-asigment'), data)
+                const url = route('asigment.store')
+                const response = await this.$http.post(url, data)
 
                 console.log('success')
             } catch (error) {
