@@ -209,23 +209,22 @@ export default {
             this.loading = false
             this.errors.clear()
 
+            const { form } = this
+            const data = new FormData()
+
+            Object.keys(form).forEach(key => data.append(key, form[key]))
+
+            this.files.forEach((file, index) =>
+                data.append(`files[${index}]`, file)
+            )
+
             try {
-                const { form } = this
-                const data = new FormData()
-
-                Object.keys(form).forEach(key => data.append(key, form[key]))
-
-                this.files.forEach((file, index) =>
-                    data.append(`files[${index}]`, file)
-                )
-
-                await this.$http.post(route('store-asigment'), data)
                 const url = route('asigment.store')
                 const response = await this.$http.post(url, data)
+                const { id } = response.data
 
-                console.log('success')
+                window.location.href = route('asigment.show', id)
             } catch (error) {
-                console.error(error)
                 if (error.response) {
                     console.error(error.response)
                     window.scrollTo({ top: 0, behavior: 'smooth' })
