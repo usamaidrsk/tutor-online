@@ -7,16 +7,17 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::get('/questions/{step}', 'QuestionsController@index')
-    ->where('step', '[1,2,3]')
-    ->name('questions');
+Route::name('questions')
+    ->prefix('questions/{step}')
+    ->group(function () {
+        Route::get('/', 'QuestionsController@index')->where('step', '[1,2,3]');
+        Route::post('/', 'QuestionsController@store')->where('step', '[1,2,3]');
+    });
 
-Route::post('/questions/{step}', 'QuestionsController@store')
-    ->where('step', '[1,2,3]')
-    ->name('questions');
-
-Route::get('/asigment/create', 'AsigmentController@create')->name(
-    'asigment.create'
-);
-Route::get('/asigment/{id}', 'AsigmentController@show')->name('asigment.show');
-Route::post('/asigment', 'AsigmentController@store')->name('asigment.store');
+Route::name('asigment.')
+    ->prefix('asigment')
+    ->group(function () {
+        Route::get('{id}', 'AsigmentController@show')->name('show');
+        Route::get('/', 'AsigmentController@create')->name('create');
+        Route::post('/', 'AsigmentController@store')->name('store');
+    });

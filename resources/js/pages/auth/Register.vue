@@ -107,8 +107,9 @@ export default {
                 window.location.href = route('questions', 1)
             } catch (error) {
                 this.loading = false
-
+                console.error(error)
                 if (error.response) {
+                    console.error(error.response)
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                     this.errors.set(error.response.data.errors)
                 }

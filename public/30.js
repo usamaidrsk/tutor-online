@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[14],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[30],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/auth/Register.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
@@ -139,15 +139,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 window.location.href = route('questions', 1);
-                _context.next = 13;
+                _context.next = 14;
                 break;
 
               case 9:
                 _context.prev = 9;
                 _context.t0 = _context["catch"](2);
                 _this.loading = false;
+                console.error(_context.t0);
 
                 if (_context.t0.response) {
+                  console.error(_context.t0.response);
                   window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -156,7 +158,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.errors.set(_context.t0.response.data.errors);
                 }
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -494,4 +496,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=14.js.map
+//# sourceMappingURL=30.js.map

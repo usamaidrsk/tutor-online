@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Asigment;
+use App\Teacher;
 use DB;
 
 class AsigmentController extends Controller
@@ -32,8 +33,11 @@ class AsigmentController extends Controller
     {
         return view()->component(
             'asigment.show',
-            ['title' => ''],
-            ['asigment' => []]
+            ['title' => 'Propuesta'],
+            [
+                'asigment' => Asigment::findOrFail($id),
+                'teachers' => Teacher::get(),
+            ]
         );
     }
 
@@ -82,10 +86,15 @@ class AsigmentController extends Controller
                 continue;
             }
 
+            // TODO: maybe should if the file is
+            // an image we should compress it
+
             $asigment->files()->create([
                 'name' => $file->getClientOriginalName(),
                 'path' => $file->store('attachments'),
             ]);
         }
+
+        return $asigment;
     }
 }

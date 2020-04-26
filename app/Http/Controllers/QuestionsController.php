@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Image;
 
 class QuestionsController extends Controller
 {
@@ -161,8 +162,17 @@ class QuestionsController extends Controller
             'country_id' => $address['country'],
         ]);
 
-        $user->picture = $picture->store('pictures');
         // #3 | Resize and save user picture
+
+        $image = Image::make($picture)
+            ->resize(216, 216)
+            ->encode('jpg', 75);
+
+        $image_path = "pictures/{$user->id}.jpg";
+
+        Storage::put($image_path, $image->getEncoded());
+
+        $user->picture = $image_path;
 
         $user->answered_questions = true;
         $user->save();

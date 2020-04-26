@@ -15693,33 +15693,43 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		12,
-		26
+		15,
+		31
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		12,
-		18
+		15,
+		20
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		12,
-		19
+		15,
+		21
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		12,
-		20
+		15,
+		22
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		12,
-		21
+		15,
+		23
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		12,
-		17
+		15,
+		19
+	],
+	"./TeacherCard.vue": [
+		"./resources/js/components/TeacherCard.vue",
+		15,
+		24
+	],
+	"./TeacherModal.vue": [
+		"./resources/js/components/TeacherModal.vue",
+		15,
+		25
 	]
 };
 function webpackAsyncContext(req) {
@@ -15777,19 +15787,19 @@ files.keys().forEach(function (key) {
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		12,
-		22
+		15,
+		26
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		13
+		16
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		12,
+		15,
 		1,
 		2,
-		16
+		18
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -15797,31 +15807,32 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		14
+		17
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		12,
+		15,
 		1
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		12,
-		23
+		15,
+		27
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		15
+		15,
+		28
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		12,
-		24
+		15,
+		29
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		12,
-		25
+		15,
+		30
 	]
 };
 function webpackAsyncContext(req) {
@@ -15891,8 +15902,8 @@ files.keys().forEach(function (key) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Yo\Projects\e-learning\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Yo\Projects\e-learning\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Development\e-learning\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Development\e-learning\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
