@@ -34,7 +34,7 @@ class QuestionsController extends Controller
         // Redirect back if tries to get to an
         // step before answering the previous one
         if ($step > 1 && !isset(session()->get('answers')[$step - 2])) {
-            return redirect('questions/' . ($step - 1));
+            return redirect(route('questions', $step - 1));
         }
 
         // Get anwers from previous step
