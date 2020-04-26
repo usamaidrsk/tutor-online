@@ -27,6 +27,10 @@ export default {
             type: Number,
             required: true,
         },
+        TOTAL_STEPS: {
+            type: Number,
+            required: true,
+        },
         props: {
             type: Object,
             required: true,
@@ -45,7 +49,7 @@ export default {
             try {
                 await this.$http.post(`questions/${this.step}`, data)
                 window.location.href =
-                    this.step < 3
+                    this.step < this.TOTAL_STEPS
                         ? route('questions', this.step + 1)
                         : route('profile')
             } catch (error) {

@@ -9,6 +9,7 @@ class QuestionsController extends Controller
 {
     const MAX_PICTURE_SIZE = 100 * 1024; // 100 KB
     const ALLOWED_PICTURE_EXTENSIONS = ['png', 'jpg', 'jpeg'];
+    const TOTAL_STEPS = 3;
 
     public function __construct()
     {
@@ -68,6 +69,7 @@ class QuestionsController extends Controller
             ['title' => 'Preguntas'],
             [
                 'step' => $step,
+                'TOTAL_STEPS' => $this::TOTAL_STEPS,
                 'props' => array_merge(['old' => $old], $props),
             ]
         );
