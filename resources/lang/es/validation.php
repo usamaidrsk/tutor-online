@@ -113,6 +113,7 @@ return [
     'numeric' => 'El campo :attribute debe ser un número.',
     'password' => 'La contraseña es incorrecta.',
     'present' => 'El campo :attribute debe estar presente.',
+    'phone' => 'Este campo debe ser un número de télefono valido.',
     'regex' => 'El formato del campo :attribute es inválido.',
     'required' => 'El campo :attribute es obligatorio.',
     'required_if' =>
