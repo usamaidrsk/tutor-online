@@ -1,0 +1,61 @@
+<template>
+    <div :class="classes">
+        <i
+            v-for="index in 5"
+            :key="index"
+            class="stars__star icon icon-star"
+            :class="{ 'star--is-active': index <= value }"
+            :data-start="index"
+        ></i>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        value: {
+            type: Number,
+            default: 5,
+            validator: value => value >= 0 && value <= 5,
+        },
+
+        readonly: { type: Boolean, default: true },
+    },
+
+    computed: {
+        classes() {
+            const { value } = this
+            let [unit, decimal] = value.toFixed(1).split('.').map(Number)
+
+            if (decimal >= 7) {
+                decimal = 0
+                ++unit
+            }
+
+            const stars = unit + (decimal > 0 ? '-half' : '')
+
+            return [
+                'stars',
+                `stars--${stars}`,
+                this.readonly && 'stars--is-readonly',
+            ]
+        },
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.stars__star {
+    color: color('gray', 50);
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    .stars--is-readonly & {
+        cursor: inherit;
+    }
+}
+
+.star--is-active {
+    color: color('primary');
+}
+</style>
