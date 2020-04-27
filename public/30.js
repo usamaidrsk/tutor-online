@@ -153,7 +153,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h1", { staticClass: "text--center" }, [
+      _c("h1", { staticClass: "margin-bottom--three text--center" }, [
         _vm._v("Docentes disponibles")
       ]),
       _vm._v(" "),

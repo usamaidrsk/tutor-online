@@ -269,10 +269,10 @@ export default {
 <style lang="scss" scoped>
 form {
     margin: 0 auto;
-    @include breakpoint('tablet') {
+    @include breakpoint('md') {
         width: 85%;
     }
-    @include breakpoint('desktop') {
+    @include breakpoint('lg') {
         width: 80%;
     }
 }
@@ -313,11 +313,11 @@ form {
 footer {
     margin: 0 auto;
 
-    @include breakpoint('tablet') {
+    @include breakpoint('md') {
         width: 90%;
     }
 
-    @include breakpoint('desktop') {
+    @include breakpoint('lg') {
         width: 50%;
     }
 }

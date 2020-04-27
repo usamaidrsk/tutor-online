@@ -72,10 +72,10 @@ export default {
 .questions {
     margin: 0 auto;
 
-    @include breakpoint('tablet') {
+    @include breakpoint('md') {
         width: 85%;
     }
-    @include breakpoint('desktop') {
+    @include breakpoint('lg') {
         width: 80%;
     }
 }

@@ -44,7 +44,7 @@ main {
 
     & > .container {
         margin-top: get('two', $spacers);
-        @include breakpoint('tablet') {
+        @include breakpoint('md') {
             margin-top: get('three', $spacers);
         }
     }

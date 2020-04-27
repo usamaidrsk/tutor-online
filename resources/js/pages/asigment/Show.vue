@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text--center">Docentes disponibles</h1>
+        <h1 class="margin-bottom--three text--center">Docentes disponibles</h1>
 
         <div class="row">
             <div

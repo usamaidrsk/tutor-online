@@ -5,9 +5,15 @@ $z-layers: (
     'overlay': 225,
 );
 
+// $breakpoints: (
+//     'tablet': 480px,
+//     'desktop': 1025px,
+// );
+
 $breakpoints: (
-    'tablet': 480px,
-    'desktop': 1025px,
+    'sm': 48em,
+    'md': 64em,
+    'lg': 75em,
 );
 
 //
