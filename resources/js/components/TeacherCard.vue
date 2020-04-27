@@ -58,6 +58,8 @@ export default {
 
 .card__image {
     @include size(160px);
+
+    background: color('gray', 50);
     margin: 0 auto;
     border-radius: 5px;
     overflow: hidden;
