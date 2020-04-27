@@ -66,6 +66,8 @@ class AsigmentController extends Controller
                     'El presupuesto mínimo es de $' . $this::MIN_BUDGET,
                 'level_id.required' => 'Debes elegir el nivel de educación.',
                 'category_id.required' => 'Debes elegir una materia.',
+                'files.required' =>
+                    'Debes adjuntar al menos un archivo relacionado.',
                 'files.min' =>
                     'Debes adjuntar al menos un archivo relacionado.',
                 'files.max' =>

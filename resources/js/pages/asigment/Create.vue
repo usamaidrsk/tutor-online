@@ -97,7 +97,7 @@
                                 :accept="allowedFileExtensions"
                             />
 
-                            <i class="box__icon icon icon-files"></i>
+                            <i class="box__icon icon icon-upload"></i>
 
                             <label for="files" class="box__label"
                                 ><strong>Elige un archivo</strong> o arrastralo
@@ -120,6 +120,10 @@
         <footer class="margin-top--three">
             <h3>Presupuesto</h3>
 
+            <span class="error" v-if="errors.has('budget')" role="alet">
+                {{ errors.first('budget') }}
+            </span>
+
             <div class="budget margin-top--one margin-bottom--three">
                 <span class="budget__currency">$</span>
                 <input
@@ -127,10 +131,6 @@
                     v-model="form.budget"
                     type="number"
                 />
-
-                <span v-if="errors.has('budget')" role="alet">
-                    {{ errors.first('budget') }}
-                </span>
             </div>
 
             <Input
@@ -164,8 +164,8 @@ export default {
 
     data: () => ({
         form: {
-            level_id: null,
-            category_id: null,
+            // level_id: undefined,
+            // category_id: undefined,
             details: null,
             email: '',
             budget: 5,
@@ -302,6 +302,7 @@ form {
 }
 
 .box__icon {
+    color: color('gray', 100);
     display: block;
     font-size: 6rem;
 }
