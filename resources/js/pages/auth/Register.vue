@@ -50,26 +50,6 @@
                 required
             />
 
-            <div class="row margin-top--two">
-                <Checkbox
-                    id="terms"
-                    :value="false"
-                    v-model="form.acceptTerms"
-                />
-
-                <!-- TODO: redirect to real links -->
-                <label for="terms" class="text--small padding-top--quarter">
-                    <span> Acepto los </span>
-                    <a :href="route('home')" target="_blank"
-                        >Terminos y Condiciones</a
-                    >
-                    <span>y las</span>
-                    <a :href="route('home')" target="_blank"
-                        >Politicas de Privacidad</a
-                    >
-                </label>
-            </div>
-
             <Button
                 class="margin-top--two"
                 type="submit"
@@ -77,6 +57,19 @@
                 :loading="loading"
                 >registrarse</Button
             >
+
+            <div class="margin-top--one">
+                <p for="terms" class="text--small">
+                    <span>Al registrarte aceptas los</span>
+                    <a :href="route('terms')" target="_blank"
+                        >Términos y Condiciones</a
+                    >
+                    <span>y las</span>
+                    <a :href="route('privacy-policy')" target="_blank"
+                        >Políticas de Privacidad</a
+                    >
+                </p>
+            </div>
         </form>
     </div>
 </template>

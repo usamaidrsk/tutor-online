@@ -21,3 +21,15 @@ Route::name('asigment.')
         Route::get('/', 'AsigmentController@create')->name('create');
         Route::post('/', 'AsigmentController@store')->name('store');
     });
+
+Route::get('/terms', function () {
+    return view()->component('terms', [
+        'title' => 'Términos y Condiciones',
+    ]);
+})->name('terms');
+
+Route::get('/privacy-policy', function () {
+    return view()->component('privacy-policy', [
+        'title' => 'Políticas de Privacidad',
+    ]);
+})->name('privacy-policy');
