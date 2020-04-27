@@ -8,5 +8,5 @@ class File extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['name', 'path'];
+    protected $fillable = ['name', 'type', 'size', 'path'];
 }

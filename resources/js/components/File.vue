@@ -2,7 +2,7 @@
     <div class="file" :class="[`file--is-${type}`]">
         <div class="file__container">
             <div>
-                <span class="file__icon"></span>
+                <i class="file__icon icon" :class="`icon-file-${type}`"></i>
             </div>
 
             <p class="file__name">
@@ -11,18 +11,24 @@
 
             <div class="file__controls">
                 <span class="file__size"> {{ formatSize(file.size) }} </span>
+
                 <i
                     v-if="!readonly"
                     class="icon icon-x"
                     @click="$emit('remove')"
                     title="Remover"
                 ></i>
-                <i
+
+                <a
                     v-else
-                    class="icon icon-download"
-                    @click="$emit('download')"
+                    :href="file.path"
+                    :download="file.name"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     title="Descargar"
-                ></i>
+                >
+                    <i class="icon icon-download"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -32,7 +38,7 @@
 export default {
     props: {
         file: {
-            type: File,
+            type: [File, Object],
             required: true,
         },
 
@@ -70,7 +76,7 @@ export default {
 }
 
 .file__container {
-    padding: get('one', $spacers) get('one', $spacers);
+    padding: 0.75rem;
 }
 
 .file__container,
@@ -80,26 +86,14 @@ export default {
 }
 
 .file__icon {
-    @include size(50px);
-
-    position: relative;
-    display: block;
-    border-radius: 5px;
+    font-size: 2rem !important;
 
     .file--is-image & {
-        background: #ffc816;
+        color: color('orange');
     }
 
     .file--is-pdf & {
-        background: #f00;
-        color: color('white');
-        font-size: 0.9rem;
-        font-weight: get('bold', $font-weights);
-
-        &::before {
-            content: 'PDF';
-            @include centered;
-        }
+        color: color('red');
     }
 }
 
@@ -107,16 +101,18 @@ export default {
     @include ellipsis;
 
     max-width: 100%;
-    padding: 0 get('one', $spacers);
+    padding: 0 0.75rem;
     flex-grow: 1;
 }
 
 .file__size {
     color: color('gray', 300);
-    padding: 0 get('one', $spacers);
+    padding: 0 1rem;
+    margin-right: 0.5rem;
+    border-right: 1px solid color('gray', 100);
 }
 
-.icon {
+.file__controls .icon {
     font-size: get('large', $font-sizes);
     cursor: pointer;
 }

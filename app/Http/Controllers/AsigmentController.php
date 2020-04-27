@@ -88,10 +88,14 @@ class AsigmentController extends Controller
 
             // TODO: maybe should if the file is
             // an image we should compress it
+            $filename = $file->store('attachments');
+            $path = "/storage/$filename";
 
             $asigment->files()->create([
                 'name' => $file->getClientOriginalName(),
-                'path' => $file->store('attachments'),
+                'type' => $file->getClientMimeType(),
+                'size' => $file->getSize(),
+                'path' => $path,
             ]);
         }
 
