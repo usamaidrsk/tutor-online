@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1 class="text--center">Términos y Condiciones</h1>
+
         <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas earum
             fuga ipsa quaerat officiis voluptatem impedit! Rerum, eum enim illo
@@ -74,3 +75,9 @@
         </p>
     </div>
 </template>
+
+<style lang="scss" scoped>
+p {
+    margin-bottom: 1rem;
+}
+</style>
