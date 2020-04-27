@@ -9,7 +9,7 @@ class CreateCriteriasTable extends Migration
     public function up()
     {
         Schema::create('criterias', function (Blueprint $table) {
-            $table->tinyIncrements();
+            $table->tinyIncrements('id');
             $table->string('name', 30);
         });
     }
