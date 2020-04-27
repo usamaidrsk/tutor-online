@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .stars__star {
     color: color('gray', 50);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     cursor: pointer;
 
     .stars--is-readonly & {
