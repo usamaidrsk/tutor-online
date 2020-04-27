@@ -6,15 +6,16 @@
                     <i class="icon icon-x"></i>
                 </button>
 
-                <div class="modal__body">
+                <div class="modal__body row">
                     <figure class="modal__image">
                         <img :src="`/storage/${teacher.picture}`" alt="" />
                     </figure>
 
-                    <div>
-                        <h3 class="modal__title">
+                    <div class="modal__content">
+                        <h2 class="modal__title">
                             {{ teacher.first_name }} {{ teacher.last_name }}
-                        </h3>
+                        </h2>
+
                         <Stars :value="4" />
                     </div>
                 </div>
@@ -102,10 +103,10 @@ export default {
     border-radius: 10px;
     background: color('white');
     pointer-events: all;
-    padding: get('one', $spacers);
+    padding: 2rem 1rem 1rem;
 
-    @include breakpoint('md') {
-        padding: get('two', $spacers);
+    @include breakpoint('sm') {
+        padding: 2rem;
     }
 }
 
@@ -113,26 +114,41 @@ export default {
     position: absolute;
     top: 10px;
     right: 10px;
-
     font-size: 1.75rem;
     color: color('gray', 400);
 }
 
 .modal__body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint('sm') {
+        flex-flow: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+.modal__content {
     text-align: center;
+    @include breakpoint('sm') {
+        text-align: left;
+    }
 }
 
 .modal__image {
-    @include max-size(180px);
+    @include size(180px);
 
     border-radius: 10px;
-    margin: 0 auto;
+    margin-right: 2rem;
     margin-bottom: 0.75rem;
-    margin-top: 1rem;
     overflow: hidden;
+    background: color('gray', 50);
 
     @include breakpoint('md') {
-        @include max-size(220px);
+        @include size(220px);
     }
 }
 
@@ -147,15 +163,12 @@ export default {
 
 .rates__rate {
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem 0;
 
-    $border-style: 2px solid color('gray', 50);
+    $border-style: 1px solid color('gray', 50);
 
     &:first-child {
         border-right: $border-style;
-    }
-    &:last-child {
-        border-top: $border-style;
     }
 
     @include breakpoint('sm') {
@@ -170,15 +183,12 @@ export default {
 }
 
 .rate__value {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     font-weight: get('bold', $font-weights);
 
     @include breakpoint('sm') {
         font-size: 2.5rem;
     }
-}
-
-.rate__label {
 }
 
 .modal__button {
