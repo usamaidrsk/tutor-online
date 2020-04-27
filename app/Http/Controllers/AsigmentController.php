@@ -66,7 +66,7 @@ class AsigmentController extends Controller
                     'Debes adjuntar al menos un archivo relacionado.',
                 'files.max' =>
                     'No puedes adjuntar mas de ' .
-                    this::MAX_FILE_NUM .
+                    $this::MAX_FILE_NUM .
                     'archivos.',
             ]
         );
