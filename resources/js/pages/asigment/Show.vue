@@ -16,6 +16,7 @@
         </div>
 
         <hr />
+
         <div class="container">
             <h2>Tu propuesta</h2>
             <table class="details">
@@ -42,6 +43,13 @@
             </table>
 
             <h4 class="margin-top--one">Archivos</h4>
+
+            <File
+                v-for="(file, index) in asigment.files"
+                :key="index"
+                :file="file"
+                readonly
+            />
         </div>
 
         <TeacherModal
