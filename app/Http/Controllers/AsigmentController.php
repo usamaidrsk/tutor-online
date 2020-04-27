@@ -35,7 +35,11 @@ class AsigmentController extends Controller
             'asigment.show',
             ['title' => 'Propuesta'],
             [
-                'asigment' => Asigment::findOrFail($id),
+                'asigment' => Asigment::with(
+                    'level',
+                    'category',
+                    'files'
+                )->findOrFail($id),
                 'teachers' => Teacher::get(),
             ]
         );

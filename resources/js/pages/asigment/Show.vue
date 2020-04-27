@@ -21,11 +21,11 @@
             <table class="details">
                 <tr>
                     <td>Materia:</td>
-                    <td>{{ asigment.category_id }}</td>
+                    <td>{{ asigment.category.name }}</td>
                 </tr>
                 <tr>
                     <td>Nivel:</td>
-                    <td>{{ asigment.level_id }}</td>
+                    <td>{{ asigment.level.name }}</td>
                 </tr>
                 <tr>
                     <td>Presupuesto:</td>
@@ -33,7 +33,11 @@
                 </tr>
                 <tr>
                     <td>Fecha:</td>
-                    <td>{{ asigment.create_at }}</td>
+                    <td>{{ asigment.created_at }}</td>
+                </tr>
+                <tr>
+                    <td>Detalles:</td>
+                    <td>{{ asigment.details }}</td>
                 </tr>
             </table>
 
