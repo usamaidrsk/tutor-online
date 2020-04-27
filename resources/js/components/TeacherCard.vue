@@ -1,15 +1,15 @@
 <template>
     <article class="card">
         <div class="card__container">
-            <header class="card__header">
-                <h3 class="card__name">
-                    {{ teacher.first_name }} {{ teacher.last_name }}
-                </h3>
+            <div class="card__body">
                 <figure class="card__image">
                     <img :src="`/storage/${teacher.picture}`" />
                 </figure>
-            </header>
-            <footer class="card__footer"></footer>
+                <h4 class="card__name">
+                    {{ teacher.first_name }} {{ teacher.last_name }}
+                </h4>
+                <Stars class="card__stars" :value="3" />
+            </div>
         </div>
     </article>
 </template>
@@ -27,11 +27,11 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    width: 280px;
+    width: 235px;
+    margin: 0 auto;
+    background: color('white');
     border: 1px solid color('gray', 100);
-    border-radius: 10px;
-    margin-bottom: get('two', $spacers);
-    margin-right: get('two', $spacers);
+    border-radius: 5px;
 
     transition-property: transform box-shadow;
     transition-duration: 0.3s;
@@ -39,30 +39,34 @@ export default {
     cursor: pointer;
 
     &:hover {
-        @include elevation(5);
-
         transform: scale(1.1);
     }
 }
 
-.card__header {
-    padding: get('one', $spacers) get('two', $spacers);
+.card__body {
+    padding: 2rem 0 1rem;
+    text-align: center;
+}
+
+.card__name {
+    @include ellipsis;
+
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: get('halve', $spacers);
+}
+
+.card__image {
+    @include size(160px);
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .card__footer {
     display: block;
     border-top: 1px solid color('gray', 100);
-    height: 50px;
-}
-
-.card__name {
-    margin: 0;
-    margin-bottom: get('halve', $spacers);
-}
-
-.card__image {
-    @include size(180px);
-    border-radius: 10px;
-    overflow: hidden;
+    text-align: center;
+    padding: get('halve', $spacers) 0;
 }
 </style>
