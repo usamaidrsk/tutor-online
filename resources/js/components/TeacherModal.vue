@@ -106,7 +106,7 @@ export default {
     padding: 2rem 1rem 1rem;
 
     @include breakpoint('sm') {
-        padding: 2rem;
+        padding: 2rem 2.5rem;
     }
 }
 
