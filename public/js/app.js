@@ -15693,43 +15693,48 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		15,
-		31
+		16,
+		33
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		15,
-		20
+		16,
+		21
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		15,
-		21
+		16,
+		22
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		15,
-		22
+		16,
+		23
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		15,
-		23
+		16,
+		24
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		15,
-		19
+		16,
+		20
+	],
+	"./Stars.vue": [
+		"./resources/js/components/Stars.vue",
+		16,
+		25
 	],
 	"./TeacherCard.vue": [
 		"./resources/js/components/TeacherCard.vue",
-		15,
-		24
+		16,
+		26
 	],
 	"./TeacherModal.vue": [
 		"./resources/js/components/TeacherModal.vue",
-		15,
-		25
+		16,
+		27
 	]
 };
 function webpackAsyncContext(req) {
@@ -15787,19 +15792,19 @@ files.keys().forEach(function (key) {
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		15,
-		26
+		16,
+		28
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		16
+		17
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		15,
+		16,
 		1,
 		2,
-		18
+		19
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -15807,32 +15812,32 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		17
+		18
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		15,
+		16,
 		1
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		15,
-		27
+		16,
+		29
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		15,
-		28
+		16,
+		30
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		15,
-		29
+		16,
+		31
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		15,
-		30
+		16,
+		32
 	]
 };
 function webpackAsyncContext(req) {

@@ -3,12 +3,16 @@
         <h1 class="text--center">Docentes disponibles</h1>
 
         <div class="row">
-            <TeacherCard
+            <div
                 v-for="(teacher, index) in teachers"
                 :key="index"
-                :teacher="teacher"
-                @click.native="showModal(index)"
-            />
+                class="col-xs-12 col-sm-6 col-md-4 margin-bottom--three"
+            >
+                <TeacherCard
+                    :teacher="teacher"
+                    @click.native="showModal(index)"
+                />
+            </div>
         </div>
 
         <hr />
