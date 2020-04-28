@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'icons';
-  src: url('./font/icons.eot?83779862');
-  src: url('./font/icons.eot?83779862#iefix') format('embedded-opentype'),
-       url('./font/icons.woff2?83779862') format('woff2'),
-       url('./font/icons.woff?83779862') format('woff'),
-       url('./font/icons.ttf?83779862') format('truetype'),
-       url('./font/icons.svg?83779862#icons') format('svg');
+  src: url('./font/icons.eot?90415403');
+  src: url('./font/icons.eot?90415403#iefix') format('embedded-opentype'),
+       url('./font/icons.woff2?90415403') format('woff2'),
+       url('./font/icons.woff?90415403') format('woff'),
+       url('./font/icons.ttf?90415403') format('truetype'),
+       url('./font/icons.svg?90415403#icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'icons';
-    src: url('../font/icons.svg?83779862#icons') format('svg');
+    src: url('../font/icons.svg?90415403#icons') format('svg');
   }
 }
 */
@@ -65,6 +65,8 @@
 .icon-download:before { content: '\e807'; } /* '' */
 .icon-user:before { content: '\e808'; } /* '' */
 .icon-upload:before { content: '\e809'; } /* '' */
+.icon-logout:before { content: '\e80a'; } /* '' */
+.icon-phone:before { content: '\e80b'; } /* '' */
 .icon-down:before { content: '\f004'; } /* '' */
 .icon-up:before { content: '\f005'; } /* '' */
 .icon-right:before { content: '\f006'; } /* '' */
