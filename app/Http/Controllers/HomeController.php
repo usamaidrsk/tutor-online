@@ -13,6 +13,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view()->component('home');
+        // return view()->component('home');
+        return redirect('login');
     }
 }
