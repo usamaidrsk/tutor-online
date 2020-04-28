@@ -1,17 +1,31 @@
 <template>
     <div>
-        <h1 class="margin-bottom--three text--center">Docentes disponibles</h1>
+        <template v-if="teachers.length">
+            <h1 class="margin-bottom--three text--center">
+                Docentes disponibles
+            </h1>
 
-        <div class="row">
-            <div
-                v-for="(teacher, index) in teachers"
-                :key="index"
-                class="col-xs-12 col-sm-6 col-md-4 margin-bottom--three"
-            >
-                <TeacherCard
-                    :teacher="teacher"
-                    @click.native="showModal(index)"
-                />
+            <div class="row">
+                <div
+                    v-for="(teacher, index) in teachers"
+                    :key="index"
+                    class="col-xs-12 col-sm-6 col-md-4 margin-bottom--three"
+                >
+                    <TeacherCard
+                        :teacher="teacher"
+                        @click.native="showModal(index)"
+                    />
+                </div>
+            </div>
+        </template>
+
+        <div v-else class="placeholder">
+            <div>
+                <h1 class="margin-bottom--zero">No hay docentes disponibles</h1>
+                <p>
+                    Por los momentos ningún docente a respondido a tu propuesta,
+                    ten paciencia.
+                </p>
             </div>
         </div>
 
@@ -94,6 +108,14 @@ hr {
     background: color('gray', 100);
     height: 1px;
     margin: get('two', $spacers);
+}
+
+.placeholder {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .details {
