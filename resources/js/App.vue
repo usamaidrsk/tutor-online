@@ -19,9 +19,11 @@
                             <img :src="user.picture" />
                         </figure>
 
-                        <!-- <a style="cursor: pointer;" @click="doLogout" flat
-                            >Salir</a
-                        > -->
+                        <i
+                            class="navbar__logout icon icon-logout"
+                            @click="doLogout"
+                            title="Salir"
+                        ></i>
                     </template>
                     <template v-else>
                         <a
@@ -158,6 +160,12 @@ main {
             background: color('primary');
         }
     }
+}
+
+.navbar__logout {
+    font-size: 1.5rem;
+    color: color('gray', 50);
+    cursor: pointer;
 }
 
 .footer {
