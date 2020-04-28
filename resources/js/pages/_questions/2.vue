@@ -6,11 +6,20 @@
             <div class="col-xs-12 col-sm-6">
                 <h5 class="margin-bottom--zero">Teléfono</h5>
 
-                <Input
-                    v-model="form.phone"
-                    :error="errors.first('phone')"
-                    type="tel"
-                />
+                <div class="d-flex">
+                    <Input
+                        style="width: 55px;"
+                        placeholder="+00"
+                        required
+                        class="margin-right--one"
+                        v-model="form.phone_prefix"
+                    />
+                    <Input
+                        v-model="form.phone"
+                        :error="errors.first('phone')"
+                        type="tel"
+                    />
+                </div>
             </div>
         </div>
 
@@ -68,6 +77,7 @@ export default {
 
         return {
             form: {
+                phone_prefix: old['phone_prefix'] || '',
                 phone: old['phone'] || '',
                 address: {
                     country: old['address']['country'] || '',

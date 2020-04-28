@@ -119,7 +119,10 @@ class QuestionsController extends Controller
                     })
                     ->toArray();
 
-                $rules += ['phone' => 'phone:AUTO,' . implode(',', $codes)];
+                $rules += [
+                    'phone_prefix' => 'required',
+                    'phone' => 'phone:AUTO,' . implode(',', $codes),
+                ];
 
                 break;
 
@@ -161,9 +164,11 @@ class QuestionsController extends Controller
 
         // #2 | Store given phone and address
 
-        $user->phone = (string) PhoneNumber::make($input['phone']);
+        $phone = $input['phone_prefix'] . $input['phone'];
+        $user->phone = (string) PhoneNumber::make($phone);
 
         $address = $input['address'];
+
         $user->address()->create([
             'line' => $address['line'],
             'state' => $address['state'],

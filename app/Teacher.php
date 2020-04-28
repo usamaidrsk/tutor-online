@@ -29,9 +29,11 @@ class Teacher extends Authenticatable
 
     public function getPhoneAttribute()
     {
-        if ($phone = $this->attributes['phone']) {
+        $phone = $this->attributes['phone'];
+
+        if ($phone) {
             $phone = PhoneNumber::make($phone);
-            return $phone->formatInternational();
+            $phone = $phone->formatInternational();
         }
 
         return $phone;
