@@ -14,6 +14,10 @@
                         <!-- {{ address }} -->
                     </li>
                     <li>
+                        <i class="icon icon-phone"></i>
+                        <span>{{ phone }}</span>
+                    </li>
+                    <li>
                         <i class="icon icon-mail"></i>
                         {{ email }}
                     </li>
@@ -30,6 +34,13 @@
 
 <script>
 export default {
-    data: ({ $auth }) => ({ ...$auth.user }),
+    props: {
+        teacher: {
+            type: Object,
+            required: true,
+        },
+    },
+
+    data: ({ teacher }) => ({ ...teacher }),
 }
 </script>

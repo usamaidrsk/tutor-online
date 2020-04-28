@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Teacher;
 
 class ProfileController extends Controller
 {
@@ -13,8 +14,13 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view()->component('profile', [
-            'title' => auth()->user()->first_name,
-        ]);
+        $id = auth()->user()->id;
+        $teacher = Teacher::with('address')->findOrFail($id);
+
+        return view()->component(
+            'profile',
+            ['title' => $teacher->first_name],
+            ['teacher' => $teacher]
+        );
     }
 }
