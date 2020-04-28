@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Propaganistas\LaravelPhone\PhoneNumber;
 use DB;
 use Image;
 
@@ -110,7 +111,16 @@ class QuestionsController extends Controller
                 break;
 
             case 2:
-                // $rules += ['phone' => 'phone|max:15']; // TODO: validate properly
+                $codes = DB::table('countries')
+                    ->select('code')
+                    ->get()
+                    ->map(function ($country) {
+                        return $country->code;
+                    })
+                    ->toArray();
+
+                $rules += ['phone' => 'phone:AUTO,' . implode(',', $codes)];
+
                 break;
 
             case 3:
@@ -151,7 +161,7 @@ class QuestionsController extends Controller
 
         // #2 | Store given phone and address
 
-        $user->phone = $input['phone'];
+        $user->phone = (string) PhoneNumber::make($input['phone']);
 
         $address = $input['address'];
         $user->address()->create([

@@ -12,15 +12,15 @@ class CountrySeeder extends Seeder
     public function run()
     {
         DB::table('countries')->insert([
-            ['name' => 'Argentina'],
-            ['name' => 'Bolivia'],
-            ['name' => 'Chile'],
-            ['name' => 'Colombia'],
-            ['name' => 'Ecuador'],
-            ['name' => 'México'],
-            ['name' => 'Perú'],
-            ['name' => 'España'],
-            ['name' => 'Venezuela'],
+            ['name' => 'Argentina', 'code' => 'AR'],
+            ['name' => 'Bolivia', 'code' => 'BO'],
+            ['name' => 'Chile', 'code' => 'CL'],
+            ['name' => 'Colombia', 'code' => 'CO'],
+            ['name' => 'Ecuador', 'code' => 'EC'],
+            ['name' => 'México', 'code' => 'MX'],
+            ['name' => 'Perú', 'code' => 'PE'],
+            ['name' => 'España', 'code' => 'ES'],
+            ['name' => 'Venezuela', 'code' => 'VE'],
         ]);
     }
 }

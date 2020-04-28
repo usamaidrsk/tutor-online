@@ -26,6 +26,12 @@ class Teacher extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getPhoneAttribute()
+    {
+        $phone = PhoneNumber::make($this->attributes['phone']);
+        return $phone->formatInternational();
+    }
+
     public function address()
     {
         return $this->hasOne(Address::class);
