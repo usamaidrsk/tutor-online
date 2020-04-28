@@ -17,8 +17,9 @@ Route::name('questions')
 Route::name('asigment.')
     ->prefix('asigment')
     ->group(function () {
-        Route::get('{id}', 'AsigmentController@show')->name('show');
         Route::get('/', 'AsigmentController@create')->name('create');
+        Route::get('{id}', 'AsigmentController@show')->name('show');
+        Route::get('review/{id}', 'AsigmentController@review')->name('create');
         Route::post('/', 'AsigmentController@store')->name('store');
     });
 

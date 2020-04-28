@@ -45,6 +45,15 @@ class AsigmentController extends Controller
         );
     }
 
+    public function review($id)
+    {
+        return view()->component(
+            'asigment.review',
+            ['title' => 'Invitación'],
+            ['asigment' => Asigment::with('files')->findOrfail($id)]
+        );
+    }
+
     public function store()
     {
         $validatedData = request()->validate(
