@@ -6,6 +6,15 @@
             <div class="col-xs-12 col-sm-6">
                 <h5 class="margin-bottom--zero">Teléfono</h5>
 
+                <span
+                    v-if="errors.has('phone_prefix') || errors.has('phone')"
+                    class="error"
+                    role="alert"
+                    >{{
+                        errors.first('phone_prefix') || errors.first('phone')
+                    }}</span
+                >
+
                 <div class="d-flex">
                     <Input
                         style="width: 55px;"
@@ -14,11 +23,7 @@
                         class="margin-right--one"
                         v-model="form.phone_prefix"
                     />
-                    <Input
-                        v-model="form.phone"
-                        :error="errors.first('phone')"
-                        type="tel"
-                    />
+                    <Input v-model="form.phone" type="tel" />
                 </div>
             </div>
         </div>

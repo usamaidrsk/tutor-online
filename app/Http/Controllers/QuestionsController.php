@@ -120,8 +120,13 @@ class QuestionsController extends Controller
                     ->toArray();
 
                 $rules += [
-                    'phone_prefix' => 'required',
+                    'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
                     'phone' => 'phone:AUTO,' . implode(',', $codes),
+                ];
+
+                $messages += [
+                    'phone_prefix.regex' =>
+                        'Debes suministrar un código de país valido.',
                 ];
 
                 break;
