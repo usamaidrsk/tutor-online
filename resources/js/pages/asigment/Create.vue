@@ -206,7 +206,7 @@ export default {
         async handleSubmit() {
             if (this.loading) return
 
-            this.loading = false
+            this.loading = true
             this.errors.clear()
 
             const { form } = this
