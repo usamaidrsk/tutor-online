@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Propaganistas\LaravelPhone\PhoneNumber;
+use Carbon\Carbon;
 
 class Teacher extends Authenticatable
 {
@@ -33,8 +34,12 @@ class Teacher extends Authenticatable
     }
 
     public function getPhoneAttribute()
+    public function getBirthdayAttribute()
     {
         $phone = $this->attributes['phone'];
+        $date = $this->attributes['birthday'];
+        return Carbon::create($date)->isoFormat('D \d\e MMMM, YYYY');
+    }
 
         if ($phone) {
             $phone = PhoneNumber::make($phone);
