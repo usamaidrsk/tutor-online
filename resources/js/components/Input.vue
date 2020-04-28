@@ -3,13 +3,13 @@
         <label v-if="label" class="input__label">{{ label }}</label>
         <input
             v-if="!textarea"
-            v-model="innerValue"
+            v-model.trim="innerValue"
             v-bind="attrs"
             v-on="listeners"
         />
         <textarea
             v-else
-            v-model="innerValue"
+            v-model.trim="innerValue"
             v-bind="attrs"
             v-on="listeners"
         ></textarea>
