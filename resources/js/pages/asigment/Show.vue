@@ -44,12 +44,14 @@
 
             <h4 class="margin-top--one">Archivos</h4>
 
-            <File
-                v-for="(file, index) in asigment.files"
-                :key="index"
-                :file="file"
-                readonly
-            />
+            <div>
+                <File
+                    v-for="(file, index) in asigment.files"
+                    :key="index"
+                    :file="file"
+                    readonly
+                />
+            </div>
         </div>
 
         <TeacherModal
