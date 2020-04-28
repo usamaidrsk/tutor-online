@@ -48,17 +48,17 @@ class QuestionsController extends Controller
         switch ($step) {
             case 1:
             case 2:
-                $props += [
-                    'countries' => DB::table('countries')
-                        ->get()
-                        ->map(function ($country) {
-                            // Map countries array to be usable by Select component
-                            return [
-                                'value' => $country->id,
-                                'label' => $country->name,
-                            ];
-                        }),
-                ];
+                $countries = DB::table('countries')->get();
+
+                // Map countries array to be usable by Select component
+                $mapped = $countries->map(function ($country) {
+                    return [
+                        'value' => $country->id,
+                        'label' => $country->name,
+                    ];
+                });
+
+                $props += ['countries' => $mapped];
 
             case 1:
                 $props += [
