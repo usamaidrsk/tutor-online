@@ -6,7 +6,7 @@
             </div>
 
             <div class="col-sm-8">
-                <h2>{{ first_name }} {{ last_name }}</h2>
+                <h2 class="margin-bottom--zero">{{ full_name }}</h2>
 
                 <ul class="text--gray">
                     <li>
