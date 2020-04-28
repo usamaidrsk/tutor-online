@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Propaganistas\LaravelPhone\PhoneNumber;
 
 class Teacher extends Authenticatable
 {
@@ -28,8 +29,12 @@ class Teacher extends Authenticatable
 
     public function getPhoneAttribute()
     {
-        $phone = PhoneNumber::make($this->attributes['phone']);
-        return $phone->formatInternational();
+        if ($phone = $this->attributes['phone']) {
+            $phone = PhoneNumber::make($phone);
+            return $phone->formatInternational();
+        }
+
+        return $phone;
     }
 
     public function address()
