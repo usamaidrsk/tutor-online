@@ -15,7 +15,7 @@ export default {
     props: {
         value: {
             type: Number,
-            default: 5,
+            default: 0,
             validator: value => value >= 0 && value <= 5,
         },
 

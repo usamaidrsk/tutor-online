@@ -4,7 +4,7 @@
             <figure class="card__image image">
                 <img :src="teacher.picture" />
             </figure>
-            <Stars class="card__stars" :value="3" />
+            <Stars class="card__stars" :value="teacher.stars" />
         </div>
     </article>
 </template>

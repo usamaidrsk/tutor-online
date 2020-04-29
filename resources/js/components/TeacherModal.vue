@@ -15,27 +15,14 @@
                         <h2 class="modal__title">
                             {{ teacher.first_name }} {{ teacher.last_name }}
                         </h2>
-
-                        <Stars :value="4" />
+                        <Stars :value="teacher.stars" />
                     </div>
                 </div>
 
-                <div class="rates row">
-                    <div class="col-xs-6 col-sm-4 rates__rate">
-                        <span class="rate__value">3.2</span>
-                        <p class="rate__label">Paciencia el la enseñanza</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 rates__rate">
-                        <span class="rate__value">4.8</span>
-                        <p class="rate__label">Escucha al alumno</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 rates__rate">
-                        <span class="rate__value">3.5</span>
-                        <p class="rate__label">
-                            Uso adecuado de la tecnologia
-                        </p>
-                    </div>
-                </div>
+                <Scores
+                    class="margin-top--two"
+                    :scores="teacher.scores || {}"
+                />
 
                 <Button class="modal__button" block>Contratar</Button>
             </div>
@@ -153,41 +140,6 @@ export default {
 
 .modal__title {
     margin-bottom: 0;
-}
-
-.rates {
-    margin-top: 2rem;
-    justify-content: center;
-}
-
-.rates__rate {
-    text-align: center;
-    padding: 0.5rem 0;
-
-    $border-style: 1px solid color('gray', 50);
-
-    &:first-child {
-        border-right: $border-style;
-    }
-
-    @include breakpoint('sm') {
-        padding-left: 2rem;
-        padding-right: 2rem;
-
-        border-right: $border-style;
-        &:last-child {
-            border: 0;
-        }
-    }
-}
-
-.rate__value {
-    font-size: 1.85rem;
-    font-weight: get('bold', $font-weights);
-
-    @include breakpoint('sm') {
-        font-size: 2.5rem;
-    }
 }
 
 .modal__button {

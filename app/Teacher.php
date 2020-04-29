@@ -28,7 +28,7 @@ class Teacher extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['full_name'];
+    protected $appends = ['full_name', 'stars', 'scores'];
 
     public function getFullNameAttribute()
     {
@@ -54,9 +54,49 @@ class Teacher extends Authenticatable
         return $phone;
     }
 
+    public function getStarsAttribute()
+    {
+        return $this->rates->avg('score');
+    }
+
+    public function getScoresAttribute()
+    {
+        $scores = [];
+        $criterias = \DB::table('criterias')->get();
+        $rates = $this->rates;
+
+        foreach ($criterias as $key) {
+            $rates_on_this_criteria = $rates->filter(function ($row) use (
+                $key
+            ) {
+                return $row->criteria_id === $key->id;
+            });
+
+            $count = $rates_on_this_criteria->count();
+
+            $sum = $rates_on_this_criteria
+                ->reduce(function ($array, $item) {
+                    $array->push($item->score);
+                    return $array;
+                }, collect())
+                ->sum();
+
+            $avg = $count ? $sum / $count : 0;
+
+            $scores[$key->name] = $avg;
+        }
+
+        return $scores;
+    }
+
     public function invitations()
     {
         return $this->hasMany(Invitation::class);
+    }
+
+    public function rates()
+    {
+        return $this->hasMany(Rate::class);
     }
 
     public function address()

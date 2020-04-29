@@ -10,7 +10,7 @@
             <div>
                 <h2 class="margin-bottom--zero">{{ full_name }}</h2>
 
-                <Stars :value="3.5" />
+                <Stars :value="stars" />
 
                 <ul class="info margin-top--one text--gray">
                     <li>
@@ -33,6 +33,11 @@
                     </li>
                 </ul>
             </div>
+        </div>
+
+        <div class="margin-top--one">
+            <h2 class="text--center">Tus puntajes</h2>
+            <Scores :scores="scores" />
         </div>
 
         <div class="invitations margin-top--three">
