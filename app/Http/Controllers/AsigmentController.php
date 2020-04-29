@@ -31,16 +31,21 @@ class AsigmentController extends Controller
 
     public function show($id)
     {
+        $asigment = Asigment::with('level', 'category', 'files')->findOrFail(
+            $id
+        );
+
+        $avalible_teachers = Teacher::select('teachers.*')
+            ->join('invitations', 'teachers.id', '=', 'teacher_id')
+            ->where([['asigment_id', '=', $id], ['status', '=', 'accepted']])
+            ->get();
+
         return view()->component(
             'asigment.show',
             ['title' => 'Propuesta'],
             [
-                'asigment' => Asigment::with(
-                    'level',
-                    'category',
-                    'files'
-                )->findOrFail($id),
-                'teachers' => Teacher::get(),
+                'asigment' => $asigment,
+                'teachers' => $avalible_teachers,
             ]
         );
     }
