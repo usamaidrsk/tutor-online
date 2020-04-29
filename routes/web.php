@@ -19,7 +19,7 @@ Route::name('asigment.')
     ->group(function () {
         Route::get('/', 'AsigmentController@create')->name('create');
         Route::get('{id}', 'AsigmentController@show')->name('show');
-        Route::get('review/{id}', 'AsigmentController@review')->name('create');
+        Route::get('review/{id}', 'AsigmentController@review')->name('review');
         Route::post('/', 'AsigmentController@store')->name('store');
     });
 
