@@ -114,6 +114,16 @@ h6 {
     &:hover { color: color('primary', 700) }
 }
 
+/* ------------------------------ Image Wrapper ----------------------------- */
+.image {
+    position: relative;
+    overflow: hidden;
+
+    > img {
+        @include centered;
+    }
+}
+
 /* ---------------------------------- Error --------------------------------- */
 .error, .success {
     display: block;

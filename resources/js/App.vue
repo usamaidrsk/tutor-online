@@ -15,7 +15,7 @@
                             >Hola, {{ user.first_name }}</span
                         >
 
-                        <figure class="navbar__avatar">
+                        <figure class="navbar__avatar image">
                             <img :src="user.picture" />
                         </figure>
 
@@ -135,7 +135,6 @@ main {
     background: color('gray', 50);
     border-radius: 50%;
     margin: 0 0.5rem;
-    overflow: hidden;
 }
 
 .navbar__button {

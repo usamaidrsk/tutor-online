@@ -7,8 +7,8 @@
                 </button>
 
                 <div class="modal__body row">
-                    <figure class="modal__image">
                         <img :src="`/storage/${teacher.picture}`" alt="" />
+                    <figure class="modal__image image">
                     </figure>
 
                     <div class="modal__content">
@@ -144,7 +144,6 @@ export default {
     border-radius: 10px;
     margin-right: 2rem;
     margin-bottom: 0.75rem;
-    overflow: hidden;
     background: color('gray', 50);
 
     @include breakpoint('md') {

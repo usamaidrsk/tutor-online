@@ -1,7 +1,7 @@
 <template>
     <article class="card">
         <div class="card__body">
-            <figure class="card__image">
+            <figure class="card__image image">
                 <img :src="teacher.picture" />
             </figure>
             <Stars class="card__stars" :value="3" />
@@ -48,7 +48,6 @@ export default {
     background: color('gray', 50);
     margin: 0 auto;
     border-radius: 5px;
-    overflow: hidden;
 }
 
 .card__footer {
