@@ -54,6 +54,11 @@ class Teacher extends Authenticatable
         return $phone;
     }
 
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
+
     public function address()
     {
         return $this->hasOne(Address::class);

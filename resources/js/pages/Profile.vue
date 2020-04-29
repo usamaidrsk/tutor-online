@@ -10,6 +10,7 @@
             <div>
                 <h2 class="margin-bottom--zero">{{ full_name }}</h2>
 
+                <Stars :value="3.5" />
 
                 <ul class="info margin-top--one text--gray">
                     <li>
@@ -33,17 +34,46 @@
                 </ul>
             </div>
         </div>
+
+        <h2 class="margin-top--two text--center">Invitaciones pendientes</h2>
+
+        <a
+            v-for="({ asigment }, index) in invitations"
+            :key="index"
+            :href="route('asigment.review', asigment.id)"
+        >
+            <div class="invitation">
+                <span class="invitaion__budget"> ${{ asigment.budget }} </span>
+
+                <table>
+                    <tr>
+                        <td>Nivel:</td>
+                        <td>{{ asigment.level.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Categoria:</td>
+                        <td>{{ asigment.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Detalles:</td>
+                        <td>
+                            {{ asigment.details }}
+                        </td>
+                    </tr>
+                </table>
+
+                <span class="invitation__date">
+                    <i class="icon icon-clock"></i>
+                    {{ asigment.created_at }}</span
+                >
+            </div>
+        </a>
     </div>
 </template>
 
 <script>
 export default {
-    props: {
-        teacher: {
-            type: Object,
-            required: true,
-        },
-    },
+    props: ['teacher', 'invitations'],
 
     data: ({ teacher }) => ({ ...teacher }),
 }
@@ -74,5 +104,37 @@ export default {
     .icon {
         font-size: 1.25rem;
     }
+}
+
+.invitation {
+    position: relative;
+    display: block;
+    padding: 1.5rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid color('gray', 100);
+    border-radius: 10px;
+}
+
+.invitaion__budget {
+    font-weight: get('regular', $font-weights);
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+}
+
+.invitation__details {
+    @include ellipsis;
+}
+
+.invitation table td:first-child {
+    font-weight: get('bold', $font-weights);
+    padding-right: 0.5rem;
+}
+
+.invitation__date {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: color('gray', 400);
 }
 </style>

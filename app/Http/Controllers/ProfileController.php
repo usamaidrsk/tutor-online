@@ -17,10 +17,17 @@ class ProfileController extends Controller
         $id = auth()->user()->id;
         $teacher = Teacher::with('address')->findOrFail($id);
 
+        $invitations = $teacher
+            ->invitations()
+            ->with('asigment')
+            ->where('status', '=', 'pending')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view()->component(
             'profile',
             ['title' => $teacher->first_name],
-            ['teacher' => $teacher]
+            ['teacher' => $teacher, 'invitations' => $invitations]
         );
     }
 }

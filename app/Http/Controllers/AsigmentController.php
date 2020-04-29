@@ -56,7 +56,7 @@ class AsigmentController extends Controller
 
     public function store()
     {
-        $validatedData = request()->validate(
+        request()->validate(
             [
                 'email' => 'required|email',
                 'budget' => 'required|numeric|min:' . $this::MIN_BUDGET,
@@ -96,13 +96,14 @@ class AsigmentController extends Controller
             ])
         );
 
+        // Store in disk all files uploaded by user one by one
+        // and at the same time store file details in database
         foreach (request()->file('files') as $file) {
             if (!$file->isValid()) {
                 continue;
             }
 
-            // TODO: maybe should if the file is
-            // an image we should compress it
+            // TODO: if the file is an image we should compress it
             $filename = $file->store('attachments');
             $path = "/storage/$filename";
 
@@ -112,6 +113,31 @@ class AsigmentController extends Controller
                 'size' => $file->getSize(),
                 'path' => $path,
             ]);
+        }
+
+        // Now query the database to find al teachers that
+        // match with the asigment `level` and `category`
+        $matched_teachers = Teacher::join(
+            'level_teacher as l_t',
+            'teachers.id',
+            '=',
+            'l_t.teacher_id'
+        )
+            ->join(
+                'category_teacher as c_t',
+                'teachers.id',
+                '=',
+                'c_t.teacher_id'
+            )
+            ->where([
+                ['l_t.level_id', '=', $asigment->level_id],
+                ['c_t.category_id', '=', $asigment->category_id],
+            ])
+            ->get();
+
+        // Now create invitations in database
+        foreach ($matched_teachers as $teacher) {
+            $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
 
         return $asigment;
