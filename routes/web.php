@@ -7,6 +7,11 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
+Route::get('/terms', 'TermsController@index')->name('terms');
+Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
+    'privacy-policy'
+);
+
 Route::name('questions')
     ->prefix('questions/{step}')
     ->group(function () {
@@ -28,8 +33,3 @@ Route::name('asigment.')->group(function () {
         ->where('answer', 'yes|no')
         ->name('update');
 });
-
-Route::get('/terms', 'TermsController@index')->name('terms');
-Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
-    'privacy-policy'
-);
