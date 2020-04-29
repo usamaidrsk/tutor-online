@@ -26,14 +26,7 @@ Route::name('asigment.')->group(function () {
         ->name('update');
 });
 
-Route::get('/terms', function () {
-    return view()->component('terms', [
-        'title' => 'Términos y Condiciones',
-    ]);
-})->name('terms');
-
-Route::get('/privacy-policy', function () {
-    return view()->component('privacy-policy', [
-        'title' => 'Políticas de Privacidad',
-    ]);
-})->name('privacy-policy');
+Route::get('/terms', 'TermsController@index')->name('terms');
+Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
+    'privacy-policy'
+);
