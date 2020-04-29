@@ -38,7 +38,7 @@ export default {
     padding-bottom: 0.5rem;
     background: color('white');
     border-radius: 5px;
-    border: 1px solid color('gray', 50);
+    // border: 1px solid color('gray', 50);
     cursor: pointer;
 }
 

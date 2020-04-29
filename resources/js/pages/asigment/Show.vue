@@ -5,11 +5,11 @@
                 Docentes disponibles
             </h1>
 
-            <div class="row">
+            <div class="row justify-content-center">
                 <div
                     v-for="(teacher, index) in teachers"
                     :key="index"
-                    class="col-xs-12 col-sm-6 col-md-4 margin-bottom--three"
+                    class="col-xs-6 col-sm-3 col-md-3 margin-bottom--three"
                 >
                     <TeacherCard
                         :teacher="teacher"
