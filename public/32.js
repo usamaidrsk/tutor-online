@@ -37,7 +37,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   props: {
     value: {
       type: Number,
-      "default": 5,
+      "default": 0,
       validator: function validator(value) {
         return value >= 0 && value <= 5;
       }

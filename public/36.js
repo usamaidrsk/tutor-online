@@ -88,6 +88,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['teacher', 'invitations'],
   data: function data(_ref) {
@@ -110,7 +127,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.wrapper[data-v-074da5b0] {\n  display: flex;\n  flex-flow: column;\n}\n@media (min-width: 48em) {\n.wrapper[data-v-074da5b0] {\n    flex-flow: row;\n}\n}\n.picture[data-v-074da5b0] {\n  width: 216px;\n  height: 216px;\n  border-radius: 10px;\n  margin-right: 1rem;\n  margin-bottom: 0.5rem;\n}\n@media (min-width: 48em) {\n.picture[data-v-074da5b0] {\n    width: 320px;\n    height: 320px;\n}\n}\n.info .icon[data-v-074da5b0] {\n  font-size: 1.25rem;\n}\n.invitation[data-v-074da5b0] {\n  position: relative;\n  display: block;\n  padding: 1.5rem;\n  padding-top: 1rem;\n  margin-bottom: 1rem;\n  border: 1px solid #c2c8cc;\n  border-radius: 10px;\n}\n.invitaion__budget[data-v-074da5b0] {\n  font-weight: 400;\n  font-size: 2.25rem;\n  margin-bottom: 2rem;\n}\n.invitation__details[data-v-074da5b0] {\n  white-space: nowrap !important;\n  overflow: hidden !important;\n  text-overflow: ellipsis !important;\n}\n.invitation table td[data-v-074da5b0]:first-child {\n  font-weight: 700;\n  padding-right: 0.5rem;\n}\n.invitation__date[data-v-074da5b0] {\n  position: absolute;\n  top: 1.5rem;\n  right: 1.5rem;\n  color: #98a3a8;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.wrapper[data-v-074da5b0] {\n  display: flex;\n  flex-flow: column;\n}\n@media (min-width: 48em) {\n.wrapper[data-v-074da5b0] {\n    flex-flow: row;\n}\n}\n.picture[data-v-074da5b0] {\n  width: 216px;\n  height: 216px;\n  border-radius: 10px;\n  margin-right: 1rem;\n  margin-bottom: 0.5rem;\n}\n@media (min-width: 48em) {\n.picture[data-v-074da5b0] {\n    width: 255px;\n    height: 255px;\n}\n}\n.info .icon[data-v-074da5b0] {\n  font-size: 1.25rem;\n}\n.invitations[data-v-074da5b0] {\n  min-height: 45vh;\n}\n.invitation[data-v-074da5b0] {\n  position: relative;\n  display: block;\n  padding: 1.5rem;\n  padding-top: 1rem;\n  margin-bottom: 1rem;\n  border: 1px solid #c2c8cc;\n  border-radius: 10px;\n}\n.invitaion__budget[data-v-074da5b0] {\n  font-weight: 400;\n  font-size: 2.25rem;\n  margin-bottom: 2rem;\n}\n.invitation__details[data-v-074da5b0] {\n  white-space: nowrap !important;\n  overflow: hidden !important;\n  text-overflow: ellipsis !important;\n}\n.invitation table td[data-v-074da5b0]:first-child {\n  font-weight: 700;\n  padding-right: 0.5rem;\n}\n.invitation__date[data-v-074da5b0] {\n  position: absolute;\n  top: 1.5rem;\n  right: 1.5rem;\n  color: #98a3a8;\n}", ""]);
 
 // exports
 
@@ -162,123 +179,149 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "wrapper" }, [
-        _c("div", [
-          _c("figure", { staticClass: "picture image" }, [
-            _c("img", { attrs: { src: _vm.picture, alt: "" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c("h2", { staticClass: "margin-bottom--zero" }, [
-              _vm._v(_vm._s(_vm.full_name))
+  return _c("div", [
+    _c("div", { staticClass: "wrapper" }, [
+      _c("div", [
+        _c("figure", { staticClass: "picture image" }, [
+          _c("img", { attrs: { src: _vm.picture, alt: "" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        [
+          _c("h2", { staticClass: "margin-bottom--zero" }, [
+            _vm._v(_vm._s(_vm.full_name))
+          ]),
+          _vm._v(" "),
+          _c("Stars", { attrs: { value: _vm.stars } }),
+          _vm._v(" "),
+          _c("ul", { staticClass: "info margin-top--one text--gray" }, [
+            _c("li", [
+              _c("i", { staticClass: "icon icon-map" }),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.address.line) +
+                  ", " +
+                  _vm._s(_vm.address.city) +
+                  ",\n                    " +
+                  _vm._s(_vm.address.state) +
+                  "\n                "
+              )
             ]),
             _vm._v(" "),
-            _c("Stars", { attrs: { value: 3.5 } }),
+            _c("li", [
+              _c("i", { staticClass: "icon icon-phone" }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(_vm.phone))])
+            ]),
             _vm._v(" "),
-            _c("ul", { staticClass: "info margin-top--one text--gray" }, [
-              _c("li", [
-                _c("i", { staticClass: "icon icon-map" }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.address.line) +
-                    ", " +
-                    _vm._s(_vm.address.city) +
-                    ",\n                    " +
-                    _vm._s(_vm.address.state) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("i", { staticClass: "icon icon-phone" }),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.phone))])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("i", { staticClass: "icon icon-mail" }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.email) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("i", { staticClass: "icon icon-gift" }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.birthday) +
-                    "\n                "
-                )
-              ])
+            _c("li", [
+              _c("i", { staticClass: "icon icon-mail" }),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.email) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", { staticClass: "icon icon-gift" }),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.birthday) +
+                  "\n                "
+              )
             ])
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("h2", { staticClass: "margin-top--two text--center" }, [
-        _vm._v("Invitaciones pendientes")
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.invitations, function(ref, index) {
-        var asigment = ref.asigment
-        return _c(
-          "a",
-          {
-            key: index,
-            attrs: { href: _vm.route("asigment.review", asigment.id) }
-          },
-          [
-            _c("div", { staticClass: "invitation" }, [
-              _c("span", { staticClass: "invitaion__budget" }, [
-                _vm._v(" $" + _vm._s(asigment.budget) + " ")
-              ]),
-              _vm._v(" "),
-              _c("table", [
-                _c("tr", [
-                  _c("td", [_vm._v("Nivel:")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(asigment.level.name))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Categoria:")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(asigment.category.name))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Detalles:")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(asigment.details) +
-                        "\n                    "
-                    )
+          ])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "margin-top--one" },
+      [
+        _c("h2", { staticClass: "text--center" }, [_vm._v("Tus puntajes")]),
+        _vm._v(" "),
+        _c("Scores", { attrs: { scores: _vm.scores } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "invitations margin-top--three" },
+      [
+        _c("h2", { staticClass: "text--center margin-bottom--zero" }, [
+          _vm._v("\n            Invitaciones pendientes\n        ")
+        ]),
+        _vm._v(" "),
+        !_vm.invitations.length
+          ? _c("h4", { staticClass: "text--center text--gray text--light" }, [
+              _vm._v(
+                "\n            Por los momentos no hay nada pendiente\n        "
+              )
+            ])
+          : _vm._l(_vm.invitations, function(ref, index) {
+              var asigment = ref.asigment
+              return _c(
+                "a",
+                {
+                  key: index,
+                  attrs: { href: _vm.route("asigment.review", asigment.id) }
+                },
+                [
+                  _c("div", { staticClass: "invitation" }, [
+                    _c("span", { staticClass: "invitaion__budget" }, [
+                      _vm._v(
+                        "\n                    $" +
+                          _vm._s(asigment.budget) +
+                          "\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("table", [
+                      _c("tr", [
+                        _c("td", [_vm._v("Nivel:")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(asigment.level.name))])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Categoria:")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(asigment.category.name))])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Detalles:")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(asigment.details) +
+                              "\n                        "
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invitation__date" }, [
+                      _c("i", { staticClass: "icon icon-clock" }),
+                      _vm._v(
+                        "\n                    " + _vm._s(asigment.created_at)
+                      )
+                    ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "invitation__date" }, [
-                _c("i", { staticClass: "icon icon-clock" }),
-                _vm._v("\n                " + _vm._s(asigment.created_at))
-              ])
-            ])
-          ]
-        )
-      })
-    ],
-    2
-  )
+                ]
+              )
+            })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

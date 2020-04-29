@@ -104,7 +104,10 @@ var render = function() {
           _c("img", { attrs: { src: _vm.teacher.picture } })
         ]),
         _vm._v(" "),
-        _c("Stars", { staticClass: "card__stars", attrs: { value: 3 } })
+        _c("Stars", {
+          staticClass: "card__stars",
+          attrs: { value: _vm.teacher.stars }
+        })
       ],
       1
     )

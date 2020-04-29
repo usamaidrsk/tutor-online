@@ -43,19 +43,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     teacher: {
@@ -103,7 +90,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.modal[data-v-f3ea3b54],\n.overlay[data-v-f3ea3b54] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n}\n.modal[data-v-f3ea3b54] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  z-index: 250;\n  pointer-events: none;\n  overflow: auto;\n}\n.modal__container[data-v-f3ea3b54] {\n  max-width: 90vw;\n  position: relative;\n  border-radius: 10px;\n  background: white;\n  pointer-events: all;\n  padding: 2rem 1rem 1rem;\n}\n@media (min-width: 48em) {\n.modal__container[data-v-f3ea3b54] {\n    padding: 2rem 2.5rem;\n}\n}\n.modal__x[data-v-f3ea3b54] {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  font-size: 1.75rem;\n  color: #98a3a8;\n}\n.modal__body[data-v-f3ea3b54] {\n  display: flex;\n  flex-flow: column;\n  justify-content: center;\n  align-items: center;\n}\n@media (min-width: 48em) {\n.modal__body[data-v-f3ea3b54] {\n    flex-flow: row;\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n}\n.modal__content[data-v-f3ea3b54] {\n  text-align: center;\n}\n@media (min-width: 48em) {\n.modal__content[data-v-f3ea3b54] {\n    text-align: left;\n}\n}\n.modal__image[data-v-f3ea3b54] {\n  width: 180px;\n  height: 180px;\n  border-radius: 10px;\n  margin-right: 2rem;\n  margin-bottom: 0.75rem;\n  background: #d0d5d7;\n}\n@media (min-width: 64em) {\n.modal__image[data-v-f3ea3b54] {\n    width: 220px;\n    height: 220px;\n}\n}\n.modal__title[data-v-f3ea3b54] {\n  margin-bottom: 0;\n}\n.rates[data-v-f3ea3b54] {\n  margin-top: 2rem;\n  justify-content: center;\n}\n.rates__rate[data-v-f3ea3b54] {\n  text-align: center;\n  padding: 0.5rem 0;\n}\n.rates__rate[data-v-f3ea3b54]:first-child {\n  border-right: 1px solid #d0d5d7;\n}\n@media (min-width: 48em) {\n.rates__rate[data-v-f3ea3b54] {\n    padding-left: 2rem;\n    padding-right: 2rem;\n    border-right: 1px solid #d0d5d7;\n}\n.rates__rate[data-v-f3ea3b54]:last-child {\n    border: 0;\n}\n}\n.rate__value[data-v-f3ea3b54] {\n  font-size: 1.85rem;\n  font-weight: 700;\n}\n@media (min-width: 48em) {\n.rate__value[data-v-f3ea3b54] {\n    font-size: 2.5rem;\n}\n}\n.modal__button[data-v-f3ea3b54] {\n  margin-top: 2rem;\n}\n.overlay[data-v-f3ea3b54] {\n  background: rgba(20, 20, 20, 0.5);\n  z-index: 225;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.modal[data-v-f3ea3b54],\n.overlay[data-v-f3ea3b54] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n}\n.modal[data-v-f3ea3b54] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  z-index: 250;\n  pointer-events: none;\n  overflow: auto;\n}\n.modal__container[data-v-f3ea3b54] {\n  max-width: 90vw;\n  position: relative;\n  border-radius: 10px;\n  background: white;\n  pointer-events: all;\n  padding: 2rem 1rem 1rem;\n}\n@media (min-width: 48em) {\n.modal__container[data-v-f3ea3b54] {\n    padding: 2rem 2.5rem;\n}\n}\n.modal__x[data-v-f3ea3b54] {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  font-size: 1.75rem;\n  color: #98a3a8;\n}\n.modal__body[data-v-f3ea3b54] {\n  display: flex;\n  flex-flow: column;\n  justify-content: center;\n  align-items: center;\n}\n@media (min-width: 48em) {\n.modal__body[data-v-f3ea3b54] {\n    flex-flow: row;\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n}\n.modal__content[data-v-f3ea3b54] {\n  text-align: center;\n}\n@media (min-width: 48em) {\n.modal__content[data-v-f3ea3b54] {\n    text-align: left;\n}\n}\n.modal__image[data-v-f3ea3b54] {\n  width: 180px;\n  height: 180px;\n  border-radius: 10px;\n  margin-right: 2rem;\n  margin-bottom: 0.75rem;\n  background: #d0d5d7;\n}\n@media (min-width: 64em) {\n.modal__image[data-v-f3ea3b54] {\n    width: 220px;\n    height: 220px;\n}\n}\n.modal__title[data-v-f3ea3b54] {\n  margin-bottom: 0;\n}\n.modal__button[data-v-f3ea3b54] {\n  margin-top: 2rem;\n}\n.overlay[data-v-f3ea3b54] {\n  background: rgba(20, 20, 20, 0.5);\n  z-index: 225;\n}", ""]);
 
 // exports
 
@@ -198,13 +185,16 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("Stars", { attrs: { value: 4 } })
+                  _c("Stars", { attrs: { value: _vm.teacher.stars } })
                 ],
                 1
               )
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("Scores", {
+              staticClass: "margin-top--two",
+              attrs: { scores: _vm.teacher.scores || {} }
+            }),
             _vm._v(" "),
             _c(
               "Button",
@@ -220,38 +210,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "rates row" }, [
-      _c("div", { staticClass: "col-xs-6 col-sm-4 rates__rate" }, [
-        _c("span", { staticClass: "rate__value" }, [_vm._v("3.2")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "rate__label" }, [
-          _vm._v("Paciencia el la enseñanza")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-6 col-sm-4 rates__rate" }, [
-        _c("span", { staticClass: "rate__value" }, [_vm._v("4.8")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "rate__label" }, [_vm._v("Escucha al alumno")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-6 col-sm-4 rates__rate" }, [
-        _c("span", { staticClass: "rate__value" }, [_vm._v("3.5")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "rate__label" }, [
-          _vm._v(
-            "\n                        Uso adecuado de la tecnologia\n                    "
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

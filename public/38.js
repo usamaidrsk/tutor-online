@@ -9,6 +9,24 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52,14 +70,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    asigment: {
-      type: Object,
-      required: true
-    }
-  },
+  props: ['asigment'],
   data: function data() {
-    return {};
+    return {
+      loading: false
+    };
+  },
+  methods: {
+    handleAnswer: function handleAnswer(answer) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var id, url;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.loading) {
+                  _context.next = 2;
+                  break;
+                }
+
+                return _context.abrupt("return");
+
+              case 2:
+                _this.loading = true;
+                _context.prev = 3;
+                id = _this.asigment.id;
+                url = route('asigment.update', {
+                  id: id,
+                  answer: answer
+                });
+                _context.next = 8;
+                return _this.$http.put(url);
+
+              case 8:
+                window.location.href = route('profile');
+                _context.next = 14;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](3);
+                console.error(_context.t0.response);
+
+              case 14:
+                _context.prev = 14;
+                _this.loading = false;
+                return _context.finish(14);
+
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 11, 14, 17]]);
+      }))();
+    }
   }
 });
 
@@ -164,11 +231,36 @@ var render = function() {
         "div",
         { staticClass: "margin-top--three" },
         [
-          _c("Button", { attrs: { block: "" } }, [_vm._v("Estoy interesado")]),
+          _c(
+            "Button",
+            {
+              attrs: { loading: _vm.loading, block: "" },
+              on: {
+                click: function($event) {
+                  return _vm.handleAnswer("yes")
+                }
+              }
+            },
+            [_vm._v("Estoy interesado")]
+          ),
           _vm._v(" "),
-          _c("Button", { attrs: { color: "gray", flat: "", block: "" } }, [
-            _vm._v("Descartar")
-          ])
+          _c(
+            "Button",
+            {
+              attrs: {
+                color: "gray",
+                flat: "",
+                block: "",
+                loading: _vm.loading
+              },
+              on: {
+                click: function($event) {
+                  return _vm.handleAnswer("no")
+                }
+              }
+            },
+            [_vm._v("Descartar")]
+          )
         ],
         1
       )

@@ -15816,6 +15816,11 @@ var map = {
 		20,
 		31
 	],
+	"./Scores.vue": [
+		"./resources/js/components/Scores.vue",
+		20,
+		3
+	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
 		20,
