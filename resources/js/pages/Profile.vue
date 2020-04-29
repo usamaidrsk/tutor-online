@@ -113,7 +113,7 @@ export default {
     margin-bottom: 0.5rem;
 
     @include breakpoint('sm') {
-        @include size(320px);
+        @include size(255px);
     }
 }
 
