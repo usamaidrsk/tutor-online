@@ -7,8 +7,8 @@
                 </button>
 
                 <div class="modal__body row">
-                        <img :src="`/storage/${teacher.picture}`" alt="" />
                     <figure class="modal__image image">
+                        <img :src="teacher.picture" alt="" />
                     </figure>
 
                     <div class="modal__content">

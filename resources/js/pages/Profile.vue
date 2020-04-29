@@ -2,8 +2,8 @@
     <div>
         <div class="row">
             <div class="col-sm-4">
-                <img :src="`/storage/${picture}`" alt="" />
                 <figure class="picture image">
+                    <img :src="picture" alt="" />
                 </figure>
             </div>
 
