@@ -14,14 +14,13 @@ Route::name('questions')
         Route::post('/', 'QuestionsController@store')->where('step', '[1,2,3]');
     });
 
-Route::name('asigment.')
-    ->prefix('asigment')
-    ->group(function () {
-        Route::get('/', 'AsigmentController@create')->name('create');
-        Route::get('{id}', 'AsigmentController@show')->name('show');
-        Route::get('review/{id}', 'AsigmentController@review')->name('review');
-        Route::post('/', 'AsigmentController@store')->name('store');
-    });
+Route::name('asigment.')->group(function () {
+    Route::get('/new', 'AsigmentController@create')->name('create');
+    Route::post('/new', 'AsigmentController@store')->name('store');
+
+    Route::get('{id}', 'AsigmentController@show')->name('show');
+    Route::get('show/{id}', 'AsigmentController@review')->name('review');
+});
 
 Route::get('/terms', function () {
     return view()->component('terms', [
