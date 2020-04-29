@@ -39,10 +39,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     file: {
-      type: File,
+      type: [File, Object],
       required: true
     },
     readonly: Boolean
@@ -83,7 +89,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.file[data-v-77c84e67]:not(:last-child) {\n  border-bottom: 1px solid #c2c8cc;\n}\n.file__container[data-v-77c84e67] {\n  padding: 1rem 1rem;\n}\n.file__container[data-v-77c84e67],\n.file__controls[data-v-77c84e67] {\n  display: flex;\n  align-items: center;\n}\n.file__icon[data-v-77c84e67] {\n  width: 50px;\n  height: 50px;\n  position: relative;\n  display: block;\n  border-radius: 5px;\n}\n.file--is-image .file__icon[data-v-77c84e67] {\n  background: #ffc816;\n}\n.file--is-pdf .file__icon[data-v-77c84e67] {\n  background: #f00;\n  color: white;\n  font-size: 0.9rem;\n  font-weight: 700;\n}\n.file--is-pdf .file__icon[data-v-77c84e67]::before {\n  content: \"PDF\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.file__name[data-v-77c84e67] {\n  white-space: nowrap !important;\n  overflow: hidden !important;\n  text-overflow: ellipsis !important;\n  max-width: 100%;\n  padding: 0 1rem;\n  flex-grow: 1;\n}\n.file__size[data-v-77c84e67] {\n  color: #a6afb4;\n  padding: 0 1rem;\n}\n.icon[data-v-77c84e67] {\n  font-size: 1.3rem;\n  cursor: pointer;\n}\n.icon-x[data-v-77c84e67] {\n  color: #dc3545;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.file[data-v-77c84e67]:not(:last-child) {\n  border-bottom: 1px solid #c2c8cc;\n}\n.file__container[data-v-77c84e67] {\n  padding: 0.75rem;\n}\n.file__container[data-v-77c84e67],\n.file__controls[data-v-77c84e67] {\n  display: flex;\n  align-items: center;\n}\n.file__icon[data-v-77c84e67] {\n  font-size: 2rem !important;\n}\n.file--is-image .file__icon[data-v-77c84e67] {\n  color: #f6993f;\n}\n.file--is-pdf .file__icon[data-v-77c84e67] {\n  color: #dc3545;\n}\n.file__name[data-v-77c84e67] {\n  white-space: nowrap !important;\n  overflow: hidden !important;\n  text-overflow: ellipsis !important;\n  max-width: 100%;\n  padding: 0 0.75rem;\n  flex-grow: 1;\n}\n.file__size[data-v-77c84e67] {\n  color: #a6afb4;\n  padding: 0 1rem;\n  margin-right: 0.5rem;\n  border-right: 1px solid #c2c8cc;\n}\n.file__controls .icon[data-v-77c84e67] {\n  font-size: 1.3rem;\n  cursor: pointer;\n}\n.icon-x[data-v-77c84e67] {\n  color: #dc3545;\n}", ""]);
 
 // exports
 
@@ -137,7 +143,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "file", class: ["file--is-" + _vm.type] }, [
     _c("div", { staticClass: "file__container" }, [
-      _vm._m(0),
+      _c("div", [
+        _c("i", {
+          staticClass: "file__icon icon",
+          class: "icon-file-" + _vm.type
+        })
+      ]),
       _vm._v(" "),
       _c("p", { staticClass: "file__name" }, [
         _vm._v("\n            " + _vm._s(_vm.file.name) + "\n        ")
@@ -158,27 +169,24 @@ var render = function() {
                 }
               }
             })
-          : _c("i", {
-              staticClass: "icon icon-download",
-              attrs: { title: "Descargar" },
-              on: {
-                click: function($event) {
-                  return _vm.$emit("download")
+          : _c(
+              "a",
+              {
+                attrs: {
+                  href: _vm.file.path,
+                  download: _vm.file.name,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  title: "Descargar"
                 }
-              }
-            })
+              },
+              [_c("i", { staticClass: "icon icon-download" })]
+            )
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("span", { staticClass: "file__icon" })])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -2062,7 +2062,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data(_ref) {
+    var $auth = _ref.$auth;
+    return {
+      user: $auth.user,
+      isLogged: !!$auth.user
+    };
+  },
   methods: {
     doLogout: function doLogout() {
       var _this = this;
@@ -2085,6 +2136,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    isCurrent: function isCurrent(name) {
+      return route().current() === route(name).name;
     }
   }
 });
@@ -3326,18 +3380,64 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "app" } }, [
-    _c(
-      "header",
-      { staticClass: "navbar" },
-      [
-        _vm.$auth.user
-          ? _c("Button", { attrs: { flat: "" }, on: { click: _vm.doLogout } }, [
-              _vm._v("Salir")
-            ])
-          : _vm._e()
-      ],
-      1
-    ),
+    _c("header", { staticClass: "navbar" }, [
+      _c("div", { staticClass: "navbar__container container" }, [
+        _c("div", { staticClass: "navbar__left" }, [
+          _c("h1", { staticClass: "navbar__logo" }, [
+            _c("a", { attrs: { href: _vm.route("home") } }, [_vm._v("Elearn ")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar__rigth" },
+          [
+            _vm.isLogged
+              ? [
+                  _c("span", { staticClass: "navbar__wellcome" }, [
+                    _vm._v("Hola, " + _vm._s(_vm.user.first_name))
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", { staticClass: "navbar__avatar image" }, [
+                    _c("img", { attrs: { src: _vm.user.picture } })
+                  ]),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "navbar__logout icon icon-logout",
+                    attrs: { title: "Salir" },
+                    on: { click: _vm.doLogout }
+                  })
+                ]
+              : [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "navbar__button",
+                      class: {
+                        "navbar__button--is-active": _vm.isCurrent("register")
+                      },
+                      attrs: { href: _vm.route("register") }
+                    },
+                    [_vm._v("Registrarse")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "navbar__button",
+                      class: {
+                        "navbar__button--is-active": _vm.isCurrent("login")
+                      },
+                      attrs: { href: _vm.route("login") }
+                    },
+                    [_vm._v("Iniciar")]
+                  )
+                ]
+          ],
+          2
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("main", [
       _c("div", { staticClass: "container" }, [_vm._t("default")], 2)
@@ -15693,48 +15793,48 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		16,
-		33
+		20,
+		44
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		16,
-		21
+		20,
+		28
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		16,
-		22
+		20,
+		29
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		16,
-		23
+		20,
+		30
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		16,
-		24
+		20,
+		31
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		16,
-		20
+		20,
+		27
 	],
 	"./Stars.vue": [
 		"./resources/js/components/Stars.vue",
-		16,
-		25
+		20,
+		32
 	],
 	"./TeacherCard.vue": [
 		"./resources/js/components/TeacherCard.vue",
-		16,
-		26
+		20,
+		33
 	],
 	"./TeacherModal.vue": [
 		"./resources/js/components/TeacherModal.vue",
-		16,
-		27
+		20,
+		34
 	]
 };
 function webpackAsyncContext(req) {
@@ -15792,19 +15892,30 @@ files.keys().forEach(function (key) {
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		16,
-		28
+		20,
+		35
+	],
+	"./PrivacyPolicy.vue": [
+		"./resources/js/pages/PrivacyPolicy.vue",
+		20,
+		45
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		17
+		20,
+		36
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		16,
+		20,
 		1,
 		2,
-		19
+		26
+	],
+	"./Terms.vue": [
+		"./resources/js/pages/Terms.vue",
+		20,
+		46
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -15812,32 +15923,51 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		18
+		24
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		16,
+		20,
 		1
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		16,
-		29
+		20,
+		37
+	],
+	"./asigment/Review.vue": [
+		"./resources/js/pages/asigment/Review.vue",
+		20,
+		38
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		16,
-		30
+		20,
+		39
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		16,
-		31
+		20,
+		40
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		16,
-		32
+		20,
+		41
+	],
+	"./auth/passwords/Confirm.vue": [
+		"./resources/js/pages/auth/passwords/Confirm.vue",
+		20,
+		42
+	],
+	"./auth/passwords/Email.vue": [
+		"./resources/js/pages/auth/passwords/Email.vue",
+		25
+	],
+	"./auth/passwords/Reset.vue": [
+		"./resources/js/pages/auth/passwords/Reset.vue",
+		20,
+		43
 	]
 };
 function webpackAsyncContext(req) {

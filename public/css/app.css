@@ -37,6 +37,57 @@ main > .container[data-v-f348271a] {
   border-bottom: 1px solid #d0d5d7;
   z-index: 150;
 }
+.navbar__container[data-v-f348271a] {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar__logo[data-v-f348271a] {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #4dccbd;
+  text-transform: uppercase;
+}
+.navbar__rigth[data-v-f348271a] {
+  display: flex;
+  align-items: center;
+}
+.navbar__wellcome[data-v-f348271a] {
+  white-space: nowrap;
+}
+.navbar__avatar[data-v-f348271a] {
+  width: 35px;
+  height: 35px;
+  background: #d0d5d7;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+}
+.navbar__button[data-v-f348271a] {
+  color: #484e51;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-right: 1.85rem;
+}
+.navbar__button[data-v-f348271a]::before {
+  width: 10px;
+  height: 10px;
+  content: " ";
+  display: block;
+  float: left;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-right: 7px;
+  background: #d0d5d7;
+}
+.navbar__button--is-active[data-v-f348271a]::before {
+  background: #4dccbd;
+}
+.navbar__logout[data-v-f348271a] {
+  font-size: 1.5rem;
+  color: #d0d5d7;
+  cursor: pointer;
+}
 .footer[data-v-f348271a] {
   height: 120px;
   background: white;
@@ -1366,8 +1417,8 @@ template {
 
 @font-face {
   font-family: "icons";
-  src: url(/fonts/icons.eot?bd2a5336928b375e649a29d97c59bc79);
-  src: url(/fonts/icons.eot?bd2a5336928b375e649a29d97c59bc79) format("embedded-opentype"), url(/fonts/icons.woff2?4c7b3201083e3986c4b8708babdce4fe) format("woff2"), url(/fonts/icons.woff?117a00084547a745d9e6f76d2c1b9651) format("woff"), url(/fonts/icons.ttf?ac54fd18d03c0c25a782c3bbf74c59de) format("truetype"), url(/fonts/icons.svg?3cd5bc25f804e0db77e04d7137b37b53) format("svg");
+  src: url(/fonts/icons.eot?cd2f055e0db3d5a5a2763f36fda4bffa);
+  src: url(/fonts/icons.eot?cd2f055e0db3d5a5a2763f36fda4bffa) format("embedded-opentype"), url(/fonts/icons.woff2?75f3e3924f823ff875135892e24ab617) format("woff2"), url(/fonts/icons.woff?89f68fdd3277777e5db6a8b93486ccae) format("woff"), url(/fonts/icons.ttf?209807b7f43ff9ada7e0be2b82f9949b) format("truetype"), url(/fonts/icons.svg?99cde7bd0b7991da9aaefd7a82129712) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1380,7 +1431,7 @@ template {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'icons';
-    src: url('../font/icons.svg?3243431#icons') format('svg');
+    src: url('../font/icons.svg?90415403#icons') format('svg');
   }
 }
 */
@@ -1475,6 +1526,18 @@ template {
 
 /* '' */
 
+.icon-logout:before {
+  content: "\E80A";
+}
+
+/* '' */
+
+.icon-phone:before {
+  content: "\E80B";
+}
+
+/* '' */
+
 .icon-down:before {
   content: "\F004";
 }
@@ -1499,11 +1562,17 @@ template {
 
 /* '' */
 
-.icon-files:before {
-  content: "\F0C5";
+.icon-file-pdf:before {
+  content: "\F1C1";
 }
 
-/* '' */
+/* '' */
+
+.icon-file-image:before {
+  content: "\F1C5";
+}
+
+/* '' */
 
 /* --------------------------------- Colors --------------------------------- */
 
@@ -1953,6 +2022,122 @@ template {
   padding-right: 5rem !important;
 }
 
+.d-flex {
+  display: flex !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse !important;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-baseline {
+  align-items: baseline !important;
+}
+
+.align-items-stretch {
+  align-items: stretch !important;
+}
+
+.align-content-start {
+  align-content: flex-start !important;
+}
+
+.align-content-end {
+  align-content: flex-end !important;
+}
+
+.align-content-center {
+  align-content: center !important;
+}
+
+.align-content-between {
+  align-content: space-between !important;
+}
+
+.align-content-around {
+  align-content: space-around !important;
+}
+
+.align-content-stretch {
+  align-content: stretch !important;
+}
+
+.align-self-auto {
+  align-self: auto !important;
+}
+
+.align-self-start {
+  align-self: flex-start !important;
+}
+
+.align-self-end {
+  align-self: flex-end !important;
+}
+
+.align-self-center {
+  align-self: center !important;
+}
+
+.align-self-baseline {
+  align-self: baseline !important;
+}
+
+.align-self-stretch {
+  align-self: stretch !important;
+}
+
 *,
 *::before,
 *::after {
@@ -1978,12 +2163,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #4dccbd;
-  font-weight: 700;
-}
-
-a:hover {
-  color: #3b9b90;
+  color: inherit;
 }
 
 img {
@@ -2068,15 +2248,51 @@ h6 {
   }
 }
 
+/* ---------------------------------- Link ---------------------------------- */
+
+.link {
+  text-decoration: none;
+  color: #4dccbd;
+  font-weight: 700;
+}
+
+.link:hover {
+  color: #3b9b90;
+}
+
+/* ------------------------------ Image Wrapper ----------------------------- */
+
+.image {
+  position: relative;
+  overflow: hidden;
+}
+
+.image > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* ---------------------------------- Error --------------------------------- */
 
-.error {
+.error,
+.success {
   display: block;
-  color: #dc3545;
   font-weight: 700;
   padding: 1rem;
   margin: 1.5rem 0;
-  border: 2px dashed #dc3545;
+  border: 2px dashed #141414;
+}
+
+.success {
+  color: #38c172;
+  border-color: #38c172;
+}
+
+.error {
+  color: #dc3545;
+  border-color: #dc3545;
 }
 
 .error::before {

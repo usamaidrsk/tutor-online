@@ -15,17 +15,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({//
 });
 
@@ -95,31 +84,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "hero text--center" },
-      [
-        _c("h1", [_vm._v("Bienvenido a Elearn")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam\n            provident labore sit placeat nihil aperiam architecto, quasi\n            aliquid est alias doloremque obcaecati molestias, a harum fugiat\n            voluptatem numquam dolor ipsa.\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "Button",
-          {
-            staticClass: "margin-top--one",
-            attrs: { href: _vm.route("login"), outline: "" }
-          },
-          [_vm._v("Empezar")]
-        )
-      ],
-      1
-    )
-  ])
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

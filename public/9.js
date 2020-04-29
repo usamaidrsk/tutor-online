@@ -20,13 +20,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     teacher: {
@@ -50,7 +43,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.card[data-v-00cec812] {\n  width: 280px;\n  border: 1px solid #c2c8cc;\n  border-radius: 10px;\n  margin-bottom: 1.5rem;\n  margin-right: 1.5rem;\n  transition-property: transform box-shadow;\n  transition-duration: 0.3s;\n  transition-timing-function: ease-out;\n  cursor: pointer;\n}\n.card[data-v-00cec812]:hover {\n  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);\n  transform: scale(1.1);\n}\n.card__header[data-v-00cec812] {\n  padding: 1rem 1.5rem;\n}\n.card__footer[data-v-00cec812] {\n  display: block;\n  border-top: 1px solid #c2c8cc;\n  height: 50px;\n}\n.card__name[data-v-00cec812] {\n  margin: 0;\n  margin-bottom: 0.5rem;\n}\n.card__image[data-v-00cec812] {\n  width: 180px;\n  height: 180px;\n  border-radius: 10px;\n  overflow: hidden;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.card[data-v-00cec812] {\n  text-align: center;\n  transition-property: transform box-shadow;\n  transition-duration: 0.3s;\n  transition-timing-function: ease-out;\n}\n.card[data-v-00cec812]:hover {\n  transform: scale(1.1);\n}\n.card__body[data-v-00cec812] {\n  display: inline-block;\n  padding: 1rem;\n  padding-bottom: 0.5rem;\n  background: white;\n  border-radius: 5px;\n  border: 1px solid #d0d5d7;\n  cursor: pointer;\n}\n.card__image[data-v-00cec812] {\n  width: 160px;\n  height: 160px;\n  background: #d0d5d7;\n  margin: 0 auto;\n  border-radius: 5px;\n}\n.card__footer[data-v-00cec812] {\n  display: block;\n  border-top: 1px solid #c2c8cc;\n  text-align: center;\n  padding: 0.5rem 0;\n}", ""]);
 
 // exports
 
@@ -103,30 +96,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("article", { staticClass: "card" }, [
-    _c("div", { staticClass: "card__container" }, [
-      _c("header", { staticClass: "card__header" }, [
-        _c("h3", { staticClass: "card__name" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.teacher.first_name) +
-              " " +
-              _vm._s(_vm.teacher.last_name) +
-              "\n            "
-          )
+    _c(
+      "div",
+      { staticClass: "card__body" },
+      [
+        _c("figure", { staticClass: "card__image image" }, [
+          _c("img", { attrs: { src: _vm.teacher.picture } })
         ]),
         _vm._v(" "),
-        _c("figure", { staticClass: "card__image" }, [
-          _c("img", { attrs: { src: "/storage/" + _vm.teacher.picture } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "footer",
-        { staticClass: "card__footer" },
-        [_c("Stars", { attrs: { value: 5 } })],
-        1
-      )
-    ])
+        _c("Stars", { staticClass: "card__stars", attrs: { value: 3 } })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []

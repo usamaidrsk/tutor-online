@@ -187,7 +187,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.attrs.type === "checkbox" && !_vm.textarea
+    !_vm.textarea
       ? _c(
           "input",
           _vm._g(
@@ -196,97 +196,22 @@ var render = function() {
                 directives: [
                   {
                     name: "model",
-                    rawName: "v-model",
+                    rawName: "v-model.trim",
                     value: _vm.innerValue,
-                    expression: "innerValue"
+                    expression: "innerValue",
+                    modifiers: { trim: true }
                   }
                 ],
-                attrs: { type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(_vm.innerValue)
-                    ? _vm._i(_vm.innerValue, null) > -1
-                    : _vm.innerValue
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.innerValue,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.innerValue = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.innerValue = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
-                      }
-                    } else {
-                      _vm.innerValue = $$c
-                    }
-                  }
-                }
-              },
-              "input",
-              _vm.attrs,
-              false
-            ),
-            _vm.listeners
-          )
-        )
-      : _vm.attrs.type === "radio" && !_vm.textarea
-      ? _c(
-          "input",
-          _vm._g(
-            _vm._b(
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.innerValue,
-                    expression: "innerValue"
-                  }
-                ],
-                attrs: { type: "radio" },
-                domProps: { checked: _vm._q(_vm.innerValue, null) },
-                on: {
-                  change: function($event) {
-                    _vm.innerValue = null
-                  }
-                }
-              },
-              "input",
-              _vm.attrs,
-              false
-            ),
-            _vm.listeners
-          )
-        )
-      : !_vm.textarea
-      ? _c(
-          "input",
-          _vm._g(
-            _vm._b(
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.innerValue,
-                    expression: "innerValue"
-                  }
-                ],
-                attrs: { type: _vm.attrs.type },
                 domProps: { value: _vm.innerValue },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.innerValue = $event.target.value
+                    _vm.innerValue = $event.target.value.trim()
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
                   }
                 }
               },
@@ -305,9 +230,10 @@ var render = function() {
                 directives: [
                   {
                     name: "model",
-                    rawName: "v-model",
+                    rawName: "v-model.trim",
                     value: _vm.innerValue,
-                    expression: "innerValue"
+                    expression: "innerValue",
+                    modifiers: { trim: true }
                   }
                 ],
                 domProps: { value: _vm.innerValue },
@@ -316,7 +242,10 @@ var render = function() {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.innerValue = $event.target.value
+                    _vm.innerValue = $event.target.value.trim()
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
                   }
                 }
               },
