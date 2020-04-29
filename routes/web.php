@@ -20,6 +20,10 @@ Route::name('asigment.')->group(function () {
 
     Route::get('{id}', 'AsigmentController@show')->name('show');
     Route::get('show/{id}', 'AsigmentController@review')->name('review');
+    Route::put('/{id}/{answer}', 'AsigmentController@update')
+        ->middleware('auth')
+        ->where('answer', 'yes|no')
+        ->name('update');
 });
 
 Route::get('/terms', function () {

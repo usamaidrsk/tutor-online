@@ -33,8 +33,18 @@
             </div>
 
             <div class="margin-top--three">
-                <Button block>Estoy interesado</Button>
-                <Button color="gray" flat block>Descartar</Button>
+                <Button @click="handleAnswer('yes')" :loading="loading" block
+                    >Estoy interesado</Button
+                >
+
+                <Button
+                    color="gray"
+                    flat
+                    block
+                    @click="handleAnswer('no')"
+                    :loading="loading"
+                    >Descartar</Button
+                >
             </div>
         </div>
     </div>
@@ -42,14 +52,29 @@
 
 <script>
 export default {
-    props: {
-        asigment: {
-            type: Object,
-            required: true,
+    props: ['asigment'],
+
+    data: () => ({ loading: false }),
+
+    methods: {
+        async handleAnswer(answer) {
+            if (this.loading) return
+
+            this.loading = true
+
+            try {
+                const { id } = this.asigment
+                const url = route('asigment.update', { id, answer })
+                await this.$http.put(url)
+
+                window.location.href = route('profile')
+            } catch (error) {
+                console.error(error.response)
+            } finally {
+                this.loading = false
+            }
         },
     },
-
-    data: () => ({}),
 }
 </script>
 

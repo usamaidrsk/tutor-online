@@ -139,7 +139,18 @@ class AsigmentController extends Controller
         foreach ($matched_teachers as $teacher) {
             $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
+    }
 
-        return $asigment;
+    public function update($id, $answer)
+    {
+        $invitation = Teacher::findOrfail(auth()->user()->id)
+            ->invitations()
+            ->where('asigment_id', '=', $id)
+            ->first();
+
+        $status = $answer === 'yes' ? 'accepted' : 'denied';
+        $invitation->update(['status' => $status]);
+
+        return $invitation;
     }
 }
