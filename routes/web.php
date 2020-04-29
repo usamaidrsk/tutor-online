@@ -16,10 +16,13 @@ Route::name('questions')
 
 Route::name('asigment.')->group(function () {
     Route::get('/new', 'AsigmentController@create')->name('create');
+    Route::get('show/{id}', 'AsigmentController@review')
+        ->middleware('auth')
+        ->name('review');
+    Route::get('{id}', 'AsigmentController@show')->name('show');
+
     Route::post('/new', 'AsigmentController@store')->name('store');
 
-    Route::get('{id}', 'AsigmentController@show')->name('show');
-    Route::get('show/{id}', 'AsigmentController@review')->name('review');
     Route::put('/{id}/{answer}', 'AsigmentController@update')
         ->middleware('auth')
         ->where('answer', 'yes|no')
