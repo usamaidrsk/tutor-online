@@ -13,7 +13,8 @@
                 <ul class="text--gray">
                     <li>
                         <i class="icon icon-map"></i>
-                        <!-- {{ address }} -->
+                        {{ address.line }}, {{ address.city }},
+                        {{ address.state }}
                     </li>
                     <li>
                         <i class="icon icon-phone"></i>
