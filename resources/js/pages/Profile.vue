@@ -35,39 +35,51 @@
             </div>
         </div>
 
-        <h2 class="margin-top--two text--center">Invitaciones pendientes</h2>
+        <div class="invitations margin-top--three">
+            <h2 class="text--center margin-bottom--zero">
+                Invitaciones pendientes
+            </h2>
+            <h4
+                v-if="!invitations.length"
+                class="text--center text--gray text--light"
+            >
+                Por los momentos no hay nada pendiente
+            </h4>
+            <a
+                v-else
+                v-for="({ asigment }, index) in invitations"
+                :key="index"
+                :href="route('asigment.review', asigment.id)"
+            >
+                <div class="invitation">
+                    <span class="invitaion__budget">
+                        ${{ asigment.budget }}
+                    </span>
 
-        <a
-            v-for="({ asigment }, index) in invitations"
-            :key="index"
-            :href="route('asigment.review', asigment.id)"
-        >
-            <div class="invitation">
-                <span class="invitaion__budget"> ${{ asigment.budget }} </span>
+                    <table>
+                        <tr>
+                            <td>Nivel:</td>
+                            <td>{{ asigment.level.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Categoria:</td>
+                            <td>{{ asigment.category.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Detalles:</td>
+                            <td>
+                                {{ asigment.details }}
+                            </td>
+                        </tr>
+                    </table>
 
-                <table>
-                    <tr>
-                        <td>Nivel:</td>
-                        <td>{{ asigment.level.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Categoria:</td>
-                        <td>{{ asigment.category.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Detalles:</td>
-                        <td>
-                            {{ asigment.details }}
-                        </td>
-                    </tr>
-                </table>
-
-                <span class="invitation__date">
-                    <i class="icon icon-clock"></i>
-                    {{ asigment.created_at }}</span
-                >
-            </div>
-        </a>
+                    <span class="invitation__date">
+                        <i class="icon icon-clock"></i>
+                        {{ asigment.created_at }}</span
+                    >
+                </div>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -104,6 +116,10 @@ export default {
     .icon {
         font-size: 1.25rem;
     }
+}
+
+.invitations {
+    min-height: 45vh;
 }
 
 .invitation {
