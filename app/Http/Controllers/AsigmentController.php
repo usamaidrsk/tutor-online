@@ -103,13 +103,16 @@ class AsigmentController extends Controller
 
         // Store in disk all files uploaded by user one by one
         // and at the same time store file details in database
+
+        $folder = "attachments/{$asigment->id}";
+
         foreach (request()->file('files') as $file) {
             if (!$file->isValid()) {
                 continue;
             }
 
             // TODO: if the file is an image we should compress it
-            $filename = $file->store('attachments');
+            $filename = $file->store($folder);
             $path = "/storage/$filename";
 
             $asigment->files()->create([
