@@ -56,7 +56,7 @@ class Teacher extends Authenticatable
 
     public function getStarsAttribute()
     {
-        return $this->rates->avg('score');
+        return $this->rates->avg('score') ?? 0;
     }
 
     public function getScoresAttribute()
