@@ -129,6 +129,10 @@ main {
     align-items: center;
 }
 
+.navbar__wellcome {
+    white-space: nowrap;
+}
+
 .navbar__avatar {
     @include size(35px);
 
