@@ -122,6 +122,11 @@ class QuestionsController extends Controller
                 $rules += [
                     'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
                     'phone' => 'phone:AUTO,' . implode(',', $codes),
+                    'address.country' => 'required|numeric|exists:countries,id',
+                    'address.city' => 'required',
+                    'address.line' => 'required',
+                    'address.zip_code' => 'required',
+                    'address.state' => 'required',
                 ];
 
                 $messages += [

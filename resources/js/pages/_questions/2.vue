@@ -37,25 +37,40 @@
                     v-model="form.address.country"
                     label="país"
                     :options="countries"
+                    :error="errors.first('address.country')"
                 ></Select>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <Input v-model="form.address.city" label="cuidad" />
+                <Input
+                    v-model="form.address.city"
+                    label="cuidad"
+                    :error="errors.first('address.city')"
+                />
             </div>
         </div>
 
-        <Input v-model="form.address.line" label="dirección" textarea />
+        <Input
+            v-model="form.address.line"
+            label="dirección"
+            :error="errors.first('address.line')"
+            textarea
+        />
 
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <Input
                     v-model="form.address.zip_code"
                     label="código postal"
+                    :error="errors.first('address.zip_code')"
                     type="number"
                 />
             </div>
             <div class="col-xs-12 col-sm-6">
-                <Input v-model="form.address.state" label="estado/provincia" />
+                <Input
+                    v-model="form.address.state"
+                    :error="errors.first('address.state')"
+                    label="estado/provincia"
+                />
             </div>
         </div>
 
