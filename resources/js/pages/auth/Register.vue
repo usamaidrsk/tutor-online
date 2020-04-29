@@ -7,7 +7,7 @@
                 </h1>
                 <p>
                     <span>¿Ya eres miembro?</span>
-                    <a :href="route('login')">Iniciar sesión</a>
+                    <a class="link" :href="route('login')">Iniciar sesión</a>
                 </p>
             </header>
 
@@ -61,11 +61,14 @@
             <div class="margin-top--one">
                 <p for="terms" class="text--small">
                     <span>Al registrarte aceptas los</span>
-                    <a :href="route('terms')" target="_blank"
+                    <a class="link" :href="route('terms')" target="_blank"
                         >Términos y Condiciones</a
                     >
                     <span>y las</span>
-                    <a :href="route('privacy-policy')" target="_blank"
+                    <a
+                        class="link"
+                        :href="route('privacy-policy')"
+                        target="_blank"
                         >Políticas de Privacidad</a
                     >
                 </p>

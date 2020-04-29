@@ -14,7 +14,9 @@
             />
 
             <Button type="submit" :loading="loading" block>Confirmar</Button>
-            <a :href="route('password.request')" class="text--rigth text--small"
+            <a
+                :href="route('password.request')"
+                class="link text--rigth text--small"
                 >¿Olvidaste tu contraseña?</a
             >
         </div>

@@ -29,10 +29,7 @@ body {
 
 a {
     text-decoration: none;
-    color: color('primary');
-    font-weight: get('bold', $font-weights);
-
-    &:hover { color: color('primary', 700) }
+    color: inherit;
 }
 
 img {
@@ -105,6 +102,16 @@ h6 {
         width: 85%;
         padding: 0;
     }
+}
+
+/* ---------------------------------- Link ---------------------------------- */
+
+.link {
+    text-decoration: none;
+    color: color('primary');
+    font-weight: get('bold', $font-weights);
+
+    &:hover { color: color('primary', 700) }
 }
 
 /* ---------------------------------- Error --------------------------------- */

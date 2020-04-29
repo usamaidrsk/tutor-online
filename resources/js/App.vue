@@ -120,6 +120,7 @@ main {
 .navbar__logo {
     margin: 0;
     font-size: 1.75rem;
+    color: color('primary');
     text-transform: uppercase;
 }
 
