@@ -72,6 +72,10 @@
                                 <td>{{ asigment.category.name }}</td>
                             </tr>
                             <tr>
+                                <td>Archivos:</td>
+                                <td>{{ asigment.total_files }}</td>
+                            </tr>
+                            <tr>
                                 <td>Detalles:</td>
                                 <td>
                                     {{ asigment.details }}

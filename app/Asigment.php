@@ -9,10 +9,17 @@ class Asigment extends Model
 {
     public $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected $appends = ['total_files'];
+
     public function getCreatedAtAttribute()
     {
         $date = $this->attributes['created_at'];
         return Carbon::create($date)->isoFormat('D \d\e MMMM, YYYY');
+    }
+
+    public function getTotalFilesAttribute()
+    {
+        return $this->files->count();
     }
 
     public function category()
