@@ -121,6 +121,8 @@ h6 {
 
     > img {
         @include centered;
+        height: 100%;
+        width: auto;
     }
 }
 
