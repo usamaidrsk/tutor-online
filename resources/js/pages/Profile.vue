@@ -35,12 +35,7 @@
             </div>
         </div>
 
-        <div class="margin-top--one">
-            <h2 class="text--center">Tus puntajes</h2>
-            <Scores :scores="scores" />
-        </div>
-
-        <div class="invitations margin-top--three">
+        <div class="invitations margin-top--two">
             <h2 class="text--center margin-bottom--zero">
                 Invitaciones pendientes
             </h2>
@@ -51,7 +46,7 @@
                 Por los momentos no hay nada pendiente
             </h4>
 
-            <div v-else class="margin-top--three">
+            <div v-else class="margin-top--two">
                 <a
                     v-for="({ asigment }, index) in invitations"
                     :key="index"
@@ -90,6 +85,11 @@
                     </div>
                 </a>
             </div>
+        </div>
+
+        <div class="margin-top--one">
+            <h2 class="text--center">Tus puntajes</h2>
+            <Scores :scores="scores" />
         </div>
     </div>
 </template>
