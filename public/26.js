@@ -203,6 +203,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     old: Object,
@@ -424,7 +439,11 @@ var render = function() {
           { staticClass: "col-xs-12 col-sm-6" },
           [
             _c("Select", {
-              attrs: { label: "país", options: _vm.countries },
+              attrs: {
+                label: "país",
+                options: _vm.countries,
+                error: _vm.errors.first("address.country")
+              },
               model: {
                 value: _vm.form.address.country,
                 callback: function($$v) {
@@ -442,7 +461,10 @@ var render = function() {
           { staticClass: "col-xs-12 col-sm-6" },
           [
             _c("Input", {
-              attrs: { label: "cuidad" },
+              attrs: {
+                label: "cuidad",
+                error: _vm.errors.first("address.city")
+              },
               model: {
                 value: _vm.form.address.city,
                 callback: function($$v) {
@@ -457,7 +479,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("Input", {
-        attrs: { label: "dirección", textarea: "" },
+        attrs: {
+          label: "dirección",
+          error: _vm.errors.first("address.line"),
+          textarea: ""
+        },
         model: {
           value: _vm.form.address.line,
           callback: function($$v) {
@@ -473,7 +499,11 @@ var render = function() {
           { staticClass: "col-xs-12 col-sm-6" },
           [
             _c("Input", {
-              attrs: { label: "código postal", type: "number" },
+              attrs: {
+                label: "código postal",
+                error: _vm.errors.first("address.zip_code"),
+                type: "number"
+              },
               model: {
                 value: _vm.form.address.zip_code,
                 callback: function($$v) {
@@ -491,7 +521,10 @@ var render = function() {
           { staticClass: "col-xs-12 col-sm-6" },
           [
             _c("Input", {
-              attrs: { label: "estado/provincia" },
+              attrs: {
+                error: _vm.errors.first("address.state"),
+                label: "estado/provincia"
+              },
               model: {
                 value: _vm.form.address.state,
                 callback: function($$v) {

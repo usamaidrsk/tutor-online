@@ -105,6 +105,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['teacher', 'invitations'],
   data: function data(_ref) {
@@ -239,32 +245,21 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "margin-top--one" },
-      [
-        _c("h2", { staticClass: "text--center" }, [_vm._v("Tus puntajes")]),
-        _vm._v(" "),
-        _c("Scores", { attrs: { scores: _vm.scores } })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "invitations margin-top--three" },
-      [
-        _c("h2", { staticClass: "text--center margin-bottom--zero" }, [
-          _vm._v("\n            Invitaciones pendientes\n        ")
-        ]),
-        _vm._v(" "),
-        !_vm.invitations.length
-          ? _c("h4", { staticClass: "text--center text--gray text--light" }, [
-              _vm._v(
-                "\n            Por los momentos no hay nada pendiente\n        "
-              )
-            ])
-          : _vm._l(_vm.invitations, function(ref, index) {
+    _c("div", { staticClass: "invitations margin-top--two" }, [
+      _c("h2", { staticClass: "text--center margin-bottom--zero" }, [
+        _vm._v("\n            Invitaciones pendientes\n        ")
+      ]),
+      _vm._v(" "),
+      !_vm.invitations.length
+        ? _c("h4", { staticClass: "text--center text--gray text--light" }, [
+            _vm._v(
+              "\n            Por los momentos no hay nada pendiente\n        "
+            )
+          ])
+        : _c(
+            "div",
+            { staticClass: "margin-top--two" },
+            _vm._l(_vm.invitations, function(ref, index) {
               var asigment = ref.asigment
               return _c(
                 "a",
@@ -276,9 +271,9 @@ var render = function() {
                   _c("div", { staticClass: "invitation" }, [
                     _c("span", { staticClass: "invitaion__budget" }, [
                       _vm._v(
-                        "\n                    $" +
+                        "\n                        $" +
                           _vm._s(asigment.budget) +
-                          "\n                "
+                          "\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -296,13 +291,19 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("tr", [
+                        _c("td", [_vm._v("Archivos:")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(asigment.total_files))])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
                         _c("td", [_vm._v("Detalles:")]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                " +
                               _vm._s(asigment.details) +
-                              "\n                        "
+                              "\n                            "
                           )
                         ])
                       ])
@@ -311,15 +312,27 @@ var render = function() {
                     _c("span", { staticClass: "invitation__date" }, [
                       _c("i", { staticClass: "icon icon-clock" }),
                       _vm._v(
-                        "\n                    " + _vm._s(asigment.created_at)
+                        "\n                        " +
+                          _vm._s(asigment.created_at)
                       )
                     ])
                   ])
                 ]
               )
-            })
+            }),
+            0
+          )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "margin-top--one" },
+      [
+        _c("h2", { staticClass: "text--center" }, [_vm._v("Tus puntajes")]),
+        _vm._v(" "),
+        _c("Scores", { attrs: { scores: _vm.scores } })
       ],
-      2
+      1
     )
   ])
 }

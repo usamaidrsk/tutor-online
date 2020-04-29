@@ -189,14 +189,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "row" },
+              { staticClass: "row justify-content-center" },
               _vm._l(_vm.teachers, function(teacher, index) {
                 return _c(
                   "div",
                   {
                     key: index,
                     staticClass:
-                      "col-xs-12 col-sm-6 col-md-4 margin-bottom--three"
+                      "col-xs-6 col-sm-3 col-md-3 margin-bottom--three"
                   },
                   [
                     _c("TeacherCard", {

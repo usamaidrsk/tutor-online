@@ -147,6 +147,8 @@ class AsigmentController extends Controller
         foreach ($matched_teachers as $teacher) {
             $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
+
+        return $asigment;
     }
 
     public function update($id, $answer)
