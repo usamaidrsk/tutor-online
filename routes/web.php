@@ -30,6 +30,6 @@ Route::name('asigment.')->group(function () {
 
     Route::put('/{id}/{answer}', 'AsigmentController@update')
         ->middleware('auth')
-        ->where('answer', 'yes|no')
+        ->where('answer', '[0-1]')
         ->name('update');
 });

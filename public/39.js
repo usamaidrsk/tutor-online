@@ -237,7 +237,7 @@ var render = function() {
               attrs: { loading: _vm.loading, block: "" },
               on: {
                 click: function($event) {
-                  return _vm.handleAnswer("yes")
+                  return _vm.handleAnswer(1)
                 }
               }
             },
@@ -255,7 +255,7 @@ var render = function() {
               },
               on: {
                 click: function($event) {
-                  return _vm.handleAnswer("no")
+                  return _vm.handleAnswer(0)
                 }
               }
             },

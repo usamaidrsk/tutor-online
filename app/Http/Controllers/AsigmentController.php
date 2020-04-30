@@ -37,7 +37,7 @@ class AsigmentController extends Controller
 
         $avalible_teachers = Teacher::select('teachers.*')
             ->join('invitations', 'teachers.id', '=', 'teacher_id')
-            ->where([['asigment_id', '=', $id], ['status', '=', 'accepted']])
+            ->where([['asigment_id', $id], ['is_acepted', true]])
             ->get();
 
         return view()->component(
@@ -151,16 +151,20 @@ class AsigmentController extends Controller
         return $asigment;
     }
 
-    public function update($id, $answer)
+    public function update($id, int $answer)
     {
         $invitation = Teacher::findOrfail(auth()->user()->id)
             ->invitations()
-            ->where('asigment_id', '=', $id)
+            ->where('asigment_id', $id)
             ->first();
 
-        $status = $answer === 'yes' ? 'accepted' : 'denied';
-        $invitation->update(['status' => $status]);
+        if ($answer) {
+            $invitation->is_acepted = true;
+            $invitation->save();
+        } else {
+            $invitation->delete();
+        }
 
-        return $invitation;
+        return $answer;
     }
 }

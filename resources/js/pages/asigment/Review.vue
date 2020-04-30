@@ -33,7 +33,7 @@
             </div>
 
             <div class="margin-top--three">
-                <Button @click="handleAnswer('yes')" :loading="loading" block
+                <Button @click="handleAnswer(1)" :loading="loading" block
                     >Estoy interesado</Button
                 >
 
@@ -41,7 +41,7 @@
                     color="gray"
                     flat
                     block
-                    @click="handleAnswer('no')"
+                    @click="handleAnswer(0)"
                     :loading="loading"
                     >Descartar</Button
                 >

@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $invitations = $teacher
             ->invitations()
             ->with('asigment')
-            ->where('status', '=', 'pending')
+            ->where('is_acepted', false)
             ->orderBy('created_at', 'desc')
             ->get();
 
