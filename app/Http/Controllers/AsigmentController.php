@@ -158,6 +158,10 @@ class AsigmentController extends Controller
             ->where('asigment_id', $id)
             ->first();
 
+        if (!$invitation) {
+            return null;
+        }
+
         if ($answer) {
             $invitation->is_acepted = true;
             $invitation->save();

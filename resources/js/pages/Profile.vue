@@ -53,7 +53,7 @@
                     :href="route('asigment.review', asigment.id)"
                 >
                     <div class="invitation">
-                        <span class="invitaion__budget">
+                        <span class="invitation__budget">
                             ${{ asigment.budget }}
                         </span>
 
@@ -143,7 +143,7 @@ export default {
     border-radius: 10px;
 }
 
-.invitaion__budget {
+.invitation__budget {
     font-weight: get('regular', $font-weights);
     font-size: 2.25rem;
     margin-bottom: 2rem;
