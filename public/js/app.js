@@ -15742,11 +15742,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _ErrorBag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ErrorBag */ "./resources/js/ErrorBag.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./resources/js/components/index.js");
-/* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages */ "./resources/js/pages/index.js");
-/* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pages__WEBPACK_IMPORTED_MODULE_5__);
-
-
 
 
 
@@ -15763,6 +15758,30 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPO
 });
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$auth = JSON.parse(dataset.auth);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.route = route;
+
+var components = __webpack_require__("./resources/js/components lazy \\.vue$");
+
+components.keys().forEach(function (key) {
+  vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.')), function () {
+    return components(key);
+  });
+});
+
+var kebabCase = function kebabCase(string) {
+  return string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase();
+};
+
+var pages = __webpack_require__("./resources/js/pages lazy recursive \\.vue$");
+
+pages.keys().forEach(function (key) {
+  if (key.indexOf('_') > -1) return;
+  var filename = key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'));
+  var path = key.slice(key.indexOf('/') + 1, key.lastIndexOf('/'));
+  var name = (path ? path.replace(/\//g, '_') + '_' : '') + kebabCase(filename);
+  vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(name, function () {
+    return pages(key);
+  });
+});
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
 var Page = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(dataset.pageName.replace(/\./g, '_'));
 var props = JSON.parse(dataset.routeData) || {};
@@ -15861,29 +15880,6 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 };
 webpackAsyncContext.id = "./resources/js/components lazy \\.vue$";
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ "./resources/js/components/index.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/index.js ***!
-  \******************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var files = __webpack_require__("./resources/js/components lazy \\.vue$");
-
-files.keys().forEach(function (key) {
-  vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.')), function () {
-    return files(key);
-  });
-});
 
 /***/ }),
 
@@ -15994,33 +15990,6 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 };
 webpackAsyncContext.id = "./resources/js/pages lazy recursive \\.vue$";
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ "./resources/js/pages/index.js":
-/*!*************************************!*\
-  !*** ./resources/js/pages/index.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-
-var kebabCase = function kebabCase(string) {
-  return string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase();
-};
-
-var files = __webpack_require__("./resources/js/pages lazy recursive \\.vue$");
-
-files.keys().forEach(function (key) {
-  if (key.indexOf('_') > -1) return;
-  var filename = key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'));
-  var path = key.slice(key.indexOf('/') + 1, key.lastIndexOf('/'));
-  var name = (path ? path.replace(/\//g, '_') + '_' : '') + kebabCase(filename);
-  Vue.component(name, function () {
-    return files(key);
-  });
-});
 
 /***/ }),
 
