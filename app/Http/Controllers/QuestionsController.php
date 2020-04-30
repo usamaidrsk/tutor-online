@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Propaganistas\LaravelPhone\PhoneNumber;
 use DB;
-// use Image;
+use Image;
 
 class QuestionsController extends Controller
 {
@@ -189,15 +189,13 @@ class QuestionsController extends Controller
 
         // #3 | Resize and save user picture
 
-        // $path = "pictures/{$user->id}.jpg";
+        $path = "pictures/{$user->id}.jpg";
 
-        // Image::make($picture)
-        //     ->resize(216, 216)
-        //     ->save($path, 75);
+        Image::make($picture)
+            ->resize(216, 216)
+            ->save(storage_path("app/public/$path"), 75);
 
-        // $user->picture = "/storage/$path";
-
-        $user->picture = "/storage/{$picture->store('pictures')}";
+        $user->picture = "/storage/$path";
 
         $user->answered_questions = true;
         $user->save();
