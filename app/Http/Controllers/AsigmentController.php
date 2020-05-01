@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Asigment;
 use App\Teacher;
 use DB;
@@ -61,35 +62,7 @@ class AsigmentController extends Controller
 
     public function store()
     {
-        request()->validate(
-            [
-                'email' => 'required|email',
-                'budget' => 'required|numeric|min:' . $this::MIN_BUDGET,
-                'details' => 'required|max:300|min:25',
-                'level_id' => 'required|exists:levels,id',
-                'category_id' => 'required|exists:categories,id',
-                'files' => 'required|array|min:1|max:' . $this::MAX_FILE_NUM,
-                'files.*' =>
-                    'mimes:' .
-                    implode(',', $this::ALLOWED_FILE_EXTENSIONS) .
-                    '|max:' .
-                    $this::MAX_FILE_SIZE / 1024,
-            ],
-            [
-                'budget.min' =>
-                    'El presupuesto mínimo es de $' . $this::MIN_BUDGET,
-                'level_id.required' => 'Debes elegir el nivel de educación.',
-                'category_id.required' => 'Debes elegir una materia.',
-                'files.required' =>
-                    'Debes adjuntar al menos un archivo relacionado.',
-                'files.min' =>
-                    'Debes adjuntar al menos un archivo relacionado.',
-                'files.max' =>
-                    'No puedes adjuntar mas de ' .
-                    $this::MAX_FILE_NUM .
-                    'archivos.',
-            ]
-        );
+        $this->validator()->validate();
 
         $asigment = Asigment::create(
             request()->only([
@@ -170,5 +143,37 @@ class AsigmentController extends Controller
         }
 
         return $answer;
+    }
+
+    public function validator()
+    {
+        $rules = [
+            'email' => 'required|email',
+            'budget' => 'required|numeric|min:' . $this::MIN_BUDGET,
+            'details' => 'required|max:300|min:25',
+            'level_id' => 'required|exists:levels,id',
+            'category_id' => 'required|exists:categories,id',
+            'files' => 'required|array|min:1|max:' . $this::MAX_FILE_NUM,
+            'files.*' =>
+                'mimes:' .
+                implode(',', $this::ALLOWED_FILE_EXTENSIONS) .
+                '|max:' .
+                $this::MAX_FILE_SIZE / 1024,
+        ];
+
+        $messages = [
+            'budget.min' => 'El presupuesto mínimo es de $' . $this::MIN_BUDGET,
+            'level_id.required' => 'Debes elegir el nivel de educación.',
+            'category_id.required' => 'Debes elegir una materia.',
+            'files.required' =>
+                'Debes adjuntar al menos un archivo relacionado.',
+            'files.min' => 'Debes adjuntar al menos un archivo relacionado.',
+            'files.max' =>
+                'No puedes adjuntar mas de ' .
+                $this::MAX_FILE_NUM .
+                'archivos.',
+        ];
+
+        return Validator::make(request()->all(), $rules, $messages);
     }
 }
