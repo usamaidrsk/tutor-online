@@ -15913,6 +15913,11 @@ var map = {
 		2,
 		26
 	],
+	"./Rate.vue": [
+		"./resources/js/pages/Rate.vue",
+		21,
+		3
+	],
 	"./Terms.vue": [
 		"./resources/js/pages/Terms.vue",
 		21,

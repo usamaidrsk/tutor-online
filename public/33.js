@@ -81,7 +81,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.stars__star[data-v-535e2486] {\n  color: #d0d5d7;\n  font-size: 1.25rem;\n  cursor: pointer;\n}\n.stars--is-readonly .stars__star[data-v-535e2486] {\n  cursor: inherit;\n}\n.star--is-active[data-v-535e2486] {\n  color: #4dccbd;\n}", ""]);
+exports.push([module.i, "/* --------------------------------- Colors --------------------------------- */\n/* ------------------------------- Typography ------------------------------- */\n/* -------------------------------- Elevation ------------------------------- */\n/* -------------------------------------------------------------------------- */\n/*                                 Components                                 */\n/* -------------------------------------------------------------------------- */\n/* --------------------------------- Button --------------------------------- */\n/* ---------------------------------- Input --------------------------------- */\n/* -------------------------------- Checkbox -------------------------------- */\n/* ---------------------------------- Radio --------------------------------- */\n/* --------------------------------- Select --------------------------------- */\n.stars__star[data-v-535e2486] {\n  color: #d0d5d7;\n  font-size: 1.5rem;\n  cursor: pointer;\n}\n.stars:not(.stars--is-readonly) .stars__star[data-v-535e2486]::before {\n  transition: transform 0.2s ease-out;\n}\n.stars:not(.stars--is-readonly) .stars__star[data-v-535e2486]:hover::before {\n  transform: scale(1.5) !important;\n}\n.stars--is-readonly .stars__star[data-v-535e2486] {\n  font-size: 1.25rem;\n  cursor: inherit;\n}\n.star--is-active[data-v-535e2486] {\n  color: #4dccbd;\n}", ""]);
 
 // exports
 
@@ -141,7 +141,11 @@ var render = function() {
         key: index,
         staticClass: "stars__star icon icon-star",
         class: { "star--is-active": index <= _vm.value },
-        attrs: { "data-start": index }
+        on: {
+          click: function($event) {
+            return _vm.$emit("input", index)
+          }
+        }
       })
     }),
     0
