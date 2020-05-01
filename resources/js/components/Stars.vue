@@ -5,7 +5,7 @@
             :key="index"
             class="stars__star icon icon-star"
             :class="{ 'star--is-active': index <= value }"
-            :data-start="index"
+            @click="$emit('input', index)"
         ></i>
     </div>
 </template>
@@ -47,12 +47,22 @@ export default {
 <style lang="scss" scoped>
 .stars__star {
     color: color('gray', 50);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     cursor: pointer;
 
-    .stars--is-readonly & {
-        cursor: inherit;
+    .stars:not(.stars--is-readonly) & {
+        &::before {
+            transition: transform 0.2s ease-out;
+        }
+        &:hover::before {
+            transform: scale(1.5) !important;
+        }
     }
+}
+
+.stars--is-readonly .stars__star {
+    font-size: 1.25rem;
+    cursor: inherit;
 }
 
 .star--is-active {

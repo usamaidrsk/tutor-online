@@ -33,3 +33,10 @@ Route::name('asigment.')->group(function () {
         ->where('answer', '[0-1]')
         ->name('update');
 });
+
+Route::name('rate.')
+    ->prefix('rate/{id}')
+    ->group(function () {
+        Route::get('/', 'RatesController@index')->name('index');
+        Route::post('/', 'RatesController@create')->name('create');
+    });
