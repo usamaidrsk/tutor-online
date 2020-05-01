@@ -66,24 +66,11 @@ class Teacher extends Authenticatable
         $rates = $this->rates;
 
         foreach ($criterias as $key) {
-            $rates_on_this_criteria = $rates->filter(function ($row) use (
-                $key
-            ) {
+            $criteria_scores = $rates->filter(function ($row) use ($key) {
                 return $row->criteria_id === $key->id;
             });
 
-            $count = $rates_on_this_criteria->count();
-
-            $sum = $rates_on_this_criteria
-                ->reduce(function ($array, $item) {
-                    $array->push($item->score);
-                    return $array;
-                }, collect())
-                ->sum();
-
-            $avg = $count ? $sum / $count : 0;
-
-            $scores[$key->name] = $avg;
+            $scores[$key->name] = $criteria_scores->average('score') ?? 0;
         }
 
         return $scores;
