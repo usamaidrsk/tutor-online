@@ -53,10 +53,22 @@ class AsigmentController extends Controller
 
     public function review($id)
     {
+        $asigment = Asigment::with('files')->findOrfail($id);
+
+        // Abort if the user is trying to see an asigmente that he
+        // was'nt invited to
+        abort_unless(
+            $asigment
+                ->invitations()
+                ->where('teacher_id', auth()->id())
+                ->exists(),
+            403
+        );
+
         return view()->component(
             'asigment.review',
             ['title' => 'Invitación'],
-            ['asigment' => Asigment::with('files')->findOrfail($id)]
+            ['asigment' => $asigment]
         );
     }
 

@@ -36,4 +36,9 @@ class Asigment extends Model
     {
         return $this->hasMany(File::class);
     }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
 }
