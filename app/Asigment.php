@@ -20,6 +20,12 @@ class Asigment extends Model
             $date->isoFormat('h:mm a');
     }
 
+    public function getCreatedAtAttribute()
+    {
+        $date = Carbon::parse($this->attributes['created_at']);
+        return $date->isoFormat('D \d\e MMMM');
+    }
+
     public function getTotalFilesAttribute()
     {
         return $this->files->count();
