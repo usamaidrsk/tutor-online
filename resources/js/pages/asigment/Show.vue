@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td>Fecha:</td>
-                    <td>{{ asigment.created_at }}</td>
+                    <td>{{ asigment.date }}</td>
                 </tr>
                 <tr>
                     <td>Detalles:</td>

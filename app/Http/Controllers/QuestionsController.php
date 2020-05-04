@@ -123,10 +123,10 @@ class QuestionsController extends Controller
                     'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
                     'phone' => 'phone:AUTO,' . implode(',', $codes),
                     'address.country' => 'required|numeric|exists:countries,id',
-                    'address.city' => 'required',
-                    'address.line' => 'required',
-                    'address.zip_code' => 'required',
-                    'address.state' => 'required',
+                    'address.city' => 'required|max:50',
+                    'address.line' => 'required|max:100',
+                    'address.zip_code' => 'required|max:10',
+                    'address.state' => 'required|max:50',
                 ];
 
                 $messages += [
@@ -190,9 +190,8 @@ class QuestionsController extends Controller
         // #3 | Resize and save user picture
 
         $path = "pictures/{$user->id}.jpg";
-
         Image::make($picture)
-            ->resize(216, 216)
+            ->fit(216)
             ->save(storage_path("app/public/$path"), 75);
 
         $user->picture = "/storage/$path";

@@ -22,7 +22,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // functional: true,
   props: {
@@ -102,24 +101,20 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "scores row" },
-    [
-      _c("pre", [_vm._v(_vm._s(_vm.scores))]),
-      _vm._v(" "),
-      _vm._l(_vm.scores, function(value, key, index) {
-        return _c(
-          "div",
-          { key: index, staticClass: "col-xs-6 col-sm-4 scores__item" },
-          [
-            _c("span", { staticClass: "item__value" }, [
-              _vm._v(_vm._s(value) + " ")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "item__label" }, [_vm._v(_vm._s(key))])
-          ]
-        )
-      })
-    ],
-    2
+    _vm._l(_vm.scores, function(value, key, index) {
+      return _c(
+        "div",
+        { key: index, staticClass: "col-xs-6 col-sm-4 scores__item" },
+        [
+          _c("span", { staticClass: "item__value" }, [
+            _vm._v(_vm._s(value) + " ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "item__label" }, [_vm._v(_vm._s(key))])
+        ]
+      )
+    }),
+    0
   )
 }
 var staticRenderFns = []

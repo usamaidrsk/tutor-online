@@ -64,6 +64,34 @@
         </div>
 
         <div class="margin-top--two">
+            <h4 class="margin-bottom--one">
+                ¿Cuando te gustaría tener la clase?
+            </h4>
+
+            <span v-if="errors.has('date')" class="error" role="alert">
+                {{ errors.first('date') }}
+            </span>
+
+            <div class="row">
+                <Input
+                    v-model="form.date"
+                    class="col-xs-6 col-md-2"
+                    label="Fecha"
+                    required
+                    type="date"
+                />
+
+                <Input
+                    v-model="form.time"
+                    class="col-xs-6 col-md-1"
+                    label="Hora"
+                    required
+                    type="time"
+                />
+            </div>
+        </div>
+
+        <div class="margin-top--two">
             <h4 class="margin-bottom--halve">Adjuntar archivos</h4>
             <table class="margin-bottom--two">
                 <tr>
@@ -153,14 +181,13 @@
 
 <script>
 export default {
-    props: {
-        levels: { type: Array, required: true },
-        categories: { type: Array, required: true },
-
-        ALLOWED_FILE_EXTENSIONS: Array,
-        MAX_FILE_SIZE: Number,
-        MAX_FILE_NUM: Number,
-    },
+    props: [
+        'levels',
+        'categories',
+        'ALLOWED_FILE_EXTENSIONS',
+        'MAX_FILE_SIZE',
+        'MAX_FILE_NUM',
+    ],
 
     data: () => ({
         form: {
@@ -168,6 +195,8 @@ export default {
             // category_id: undefined,
             details: null,
             email: '',
+            date: null,
+            time: null,
             budget: 5,
         },
 
@@ -212,7 +241,15 @@ export default {
             const { form } = this
             const data = new FormData()
 
+            const date = new Date(form.date)
+            const time = form.time
+            const [hours, minutes] = time.split(':').map(Number)
+
+            date.setDate(date.getDate() + 1)
+            date.setHours(hours, minutes, 0, 0)
+
             Object.keys(form).forEach(key => data.append(key, form[key]))
+            data.set('date', date.toISOString())
 
             this.files.forEach((file, index) =>
                 data.append(`files[${index}]`, file)
@@ -221,10 +258,11 @@ export default {
             try {
                 const url = route('asigment.store')
                 const response = await this.$http.post(url, data)
-                const { id } = response.data
+                const id = response.data
 
                 window.location.href = route('asigment.show', id)
             } catch (error) {
+                console.log(error)
                 if (error.response) {
                     console.error(error.response)
                     window.scrollTo({ top: 0, behavior: 'smooth' })

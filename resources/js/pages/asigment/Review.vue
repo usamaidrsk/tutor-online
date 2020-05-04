@@ -14,7 +14,7 @@
                 <span class="budget">${{ asigment.budget }}</span>
                 <div class="time">
                     <i class="icon icon-clock"></i>
-                    <span>{{ asigment.created_at }}</span>
+                    <span>{{ asigment.date }}</span>
                 </div>
             </div>
 
@@ -80,8 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .time {
-    color: color('gray');
-    font-size: get('large', $font-sizes);
+    font-size: 1.5rem;
 }
 
 .budget {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use App\Asigment;
 use App\Teacher;
 use DB;
@@ -76,15 +77,18 @@ class AsigmentController extends Controller
     {
         $this->validator()->validate();
 
-        $asigment = Asigment::create(
-            request()->only([
-                'email',
-                'budget',
-                'details',
-                'level_id',
-                'category_id',
-            ])
-        );
+        $input = request()->only([
+            'email',
+            'budget',
+            'details',
+            'date',
+            'level_id',
+            'category_id',
+        ]);
+
+        $input['date'] = Carbon::parse($input['date']);
+
+        $asigment = Asigment::create($input);
 
         // Store in disk all files uploaded by user one by one
         // and at the same time store file details in database
@@ -133,7 +137,7 @@ class AsigmentController extends Controller
             $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
 
-        return $asigment;
+        return $asigment->id;
     }
 
     public function update($id, int $answer)
@@ -165,6 +169,7 @@ class AsigmentController extends Controller
             'details' => 'required|max:300|min:25',
             'level_id' => 'required|exists:levels,id',
             'category_id' => 'required|exists:categories,id',
+            'date' => 'required|date|after:today',
             'files' => 'required|array|min:1|max:' . $this::MAX_FILE_NUM,
             'files.*' =>
                 'mimes:' .

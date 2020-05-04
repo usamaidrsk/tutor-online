@@ -13,6 +13,7 @@ class CreateAsigmentsTable extends Migration
             $table->string('email', 50);
             $table->string('details', 300);
             $table->decimal('budget', 8, 2);
+            $table->timestamp('date');
             $table
                 ->tinyInteger('level_id')
                 ->unsigned()

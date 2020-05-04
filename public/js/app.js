@@ -15812,53 +15812,53 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		21,
-		45
+		22,
+		47
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		21,
-		28
+		22,
+		29
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		21,
-		29
+		22,
+		30
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		21,
-		30
+		22,
+		31
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		21,
-		31
+		22,
+		32
 	],
 	"./Scores.vue": [
 		"./resources/js/components/Scores.vue",
-		21,
-		32
+		22,
+		33
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		21,
-		27
+		22,
+		28
 	],
 	"./Stars.vue": [
 		"./resources/js/components/Stars.vue",
-		21,
-		33
+		22,
+		34
 	],
 	"./TeacherCard.vue": [
 		"./resources/js/components/TeacherCard.vue",
-		21,
-		34
+		22,
+		35
 	],
 	"./TeacherModal.vue": [
 		"./resources/js/components/TeacherModal.vue",
-		21,
-		35
+		22,
+		36
 	]
 };
 function webpackAsyncContext(req) {
@@ -15893,35 +15893,35 @@ module.exports = webpackAsyncContext;
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		21,
-		36
+		22,
+		37
 	],
 	"./PrivacyPolicy.vue": [
 		"./resources/js/pages/PrivacyPolicy.vue",
-		21,
-		46
+		22,
+		48
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		21,
-		37
+		22,
+		38
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		21,
+		22,
 		1,
 		2,
-		26
+		27
 	],
 	"./Rate.vue": [
 		"./resources/js/pages/Rate.vue",
-		21,
-		3
+		22,
+		39
 	],
 	"./Terms.vue": [
 		"./resources/js/pages/Terms.vue",
-		21,
-		47
+		22,
+		49
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -15929,51 +15929,51 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		24
+		25
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		21,
+		22,
 		1
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		21,
-		38
+		22,
+		40
 	],
 	"./asigment/Review.vue": [
 		"./resources/js/pages/asigment/Review.vue",
-		21,
-		39
+		22,
+		41
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		21,
-		40
+		22,
+		42
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		21,
-		41
+		22,
+		43
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		21,
-		42
+		22,
+		44
 	],
 	"./auth/passwords/Confirm.vue": [
 		"./resources/js/pages/auth/passwords/Confirm.vue",
-		21,
-		43
+		22,
+		45
 	],
 	"./auth/passwords/Email.vue": [
 		"./resources/js/pages/auth/passwords/Email.vue",
-		25
+		26
 	],
 	"./auth/passwords/Reset.vue": [
 		"./resources/js/pages/auth/passwords/Reset.vue",
-		21,
-		44
+		22,
+		46
 	]
 };
 function webpackAsyncContext(req) {

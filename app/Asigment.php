@@ -11,10 +11,13 @@ class Asigment extends Model
 
     protected $appends = ['total_files'];
 
-    public function getCreatedAtAttribute()
+    public function getDateAttribute()
     {
-        $date = $this->attributes['created_at'];
-        return Carbon::create($date)->isoFormat('D \d\e MMMM, YYYY');
+        $date = Carbon::create($this->attributes['date']);
+
+        return $date->isoFormat('D \d\e MMMM') .
+            ', a las ' .
+            $date->isoFormat('h:mm a');
     }
 
     public function getTotalFilesAttribute()
