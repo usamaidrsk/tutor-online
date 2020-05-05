@@ -12,6 +12,12 @@ Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
     'privacy-policy'
 );
 
+Route::get('/room/{id}', 'RoomController@index')->name('room');
+
+Route::put('invitations/{id}/{answer}', 'InvitationController@update')
+    ->name('invitation.update')
+    ->where('answer', '[0-1]');
+
 Route::name('questions')
     ->prefix('questions/{step}')
     ->group(function () {
@@ -25,13 +31,8 @@ Route::name('asigment.')->group(function () {
         ->middleware('auth')
         ->name('review');
     Route::get('{id}', 'AsigmentController@show')->name('show');
-
     Route::post('/new', 'AsigmentController@store')->name('store');
-
-    Route::put('/{id}/{answer}', 'AsigmentController@update')
-        ->middleware('auth')
-        ->where('answer', '[0-1]')
-        ->name('update');
+    Route::put('/{id}', 'AsigmentController@update')->name('update');
 });
 
 Route::name('rate.')

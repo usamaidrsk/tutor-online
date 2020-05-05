@@ -24,7 +24,12 @@
                     :scores="teacher.scores || {}"
                 />
 
-                <Button class="modal__button" block>Contratar</Button>
+                <Button
+                    class="modal__button"
+                    @click="$emit('click', $event)"
+                    block
+                    >Contratar</Button
+                >
             </div>
         </div>
 

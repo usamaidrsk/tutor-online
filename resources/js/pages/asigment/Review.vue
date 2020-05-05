@@ -52,7 +52,7 @@
 
 <script>
 export default {
-    props: ['asigment'],
+    props: ['asigment', 'invitation'],
 
     data: () => ({ loading: false }),
 
@@ -63,8 +63,8 @@ export default {
             this.loading = true
 
             try {
-                const { id } = this.asigment
-                const url = route('asigment.update', { id, answer })
+                const { id } = this.invitation
+                const url = route('invitation.update', { id, answer })
                 await this.$http.put(url)
 
                 window.location.href = route('profile')

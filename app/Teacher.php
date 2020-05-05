@@ -70,7 +70,9 @@ class Teacher extends Authenticatable
                 return $row->criteria_id === $key->id;
             });
 
-            $scores[$key->name] = $criteria_scores->average('score') ?? 0;
+            $average = $criteria_scores->average('score') ?? 0;
+
+            $scores[$key->name] = number_format($average, 1);
         }
 
         return $scores;

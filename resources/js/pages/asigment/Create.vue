@@ -75,7 +75,7 @@
             <div class="row">
                 <Input
                     v-model="form.date"
-                    class="col-xs-6 col-md-2"
+                    class="col-xs-6 col-md-3"
                     label="Fecha"
                     required
                     type="date"
@@ -83,7 +83,7 @@
 
                 <Input
                     v-model="form.time"
-                    class="col-xs-6 col-md-1"
+                    class="col-xs-6 col-md-2"
                     label="Hora"
                     required
                     type="time"
@@ -145,7 +145,7 @@
             </div>
         </div>
 
-        <footer class="margin-top--three">
+        <footer class="col-xs-11 col-sm-6 margin-top--three">
             <h3>Presupuesto</h3>
 
             <span class="error" v-if="errors.has('budget')" role="alet">
@@ -305,8 +305,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
+form,
+footer {
     margin: 0 auto;
+}
+
+form {
     @include breakpoint('md') {
         width: 85%;
     }
@@ -347,18 +351,6 @@ form {
 
 .box__label {
     cursor: pointer;
-}
-
-footer {
-    margin: 0 auto;
-
-    @include breakpoint('md') {
-        width: 90%;
-    }
-
-    @include breakpoint('lg') {
-        width: 50%;
-    }
 }
 
 .budget {

@@ -18,6 +18,10 @@ class AsigmentController extends Controller
 
     public function create()
     {
+        if (auth()->check()) {
+            return redirect('profile');
+        }
+
         return view()->component(
             'asigment.create',
             ['title' => 'Nueva propuesta'],
@@ -37,6 +41,10 @@ class AsigmentController extends Controller
             $id
         );
 
+        if ($asigment->room) {
+            return redirect()->route('room', $asigment->id);
+        }
+
         $avalible_teachers = Teacher::select('teachers.*')
             ->join('invitations', 'teachers.id', '=', 'teacher_id')
             ->where([['asigment_id', $id], ['is_acepted', true]])
@@ -55,21 +63,20 @@ class AsigmentController extends Controller
     public function review($id)
     {
         $asigment = Asigment::with('files')->findOrfail($id);
+        $invitation = $asigment
+            ->invitations()
+            ->where('teacher_id', auth()->id())
+            ->limit(1)
+            ->first();
 
         // Abort if the user is trying to see an asigmente that he
         // was'nt invited to
-        abort_unless(
-            $asigment
-                ->invitations()
-                ->where('teacher_id', auth()->id())
-                ->exists(),
-            403
-        );
+        abort_unless($invitation->count(), 403);
 
         return view()->component(
             'asigment.review',
             ['title' => 'Invitación'],
-            ['asigment' => $asigment]
+            ['asigment' => $asigment, 'invitation' => $invitation]
         );
     }
 
@@ -140,25 +147,14 @@ class AsigmentController extends Controller
         return $asigment->id;
     }
 
-    public function update($id, int $answer)
+    public function update($id)
     {
-        $invitation = Teacher::findOrfail(auth()->user()->id)
-            ->invitations()
-            ->where('asigment_id', $id)
-            ->first();
+        $asigment = Asigment::findOrFail($id);
+        $teacher = Teacher::findOrFail(request()->input('teacher_id'));
 
-        if (!$invitation) {
-            return null;
-        }
+        $asigment->room()->create(['teacher_id' => $teacher->id]);
 
-        if ($answer) {
-            $invitation->is_acepted = true;
-            $invitation->save();
-        } else {
-            $invitation->delete();
-        }
-
-        return $answer;
+        return $asigment->id;
     }
 
     public function validator()

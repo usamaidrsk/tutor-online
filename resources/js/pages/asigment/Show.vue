@@ -95,6 +95,8 @@ export default {
     }),
 
     methods: {
+            // window.location.href = route('payment')
+
         showModal(index) {
             this.currentTeacher = this.teachers[index]
             this.isModalVisible = true
