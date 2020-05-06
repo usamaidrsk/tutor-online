@@ -14,6 +14,7 @@ class ErrorBag {
     has(key) {
         return this.keys.indexOf(key) > -1
     }
+
     first(key) {
         return this.errors[key] ? this.errors[key][0] : undefined
     }

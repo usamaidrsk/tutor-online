@@ -14,8 +14,12 @@ class ProfileController extends Controller
 
     public function index()
     {
+        if (!auth()->user()->answered_questions) {
+            return redirect()->route('questions', 1);
+        }
+
         $id = auth()->user()->id;
-        $teacher = Teacher::with('address')->findOrFail($id);
+        $teacher = Teacher::with('address', 'schedule')->findOrFail($id);
 
         $invitations = $teacher
             ->invitations()

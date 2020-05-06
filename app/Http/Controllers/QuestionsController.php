@@ -11,7 +11,7 @@ class QuestionsController extends Controller
 {
     const MAX_PICTURE_SIZE = 100 * 1024; // 100 KB
     const ALLOWED_PICTURE_EXTENSIONS = ['png', 'jpg', 'jpeg'];
-    const TOTAL_STEPS = 3;
+    const TOTAL_STEPS = 4;
 
     public function __construct()
     {
@@ -68,6 +68,10 @@ class QuestionsController extends Controller
                 break;
 
             case 3:
+                $props += [];
+                break;
+
+            case 4:
                 $props += [
                     'MAX_PICTURE_SIZE' => $this::MAX_PICTURE_SIZE,
                     'ALLOWED_PICTURE_EXTENSIONS' =>
@@ -137,6 +141,10 @@ class QuestionsController extends Controller
                 break;
 
             case 3:
+                $rules = ['schedule' => 'required'];
+                break;
+
+            case 4:
                 $rules = [
                     'picture' =>
                         'required|image|mimes:' .
@@ -162,7 +170,7 @@ class QuestionsController extends Controller
 
         $user = auth()->user();
         $answers = session()->get('answers');
-        $input = array_merge($answers[0], $answers[1]);
+        $input = array_merge($answers[0], $answers[1], $answers[2]);
         $picture = request()->file('picture');
 
         // #1 | Store general information
@@ -187,7 +195,26 @@ class QuestionsController extends Controller
             'country_id' => $address['country'],
         ]);
 
-        // #3 | Resize and save user picture
+        // #3 | Parse and store teacher's schedule
+
+        $schedule = [];
+
+        foreach ($input['schedule'] as $key => $value) {
+            if (count($value)) {
+                foreach ($value as $range) {
+                    [$start, $end] = $range;
+                    $schedule[] = [
+                        'start' => "$start:00:00",
+                        'end' => "$end:00:00",
+                        'day_of_week' => $key,
+                    ];
+                }
+            }
+        }
+
+        $user->schedule()->createMany($schedule);
+
+        // #4 | Resize and save user picture
 
         $path = "pictures/{$user->id}.jpg";
         Image::make($picture)

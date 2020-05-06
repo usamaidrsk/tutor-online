@@ -12,17 +12,31 @@ Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
     'privacy-policy'
 );
 
+Route::get('/payment/{id}', 'PaymentController@index')->name('payment');
+
 Route::get('/room/{id}', 'RoomController@index')->name('room');
 
 Route::put('invitations/{id}/{answer}', 'InvitationController@update')
     ->name('invitation.update')
     ->where('answer', '[0-1]');
 
+Route::name('teacher.')
+    ->prefix('teacher/{id}')
+    ->group(function () {
+        Route::put('schedule', 'TeachersController@update')->name('schedule');
+    });
+
 Route::name('questions')
     ->prefix('questions/{step}')
     ->group(function () {
-        Route::get('/', 'QuestionsController@index')->where('step', '[1,2,3]');
-        Route::post('/', 'QuestionsController@store')->where('step', '[1,2,3]');
+        Route::get('/', 'QuestionsController@index')->where(
+            'step',
+            '[1,2,3,4]'
+        );
+        Route::post('/', 'QuestionsController@store')->where(
+            'step',
+            '[1,2,3,4]'
+        );
     });
 
 Route::name('asigment.')->group(function () {

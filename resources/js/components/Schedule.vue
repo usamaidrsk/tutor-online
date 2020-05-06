@@ -16,7 +16,8 @@
                     <label>
                         <input
                             type="checkbox"
-                            @change="handleCheckboxChange($event, j, hour)"
+                            @click="handleCheckboxChange($event, j + 1, hour)"
+                            :checked="isChecked(j + 1, hour)"
                         />
                         <span></span>
                     </label>
@@ -35,20 +36,9 @@ export default {
         readonly: Boolean,
     },
 
-    data: () => ({}),
-
     computed: {
         hours: () => range(5, 12 + 5),
-
-        weekdays: () => [
-            'Domingo',
-            'Lunes',
-            'Martes',
-            'Miercoles',
-            'Jueves',
-            'Viernes',
-            'Sabado',
-        ],
+        weekdays: () => ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
     },
 
     methods: {
@@ -58,6 +48,11 @@ export default {
         },
 
         handleCheckboxChange(e, day, hour) {
+            if (this.readonly) {
+                e.preventDefault()
+                return
+            }
+
             const value = { ...this.value }
             const isChecked = e.target.checked
 
@@ -69,6 +64,7 @@ export default {
                 : this.remove(ranges, start, end)
 
             value[day] = ranges
+
             this.$emit('input', value)
         },
 
@@ -125,7 +121,9 @@ export default {
         },
 
         isChecked(day, hour) {
-            return false
+            const ranges = this.value[day]
+            if (!ranges || !ranges.length) return false
+            return !!ranges.find(([start, end]) => start <= hour && hour < end)
         },
     },
 }
@@ -142,6 +140,11 @@ table {
 
 thead {
     border-bottom: $border-width solid $border-color;
+
+    th {
+        @include ellipsis;
+        text-transform: uppercase;
+    }
 
     th:first-child {
         text-align: right;

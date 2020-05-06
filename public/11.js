@@ -43,6 +43,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     teacher: {
@@ -198,7 +203,15 @@ var render = function() {
             _vm._v(" "),
             _c(
               "Button",
-              { staticClass: "modal__button", attrs: { block: "" } },
+              {
+                staticClass: "modal__button",
+                attrs: { block: "" },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("click", $event)
+                  }
+                }
+              },
               [_vm._v("Contratar")]
             )
           ],

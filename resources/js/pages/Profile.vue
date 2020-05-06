@@ -87,7 +87,36 @@
             </div>
         </div>
 
-        <div class="margin-top--one">
+        <div class="margin-top--two">
+            <div class="margin-bottom--one text--center">
+                <h2 class="margin-bottom--one">Tu horario</h2>
+                <p>
+                    Estas son las horas que tienes disponibles para dar classes,
+                    puedes cambiarlas en cualquier momento.
+                </p>
+
+                <Button
+                    class="margin-top--two"
+                    @click="
+                        canEditSchedule
+                            ? saveSchedule()
+                            : (canEditSchedule = true)
+                    "
+                    :outline="!canEditSchedule"
+                    :loading="loading"
+                    >{{ canEditSchedule ? 'Guardar' : 'Editar' }}</Button
+                >
+
+                <span v-if="success" class="success" role="alert"
+                    >Cambios guardados correctamente.</span
+                >
+                <span v-if="error" class="error" role="alert">{{ error }}</span>
+            </div>
+
+            <Schedule v-model="editableSchedule" :readonly="!canEditSchedule" />
+        </div>
+
+        <div class="margin-top--three">
             <h2 class="text--center">Tus puntajes</h2>
             <Scores :scores="scores" />
         </div>
@@ -98,7 +127,57 @@
 export default {
     props: ['teacher', 'invitations'],
 
-    data: ({ teacher }) => ({ ...teacher }),
+    data: ({ teacher }) => ({
+        ...teacher,
+        editableSchedule: null,
+        canEditSchedule: false,
+
+        loading: false,
+        success: false,
+        error: null,
+    }),
+
+    created() {
+        const { schedule } = this
+        const timeToNumber = time => Number(time.slice(0, time.indexOf(':')))
+
+        const grouped = schedule.reduce((array, row) => {
+            const { day_of_week, start, end } = row
+            array[day_of_week] = array[day_of_week] || []
+            const range = [start, end].map(timeToNumber)
+            array[day_of_week].push(range)
+            return array
+        }, {})
+
+        this.editableSchedule = grouped
+    },
+
+    methods: {
+        async saveSchedule() {
+            if (this.loading) return
+
+            this.loading = true
+            this.success = false
+            this.error = null
+
+            try {
+                const { id } = this
+                const url = route('teacher.schedule', id)
+                const data = { schedule: this.editableSchedule }
+                await this.$http.put(url, data)
+
+                this.success = true
+                this.canEditSchedule = false
+                setTimeout(() => (this.success = false), 3000)
+            } catch (error) {
+                console.error(error.response || error)
+                this.error =
+                    'Hubo un error al guardar los cambios, intentelo mas tarde.'
+            } finally {
+                this.loading = false
+            }
+        },
+    },
 }
 </script>
 

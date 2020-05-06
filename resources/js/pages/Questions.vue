@@ -14,12 +14,14 @@
 import Step1 from './_questions/1'
 import Step2 from './_questions/2'
 import Step3 from './_questions/3'
+import Step4 from './_questions/4'
 
 export default {
     components: {
         'step-1': Step1,
         'step-2': Step2,
         'step-3': Step3,
+        'step-4': Step4,
     },
 
     props: {

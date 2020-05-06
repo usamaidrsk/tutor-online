@@ -71,6 +71,7 @@
         <TeacherModal
             :teacher="currentTeacher"
             :is-visible="isModalVisible"
+            @click="handleModalClick"
             @close="isModalVisible = false"
         />
     </div>
@@ -78,16 +79,7 @@
 
 <script>
 export default {
-    props: {
-        asigment: {
-            required: true,
-            type: Object,
-        },
-        teachers: {
-            required: true,
-            type: Array,
-        },
-    },
+    props: ['asigment', 'teachers'],
 
     data: () => ({
         currentTeacher: {},
@@ -95,7 +87,21 @@ export default {
     }),
 
     methods: {
-            // window.location.href = route('payment')
+        async handleModalClick() {
+            const { id } = asigment
+            window.location.href = route('payment', id)
+
+            // try {
+            //     const { id } = this.asigment
+            //     const teacherId = this.currentTeacher.id
+            //     const url = route('asigment.update', { id })
+            //     await this.$http.put(url, { teacher_id: teacherId })
+
+            //     window.location.href = route('room', id)
+            // } catch (error) {
+            //     console.error(error.response || error)
+            // }
+        },
 
         showModal(index) {
             this.currentTeacher = this.teachers[index]
