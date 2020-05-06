@@ -102,4 +102,9 @@ class Teacher extends Authenticatable
     {
         return $this->belongsToMany(Level::class);
     }
+
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
