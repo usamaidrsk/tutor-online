@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Propaganistas\LaravelPhone\PhoneNumber;
+use Illuminate\Support\Facades\File;
 use DB;
 use Image;
 
@@ -217,6 +218,13 @@ class QuestionsController extends Controller
         // #4 | Resize and save user picture
 
         $path = "pictures/{$user->id}.jpg";
+
+        // Make sure that `pictures` foldes exists before storing the image
+        $folder = storage_path('app/public/pictures');
+        if (!File::isDirectory($folder)) {
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
         Image::make($picture)
             ->fit(216)
             ->save(storage_path("app/public/$path"), 75);
