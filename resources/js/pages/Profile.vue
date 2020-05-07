@@ -182,6 +182,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 .wrapper {
     display: flex;
     flex-flow: column;

@@ -71,6 +71,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 .file:not(:last-child) {
     border-bottom: 1px solid color('gray', 100);
 }

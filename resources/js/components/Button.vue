@@ -56,6 +56,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~@/sass/_globals.scss';
+
 .button {
     position: relative;
     display: inline-block;

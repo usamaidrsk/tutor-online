@@ -112,6 +112,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 hr {
     background: color('gray', 100);
     height: 1px;
