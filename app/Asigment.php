@@ -9,9 +9,13 @@ class Asigment extends Model
 {
     public $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $appends = ['total_files'];
+    protected $appends = [
+        'total_files',
+        'formated_date',
+        'formated_created_at',
+    ];
 
-    public function getDateAttribute()
+    public function getFormatedDateAttribute()
     {
         $date = Carbon::create($this->attributes['date']);
 
@@ -20,7 +24,7 @@ class Asigment extends Model
             $date->isoFormat('h:mm a');
     }
 
-    public function getCreatedAtAttribute()
+    public function getFormatedCreatedAtAttribute()
     {
         $date = Carbon::parse($this->attributes['created_at']);
         return $date->isoFormat('D \d\e MMMM');

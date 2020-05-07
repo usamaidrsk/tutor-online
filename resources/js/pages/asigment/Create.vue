@@ -246,7 +246,7 @@ export default {
             const [hours, minutes] = time.split(':').map(Number)
 
             date.setDate(date.getDate() + 1)
-            date.setHours(hours, minutes, 0, 0)
+            date.setHours(hours - 4, minutes, 0, 0)
 
             Object.keys(form).forEach(key => data.append(key, form[key]))
             data.set('date', date.toISOString())
@@ -262,9 +262,8 @@ export default {
 
                 window.location.href = route('asigment.show', id)
             } catch (error) {
-                console.log(error)
+                console.error(error.response || error)
                 if (error.response) {
-                    console.error(error.response)
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                     const { errors } = error.response.data
                     this.errors.set(errors || {})

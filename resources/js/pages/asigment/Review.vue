@@ -14,7 +14,7 @@
                 <span class="budget">${{ asigment.budget }}</span>
                 <div class="time">
                     <i class="icon icon-clock"></i>
-                    <span>{{ asigment.date }}</span>
+                    <span>{{ asigment.formated_date }}</span>
                 </div>
             </div>
 

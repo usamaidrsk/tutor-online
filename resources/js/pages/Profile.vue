@@ -80,7 +80,7 @@
 
                         <span class="invitation__date">
                             <i class="icon icon-clock"></i>
-                            {{ asigment.created_at }}</span
+                            {{ asigment.formated_created_at }}</span
                         >
                     </div>
                 </a>

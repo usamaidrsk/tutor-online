@@ -120,29 +120,8 @@ class AsigmentController extends Controller
         }
 
         // Now query the database to find al teachers that
-        // match with the asigment `level` and `category`
-        $matched_teachers = Teacher::join(
-            'level_teacher as l_t',
-            'teachers.id',
-            '=',
-            'l_t.teacher_id'
-        )
-            ->join(
-                'category_teacher as c_t',
-                'teachers.id',
-                '=',
-                'c_t.teacher_id'
-            )
-            ->where([
-                ['l_t.level_id', '=', $asigment->level_id],
-                ['c_t.category_id', '=', $asigment->category_id],
-            ])
-            ->get();
-
-        // Now create invitations in database
-        foreach ($matched_teachers as $teacher) {
-            $teacher->invitations()->create(['asigment_id' => $asigment->id]);
-        }
+        // match with the asigment `level`, `category` and time
+        $this->invite_teachers($asigment);
 
         return $asigment->id;
     }
@@ -155,6 +134,43 @@ class AsigmentController extends Controller
         $asigment->room()->create(['teacher_id' => $teacher->id]);
 
         return $asigment->id;
+    }
+
+    private function invite_teachers($asigment)
+    {
+        $level_id = $asigment->level_id;
+        $category_id = $asigment->category_id;
+
+        $date = Carbon::parse($asigment->date);
+        $day_of_week = ((int) $date->dayOfWeek) + 1;
+        $time = $date->format('H:i');
+
+        $matched_teachers = Teacher::join(
+            'level_teacher as l_t',
+            'teachers.id',
+            '=',
+            'l_t.teacher_id'
+        )
+            ->join(
+                'category_teacher as c_t',
+                'teachers.id',
+                '=',
+                'c_t.teacher_id'
+            )
+            ->join('schedules as s', 'teachers.id', '=', 's.teacher_id')
+            ->where([
+                ['l_t.level_id', '=', $level_id],
+                ['c_t.category_id', '=', $category_id],
+                ['s.start', '<=', $time],
+                ['s.end', '>=', $time],
+                ['s.day_of_week', '=', $day_of_week],
+            ])
+            ->get();
+
+        // Now create invitations in database
+        foreach ($matched_teachers as $teacher) {
+            $teacher->invitations()->create(['asigment_id' => $asigment->id]);
+        }
     }
 
     public function validator()
