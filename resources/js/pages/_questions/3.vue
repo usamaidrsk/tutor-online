@@ -1,13 +1,8 @@
 <template>
     <form @submit.prevent="handleSubmit">
         <header class="margin-bottom--two">
-            <h1>Lorem ipsum dolor sit amet consectetur</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Expedita, iure magnam. Laborum perferendis praesentium quidem
-                accusantium, nobis maxime, eos rem quos sed magnam atque dicta
-                expedita! Asperiores quo quidem assumenda!
-            </p>
+            <h1 class="margin-bottom--zero">Tu horario</h1>
+            <p>Establece tus horas disponibles para dar clases online.</p>
         </header>
 
         <span v-for="(key, index) in errors.keys" :key="index" role="alert">

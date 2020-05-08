@@ -117,6 +117,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 .checkbox {
     margin-bottom: 15px;
     display: block;

@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _questions_1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_questions/1 */ "./resources/js/pages/_questions/1.vue");
 /* harmony import */ var _questions_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_questions/2 */ "./resources/js/pages/_questions/2.vue");
 /* harmony import */ var _questions_3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_questions/3 */ "./resources/js/pages/_questions/3.vue");
+/* harmony import */ var _questions_4__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_questions/4 */ "./resources/js/pages/_questions/4.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -35,11 +36,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     'step-1': _questions_1__WEBPACK_IMPORTED_MODULE_1__["default"],
     'step-2': _questions_2__WEBPACK_IMPORTED_MODULE_2__["default"],
-    'step-3': _questions_3__WEBPACK_IMPORTED_MODULE_3__["default"]
+    'step-3': _questions_3__WEBPACK_IMPORTED_MODULE_3__["default"],
+    'step-4': _questions_4__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
     step: {
@@ -286,23 +289,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     old: Object,
     loading: Boolean,
     errors: ErrorBag
   },
-  data: function data() {
+  data: function data(_ref) {
+    var old = _ref.old;
     return {
       form: {
-        schedule: {}
+        schedule: old['schedule'] || {}
       }
     };
   },
   methods: {
     handleSubmit: function handleSubmit() {
       var data = this.form;
-      this.$emit(data);
+      this.$emit('submit', data);
     }
   }
 });
@@ -646,15 +652,9 @@ var render = function() {
       }
     },
     [
-      _c("h1", [_vm._v("Lorem ipsum dolor sit amet consectetur")]),
+      _vm._m(0),
       _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita,\n        iure magnam. Laborum perferendis praesentium quidem accusantium,\n        nobis maxime, eos rem quos sed magnam atque dicta expedita!\n        Asperiores quo quidem assumenda!\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.errors.keys(), function(key, index) {
+      _vm._l(_vm.errors.keys, function(key, index) {
         return _c("span", { key: index, attrs: { role: "alert" } }, [
           _vm._v("\n        " + _vm._s(_vm.errors.first(key)) + "\n    ")
         ])
@@ -690,7 +690,22 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "margin-bottom--two" }, [
+      _c("h1", [_vm._v("Lorem ipsum dolor sit amet consectetur")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n            Lorem ipsum dolor sit amet consectetur, adipisicing elit.\n            Expedita, iure magnam. Laborum perferendis praesentium quidem\n            accusantium, nobis maxime, eos rem quos sed magnam atque dicta\n            expedita! Asperiores quo quidem assumenda!\n        "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

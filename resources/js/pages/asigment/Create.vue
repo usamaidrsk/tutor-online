@@ -304,6 +304,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 form,
 footer {
     margin: 0 auto;

@@ -86,6 +86,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 #video-chat {
     width: 100%;
     height: 100vh;

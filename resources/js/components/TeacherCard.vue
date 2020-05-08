@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/_globals.scss';
+
 .card {
     text-align: center;
     transition-property: transform box-shadow;
