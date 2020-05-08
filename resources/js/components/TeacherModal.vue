@@ -73,8 +73,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 .modal,
 .overlay {
     @include position(fixed, 0, 0);

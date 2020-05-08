@@ -103,8 +103,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 form {
     width: 280px !important;
     max-width: 100%;

@@ -85,8 +85,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 .image {
     @include size(150px);
     border-radius: 10px;

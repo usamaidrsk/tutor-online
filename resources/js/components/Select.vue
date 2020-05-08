@@ -127,8 +127,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/sass/_globals.scss';
-
 .select__container {
     position: relative;
 }

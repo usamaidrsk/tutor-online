@@ -80,8 +80,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 $navbar-heigth: 55px;
 
 #app {

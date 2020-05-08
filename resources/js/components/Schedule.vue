@@ -130,8 +130,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 $border-color: color('gray', 700);
 $border-width: 1px;
 

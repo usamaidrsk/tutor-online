@@ -107,8 +107,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/sass/_globals.scss';
-
 .input {
     @include margin($input-margin-top, false, $input-margin-bottom);
 

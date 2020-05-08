@@ -45,8 +45,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/_globals.scss';
-
 .stars__star {
     color: color('gray', 50);
     font-size: 1.5rem;
