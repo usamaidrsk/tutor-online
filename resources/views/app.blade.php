@@ -8,9 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-    {{-- <script src="{{ mix('js/manifest.js') }}" defer></script> --}}
-    {{-- <script src="{{ mix('js/vendor.js') }}" defer></script> --}}
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     @routes
