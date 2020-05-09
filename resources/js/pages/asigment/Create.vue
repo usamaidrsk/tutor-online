@@ -260,7 +260,7 @@ export default {
                 const response = await this.$http.post(url, data)
                 const id = response.data
 
-                window.location.href = route('asigment.show', id)
+                window.location.href = route('asigment.index')
             } catch (error) {
                 console.error(error.response || error)
                 if (error.response) {

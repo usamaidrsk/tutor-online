@@ -16,9 +16,15 @@ Route::get('/payment/{id}', 'PaymentController@index')->name('payment');
 
 Route::get('/room/{id}', 'RoomController@index')->name('room');
 
-Route::put('invitations/{id}/{answer}', 'InvitationController@update')
-    ->name('invitation.update')
-    ->where('answer', '[0-1]');
+Route::name('invitation.')
+    ->prefix('invitation/')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/{id}', 'InvitationController@show')->name('show');
+        Route::put('/{id}/{answer}', 'InvitationController@update')
+            ->name('update')
+            ->where('answer', '[0-1]');
+    });
 
 Route::name('teacher.')
     ->prefix('teacher/{id}')
@@ -40,13 +46,11 @@ Route::name('questions')
     });
 
 Route::name('asigment.')->group(function () {
+    Route::get('/my-asigment', 'AsigmentController@index')->name('index');
+    Route::put('/my-asigment', 'AsigmentController@update')->name('update');
+
     Route::get('/new', 'AsigmentController@create')->name('create');
-    Route::get('show/{id}', 'AsigmentController@review')
-        ->middleware('auth')
-        ->name('review');
-    Route::get('{id}', 'AsigmentController@show')->name('show');
     Route::post('/new', 'AsigmentController@store')->name('store');
-    Route::put('/{id}', 'AsigmentController@update')->name('update');
 });
 
 Route::name('rate.')

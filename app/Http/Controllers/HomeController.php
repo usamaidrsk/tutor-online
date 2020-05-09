@@ -13,7 +13,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        // return view()->component('home');
-        return redirect('login');
+        return redirect()->route('asigment.create');
     }
 }

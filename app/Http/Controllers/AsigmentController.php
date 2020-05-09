@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cookie;
 use Carbon\Carbon;
 use App\Asigment;
 use App\Teacher;
@@ -18,8 +19,15 @@ class AsigmentController extends Controller
 
     public function create()
     {
+        // Teacher can not create new asigments
         if (auth()->check()) {
             return redirect('profile');
+        }
+
+        if ($email = Cookie::get('email')) {
+            if (Asigment::where('email', $email)->exists()) {
+                return redirect()->route('asigment.index');
+            }
         }
 
         return view()->component(
@@ -35,15 +43,22 @@ class AsigmentController extends Controller
         );
     }
 
-    public function show($id)
+    public function index()
     {
-        $asigment = Asigment::with('level', 'category', 'files')->findOrFail(
-            $id
-        );
-
-        if ($asigment->room) {
-            return redirect()->route('room', $asigment->id);
+        if (auth()->check()) {
+            return redirect('profile');
         }
+
+        $email = Cookie::get('email');
+        $asigment = Asigment::with('level', 'category', 'files')
+            ->where('email', $email)
+            ->first();
+
+        if (!$asigment) {
+            return redirect()->route('asigment.create');
+        }
+
+        $id = $asigment->id;
 
         $avalible_teachers = Teacher::select('teachers.*')
             ->join('invitations', 'teachers.id', '=', 'teacher_id')
@@ -57,26 +72,6 @@ class AsigmentController extends Controller
                 'asigment' => $asigment,
                 'teachers' => $avalible_teachers,
             ]
-        );
-    }
-
-    public function review($id)
-    {
-        $asigment = Asigment::with('files')->findOrfail($id);
-        $invitation = $asigment
-            ->invitations()
-            ->where('teacher_id', auth()->id())
-            ->limit(1)
-            ->first();
-
-        // Abort if the user is trying to see an asigmente that he
-        // was'nt invited to
-        abort_unless($invitation->count(), 403);
-
-        return view()->component(
-            'asigment.review',
-            ['title' => 'Invitación'],
-            ['asigment' => $asigment, 'invitation' => $invitation]
         );
     }
 
@@ -123,13 +118,23 @@ class AsigmentController extends Controller
         // match with the asigment `level`, `category` and time
         $this->invite_teachers($asigment);
 
-        return $asigment->id;
+        $response = \Response::make($asigment->id);
+        $response->withCookie(cookie()->forever('email', $asigment->email));
+        return $response;
     }
 
-    public function update($id)
+    // This route is called when an user choses a teacher
+    public function update()
     {
-        $asigment = Asigment::findOrFail($id);
-        $teacher = Teacher::findOrFail(request()->input('teacher_id'));
+        $email = Cookie::get('email');
+        $asigment = Asigment::where('email', $email)->first();
+
+        if (!$asigment) {
+            return;
+        }
+
+        $teacher_id = request()->input('teacher_id');
+        $teacher = Teacher::findOrFail($teacher_id);
 
         $asigment->room()->create(['teacher_id' => $teacher->id]);
 

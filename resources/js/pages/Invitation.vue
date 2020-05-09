@@ -69,7 +69,7 @@ export default {
 
                 window.location.href = route('profile')
             } catch (error) {
-                console.error(error.response)
+                console.error(error.response || error)
             } finally {
                 this.loading = false
             }

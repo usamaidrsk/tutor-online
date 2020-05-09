@@ -50,7 +50,7 @@
                 <a
                     v-for="({ asigment }, index) in invitations"
                     :key="index"
-                    :href="route('asigment.review', asigment.id)"
+                    :href="route('invitation.show', asigment.id)"
                 >
                     <div class="invitation">
                         <span class="invitation__budget">
