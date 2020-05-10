@@ -35,6 +35,50 @@
             </div>
         </div>
 
+        <div class="rooms margin-top--two">
+            <h2 class="text--center margin-bottom--zero">Proximas clases</h2>
+            <h4
+                v-if="!rooms.length"
+                class="text--center text--gray text--light"
+            >
+                No hay clases planificadas
+            </h4>
+
+            <div v-else class="row justify-content-center margin-top--two">
+                <a
+                    class="room col-xs-12 col-sm-6"
+                    v-for="(room, index) in rooms"
+                    :key="index"
+                    :href="route('room', room.token)"
+                >
+                    <h4 class="room__date">
+                        {{ formatDistance(room.asigment.date) }}
+                    </h4>
+
+                    <table>
+                        <tr>
+                            <td>Nivel:</td>
+                            <td>{{ room.asigment.level.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Categoria:</td>
+                            <td>{{ room.asigment.category.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Archivos:</td>
+                            <td>{{ room.asigment.total_files }}</td>
+                        </tr>
+                        <tr>
+                            <td>Detalles:</td>
+                            <td class="room__details">
+                                {{ room.asigment.details }}
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
+
         <div class="invitations margin-top--two">
             <h2 class="text--center margin-bottom--zero">
                 Invitaciones pendientes
@@ -46,8 +90,9 @@
                 Por los momentos no hay nada pendiente
             </h4>
 
-            <div v-else class="margin-top--two">
+            <div v-else class="row justify-content-center margin-top--two">
                 <a
+                    class="col-xs-12 col-sm-6"
                     v-for="({ asigment }, index) in invitations"
                     :key="index"
                     :href="route('invitation.show', asigment.id)"
@@ -124,8 +169,11 @@
 </template>
 
 <script>
+import formatDistance from 'date-fns/formatDistance'
+import { es } from 'date-fns/locale'
+
 export default {
-    props: ['teacher', 'invitations'],
+    props: ['teacher', 'invitations', 'rooms'],
 
     data: ({ teacher }) => ({
         ...teacher,
@@ -153,6 +201,12 @@ export default {
     },
 
     methods: {
+        formatDistance: date =>
+            formatDistance(new Date(date), Date.now(), {
+                locale: es,
+                addSuffix: true,
+            }),
+
         async saveSchedule() {
             if (this.loading) return
 
@@ -210,12 +264,13 @@ export default {
     }
 }
 
-.invitations {
+.invitations,
+.rooms {
     min-height: 45vh;
 }
 
-.invitation {
-    position: relative;
+.invitation,
+.room {
     display: block;
     padding: 1.5rem;
     padding-top: 1rem;
@@ -224,19 +279,27 @@ export default {
     border-radius: 10px;
 }
 
+.invitation__details,
+.room__details {
+    @include ellipsis;
+}
+
+.invitation,
+.room {
+    table td:first-child {
+        font-weight: get('bold', $font-weights);
+        padding-right: 0.5rem;
+    }
+}
+
+.invitation {
+    position: relative;
+}
+
 .invitation__budget {
     font-weight: get('regular', $font-weights);
     font-size: 2.25rem;
     margin-bottom: 2rem;
-}
-
-.invitation__details {
-    @include ellipsis;
-}
-
-.invitation table td:first-child {
-    font-weight: get('bold', $font-weights);
-    padding-right: 0.5rem;
 }
 
 .invitation__date {
@@ -244,5 +307,16 @@ export default {
     top: 1.5rem;
     right: 1.5rem;
     color: color('gray', 400);
+}
+
+// Rooms
+
+.room {
+    //
+}
+
+.room__date {
+    // text-align: center;
+    text-transform: capitalize;
 }
 </style>

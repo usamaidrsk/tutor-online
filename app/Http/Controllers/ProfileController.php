@@ -28,10 +28,19 @@ class ProfileController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        $rooms = $teacher
+            ->rooms()
+            ->with('asigment')
+            ->get();
+
         return view()->component(
             'profile',
             ['title' => $teacher->first_name],
-            ['teacher' => $teacher, 'invitations' => $invitations]
+            [
+                'teacher' => $teacher,
+                'invitations' => $invitations,
+                'rooms' => $rooms,
+            ]
         );
     }
 }

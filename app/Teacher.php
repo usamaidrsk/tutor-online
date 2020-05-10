@@ -83,6 +83,11 @@ class Teacher extends Authenticatable
         return $this->hasMany(Invitation::class);
     }
 
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
     public function rates()
     {
         return $this->hasMany(Rate::class);

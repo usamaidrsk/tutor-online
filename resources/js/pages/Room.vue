@@ -160,8 +160,14 @@ hr {
     margin: 3.5rem 0;
 }
 
-.placeholder {
+.placeholder,
+.loading,
+.loading__container {
     @include min-size(100%);
+    @include size(100%);
+}
+
+.placeholder {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -195,7 +201,6 @@ hr {
 // Loading
 
 .loading {
-    @include min-size(100%);
     position: absolute;
     top: 0;
     left: 0;
@@ -204,7 +209,6 @@ hr {
 }
 
 .loading__container {
-    @include min-size(100%);
     @include child-centered;
     flex-flow: column;
 }
