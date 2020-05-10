@@ -8,6 +8,10 @@ window.ErrorBag = ErrorBag
 const root = document.getElementById('app')
 const { dataset } = root
 
+const constants = JSON.parse(dataset.constants)
+Object.assign(window, constants)
+Object.assign(Vue.prototype, constants)
+
 Vue.prototype.$http = axios.create({
     baseURL: window.location.origin,
     headers: {

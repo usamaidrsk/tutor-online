@@ -17,6 +17,7 @@
         data-page-name="{{ $name }}"
         data-route-data="{{ json_encode($data) }}"
         data-csrf-token="{{ csrf_token() }}"
+        data-constants={{ json_encode(['APP_NAME' => config('app.name')]) }}
         data-auth="{{ json_encode(['user' => Auth::user() ?? null]) }}"
     ></div>
 </body>

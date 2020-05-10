@@ -5,7 +5,7 @@
             <div class="navbar__container container">
                 <div class="navbar__left">
                     <h1 class="navbar__logo">
-                        <a :href="route('home')">Elearn </a>
+                        <a :href="route('home')">{{ APP_NAME }}</a>
                     </h1>
                 </div>
 

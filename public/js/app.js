@@ -4018,7 +4018,9 @@ var render = function() {
       _c("div", { staticClass: "navbar__container container" }, [
         _c("div", { staticClass: "navbar__left" }, [
           _c("h1", { staticClass: "navbar__logo" }, [
-            _c("a", { attrs: { href: _vm.route("home") } }, [_vm._v("Elearn ")])
+            _c("a", { attrs: { href: _vm.route("home") } }, [
+              _vm._v(_vm._s(_vm.APP_NAME))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -16383,6 +16385,9 @@ __webpack_require__.r(__webpack_exports__);
 window.ErrorBag = _ErrorBag__WEBPACK_IMPORTED_MODULE_3__["default"];
 var root = document.getElementById('app');
 var dataset = root.dataset;
+var constants = JSON.parse(dataset.constants);
+Object.assign(window, constants);
+Object.assign(vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype, constants);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
   baseURL: window.location.origin,
   headers: {
