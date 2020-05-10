@@ -164,9 +164,13 @@ class AsigmentController extends Controller
             $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
 
-        Mail::to($matched_teachers)
-            ->locale('es')
-            ->queue(new \App\Mail\Invitation($asigment));
+        try {
+            Mail::to($matched_teachers)
+                ->locale('es')
+                ->queue(new \App\Mail\Invitation($asigment));
+        } catch (\Throwable $th) {
+            report($th);
+        }
     }
 
     public function validator()

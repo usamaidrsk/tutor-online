@@ -37,9 +37,14 @@ class InvitationController extends Controller
         if ($answer) {
             $invitation->is_acepted = true;
             $invitation->save();
-            Mail::to($invitation->asigment->email)
-                ->locale('es')
-                ->queue(new \App\Mail\Notification());
+
+            try {
+                Mail::to($invitation->asigment->email)
+                    ->locale('es')
+                    ->queue(new \App\Mail\Notification());
+            } catch (\Throwable $th) {
+                report($th);
+            }
         } else {
             $invitation->delete();
         }
