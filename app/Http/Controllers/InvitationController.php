@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Asigment;
 use App\Invitation;
 
@@ -36,6 +37,9 @@ class InvitationController extends Controller
         if ($answer) {
             $invitation->is_acepted = true;
             $invitation->save();
+            Mail::to($invitation->asigment->email)
+                ->locale('es')
+                ->queue(new \App\Mail\Notification());
         } else {
             $invitation->delete();
         }

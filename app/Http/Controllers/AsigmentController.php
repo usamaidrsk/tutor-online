@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Asigment;
 use App\Teacher;
@@ -162,6 +163,10 @@ class AsigmentController extends Controller
         foreach ($matched_teachers as $teacher) {
             $teacher->invitations()->create(['asigment_id' => $asigment->id]);
         }
+
+        Mail::to($matched_teachers)
+            ->locale('es')
+            ->queue(new \App\Mail\Invitation($asigment));
     }
 
     public function validator()
