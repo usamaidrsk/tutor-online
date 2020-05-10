@@ -26,6 +26,15 @@ Route::name('invitation.')
             ->where('answer', '[0-1]');
     });
 
+Route::name('payment.')
+    ->prefix('/payment')
+    ->group(function () {
+        Route::get('/', 'PaymentController@index')->name('index');
+        Route::get('/success', 'PaymentController@success')->name('success');
+        Route::post('/create', 'PaymentController@create')->name('create');
+        Route::get('/execute', 'PaymentController@execute')->name('execute');
+    });
+
 Route::name('teacher.')
     ->prefix('teacher/{id}')
     ->group(function () {

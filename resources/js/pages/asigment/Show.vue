@@ -88,19 +88,7 @@ export default {
 
     methods: {
         async handleModalClick() {
-            const { id } = asigment
-            window.location.href = route('payment', id)
-
-            // try {
-            //     const { id } = this.asigment
-            //     const teacherId = this.currentTeacher.id
-            //     const url = route('asigment.update', { id })
-            //     await this.$http.put(url, { teacher_id: teacherId })
-
-            //     window.location.href = route('room', id)
-            // } catch (error) {
-            //     console.error(error.response || error)
-            // }
+            window.location.href = route('payment.index')
         },
 
         showModal(index) {

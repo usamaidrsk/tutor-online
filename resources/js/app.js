@@ -17,6 +17,10 @@ Vue.prototype.$http = axios.create({
 })
 
 Vue.prototype.$auth = JSON.parse(dataset.auth)
+
+window.CSRF_TOKEN = dataset.csrfToken
+Vue.prototype.CSRF_TOKEN = CSRF_TOKEN
+
 Vue.prototype.route = route
 
 const components = require.context('./components', false, /\.vue$/, 'lazy')
