@@ -1323,8 +1323,8 @@ template {
 
 @font-face {
   font-family: "icons";
-  src: url(/fonts/icons.eot?7ff07d787853f78286dd126c5421a792);
-  src: url(/fonts/icons.eot?7ff07d787853f78286dd126c5421a792) format("embedded-opentype"), url(/fonts/icons.woff2?f409d77d9c8cc6f9e66a24383e2d4fb0) format("woff2"), url(/fonts/icons.woff?4a46622ce72ce12bec3703776c7876e3) format("woff"), url(/fonts/icons.ttf?8fb4842904cdbbc0b5f15e886ab65920) format("truetype"), url(/fonts/icons.svg?5f16cbf7dcd6b5781951154ead7ad21f) format("svg");
+  src: url(/fonts/icons.eot?32488c4a68f3e92729bee533f44044c7);
+  src: url(/fonts/icons.eot?32488c4a68f3e92729bee533f44044c7) format("embedded-opentype"), url(/fonts/icons.woff2?9905a3d9034ec98e82bbcb6dd7978b93) format("woff2"), url(/fonts/icons.woff?015df8005449940d39dfd04f0fcc3a89) format("woff"), url(/fonts/icons.ttf?579ee99c4477f05630c915407b84e502) format("truetype"), url(/fonts/icons.svg?5aa3e2d1c60bd5826a73fc614c977b9a) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1337,7 +1337,7 @@ template {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'icons';
-    src: url('../font/icons.svg?20898106#icons') format('svg');
+    src: url('../font/icons.svg?68223277#icons') format('svg');
   }
 }
 */
@@ -1450,6 +1450,24 @@ template {
 
 /* '' */
 
+.icon-ok:before {
+  content: "\E80D";
+}
+
+/* '' */
+
+.icon-desktop:before {
+  content: "\E80E";
+}
+
+/* '' */
+
+.icon-videocam-outline:before {
+  content: "\E80F";
+}
+
+/* '' */
+
 .icon-down:before {
   content: "\F004";
 }
@@ -1485,6 +1503,12 @@ template {
 }
 
 /* '' */
+
+.icon-paypal:before {
+  content: "\F1ED";
+}
+
+/* '' */
 
 /* --------------------------------- Colors --------------------------------- */
 

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"49fc74e3dd9c77769f1a","1":"4ace4d8ab668c27414b2","3":"69290f3c06127d24caa9","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"5535d4ebf281a8e2b9ed","16":"c3871e10b715205c4cc9","17":"d2c8daa6b58acc711f7a","18":"f66a3f6d76ec8e3971f2","19":"8777da0ade4bfde4e51b","21":"4ec23f54e156b0cab6ac","22":"31a49f49c3d7782c6bb4","23":"4c8f25fcb4dac9376228","24":"35ed56f48139a7a09d1f","25":"f94e03456fa9b2002e25","26":"b19679e3c0f3cb823541","27":"f7c52923ba22fd6ac095","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"59ae1b1cfd8692c3385c","33":"ee3cef7146cd3b934c91","34":"da9780cdb9e2a62a62a1","35":"e4ac46916f3dd5001e95"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"49fc74e3dd9c77769f1a","1":"4ace4d8ab668c27414b2","3":"69290f3c06127d24caa9","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"5535d4ebf281a8e2b9ed","17":"3374675f6975c73b30a8","18":"f66a3f6d76ec8e3971f2","19":"8777da0ade4bfde4e51b","21":"4ec23f54e156b0cab6ac","22":"31a49f49c3d7782c6bb4","23":"4c8f25fcb4dac9376228","24":"35ed56f48139a7a09d1f","25":"f94e03456fa9b2002e25","26":"b19679e3c0f3cb823541","27":"f7c52923ba22fd6ac095","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"59ae1b1cfd8692c3385c","33":"ffc67017ed9e06827f99","34":"da9780cdb9e2a62a62a1","35":"e95ce8f094e102ec2112"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16528,10 +16528,6 @@ var map = {
 	"./Invitation.vue": [
 		"./resources/js/pages/Invitation.vue",
 		15
-	],
-	"./JitsiTest.vue": [
-		"./resources/js/pages/JitsiTest.vue",
-		16
 	],
 	"./PrivacyPolicy.vue": [
 		"./resources/js/pages/PrivacyPolicy.vue",
