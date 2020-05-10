@@ -2193,10 +2193,16 @@ h6 {
 .error,
 .success {
   display: block;
-  font-weight: 700;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  border: 2px dashed #141414;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 1px solid #141414;
+  border-radius: 10px;
+}
+
+.error::before,
+.success::before {
+  font-size: 1.3rem;
+  margin-right: 0.75rem;
 }
 
 .success {
@@ -2207,11 +2213,6 @@ h6 {
 .error {
   color: #dc3545;
   border-color: #dc3545;
-}
-
-.error::before {
-  font-size: 1.3rem;
-  padding-right: 0.5rem;
 }
 
 

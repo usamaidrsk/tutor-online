@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"49fc74e3dd9c77769f1a","1":"4ace4d8ab668c27414b2","2":"53b1d752d76006e17a21","3":"4fc5ca97fc9a2fd434ef","4":"47efea077daa28875ee7","5":"ea4818e2e8966b1a5e39","6":"ee76bf55ae280f9537d9","7":"015afadb566d3b6876af","8":"adc8edd791a36ad7bf76","9":"7baeb1876b3646657d86","10":"e09a7e0c7d2ce67d098d","11":"5d6622ba76b6782448bf","12":"fa9e5455f3c4e9852dfc","13":"32f2049e5b9c9ca48e82","14":"0606cf5cc0859630bf35","15":"68ba512e62d0edde4a83","16":"6c3faac3b92e3a3b84f7","17":"d516f6ef8e2f7b812ff5","18":"b683c6f814e2a545eb15","19":"ac561e9c21049f75ddba","20":"e8a82bbe031e5d80c4c6","21":"b234f5f6f37bacb90edd","22":"e66f80c2f07bf171e9bc","23":"28a3b360724a7fe617a0","24":"8356f8285ecb525a99ef","25":"141419ef30eba6d79a1f","26":"88f0c6fd079a0ddcd89e","27":"6a0c85f2cabd434ac5b1","28":"03977d9ff9b7ccd23a63","29":"7623bbf61190b696781a","30":"22d6834b96ebaa6e6511"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"49fc74e3dd9c77769f1a","1":"4ace4d8ab668c27414b2","3":"69290f3c06127d24caa9","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"5535d4ebf281a8e2b9ed","16":"c3871e10b715205c4cc9","17":"d2c8daa6b58acc711f7a","18":"f66a3f6d76ec8e3971f2","19":"8777da0ade4bfde4e51b","21":"4ec23f54e156b0cab6ac","22":"31a49f49c3d7782c6bb4","23":"4c8f25fcb4dac9376228","24":"35ed56f48139a7a09d1f","25":"f94e03456fa9b2002e25","26":"b19679e3c0f3cb823541","27":"f7c52923ba22fd6ac095","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"59ae1b1cfd8692c3385c","33":"ee3cef7146cd3b934c91","34":"da9780cdb9e2a62a62a1","35":"e4ac46916f3dd5001e95"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16391,6 +16391,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPO
   }
 });
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$auth = JSON.parse(dataset.auth);
+window.CSRF_TOKEN = dataset.csrfToken;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.CSRF_TOKEN = CSRF_TOKEN;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.route = route;
 
 var components = __webpack_require__("./resources/js/components lazy \\.vue$");
@@ -16446,47 +16448,47 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		23
+		25
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		4
+		5
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		5
+		6
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		6
+		7
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		7
+		8
 	],
 	"./Schedule.vue": [
 		"./resources/js/components/Schedule.vue",
-		8
+		9
 	],
 	"./Scores.vue": [
 		"./resources/js/components/Scores.vue",
-		9
+		10
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		3
+		4
 	],
 	"./Stars.vue": [
 		"./resources/js/components/Stars.vue",
-		10
+		11
 	],
 	"./TeacherCard.vue": [
 		"./resources/js/components/TeacherCard.vue",
-		11
+		12
 	],
 	"./TeacherModal.vue": [
 		"./resources/js/components/TeacherModal.vue",
-		12
+		13
 	]
 };
 function webpackAsyncContext(req) {
@@ -16521,37 +16523,42 @@ module.exports = webpackAsyncContext;
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		13
-	],
-	"./Payment.vue": [
-		"./resources/js/pages/Payment.vue",
 		14
+	],
+	"./Invitation.vue": [
+		"./resources/js/pages/Invitation.vue",
+		15
+	],
+	"./JitsiTest.vue": [
+		"./resources/js/pages/JitsiTest.vue",
+		16
 	],
 	"./PrivacyPolicy.vue": [
 		"./resources/js/pages/PrivacyPolicy.vue",
-		24
+		26
 	],
 	"./Profile.vue": [
 		"./resources/js/pages/Profile.vue",
-		15
+		18
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
 		1,
 		0,
-		2
+		3
 	],
 	"./Rate.vue": [
 		"./resources/js/pages/Rate.vue",
-		16
+		19
 	],
 	"./Room.vue": [
 		"./resources/js/pages/Room.vue",
-		17
+		34,
+		35
 	],
 	"./Terms.vue": [
 		"./resources/js/pages/Terms.vue",
-		25
+		27
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -16559,11 +16566,11 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		26
+		28
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		27
+		29
 	],
 	"./_questions/4.vue": [
 		"./resources/js/pages/_questions/4.vue",
@@ -16571,35 +16578,39 @@ var map = {
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		18
-	],
-	"./asigment/Review.vue": [
-		"./resources/js/pages/asigment/Review.vue",
-		19
+		21
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		20
+		22
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		21
+		23
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		22
+		24
 	],
 	"./auth/passwords/Confirm.vue": [
 		"./resources/js/pages/auth/passwords/Confirm.vue",
-		28
+		30
 	],
 	"./auth/passwords/Email.vue": [
 		"./resources/js/pages/auth/passwords/Email.vue",
-		29
+		31
 	],
 	"./auth/passwords/Reset.vue": [
 		"./resources/js/pages/auth/passwords/Reset.vue",
-		30
+		32
+	],
+	"./payment/Index.vue": [
+		"./resources/js/pages/payment/Index.vue",
+		33
+	],
+	"./payment/Success.vue": [
+		"./resources/js/pages/payment/Success.vue",
+		17
 	]
 };
 function webpackAsyncContext(req) {
