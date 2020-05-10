@@ -129,10 +129,16 @@ h6 {
 /* ---------------------------------- Error --------------------------------- */
 .error, .success {
     display: block;
-    font-weight: get('bold', $font-weights);
-    padding: get('one', $spacers);
-    margin: get('two', $spacers) 0;
-    border: 2px dashed color('black');
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border: 1px solid color('black');
+    border-radius: 10px;
+
+    &::before {
+        font-size: get('large', $font-sizes);
+        margin-right: 0.75rem;
+
+    }
 }
 
 .success {
@@ -146,11 +152,4 @@ h6 {
 
     color: color('red');
     border-color: color('red');
-
-
-    &::before {
-        font-size: get('large', $font-sizes);
-        padding-right: get('halve', $spacers);
-
-    }
 }
