@@ -10,6 +10,10 @@ class RatesController extends Controller
 {
     public function index($id)
     {
+        if (auth()->check()) {
+            return redirect()->route('profile');
+        }
+
         return view()->component(
             'rate',
             ['title' => 'Puntuar clase'],
