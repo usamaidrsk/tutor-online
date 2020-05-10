@@ -59,4 +59,9 @@ class Asigment extends Model
     {
         return $this->hasMany(Invitation::class);
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }

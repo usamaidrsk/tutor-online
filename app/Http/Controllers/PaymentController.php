@@ -14,7 +14,11 @@ use PayPal\Api\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
+
 use App\Asigment;
+use App\Teacher;
+use App\Room;
 
 class PaymentController extends Controller
 {
@@ -39,12 +43,34 @@ class PaymentController extends Controller
             return redirect()->route('asigment.create');
         }
 
+        // If the asigment is already paid, redicrect to chat page
+        if ($asigment->payment) {
+            return redirect()->route('room', $asigment->room->token);
+        }
+
+        $teacher_id = request()->query('teacher_id');
+
+        // Make sure that teacher exist and was invitated to this asigment
+        $invitation = $asigment
+            ->invitations()
+            ->where('teacher_id', $teacher_id)
+            ->first();
+
+        if (!$invitation) {
+            return redirect()->route('asigment.index');
+        }
+
+        session()->put('teacher_id', $teacher_id);
+
+        $error = session()->get('error');
+        session()->forget('error');
+
         return view()->component(
             'payment.index',
             ['title' => 'Pago'],
             [
                 'amount' => $asigment->budget,
-                'error' => session()->get('error'),
+                'error' => $error,
             ]
         );
     }
@@ -140,6 +166,7 @@ class PaymentController extends Controller
         try {
             // Then we execute the payment.
             $payment->execute($execution, $this->api_context);
+            $this->afterPaymentExecute($payment);
         } catch (\Exception $e) {
             report($e);
             return $this->handleError();
@@ -148,15 +175,33 @@ class PaymentController extends Controller
         return redirect()->route('payment.success');
     }
 
-    private function handleError(
-        $message = 'Hubo un error al procesar su pago. Disculpe el inconveniente.'
-    ) {
-        session()->put('error', $message);
-        return redirect('payment.index');
+    private function afterPaymentExecute($payment)
+    {
+        $asigment = $this->getAsigment();
+
+        // Store payment in database
+        $asigment->payment()->create([
+            'transaction_id' => $payment->getId(),
+            'invoice_id' => $payment->transactions[0]->invoice_number,
+            'amount' => $payment->transactions[0]->amount->total,
+        ]);
+
+        // Create room
+        $asigment->room()->create([
+            'token' => Str::random(10),
+            'teacher_id' => session()->get('teacher_id'),
+        ]);
     }
 
     private function getAsigment()
     {
         return Asigment::where('email', Cookie::get('email'))->first();
+    }
+
+    private function handleError(
+        $message = 'Hubo un error al procesar su pago. Disculpe el inconveniente.'
+    ) {
+        session()->put('error', $message);
+        return redirect()->route('payment.index');
     }
 }

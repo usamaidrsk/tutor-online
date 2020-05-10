@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    protected $fillable = ['asigment_id', 'teacher_id'];
+    protected $fillable = ['token', 'asigment_id', 'teacher_id'];
 }

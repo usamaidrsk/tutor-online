@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Route::get('/jitsi-test', function () {
+//     return view()->component('jitsi-test', ['title' => 'Prueba de Jitsi'], []);
+// });
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
@@ -12,9 +16,7 @@ Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
     'privacy-policy'
 );
 
-Route::get('/payment/{id}', 'PaymentController@index')->name('payment');
-
-Route::get('/room/{id}', 'RoomController@index')->name('room');
+Route::get('/room/{token?}', 'RoomController@index')->name('room');
 
 Route::name('invitation.')
     ->prefix('invitation/')

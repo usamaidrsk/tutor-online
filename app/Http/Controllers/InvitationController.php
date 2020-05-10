@@ -16,12 +16,11 @@ class InvitationController extends Controller
         $invitation = $asigment
             ->invitations()
             ->where('teacher_id', auth()->id())
-            ->limit(1)
             ->first();
 
         // Abort if the user is trying to see an asigmente that he
         // was'nt invited to
-        abort_unless($invitation->count(), 403);
+        abort_unless($invitation, 403);
 
         return view()->component(
             'invitation',

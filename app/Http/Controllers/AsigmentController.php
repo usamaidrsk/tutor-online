@@ -58,6 +58,10 @@ class AsigmentController extends Controller
             return redirect()->route('asigment.create');
         }
 
+        if ($asigment->payment) {
+            return redirect()->route('room');
+        }
+
         $id = $asigment->id;
 
         $avalible_teachers = Teacher::select('teachers.*')
@@ -121,24 +125,6 @@ class AsigmentController extends Controller
         $response = \Response::make($asigment->id);
         $response->withCookie(cookie()->forever('email', $asigment->email));
         return $response;
-    }
-
-    // This route is called when an user choses a teacher
-    public function update()
-    {
-        $email = Cookie::get('email');
-        $asigment = Asigment::where('email', $email)->first();
-
-        if (!$asigment) {
-            return;
-        }
-
-        $teacher_id = request()->input('teacher_id');
-        $teacher = Teacher::findOrFail($teacher_id);
-
-        $asigment->room()->create(['teacher_id' => $teacher->id]);
-
-        return $asigment->id;
     }
 
     private function invite_teachers($asigment)

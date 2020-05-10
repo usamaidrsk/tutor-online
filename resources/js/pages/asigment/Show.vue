@@ -88,7 +88,8 @@ export default {
 
     methods: {
         async handleModalClick() {
-            window.location.href = route('payment.index')
+            const { id } = this.currentTeacher
+            window.location.href = route('payment.index', { teacher_id: id })
         },
 
         showModal(index) {
