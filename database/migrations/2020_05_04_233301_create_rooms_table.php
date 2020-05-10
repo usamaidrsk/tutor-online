@@ -14,11 +14,13 @@ class CreateRoomsTable extends Migration
             $table
                 ->integer('asigment_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
             $table
                 ->integer('teacher_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

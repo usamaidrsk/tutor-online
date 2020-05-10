@@ -17,7 +17,8 @@ class CreateFilesTable extends Migration
             $table
                 ->integer('asigment_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
         });
     }
 

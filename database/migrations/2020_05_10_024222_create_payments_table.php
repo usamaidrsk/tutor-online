@@ -16,7 +16,9 @@ class CreatePaymentsTable extends Migration
             $table
                 ->integer('asigment_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->nullable()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

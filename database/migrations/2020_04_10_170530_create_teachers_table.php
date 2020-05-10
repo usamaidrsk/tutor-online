@@ -27,7 +27,8 @@ class CreateTeachersTable extends Migration
                 ->tinyInteger('country_id')
                 ->unsigned()
                 ->constrained()
-                ->nullable();
+                ->nullable()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

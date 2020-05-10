@@ -17,11 +17,13 @@ class CreateAsigmentsTable extends Migration
             $table
                 ->tinyInteger('level_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
             $table
                 ->tinyInteger('category_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

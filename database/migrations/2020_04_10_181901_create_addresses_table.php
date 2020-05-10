@@ -18,11 +18,13 @@ class CreateAddressesTable extends Migration
                 ->tinyInteger('country_id')
                 ->unsigned()
                 ->constrained()
-                ->nullable();
+                ->nullable()
+                ->onDelete('set null');
             $table
                 ->integer('teacher_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
         });
     }
 

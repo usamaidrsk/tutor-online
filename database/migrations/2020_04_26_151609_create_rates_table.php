@@ -18,7 +18,8 @@ class CreateRatesTable extends Migration
             $table
                 ->integer('teacher_id')
                 ->unsigned()
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
         });
     }
 
