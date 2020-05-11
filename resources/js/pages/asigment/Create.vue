@@ -168,6 +168,35 @@
                 type="email"
             />
 
+            <div>
+                <!-- <h6 class="margin-bottom--zero">Teléfono</h6> -->
+
+                <span
+                    v-if="errors.has('phone_prefix') || errors.has('phone')"
+                    class="error"
+                    role="alert"
+                    >{{
+                        errors.first('phone_prefix') || errors.first('phone')
+                    }}</span
+                >
+
+                <label for="" class="input__label">Telefono</label>
+                <div class="d-flex">
+                    <Input
+                        style="width: 55px;"
+                        placeholder="+00"
+                        required
+                        class="margin-right--one"
+                        v-model="form.phone_prefix"
+                    />
+                    <Input
+                        style="flex-grow: 1;"
+                        v-model="form.phone"
+                        type="tel"
+                    />
+                </div>
+            </div>
+
             <Button
                 class="margin-top--two"
                 type="submit"
@@ -195,6 +224,8 @@ export default {
             // category_id: undefined,
             details: null,
             email: '',
+            phone_prefix: '',
+            phone: '',
             date: null,
             time: null,
             budget: 5,

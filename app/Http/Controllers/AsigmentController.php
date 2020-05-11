@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
+use Propaganistas\LaravelPhone\PhoneNumber;
 use Carbon\Carbon;
 use App\Asigment;
 use App\Teacher;
@@ -86,6 +87,7 @@ class AsigmentController extends Controller
 
         $input = request()->only([
             'email',
+            'phone',
             'budget',
             'details',
             'date',
@@ -94,6 +96,9 @@ class AsigmentController extends Controller
         ]);
 
         $input['date'] = Carbon::parse($input['date']);
+
+        $phone = request()->input('phone_prefix') . $input['phone'];
+        $input['phone'] = (string) PhoneNumber::make($phone);
 
         $asigment = Asigment::create($input);
 
@@ -175,8 +180,18 @@ class AsigmentController extends Controller
 
     public function validator()
     {
+        $codes = DB::table('countries')
+            ->select('code')
+            ->get()
+            ->map(function ($country) {
+                return $country->code;
+            })
+            ->toArray();
+
         $rules = [
             'email' => 'required|email',
+            'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
+            'phone' => 'required|phone:AUTO,' . implode(',', $codes),
             'budget' => 'required|numeric|min:' . $this::MIN_BUDGET,
             'details' => 'required|max:300|min:25',
             'level_id' => 'required|exists:levels,id',
