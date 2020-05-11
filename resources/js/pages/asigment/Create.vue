@@ -246,7 +246,8 @@ export default {
             const [hours, minutes] = time.split(':').map(Number)
 
             date.setDate(date.getDate() + 1)
-            date.setHours(hours - 4, minutes, 0, 0)
+            date.setHours(hours, minutes, 0, 0)
+            date.setMinutes(date.getMinutes() - date.getTimezoneOffset())
 
             Object.keys(form).forEach(key => data.append(key, form[key]))
             data.set('date', date.toISOString())

@@ -4,10 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/jitsi-test', function () {
-//     return view()->component('jitsi-test', ['title' => 'Prueba de Jitsi'], []);
-// });
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
