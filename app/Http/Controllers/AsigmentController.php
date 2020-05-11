@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Propaganistas\LaravelPhone\PhoneNumber;
 use Carbon\Carbon;
@@ -102,9 +103,25 @@ class AsigmentController extends Controller
 
         $asigment = Asigment::create($input);
 
-        // Store in disk all files uploaded by user one by one
-        // and at the same time store file details in database
+        try {
+            $this->store_files($asigment);
+            $this->invite_teachers($asigment);
+        } catch (\Throwable $th) {
+            $this->delete_files($asigment);
+            $asigment->delete();
+            throw $th;
+        }
 
+        $response = \Response::make($asigment->id);
+        $response->withCookie(cookie()->forever('email', $asigment->email));
+        return $response;
+    }
+
+    // Store in disk all files uploaded by user one by one
+    // and at the same time store file details in database
+
+    private function store_files(Asigment $asigment)
+    {
         $folder = "attachments/{$asigment->id}";
 
         foreach (request()->file('files') as $file) {
@@ -123,14 +140,12 @@ class AsigmentController extends Controller
                 'path' => $path,
             ]);
         }
+    }
 
-        // Now query the database to find al teachers that
-        // match with the asigment `level`, `category` and time
-        $this->invite_teachers($asigment);
-
-        $response = \Response::make($asigment->id);
-        $response->withCookie(cookie()->forever('email', $asigment->email));
-        return $response;
+    private function delete_file(Asigment $asigment)
+    {
+        $folder = "attachments/{$asigment->id}";
+        Storage::deleteDirectory($folder);
     }
 
     // Query the database to find all teachers that
