@@ -133,7 +133,11 @@ class AsigmentController extends Controller
         return $response;
     }
 
-    private function invite_teachers($asigment)
+    // Query the database to find all teachers that
+    // match with the asigment level, category and time
+    // of the asigment and mail then an invitation
+
+    private function invite_teachers(Asigment $asigment)
     {
         $level_id = $asigment->level_id;
         $category_id = $asigment->category_id;
@@ -142,12 +146,9 @@ class AsigmentController extends Controller
         $day_of_week = ((int) $date->dayOfWeek) + 1;
         $time = $date->format('H:i');
 
-        $matched_teachers = Teacher::join(
-            'level_teacher as l_t',
-            'teachers.id',
-            '=',
-            'l_t.teacher_id'
-        )
+        $matched_teachers = DB::table('teachers')
+            ->select('teachers.id as id')
+            ->join('level_teacher as l_t', 'teachers.id', '=', 'l_t.teacher_id')
             ->join(
                 'category_teacher as c_t',
                 'teachers.id',
@@ -165,14 +166,19 @@ class AsigmentController extends Controller
             ->get();
 
         // Now create invitations in database
+        $invitations = [];
         foreach ($matched_teachers as $teacher) {
-            $teacher->invitations()->create(['asigment_id' => $asigment->id]);
+            $invitations[] = [
+                'asigment_id' => $asigment->id,
+                'teacher_id' => $teacher->id,
+            ];
         }
 
+        DB::table('invitations')->insert($invitations);
+
         try {
-            Mail::to($matched_teachers)->queue(
-                new \App\Mail\Invitation($asigment)
-            );
+            $mail = new \App\Mail\Invitation($asigment);
+            Mail::to($matched_teachers)->queue($mail);
         } catch (\Throwable $th) {
             report($th);
         }
