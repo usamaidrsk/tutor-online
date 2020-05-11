@@ -126,9 +126,10 @@ export default {
         if (Object.keys(this.old).length) {
             const { old, form } = this
             const birthday = new Date(old['birthday'])
+
             form.birthday = [
                 birthday.getDate(),
-                birthday.getMonth(),
+                birthday.getMonth() + 1,
                 birthday.getFullYear(),
             ]
         }
@@ -137,7 +138,14 @@ export default {
     methods: {
         handleSubmit() {
             const data = { ...this.form }
-            data.birthday = new Date(...[...data.birthday].reverse())
+
+            const { birthday } = data
+
+            data.birthday = new Date(
+                birthday[2], // Year
+                birthday[1] - 1, // Month, wich is 0 based
+                birthday[0] //Date
+            )
 
             this.$emit('submit', data)
         },

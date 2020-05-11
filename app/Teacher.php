@@ -28,14 +28,14 @@ class Teacher extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['full_name', 'stars', 'scores'];
+    protected $appends = ['full_name', 'formatted_birthday', 'stars', 'scores'];
 
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getBirthdayAttribute()
+    public function getFormattedBirthdayAttribute()
     {
         $date = $this->attributes['birthday'];
         return Carbon::create($date)->isoFormat('D \d\e MMMM, YYYY');

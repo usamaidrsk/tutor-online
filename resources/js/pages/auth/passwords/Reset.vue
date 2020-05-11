@@ -67,7 +67,7 @@ export default {
             try {
                 const data = this.form
                 await this.$http.post(route('password.reset'), data)
-                window.location.href = route('profile')
+                window.location.href = route('profile.index')
             } catch (error) {
                 if (error.response) {
                     console.error(error.response)

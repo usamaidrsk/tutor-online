@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"cf20d11a4e68aecc7d9c","1":"3fcefe42574e1da17cdf","2":"4639b3939d6c8962fa5b","3":"69290f3c06127d24caa9","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"6f8d66be89d0c942a544","16":"dd2c6fd69fec96cda511","17":"91e5e297a8ed22797841","18":"ea1510d3732a0f51d7cf","19":"c7d0f4bb5cc5c8bca3c7","20":"71e09d2b768f4cecc882","21":"b234f5f6f37bacb90edd","22":"e66f80c2f07bf171e9bc","23":"ffbaf8aa7b44e6cbc22b","24":"8b15e51213ec87b44968","25":"708a04e37e423068d9fc","26":"3fc72031d6c52e3a3cc1","27":"363bec1bc64df70455b7","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"59ae1b1cfd8692c3385c"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"cf20d11a4e68aecc7d9c","1":"3fcefe42574e1da17cdf","2":"d61917da72b639ae0ce8","3":"fee50a875e25ddcba299","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"9212d28666591aafc098","16":"2369ae67788e1af01cf5","17":"91e5e297a8ed22797841","18":"ea1510d3732a0f51d7cf","19":"c7d0f4bb5cc5c8bca3c7","20":"71e09d2b768f4cecc882","21":"947938f9ded6628b1cd0","22":"e66f80c2f07bf171e9bc","23":"ffbaf8aa7b44e6cbc22b","24":"8b15e51213ec87b44968","25":"708a04e37e423068d9fc","26":"3fc72031d6c52e3a3cc1","27":"363bec1bc64df70455b7","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"c632cf7a243964274bd5","34":"0b30e52d211ca214c5fe"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16538,15 +16538,10 @@ var map = {
 		"./resources/js/pages/PrivacyPolicy.vue",
 		25
 	],
-	"./Profile.vue": [
-		"./resources/js/pages/Profile.vue",
-		0,
-		16
-	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
-		2,
 		1,
+		2,
 		3
 	],
 	"./Rate.vue": [
@@ -16613,6 +16608,15 @@ var map = {
 	"./payment/Success.vue": [
 		"./resources/js/pages/payment/Success.vue",
 		27
+	],
+	"./profile/Edit.vue": [
+		"./resources/js/pages/profile/Edit.vue",
+		34
+	],
+	"./profile/Index.vue": [
+		"./resources/js/pages/profile/Index.vue",
+		0,
+		16
 	]
 };
 function webpackAsyncContext(req) {

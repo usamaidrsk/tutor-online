@@ -1323,8 +1323,8 @@ template {
 
 @font-face {
   font-family: "icons";
-  src: url(/fonts/icons.eot?32488c4a68f3e92729bee533f44044c7);
-  src: url(/fonts/icons.eot?32488c4a68f3e92729bee533f44044c7) format("embedded-opentype"), url(/fonts/icons.woff2?9905a3d9034ec98e82bbcb6dd7978b93) format("woff2"), url(/fonts/icons.woff?015df8005449940d39dfd04f0fcc3a89) format("woff"), url(/fonts/icons.ttf?579ee99c4477f05630c915407b84e502) format("truetype"), url(/fonts/icons.svg?5aa3e2d1c60bd5826a73fc614c977b9a) format("svg");
+  src: url(/fonts/icons.eot?3efa1b873095f935c17495c7b0d297d3);
+  src: url(/fonts/icons.eot?3efa1b873095f935c17495c7b0d297d3) format("embedded-opentype"), url(/fonts/icons.woff2?6b7b9613612922120de4fd9336b0b087) format("woff2"), url(/fonts/icons.woff?f1b0f8bcc67a490a2f600ca612f1b9e5) format("woff"), url(/fonts/icons.ttf?73d67c524e75423bde2736cccae57719) format("truetype"), url(/fonts/icons.svg?b6bc6ed1485ebd5fcfbfefe9bce5844c) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1337,7 +1337,7 @@ template {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'icons';
-    src: url('../font/icons.svg?68223277#icons') format('svg');
+    src: url('../font/icons.svg?13586618#icons') format('svg');
   }
 }
 */
@@ -1462,7 +1462,7 @@ template {
 
 /* '' */
 
-.icon-videocam-outline:before {
+.icon-pen:before {
   content: "\E80F";
 }
 

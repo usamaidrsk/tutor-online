@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div>
                 <figure class="picture image">
-                    <img :src="picture" alt="" />
+                    <img :src="picture" />
                 </figure>
             </div>
 
@@ -29,9 +29,16 @@
 
                     <li>
                         <i class="icon icon-gift"></i>
-                        {{ birthday }}
+                        {{ formatted_birthday }}
                     </li>
                 </ul>
+
+                <div class="link padding-left--one padding-top--halve">
+                    <a :href="route('profile.edit')">
+                        <span>Editar</span>
+                        <i class="icon icon-pen"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -309,14 +316,7 @@ export default {
     color: color('gray', 400);
 }
 
-// Rooms
-
-.room {
-    //
-}
-
 .room__date {
-    // text-align: center;
     text-transform: capitalize;
 }
 </style>

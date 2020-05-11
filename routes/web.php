@@ -5,7 +5,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::name('profile.')
+    ->prefix('/profile')
+    ->group(function () {
+        Route::get('/', 'ProfileController@index')->name('index');
+        Route::get('/edit', 'ProfileController@edit')->name('edit');
+        Route::put('/edit', 'ProfileController@update')->name('update');
+    });
 
 Route::get('/terms', 'TermsController@index')->name('terms');
 Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(

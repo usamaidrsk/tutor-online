@@ -54,7 +54,7 @@ export default {
                 window.location.href =
                     this.step < this.TOTAL_STEPS
                         ? route('questions', this.step + 1)
-                        : route('profile')
+                        : route('profile.index')
             } catch (error) {
                 console.log(error.response)
                 if (error.response) {
