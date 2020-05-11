@@ -165,9 +165,9 @@ class AsigmentController extends Controller
         }
 
         try {
-            Mail::to($matched_teachers)
-                ->locale('es')
-                ->queue(new \App\Mail\Invitation($asigment));
+            Mail::to($matched_teachers)->queue(
+                new \App\Mail\Invitation($asigment)
+            );
         } catch (\Throwable $th) {
             report($th);
         }

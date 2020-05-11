@@ -33,15 +33,14 @@ class InvitationController extends Controller
     public function update($id, int $answer)
     {
         $invitation = Invitation::findOrFail($id);
-
         if ($answer) {
             $invitation->is_acepted = true;
             $invitation->save();
 
             try {
-                Mail::to($invitation->asigment->email)
-                    ->locale('es')
-                    ->queue(new \App\Mail\Notification());
+                Mail::to($invitation->asigment->email)->queue(
+                    new \App\Mail\Notification()
+                );
             } catch (\Throwable $th) {
                 report($th);
             }

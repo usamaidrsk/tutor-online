@@ -22,7 +22,6 @@ class CreateInvitationsTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

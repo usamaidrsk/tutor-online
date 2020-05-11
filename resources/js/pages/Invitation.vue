@@ -38,6 +38,7 @@
                 >
 
                 <Button
+                    class="margin-top--one"
                     color="gray"
                     flat
                     block
@@ -59,6 +60,13 @@ export default {
     methods: {
         async handleAnswer(answer) {
             if (this.loading) return
+
+            if (
+                !answer &&
+                !confirm('¿Seguro de que deseas descartar esta invitación?')
+            ) {
+                return
+            }
 
             this.loading = true
 
