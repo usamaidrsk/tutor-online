@@ -289,8 +289,7 @@ export default {
 
             try {
                 const url = route('asigment.store')
-                const response = await this.$http.post(url, data)
-                const id = response.data
+                await this.$http.post(url, data)
 
                 window.location.href = route('asigment.index')
             } catch (error) {

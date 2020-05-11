@@ -9,9 +9,6 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            // TODO:
-            // - Add `last_login` column
-
             $table->increments('id');
             $table->string('first_name', 25);
             $table->string('last_name', 25);
