@@ -142,7 +142,7 @@ class AsigmentController extends Controller
         }
     }
 
-    private function delete_file(Asigment $asigment)
+    private function delete_files(Asigment $asigment)
     {
         $folder = "attachments/{$asigment->id}";
         Storage::deleteDirectory($folder);
@@ -189,7 +189,7 @@ class AsigmentController extends Controller
             ];
         }
 
-        DB::table('invitations')->insert($invitations);
+        $asigment->invitations()->createMany($invitations);
 
         try {
             $mail = new \App\Mail\Invitation($asigment);
