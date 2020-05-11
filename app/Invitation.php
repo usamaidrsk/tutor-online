@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invitation extends Model
 {
-    protected $fillable = ['status', 'asigment_id', 'teacher_id'];
+    protected $fillable = ['is_acepted', 'asigment_id', 'teacher_id'];
 
     protected $dates = ['created_at', 'updated_at'];
 
