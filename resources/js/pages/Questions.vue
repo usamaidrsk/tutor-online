@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import handleFormError from '../utils/handleFormError'
 import Step1 from './_questions/1'
 import Step2 from './_questions/2'
 import Step3 from './_questions/3'
@@ -56,12 +57,8 @@ export default {
                         ? route('questions', this.step + 1)
                         : route('profile.index')
             } catch (error) {
-                console.log(error.response)
-                if (error.response) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                    const { errors } = error.response.data
-                    this.errors.set(errors || {})
-                }
+                const validationErrors = handleFormError(error)
+                this.errors.set(validationErrors)
             } finally {
                 this.loading = false
             }

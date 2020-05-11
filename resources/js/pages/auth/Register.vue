@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import handleFormError from '../../utils/handleFormError'
+
 export default {
     data() {
         return {
@@ -102,13 +104,10 @@ export default {
                 await this.$http.post('register', this.form)
                 window.location.href = route('questions', 1)
             } catch (error) {
+                const validationErrors = handleFormError(error)
+                this.errors.set(validationErrors)
+            } finally {
                 this.loading = false
-                console.error(error)
-                if (error.response) {
-                    console.error(error.response)
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                    this.errors.set(error.response.data.errors)
-                }
             }
         },
     },

@@ -167,6 +167,8 @@
 </template>
 
 <script>
+import handleFormError from '../../utils/handleFormError'
+
 export default {
     props: ['teacher', 'levels', 'categories', 'countries'],
 
@@ -236,12 +238,8 @@ export default {
                 await this.$http.put(url, data)
                 window.location.href = route('profile.index')
             } catch (error) {
-                console.log(error.response || error)
-                if (error.response) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                    const { errors } = error.response.data
-                    this.errors.set(errors || {})
-                }
+                const validationErrors = handleFormError(error)
+                this.errors.set(validationErrors)
             } finally {
                 this.loading = false
             }

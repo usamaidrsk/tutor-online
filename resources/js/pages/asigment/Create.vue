@@ -209,6 +209,8 @@
 </template>
 
 <script>
+import handleFormError from '../../utils/handleFormError'
+
 export default {
     props: [
         'levels',
@@ -293,12 +295,8 @@ export default {
 
                 window.location.href = route('asigment.index')
             } catch (error) {
-                console.error(error.response || error)
-                if (error.response) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                    const { errors } = error.response.data
-                    this.errors.set(errors || {})
-                }
+                const validationErrors = handleFormError(error)
+                this.errors.set(validationErrors)
             } finally {
                 this.loading = false
             }
