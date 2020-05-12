@@ -39,6 +39,12 @@
             </div>
         </div>
 
+        <div v-if="hasStarted" class="d-flex justify-content-center">
+            <Button @click="terminate" outline color="red"
+                >Terminar clase</Button
+            >
+        </div>
+
         <hr />
 
         <div v-if="!$auth.user" class="margin-bottom--two">
@@ -131,6 +137,26 @@ export default {
                 console.error('Failed to setup Jitsi API:', error)
                 this.hasStarted = false
                 this.isLoading = false
+            }
+        },
+
+        async terminate() {
+            if (this.loading) return
+
+            if (confirm('¿Deseas dar por concluida esta clase?')) {
+                this.loading = true
+
+                try {
+                    const url = route('asigment.delete')
+                    await this.$http.delete(url)
+
+                    const { id } = this.teacher
+                    window.location.href = route('rate.index', id)
+                } catch (error) {
+                    console.error(error.response || error)
+                } finally {
+                    this.loading = false
+                }
             }
         },
 

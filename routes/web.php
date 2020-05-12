@@ -62,6 +62,7 @@ Route::name('questions')
 Route::name('asigment.')->group(function () {
     Route::get('/my-asigment', 'AsigmentController@index')->name('index');
     Route::put('/my-asigment', 'AsigmentController@update')->name('update');
+    Route::delete('/my-asigment', 'AsigmentController@delete')->name('delete');
 
     Route::get('/new', 'AsigmentController@create')->name('create');
     Route::post('/new', 'AsigmentController@store')->name('store');

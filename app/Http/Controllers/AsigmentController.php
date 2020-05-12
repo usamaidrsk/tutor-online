@@ -78,6 +78,7 @@ class AsigmentController extends Controller
             [
                 'asigment' => $asigment,
                 'teachers' => $avalible_teachers,
+                'isNew' => request()->query('is-new', '0'),
             ]
         );
     }
@@ -113,6 +114,19 @@ class AsigmentController extends Controller
         }
 
         return $this->response_with_cookie($asigment);
+    }
+
+    public function delete()
+    {
+        $email = Cookie::get('email');
+        $asigment = Asigment::where('email', $email)->first();
+
+        abort_if(!$asigment, 404);
+
+        $this->delete_files($asigment);
+        $asigment->delete();
+
+        return $asigment;
     }
 
     public function conflict($action)

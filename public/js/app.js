@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"0":"cf20d11a4e68aecc7d9c","1":"3fcefe42574e1da17cdf","2":"d61917da72b639ae0ce8","3":"fee50a875e25ddcba299","4":"48ac7204ab0b3f867a4b","5":"ebc4f9d5d5ba4fcdd53f","6":"2dc49e207cf996e9e2ba","7":"c849622017b66c7eb032","8":"f98d06dec3e7bae0e975","9":"2eaff24986d9b3817610","10":"cf28d8887cad3fea8af9","11":"9bfd9ce9538c5e7590a6","12":"1f8fcd11cd293fea8f60","13":"b8b8c242c8f51461c0fa","14":"8ad9900715bbc5c53483","15":"9212d28666591aafc098","16":"6c3faac3b92e3a3b84f7","17":"a7e3b54d2833dc55825b","18":"719ed4bfe0d7a498d5ec","19":"4bf660e6ad8582c68899","20":"0532c101ab0ed1dfc75a","21":"282d76f1e4e8ecfe8b97","22":"af8f3b810272f89ce076","23":"6ccfe3e61117dce1bcad","24":"8b15e51213ec87b44968","25":"708a04e37e423068d9fc","26":"3fc72031d6c52e3a3cc1","27":"363bec1bc64df70455b7","28":"468e43b78ea89e630f6a","29":"6149dfc33f089a8c3041","30":"ac3e05568b003f71522f","31":"25c707d1ffed909d7aff","32":"c632cf7a243964274bd5","33":"4c4cceaadc20d26d1e07"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + chunkId + ".chunk." + {"1":"3fcefe42574e1da17cdf","2":"d61917da72b639ae0ce8","3":"f605a458c7ccfc20b747","4":"4e2cb573b1a3f44366ce","5":"494abe884266a6c75bb1","6":"3d5ca39cb1addec7db31","7":"2d0a3dcbef462faccb9d","8":"86c8db21b0bf227ba45b","9":"c11fbb71cfa88824464f","10":"de9453353e5d5a99aab8","11":"92383111a72c909313df","12":"3a0994236d41a5ad017b","13":"1673d17aabccf46c6ffe","14":"c2a8f04de3abc48b849f","15":"51d3c72e29b3f2ccc95f","16":"4634707c7b9e17cb516b","17":"7ed7394b8c9853062fb6","18":"53cc598bad57e4a819d4","19":"16c2c84f7ee8548a5b84","20":"6955e08109402d9f652c","21":"99e4ced83bdf8624b77b","22":"96ca7e4b8e076e8f647c","23":"ffbaf8aa7b44e6cbc22b","24":"761d5fc559d1024e0136","25":"f94e03456fa9b2002e25","26":"c5390e3b42457b3db2be","27":"bfbeaeffd27e33c8ada3","28":"2dca70117d6bcd4dffad","29":"7038319c38e9c6670767","30":"26d4f7d8c2af63f9efb3","31":"86cca095cb8d26705234","32":"4df0ddd6a6047d704c37","33":"6b04fc17ec0802503bbe","34":"5f32f41a95700e444960","35":"c029c83fdae05e646a34"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16453,47 +16453,47 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./Button.vue": [
 		"./resources/js/components/Button.vue",
-		24
+		25
 	],
 	"./Checkbox.vue": [
 		"./resources/js/components/Checkbox.vue",
-		5
+		7
 	],
 	"./File.vue": [
 		"./resources/js/components/File.vue",
-		6
+		8
 	],
 	"./Input.vue": [
 		"./resources/js/components/Input.vue",
-		7
+		9
 	],
 	"./Radio.vue": [
 		"./resources/js/components/Radio.vue",
-		8
+		10
 	],
 	"./Schedule.vue": [
 		"./resources/js/components/Schedule.vue",
-		9
+		11
 	],
 	"./Scores.vue": [
 		"./resources/js/components/Scores.vue",
-		10
+		12
 	],
 	"./Select.vue": [
 		"./resources/js/components/Select.vue",
-		4
+		5
 	],
 	"./Stars.vue": [
 		"./resources/js/components/Stars.vue",
-		11
+		13
 	],
 	"./TeacherCard.vue": [
 		"./resources/js/components/TeacherCard.vue",
-		12
+		14
 	],
 	"./TeacherModal.vue": [
 		"./resources/js/components/TeacherModal.vue",
-		13
+		15
 	]
 };
 function webpackAsyncContext(req) {
@@ -16528,15 +16528,15 @@ module.exports = webpackAsyncContext;
 var map = {
 	"./Home.vue": [
 		"./resources/js/pages/Home.vue",
-		14
+		16
 	],
 	"./Invitation.vue": [
 		"./resources/js/pages/Invitation.vue",
-		15
+		17
 	],
 	"./PrivacyPolicy.vue": [
 		"./resources/js/pages/PrivacyPolicy.vue",
-		25
+		27
 	],
 	"./Questions.vue": [
 		"./resources/js/pages/Questions.vue",
@@ -16546,16 +16546,16 @@ var map = {
 	],
 	"./Rate.vue": [
 		"./resources/js/pages/Rate.vue",
-		16
+		18
 	],
 	"./Room.vue": [
 		"./resources/js/pages/Room.vue",
-		0,
-		17
+		35,
+		19
 	],
 	"./Terms.vue": [
 		"./resources/js/pages/Terms.vue",
-		26
+		28
 	],
 	"./_questions/1.vue": [
 		"./resources/js/pages/_questions/1.vue",
@@ -16563,11 +16563,11 @@ var map = {
 	],
 	"./_questions/2.vue": [
 		"./resources/js/pages/_questions/2.vue",
-		28
+		30
 	],
 	"./_questions/3.vue": [
 		"./resources/js/pages/_questions/3.vue",
-		29
+		31
 	],
 	"./_questions/4.vue": [
 		"./resources/js/pages/_questions/4.vue",
@@ -16575,48 +16575,52 @@ var map = {
 	],
 	"./asigment/Create.vue": [
 		"./resources/js/pages/asigment/Create.vue",
-		18
+		4
 	],
 	"./asigment/Show.vue": [
 		"./resources/js/pages/asigment/Show.vue",
-		19
+		20
+	],
+	"./asigment/_create/Conflict.vue": [
+		"./resources/js/pages/asigment/_create/Conflict.vue",
+		21
 	],
 	"./auth/Login.vue": [
 		"./resources/js/pages/auth/Login.vue",
-		20
+		22
 	],
 	"./auth/Register.vue": [
 		"./resources/js/pages/auth/Register.vue",
-		21
+		6
 	],
 	"./auth/passwords/Confirm.vue": [
 		"./resources/js/pages/auth/passwords/Confirm.vue",
-		30
+		32
 	],
 	"./auth/passwords/Email.vue": [
 		"./resources/js/pages/auth/passwords/Email.vue",
-		31
+		33
 	],
 	"./auth/passwords/Reset.vue": [
 		"./resources/js/pages/auth/passwords/Reset.vue",
-		32
+		34
 	],
 	"./payment/Index.vue": [
 		"./resources/js/pages/payment/Index.vue",
-		22
+		23
 	],
 	"./payment/Success.vue": [
 		"./resources/js/pages/payment/Success.vue",
-		27
+		29
 	],
 	"./profile/Edit.vue": [
 		"./resources/js/pages/profile/Edit.vue",
-		33
+		26
 	],
 	"./profile/Index.vue": [
 		"./resources/js/pages/profile/Index.vue",
-		0,
-		23
+		35,
+		24
 	]
 };
 function webpackAsyncContext(req) {
