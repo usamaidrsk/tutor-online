@@ -49,14 +49,8 @@ Route::name('teacher.')
 Route::name('questions')
     ->prefix('questions/{step}')
     ->group(function () {
-        Route::get('/', 'QuestionsController@index')->where(
-            'step',
-            '[1,2,3,4]'
-        );
-        Route::post('/', 'QuestionsController@store')->where(
-            'step',
-            '[1,2,3,4]'
-        );
+        Route::get('/', 'QuestionsController@index')->where('step', '[1-4]');
+        Route::post('/', 'QuestionsController@store')->where('step', '[1-4]');
     });
 
 Route::name('asigment.')->group(function () {

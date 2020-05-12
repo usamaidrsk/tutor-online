@@ -12,17 +12,13 @@
 
 <script>
 import handleFormError from '../utils/handleFormError'
-import Step1 from './_questions/1'
-import Step2 from './_questions/2'
-import Step3 from './_questions/3'
-import Step4 from './_questions/4'
 
 export default {
     components: {
-        'step-1': Step1,
-        'step-2': Step2,
-        'step-3': Step3,
-        'step-4': Step4,
+        'step-1': require('./_questions/1').default,
+        'step-2': require('./_questions/2').default,
+        'step-3': require('./_questions/3').default,
+        'step-4': require('./_questions/4').default,
     },
 
     props: {
