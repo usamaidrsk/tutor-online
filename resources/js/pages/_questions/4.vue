@@ -1,5 +1,4 @@
 <template>
-    <form class="questions" @submit.prevent="handleSubmit">
         <h1 class="text--center">Foto de perfil</h1>
 
         <label class="imageinput" :class="{ 'imageinput--is-filled': image }">
@@ -8,13 +7,13 @@
             <input
                 type="file"
                 @change="handleImage"
-                :accept="allowedExtension"
+                :accept="toAccepted(ALLOWED_PICTURE_EXTENSIONS)"
             />
         </label>
 
         <ul class="text--gray text--center">
             <li>Máximo: {{ maxSizeToKbs }}</li>
-            <li>Formatos: JPG, JPEG o PNG</li>
+            <li>Formatos: {{ toList(ALLOWED_PICTURE_EXTENSIONS) }}</li>
             <li>Tamaño recomendado: 216px x 216px</li>
         </ul>
 
@@ -22,7 +21,7 @@
             error
         }}</span>
 
-        <div class="text--center margin-top--two">
+        <footer class="margin-top--three">
             <Button class="margin--auto" type="submit" block :loading="loading"
                 >Finalizar</Button
             >
@@ -34,7 +33,7 @@
                 block
                 >Atras</Button
             >
-        </div>
+        </footer>
     </form>
 </template>
 
@@ -58,15 +57,12 @@ export default {
         maxSizeToKbs() {
             return this.MAX_PICTURE_SIZE / 1024 + 'KB'
         },
-
-        allowedExtension() {
-            return this.ALLOWED_PICTURE_EXTENSIONS.map(key => '.' + key).join(
-                ','
-            )
-        },
     },
 
     methods: {
+        toAccepted: arr => arr.map(key => '.' + key).join(','),
+        toList: arr => arr.map(s => s.toUpperCase()).join(', '),
+
         handleSubmit() {
             if (!this.form.picture) {
                 this.error = 'Por favor elige una foto para tu perfil'
@@ -105,12 +101,6 @@ export default {
 <style lang="scss" scoped>
 @import '~@/sass/_globals.scss';
 
-form {
-    width: 280px !important;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
 .imageinput {
     @include size(200px);
 
@@ -144,5 +134,11 @@ form {
         color: color('gray', 100);
         font-size: 10rem;
     }
+}
+
+footer {
+    width: 280px !important;
+    max-width: 100%;
+    margin: 0 auto;
 }
 </style>
