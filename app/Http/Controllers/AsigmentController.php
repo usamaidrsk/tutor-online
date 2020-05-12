@@ -112,8 +112,36 @@ class AsigmentController extends Controller
             throw $th;
         }
 
+        return $this->response_with_cookie($asigment);
+    }
+
+    public function conflict($action)
+    {
+        $email = request()->input('email');
+        $asigment = Asigment::where('email', $email)->first();
+
+        switch ($action) {
+            case 'RECOVER':
+                // For now there is nothing special needed to
+                // recover old asigment, just return the
+                // `email` cookie
+                break;
+
+            case 'OVERWRITE':
+                $asigment->delete();
+                $this->store();
+                break;
+        }
+
+        return $this->response_with_cookie($asigment);
+    }
+
+    private function response_with_cookie(Asigment $asigment)
+    {
         $response = \Response::make($asigment->id);
-        $response->withCookie(cookie()->forever('email', $asigment->email));
+        $cookie = cookie()->forever('email', $asigment->email);
+        $response->withCookie($cookie);
+
         return $response;
     }
 

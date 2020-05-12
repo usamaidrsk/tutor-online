@@ -10,7 +10,7 @@ class CreateAsigmentsTable extends Migration
     {
         Schema::create('asigments', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 50);
+            $table->string('email', 50)->unique();
             $table->string('phone', 15);
             $table->string('details', 300);
             $table->decimal('budget', 8, 2);

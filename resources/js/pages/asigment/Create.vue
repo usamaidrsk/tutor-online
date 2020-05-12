@@ -1,5 +1,13 @@
 <template>
-    <form @submit.prevent="handleSubmit">
+    <Conflict
+        v-if="isDuplicated"
+        :email="form.email"
+        :options="options"
+        :loading="loading"
+        @answer="handleConflict"
+    />
+
+    <form v-else @submit.prevent="handleSubmit">
         <h1 class="text--center margin-bottom--three">Nueva propuesta</h1>
 
         <div class="row">
@@ -211,7 +219,15 @@
 <script>
 import handleFormError from '../../utils/handleFormError'
 
+const OPTIONS = {
+    RECOVER:
+        'Recuperar la propuesta antigüa descartando la recién creada propuesta',
+    OVERWRITE: 'Crear una nueva propuesta y olvidar la antigüa',
+}
+
 export default {
+    components: { Conflict: require('./_create/Conflict').default },
+
     props: [
         'levels',
         'categories',
@@ -234,6 +250,8 @@ export default {
         },
 
         files: [],
+        formData: null,
+        isDuplicated: false,
         loading: false,
         errors: new ErrorBag(),
     }),
@@ -262,6 +280,8 @@ export default {
             if (size < 700) return size + 'KB'
             else return size / 1024 + 'MB'
         },
+
+        options: () => OPTIONS,
     },
 
     methods: {
@@ -289,6 +309,8 @@ export default {
                 data.append(`files[${index}]`, file)
             )
 
+            this.formData = data
+
             try {
                 const url = route('asigment.store')
                 await this.$http.post(url, data)
@@ -297,6 +319,38 @@ export default {
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)
+
+                if (this.errors.keys.length) return
+
+                const message = error.response && error.response.data.message
+                if (!message) return false
+
+                this.isDuplicated = /Duplicate entry/.test(message)
+            } finally {
+                this.loading = false
+            }
+        },
+
+        async handleConflict(action) {
+            if (this.loading) return
+
+            let data
+
+            if (action === 'OVERWRITE') {
+                data = this.formData
+            } else {
+                const email = this.formData.get('email')
+                data = new FormData()
+                data.set('email', email)
+            }
+
+            try {
+                this.loading = true
+                const url = route('asigment.conflict', action)
+                await this.$http.post(url, data)
+                window.location.href = route('asigment.index')
+            } catch (error) {
+                console.error(error.response || error)
             } finally {
                 this.loading = false
             }

@@ -65,6 +65,10 @@ Route::name('asigment.')->group(function () {
 
     Route::get('/new', 'AsigmentController@create')->name('create');
     Route::post('/new', 'AsigmentController@store')->name('store');
+
+    Route::post('/conflict/{action}', 'AsigmentController@conflict')->name(
+        'conflict'
+    );
 });
 
 Route::name('rate.')
