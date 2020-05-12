@@ -1,5 +1,9 @@
 <template>
     <div>
+        <span v-if="isNew && shouldShowMessage" class="success" role="alert">
+            Se han enviado invitaciones a todos los docentes disponibles
+        </span>
+
         <template v-if="teachers.length">
             <h1 class="margin-bottom--three text--center">
                 Docentes disponibles
@@ -21,7 +25,9 @@
 
         <div v-else class="placeholder">
             <div>
-                <h1 class="margin-bottom--zero">No hay docentes disponibles</h1>
+                <h1 class="margin-bottom--one text--light">
+                    Ningún docente ha respondido tu propuesta
+                </h1>
                 <p>
                     Por los momentos ningún docente a respondido a tu propuesta,
                     ten paciencia.
@@ -79,12 +85,23 @@
 
 <script>
 export default {
-    props: ['asigment', 'teachers'],
+    props: ['asigment', 'teachers', 'isNew'],
 
     data: () => ({
         currentTeacher: {},
         isModalVisible: false,
+        shouldShowMessage: false,
     }),
+
+    created() {
+        if (Number.parseInt(this.isNew)) {
+            this.shouldShowMessage = true
+            setTimeout(
+                () => (this.shouldShowMessage = false),
+                3 * 1000 // 3s
+            )
+        }
+    },
 
     methods: {
         async handleModalClick() {

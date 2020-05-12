@@ -315,7 +315,7 @@ export default {
                 const url = route('asigment.store')
                 await this.$http.post(url, data)
 
-                window.location.href = route('asigment.index')
+                window.location.href = route('asigment.index', { 'is-new': 1 })
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)
