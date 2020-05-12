@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Propaganistas\LaravelPhone\PhoneNumber;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use DB;
 use Image;
 
@@ -146,12 +146,11 @@ class QuestionsController extends Controller
                 break;
 
             case 4:
+                $image_mimes = implode(',', $this::ALLOWED_PICTURE_EXTENSIONS);
+                $max_size = $this::MAX_PICTURE_SIZE / 1024;
+
                 $rules = [
-                    'picture' =>
-                        'required|image|mimes:' .
-                        implode(',', $this::ALLOWED_PICTURE_EXTENSIONS) .
-                        '|max:' .
-                        $this::MAX_PICTURE_SIZE / 1024,
+                    'picture' => "required|image|mimes:$image_mimes|max:$max_size",
                 ];
                 break;
         }
@@ -217,19 +216,19 @@ class QuestionsController extends Controller
 
         // #4 | Resize and save user picture
 
-        $path = "pictures/{$user->id}.jpg";
+        $image_path = "pictures/{$user->id}.jpg";
+        $image_full_path = storage_path("app/public/$image_path");
 
-        // Make sure that `pictures` foldes exists before storing the image
-        $folder = storage_path('app/public/pictures');
-        if (!File::isDirectory($folder)) {
-            File::makeDirectory($folder, 0777, true, true);
-        }
+        Storage::makeDirectory('/pictures');
 
         Image::make($picture)
             ->fit(216)
-            ->save(storage_path("app/public/$path"), 75);
+            ->save($image_full_path, 75);
 
-        $user->picture = "/storage/$path";
+        $user->picture = "/storage/$image_path";
+
+
+        // Finaly | Save teacher's changes
 
         $user->answered_questions = true;
         $user->save();
