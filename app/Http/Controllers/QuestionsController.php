@@ -12,6 +12,7 @@ class QuestionsController extends Controller
 {
     const MAX_PICTURE_SIZE = 100 * 1024; // 100 KB
     const ALLOWED_PICTURE_EXTENSIONS = ['png', 'jpg', 'jpeg'];
+    const ALLOWED_DOCUMENT_EXTENSIONS = ['pdf', 'png', 'jpg', 'jpeg'];
     const TOTAL_STEPS = 4;
 
     public function __construct()
@@ -75,6 +76,8 @@ class QuestionsController extends Controller
             case 4:
                 $props += [
                     'MAX_PICTURE_SIZE' => $this::MAX_PICTURE_SIZE,
+                    'ALLOWED_DOCUMENT_EXTENSIONS' =>
+                        $this::ALLOWED_DOCUMENT_EXTENSIONS,
                     'ALLOWED_PICTURE_EXTENSIONS' =>
                         $this::ALLOWED_PICTURE_EXTENSIONS,
                 ];
@@ -146,11 +149,16 @@ class QuestionsController extends Controller
                 break;
 
             case 4:
+                $document_mimes = implode(
+                    ',',
+                    $this::ALLOWED_DOCUMENT_EXTENSIONS
+                );
                 $image_mimes = implode(',', $this::ALLOWED_PICTURE_EXTENSIONS);
                 $max_size = $this::MAX_PICTURE_SIZE / 1024;
 
                 $rules = [
                     'picture' => "required|image|mimes:$image_mimes|max:$max_size",
+                    'document' => 'required|mimes:' . $document_mimes,
                 ];
                 break;
         }
@@ -172,6 +180,7 @@ class QuestionsController extends Controller
         $answers = session()->get('answers');
         $input = array_merge($answers[0], $answers[1], $answers[2]);
         $picture = request()->file('picture');
+        $document = request()->file('document');
 
         // #1 | Store general information
 
@@ -214,7 +223,7 @@ class QuestionsController extends Controller
 
         $user->schedule()->createMany($schedule);
 
-        // #4 | Resize and save user picture
+        // #4.1 | Resize and save user picture
 
         $image_path = "pictures/{$user->id}.jpg";
         $image_full_path = storage_path("app/public/$image_path");
@@ -227,6 +236,12 @@ class QuestionsController extends Controller
 
         $user->picture = "/storage/$image_path";
 
+        // #4.2 | Store given identification document
+
+        Storage::makeDirectory('/documents');
+
+        $document_path = $document->store('documents');
+        $user->document = $document_path;
 
         // Finaly | Save teacher's changes
 

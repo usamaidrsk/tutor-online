@@ -1,4 +1,28 @@
 <template>
+    <form @submit.prevent="handleSubmit">
+        <h1>Necesitamos un documento de identificación</h1>
+        <p>
+            Para asegurarnos que eres una persona real necesitamos que nos
+            facilites algún tipo de documento de identidad de tu pertenencia, de
+            esta forma podremos dar de alta tu nuevo perfil y podras empezar a
+            trabajar en nuestra plataforma.
+        </p>
+
+        <div class="margin-top--three margin-bottom--three">
+            <span v-if="errors.has('document')" class="error" role="alert">
+                {{ errors.first('document') }}
+            </span>
+
+            <input
+                type="file"
+                @change="handleFileChange"
+                :accept="toAccepted(ALLOWED_DOCUMENT_EXTENSIONS)"
+            />
+            <p class="margin-top--one">
+                Formatos: {{ toList(ALLOWED_DOCUMENT_EXTENSIONS) }}
+            </p>
+        </div>
+
         <h1 class="text--center">Foto de perfil</h1>
 
         <label class="imageinput" :class="{ 'imageinput--is-filled': image }">
@@ -42,13 +66,17 @@ export default {
     props: {
         old: Object,
         ALLOWED_PICTURE_EXTENSIONS: Array,
+        ALLOWED_DOCUMENT_EXTENSIONS: Array,
         MAX_PICTURE_SIZE: Number,
         loading: Boolean,
         errors: ErrorBag,
     },
 
     data: () => ({
-        form: { picture: null },
+        form: {
+            document: null,
+            picture: null,
+        },
         image: null,
         error: '',
     }),
@@ -70,9 +98,15 @@ export default {
             }
 
             const data = new FormData()
-            data.append('picture', this.form.picture)
+            const { document, picture } = this.form
+            data.append('document', document)
+            data.append('picture', picture)
 
             this.$emit('submit', data)
+        },
+
+        handleFileChange({ target: { files } }) {
+            this.form.document = files[0]
         },
 
         handleImage({ target: { files } }) {
