@@ -9,15 +9,18 @@ class CreateLevelTeacherTable extends Migration
     public function up()
     {
         Schema::create('level_teacher', function (Blueprint $table) {
+            $table->unsignedTinyInteger('level_id');
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->tinyInteger('level_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('level_id')
+                ->references('id')
+                ->on('levels')
                 ->onDelete('cascade');
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
 
             $table->primary(['level_id', 'teacher_id']);

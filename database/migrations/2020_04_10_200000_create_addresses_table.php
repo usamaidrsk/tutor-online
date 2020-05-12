@@ -9,21 +9,23 @@ class CreateAddressesTable extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('line', 100)->nullable();
             $table->string('state', 50)->nullable();
             $table->string('city', 50)->nullable();
             $table->string('zip_code', 10)->nullable();
+            $table->unsignedTinyInteger('country_id')->nullable();
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->tinyInteger('country_id')
-                ->unsigned()
-                ->constrained()
-                ->nullable()
+                ->foreign('country_id')
+                ->references('id')
+                ->on('countries')
                 ->onDelete('set null');
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
         });
     }

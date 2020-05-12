@@ -15,15 +15,18 @@ class CreateAsigmentsTable extends Migration
             $table->string('details', 300);
             $table->decimal('budget', 8, 2);
             $table->timestamp('date');
+            $table->unsignedTinyInteger('level_id');
+            $table->unsignedTinyInteger('category_id');
+
             $table
-                ->tinyInteger('level_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('level_id')
+                ->references('id')
+                ->on('levels')
                 ->onDelete('cascade');
             $table
-                ->tinyInteger('category_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('category_id')
+                ->references('id')
+                ->on('categories')
                 ->onDelete('cascade');
 
             $table->timestamps();

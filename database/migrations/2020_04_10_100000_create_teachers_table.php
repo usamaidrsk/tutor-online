@@ -9,7 +9,7 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('first_name', 25);
             $table->string('last_name', 25);
             $table->string('email', 50)->unique();
@@ -21,10 +21,7 @@ class CreateTeachersTable extends Migration
             $table->boolean('answered_questions')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table
-                ->tinyInteger('country_id')
-                ->unsigned()
-                ->nullable();
+            $table->unsignedTinyInteger('country_id')->nullable();
             $table->timestamps();
 
             $table

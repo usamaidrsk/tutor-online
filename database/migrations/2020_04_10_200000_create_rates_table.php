@@ -10,15 +10,19 @@ class CreateRatesTable extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('score');
+            $table->unsignedTinyInteger('score');
+            $table->unsignedTinyInteger('criteria_id');
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->tinyInteger('criteria_id')
-                ->unsigned()
-                ->constrained();
+                ->foreign('criteria_id')
+                ->references('id')
+                ->on('criterias')
+                ->onDelete('cascade');
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
         });
     }

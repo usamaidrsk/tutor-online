@@ -12,11 +12,13 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->time('start');
             $table->time('end');
-            $table->tinyInteger('day_of_week');
+            $table->unsignedTinyInteger('day_of_week');
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
         });
     }

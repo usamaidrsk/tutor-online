@@ -13,12 +13,14 @@ class CreatePaymentsTable extends Migration
             $table->string('invoice_id');
             $table->string('transaction_id');
             $table->decimal('amount', 8, 2);
+            $table->unsignedBigInteger('asigment_id')->nullable();
+
             $table
-                ->integer('asigment_id')
-                ->unsigned()
-                ->constrained()
-                ->nullable()
+                ->foreign('asigment_id')
+                ->references('id')
+                ->on('asigments')
                 ->onDelete('set null');
+
             $table->timestamps();
         });
     }

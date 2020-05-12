@@ -11,17 +11,19 @@ class CreateInvitationsTable extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_acepted')->default(false);
-            $table
-                ->integer('asigment_id')
-                ->unsigned()
-                ->constrained()
-                ->onDelete('cascade');
-            $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
-                ->onDelete('cascade');
+            $table->unsignedBigInteger('asigment_id');
+            $table->unsignedBigInteger('teacher_id');
 
+            $table
+                ->foreign('asigment_id')
+                ->references('id')
+                ->on('asigments')
+                ->onDelete('cascade');
+            $table
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

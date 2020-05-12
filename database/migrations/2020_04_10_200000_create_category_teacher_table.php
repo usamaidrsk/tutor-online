@@ -9,15 +9,18 @@ class CreateCategoryTeacherTable extends Migration
     public function up()
     {
         Schema::create('category_teacher', function (Blueprint $table) {
+            $table->unsignedTinyInteger('category_id');
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->tinyInteger('category_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('category_id')
+                ->references('id')
+                ->on('categories')
                 ->onDelete('cascade');
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
 
             $table->primary(['category_id', 'teacher_id']);

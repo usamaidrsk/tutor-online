@@ -14,10 +14,12 @@ class CreateFilesTable extends Migration
             $table->integer('size');
             $table->string('type');
             $table->string('path');
+            $table->unsignedBigInteger('asigment_id');
+
             $table
-                ->integer('asigment_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('asigment_id')
+                ->references('id')
+                ->on('asigments')
                 ->onDelete('cascade');
         });
     }

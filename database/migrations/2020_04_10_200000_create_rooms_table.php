@@ -11,16 +11,20 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->char('token', 10)->unique();
+            $table->unsignedBigInteger('asigment_id');
+            $table->unsignedBigInteger('teacher_id');
+
             $table
-                ->integer('asigment_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('asigment_id')
+                ->references('id')
+                ->on('asigments')
                 ->onDelete('cascade');
             $table
-                ->integer('teacher_id')
-                ->unsigned()
-                ->constrained()
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
