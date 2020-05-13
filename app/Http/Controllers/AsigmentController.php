@@ -196,23 +196,28 @@ class AsigmentController extends Controller
 
     private function invite_teachers(Asigment $asigment)
     {
+        // This is the number of minutes of a class session
+        // Theacer should not be invited if they acepted
+        // another invitation to a class appointed to the same
+        // day and hour
+        $max_minutes = 60;
+
         $level_id = $asigment->level_id;
         $category_id = $asigment->category_id;
 
         $date = Carbon::parse($asigment->date);
         $day_of_week = ((int) $date->dayOfWeek) + 1;
+        $year = $date->year;
         $time = $date->format('H:i');
 
-        $matched_teachers = DB::table('teachers')
-            ->select('teachers.id as id')
-            ->join('level_teacher as l_t', 'teachers.id', '=', 'l_t.teacher_id')
-            ->join(
-                'category_teacher as c_t',
-                'teachers.id',
-                '=',
-                'c_t.teacher_id'
-            )
-            ->join('schedules as s', 'teachers.id', '=', 's.teacher_id')
+        $matched_teachers = \DB::table('teachers as t')
+            ->select('t.id as id')
+            ->distinct()
+            ->join('level_teacher as l_t', 't.id', '=', 'l_t.teacher_id')
+            ->join('category_teacher as c_t', 't.id', '=', 'c_t.teacher_id')
+            ->join('schedules as s', 't.id', '=', 's.teacher_id')
+            ->leftJoin('invitations as i', 't.id', '=', 'i.teacher_id')
+            ->leftJoin('asigments as a', 'a.id', '=', 'i.asigment_id')
             ->where([
                 ['l_t.level_id', '=', $level_id],
                 ['c_t.category_id', '=', $category_id],
@@ -220,6 +225,32 @@ class AsigmentController extends Controller
                 ['s.end', '>=', $time],
                 ['s.day_of_week', '=', $day_of_week],
             ])
+            ->where(function ($query) use (
+                $max_minutes,
+                $day_of_week,
+                $year,
+                $time
+            ) {
+                $query
+                    ->whereNull('a.id')
+                    ->orWhere('i.is_acepted', false)
+                    ->orWhere(function ($query) use (
+                        $max_minutes,
+                        $day_of_week,
+                        $year,
+                        $time
+                    ) {
+                        $query
+                            ->whereRaw("DAYOFWEEK(a.date) <> $day_of_week")
+                            ->orWhereRaw("YEAR(a.date) <> $year")
+                            ->orWhereRaw(
+                                "TIME(DATE_ADD(a.date, INTERVAL $max_minutes MINUTE)) <= '$time'"
+                            )
+                            ->orWhereRaw(
+                                "TIME(DATE_SUB(a.date, INTERVAL $max_minutes MINUTE)) >= '$time'"
+                            );
+                    });
+            })
             ->get();
 
         // Now create invitations in database
