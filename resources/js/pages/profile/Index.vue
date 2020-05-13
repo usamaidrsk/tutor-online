@@ -12,7 +12,7 @@
 
                 <Stars :value="stars" />
 
-                <ul class="info margin-top--one text--gray">
+                <ul class="information margin-top--one text--gray">
                     <li>
                         <i class="icon icon-map"></i>
                         {{ address.line }}, {{ address.city }},
@@ -265,7 +265,7 @@ export default {
     }
 }
 
-.info {
+.information {
     .icon {
         font-size: 1.25rem;
     }
