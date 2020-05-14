@@ -97,6 +97,10 @@ class AsigmentController extends Controller
             'category_id',
         ]);
 
+        if (Asigment::where('email', $input['email'])->exists()) {
+            return response('duplicated email', 422); // Unprocessable Entity
+        }
+
         $input['date'] = Carbon::parse($input['date']);
 
         $phone = request()->input('phone_prefix') . $input['phone'];
