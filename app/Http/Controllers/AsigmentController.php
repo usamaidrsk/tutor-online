@@ -215,7 +215,7 @@ class AsigmentController extends Controller
         $time = $date->format('H:i');
 
         $matched_teachers = \DB::table('teachers as t')
-            ->select('t.id as id')
+            ->select('t.id as id, t.email as email')
             ->distinct()
             ->join('level_teacher as l_t', 't.id', '=', 'l_t.teacher_id')
             ->join('category_teacher as c_t', 't.id', '=', 'c_t.teacher_id')
