@@ -98,7 +98,7 @@ class AsigmentController extends Controller
         ]);
 
         if (Asigment::where('email', $input['email'])->exists()) {
-            return response('duplicated email', 422); // Unprocessable Entity
+            return response(['message' => 'duplicated email'], 422); // Unprocessable Entity
         }
 
         $input['date'] = Carbon::parse($input['date']);
