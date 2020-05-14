@@ -325,7 +325,7 @@ export default {
                 const message = error.response && error.response.data.message
                 if (!message) return false
 
-                this.isDuplicated = /duplicate entry/.test(message)
+                this.isDuplicated = /duplicate email/.test(message)
             } finally {
                 this.loading = false
             }
