@@ -186,6 +186,10 @@ class PaymentController extends Controller
             'amount' => $payment->transactions[0]->amount->total,
         ]);
 
+        // Delete all related invitations, that way teachers that did'nt
+        // respond to the invitation don't see the outdated invitation
+        $asigment->invitations()->delete();
+
         // Create room
         $asigment->room()->create([
             'token' => Str::random(10),
