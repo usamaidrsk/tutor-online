@@ -53,12 +53,12 @@
 
             <div v-else class="row justify-content-center margin-top--two">
                 <a
-                    class="room col-xs-12 col-sm-6"
+                    class="card col-xs-12 col-sm-8 col-lg-6"
                     v-for="(room, index) in rooms"
                     :key="index"
                     :href="route('room', room.token)"
                 >
-                    <h4 class="room__date">
+                    <h4 class="card__date text--uppercase">
                         {{ formatDistance(room.asigment.date) }}
                     </h4>
 
@@ -77,8 +77,8 @@
                         </tr>
                         <tr>
                             <td>Detalles:</td>
-                            <td class="room__details">
-                                {{ room.asigment.details }}
+                            <td>
+                                <p>{{ room.asigment.details }}</p>
                             </td>
                         </tr>
                     </table>
@@ -99,13 +99,13 @@
 
             <div v-else class="row justify-content-center margin-top--two">
                 <a
-                    class="col-xs-12 col-sm-6"
+                    class="col-xs-12 col-sm-8 col-lg-6"
                     v-for="({ asigment }, index) in invitations"
                     :key="index"
                     :href="route('invitation.show', asigment.id)"
                 >
-                    <div class="invitation">
-                        <span class="invitation__budget">
+                    <div class="card">
+                        <span class="card__budget">
                             {{ APP_CURRENCY_SYMBOL }}{{ asigment.budget }}
                         </span>
 
@@ -125,12 +125,12 @@
                             <tr>
                                 <td>Detalles:</td>
                                 <td>
-                                    {{ asigment.details }}
+                                    <p>{{ asigment.details }}</p>
                                 </td>
                             </tr>
                         </table>
 
-                        <span class="invitation__date">
+                        <span class="card__date">
                             <i class="icon icon-clock"></i>
                             {{ asigment.formated_created_at }}</span
                         >
@@ -276,47 +276,44 @@ export default {
     min-height: 45vh;
 }
 
-.invitation,
-.room {
+.card {
+    position: relative;
     display: block;
     padding: 1.5rem;
     padding-top: 1rem;
     margin-bottom: 1rem;
     border: 1px solid color('gray', 100);
     border-radius: 10px;
-}
 
-.invitation__details,
-.room__details {
-    @include ellipsis;
-}
+    table {
+        width: 100%;
+    }
 
-.invitation,
-.room {
     table td:first-child {
         font-weight: get('bold', $font-weights);
         padding-right: 0.5rem;
     }
+
+    table td:nth-child(2) p {
+        @include ellipsis;
+        max-width: 125px;
+
+        @include breakpoint('sm') {
+            max-width: 300px;
+        }
+    }
 }
 
-.invitation {
-    position: relative;
-}
-
-.invitation__budget {
+.card__budget {
     font-weight: get('regular', $font-weights);
     font-size: 2.25rem;
     margin-bottom: 2rem;
 }
 
-.invitation__date {
+.card__date {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
     color: color('gray', 400);
-}
-
-.room__date {
-    text-transform: capitalize;
 }
 </style>
