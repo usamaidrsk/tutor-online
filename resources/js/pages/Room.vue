@@ -151,7 +151,9 @@ export default {
                     await this.$http.delete(url)
 
                     const { id } = this.teacher
-                    window.location.href = route('rate.index', id)
+                    window.location.href = this.$auth.user
+                        ? route('profile.index')
+                        : route('rate.index', id)
                 } catch (error) {
                     console.error(error.response || error)
                 } finally {

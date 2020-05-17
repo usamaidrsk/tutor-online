@@ -73,7 +73,7 @@ export default {
 
             try {
                 await this.$http.post(url, data)
-                location.href = route('asigment.create')
+                location.href = route('home')
             } catch (error) {
                 console.error(error.response || error)
             } finally {
