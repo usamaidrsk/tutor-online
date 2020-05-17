@@ -31,6 +31,7 @@ class RoomController extends Controller
                 return redirect()->route('asigment.index');
             }
 
+            $token = $room->token;
             $teacher = Teacher::findOrFail($room->teacher_id);
         }
 
@@ -38,7 +39,7 @@ class RoomController extends Controller
             'room',
             ['title' => 'Clase online'],
             [
-                'roomName' => 'Clase online',
+                'roomName' => "Clase online | $token",
                 'displayName' => auth()->check()
                     ? $teacher->full_name
                     : 'Estudiante',
