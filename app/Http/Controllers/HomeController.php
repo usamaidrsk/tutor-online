@@ -6,13 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function index()
     {
-        return redirect()->route('asigment.create');
+        return view()->component('home', ['title' => 'Inicio']);
     }
 }
