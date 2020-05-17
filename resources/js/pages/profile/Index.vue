@@ -58,7 +58,7 @@
                     :key="index"
                     :href="route('room', room.token)"
                 >
-                    <h4 class="card__date text--uppercase">
+                    <h4 class="text--uppercase">
                         {{ formatDistance(room.asigment.date) }}
                     </h4>
 
