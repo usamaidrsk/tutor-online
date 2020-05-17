@@ -84,7 +84,6 @@ export default {
     data: () => ({
         distanceInWords: null,
         distanceInTime: true,
-        jitsi: null,
         isLoading: false,
         hasStarted: false,
     }),
@@ -126,13 +125,11 @@ export default {
                     },
                 }
 
-                const jitsi = new JitsiMeetExternalAPI(domain, options)
+                const api = new JitsiMeetExternalAPI(domain, options)
 
-                jitsi.addEventListener('videoConferenceJoined', () => {
-                    //
+                api.addListener('readyToClose', () => {
+                    api.dispose()
                 })
-
-                this.jitsi = jitsi
             } catch (error) {
                 console.error('Failed to setup Jitsi API:', error)
                 this.hasStarted = false
