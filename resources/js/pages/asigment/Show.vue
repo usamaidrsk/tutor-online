@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span v-if="isNew && shouldShowMessage" class="success" role="alert">
+        <span v-if="isNew && shouldShowMessage" class="info" role="alert">
             Se han enviado invitaciones a todos los docentes disponibles
         </span>
 
@@ -26,12 +26,17 @@
         <div v-else class="placeholder">
             <div>
                 <h1 class="margin-bottom--one text--light">
-                    Ningún docente ha respondido tu propuesta
+                    Los docentes han sido invitados
                 </h1>
                 <p>
-                    Por los momentos ningún docente a respondido a tu propuesta,
-                    ten paciencia.
+                    Aquí se mostrará la relación de docentes que vayan aceptando
+                    tu propuesta, paciencia por favor.
                 </p>
+
+                <button class="reloader" @click="refresh" title="Actualizar">
+                    <i class="reloader__icon icon icon-cw"></i>
+                    <p class="reloader__label">Actualizar</p>
+                </button>
             </div>
         </div>
 
@@ -113,6 +118,8 @@ export default {
             this.currentTeacher = this.teachers[index]
             this.isModalVisible = true
         },
+
+        refresh: () => window.location.reload(true),
     },
 }
 </script>
@@ -138,6 +145,34 @@ hr {
     td:first-child {
         font-weight: get('bold', $font-weights);
         padding-right: get('one', $spacers);
+    }
+}
+
+.reloader {
+    margin-top: 2rem;
+    text-align: center;
+
+    &__icon {
+        @include size(60px);
+
+        margin: 0 auto;
+        display: block;
+        color: color('primary');
+        background: color('primary');
+        color: color('white');
+        font-size: 1.75rem;
+        line-height: 60px;
+        border-radius: 50%;
+        transition: background 0.1s ease-in;
+    }
+
+    &__icon .icon {
+        margin-left: 5px !important;
+    }
+
+    &__label {
+        margin-top: 0.5rem;
+        color: color('gray', 500);
     }
 }
 </style>

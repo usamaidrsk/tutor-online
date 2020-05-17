@@ -8,7 +8,45 @@
     />
 
     <form v-else @submit.prevent="handleSubmit">
-        <h1 class="text--center margin-bottom--three">Nueva propuesta</h1>
+        <h1 class="text--center margin-bottom--three">Propuesta del alumno</h1>
+
+        <div class="margin-bottom--two col-xs-12 col-sm-6">
+            <h3 class="margin-bottom--zero">Datos del alumno</h3>
+
+            <Input
+                v-model="form.email"
+                :error="errors.first('email')"
+                label="email"
+                type="email"
+            />
+
+            <div>
+                <span
+                    v-if="errors.has('phone_prefix') || errors.has('phone')"
+                    class="error"
+                    role="alert"
+                    >{{
+                        errors.first('phone_prefix') || errors.first('phone')
+                    }}</span
+                >
+
+                <label for="" class="input__label">Telefono</label>
+                <div class="d-flex">
+                    <Input
+                        style="width: 55px;"
+                        placeholder="+00"
+                        required
+                        class="margin-right--one"
+                        v-model="form.phone_prefix"
+                    />
+                    <Input
+                        style="flex-grow: 1;"
+                        v-model="form.phone"
+                        type="tel"
+                    />
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-4 margin-bottom--one">
@@ -167,42 +205,6 @@
                     v-model="form.budget"
                     type="number"
                 />
-            </div>
-
-            <Input
-                v-model="form.email"
-                :error="errors.first('email')"
-                label="email"
-                type="email"
-            />
-
-            <div>
-                <!-- <h6 class="margin-bottom--zero">Teléfono</h6> -->
-
-                <span
-                    v-if="errors.has('phone_prefix') || errors.has('phone')"
-                    class="error"
-                    role="alert"
-                    >{{
-                        errors.first('phone_prefix') || errors.first('phone')
-                    }}</span
-                >
-
-                <label for="" class="input__label">Telefono</label>
-                <div class="d-flex">
-                    <Input
-                        style="width: 55px;"
-                        placeholder="+00"
-                        required
-                        class="margin-right--one"
-                        v-model="form.phone_prefix"
-                    />
-                    <Input
-                        style="flex-grow: 1;"
-                        v-model="form.phone"
-                        type="tel"
-                    />
-                </div>
             </div>
 
             <Button
@@ -389,8 +391,7 @@ export default {
 <style lang="scss" scoped>
 @import '~@/sass/_globals.scss';
 
-form,
-footer {
+form {
     margin: 0 auto;
 }
 
