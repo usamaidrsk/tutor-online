@@ -106,7 +106,7 @@
                 >
                     <div class="invitation">
                         <span class="invitation__budget">
-                            ${{ asigment.budget }}
+                            {{ APP_CURRENCY_SYMBOL }}{{ asigment.budget }}
                         </span>
 
                         <table>

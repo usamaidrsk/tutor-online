@@ -17,7 +17,11 @@
         data-page-name="{{ $name }}"
         data-route-data="{{ json_encode($data) }}"
         data-csrf-token="{{ csrf_token() }}"
-        data-constants={{ json_encode(['APP_NAME' => config('app.name')]) }}
+        data-constants={{ json_encode([
+            'APP_NAME' => config('app.name'),
+            'APP_CURRENCY_CODE' => config('app.currency_code'),
+            'APP_CURRENCY_SYMBOL' => config('app.currency_symbol'),
+        ]) }}
         data-auth="{{ json_encode(['user' => Auth::user() ?? null]) }}"
     ></div>
 </body>

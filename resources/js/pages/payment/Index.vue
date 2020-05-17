@@ -8,7 +8,7 @@
 
         <div class="total">
             <h4 class="total__label">TOTAL</h4>
-            <h2 class="total__amount">${{ amount }}</h2>
+            <h2 class="total__amount">{{ APP_CURRENCY_SYMBOL }}{{ amount }}</h2>
         </div>
 
         <form

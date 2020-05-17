@@ -199,7 +199,7 @@
             </span>
 
             <div class="budget margin-top--one margin-bottom--three">
-                <span class="budget__currency">$</span>
+                <span class="budget__currency">{{ APP_CURRENCY_SYMBOL }}</span>
                 <input
                     class="budget__field"
                     v-model="form.budget"

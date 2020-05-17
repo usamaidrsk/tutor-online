@@ -86,7 +86,7 @@ class PaymentController extends Controller
     {
         $asigment = $this->getAsigment();
 
-        $currency = 'USD';
+        $currency = config('app.currency_code');
         $amount_payable = $asigment->budget;
         $invoice_number = uniqid();
         $description = 'Clase online';
