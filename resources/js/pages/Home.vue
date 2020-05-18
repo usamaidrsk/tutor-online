@@ -1,38 +1,68 @@
 <template>
-    <div class="hero row">
-        <div class="hero__left col-xs-12 col-sm-6">
-            <img class="hero__image" src="/storage/images/student.png" alt="" />
+    <div>
+        <div class="segment">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <figure class="segment__image">
+                        <img src="/storage/images/student.png" alt="" />
+                    </figure>
+                </div>
 
-            <h2 class="hero__header">¿Eres estudiante?</h2>
-            <p class="hero__text">
-                ¿Tienes problemas con una materia? Sube tus ejercicios de
-                matemáticas, física o química y te contactaremos con los mejores
-                docentes en la materia.
-            </p>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="segment__container">
+                        <h2 class="segment__title">¿Eres estudiante?</h2>
+                        <p class="segment__text">
+                            Sube tus ejercicios de matemáticas, física o
+                            química, y te contactaremos con docentes
+                            especializados para desarrollarlos.
+                        </p>
 
-            <Button class="hero__button" :href="route('asigment.create')" block
-                >Crea tu propuesta</Button
-            >
+                        <Button
+                            class="segment__button"
+                            :href="route('asigment.create')"
+                            >Crea tu propuesta</Button
+                        >
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero__right col-xs-12 col-sm-6">
-            <img class="hero__image" src="/storage/images/teacher.png" alt="" />
 
-            <h2 class="hero__header">¿Eres docente?</h2>
-            <p class="hero__text">
-                Sé el mejor docente en tu materia, se evalua el desempeño en
-                base a tu paciencia, la escucha al alumno y el uso de adecuado
-                de las tecnologías.
-            </p>
+        <div class="segment">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 first-xs last-sm">
+                    <figure class="segment__image">
+                        <img src="/storage/images/teacher.png" alt="" />
+                    </figure>
+                </div>
 
-            <Button class="hero__button" :href="route('register')" block
-                >Unete a nosotros</Button
-            >
+                <div class="col-xs-12 col-sm-6">
+                    <div class="segment__container">
+                        <h2 class="segment__title">¿Eres docente?</h2>
+                        <p class="segment__text">
+                            Sé el mejor docente en tu materia, se evalúa tu
+                            desempeño por tu paciencia en la clase, el escuchar
+                            al alumno, y el uso adecuado de las tecnología.
+                        </p>
 
-            <p class="hero__separator">o</p>
+                        <div>
+                            <Button
+                                class="segment__button"
+                                :href="route('register')"
+                                >Unete a nosotros</Button
+                            >
 
-            <Button class="hero__button" :href="route('login')" block outline
-                >Inicia sesión</Button
-            >
+                            <span class="separator">o</span>
+
+                            <Button
+                                class="segment__button"
+                                :href="route('login')"
+                                outline
+                                >Inicia sesión</Button
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -40,49 +70,65 @@
 <style lang="scss" scoped>
 @import '~@/sass/_globals.scss';
 
-.hero {
-    min-height: 100vh;
+.segment {
+    margin-bottom: 3rem;
 }
 
-.hero__left,
-.hero__right {
-    text-align: center;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    @include breakpoint('sm') {
-        padding: 0 2.5rem;
-    }
-}
-
-.hero__left {
-    $border-style: 1px solid color('gray', 50);
-    border-bottom: $border-style;
-
-    @include breakpoint('sm') {
-        border: 0;
-        border-right: $border-style;
-    }
-}
-
-.hero__image {
-    max-height: 300px;
+.segment__image {
+    width: 90%;
     max-width: 100%;
-    width: auto;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 66% 34% 63% 37% / 60% 29% 71% 40%;
     margin-bottom: 1rem;
+    overflow: hidden;
+
+    img {
+        @include size(100%, auto);
+        @include max-size(100%);
+    }
+
+    @include breakpoint('sm') {
+        @include size(400px, 300px);
+        border-radius: 25% 75% 37% 63% / 46% 24% 76% 54%;
+
+        img {
+            @include size(auto, 100%);
+            @include max-size(100%);
+        }
+    }
 }
 
-.hero__header {
+.segment__container {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+
+    @include breakpoint('md') {
+        padding: 0 2rem;
+    }
+}
+
+.segment__title {
     margin-bottom: 0.5rem;
 }
 
-.hero__text {
-    min-height: 100px;
-    margin-bottom: 1rem;
+.segment__text {
+    margin-bottom: 1.5rem;
 }
 
-.hero__separator {
+.separator {
     display: block;
-    margin: 0.5rem 0;
+    margin: 0 0.5rem;
     color: color('gray');
+
+    @include breakpoint('md') {
+        display: inline;
+    }
 }
 </style>
