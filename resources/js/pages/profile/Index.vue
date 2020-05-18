@@ -52,37 +52,38 @@
             </h4>
 
             <div v-else class="row justify-content-center margin-top--two">
-                <a
-                    class="card col-xs-12 col-sm-8 col-lg-6"
+                <article
+                    class="col-xs-12 col-sm-8 col-lg-6"
                     v-for="(room, index) in rooms"
                     :key="index"
-                    :href="route('room', room.token)"
                 >
-                    <h4 class="text--uppercase">
-                        {{ formatDistance(room.asigment.date) }}
-                    </h4>
+                    <a class="card" :href="route('room', room.token)">
+                        <h4 class="text--uppercase">
+                            {{ formatDistance(room.asigment.date) }}
+                        </h4>
 
-                    <table>
-                        <tr>
-                            <td>Nivel:</td>
-                            <td>{{ room.asigment.level.name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Categoria:</td>
-                            <td>{{ room.asigment.category.name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Archivos:</td>
-                            <td>{{ room.asigment.total_files }}</td>
-                        </tr>
-                        <tr>
-                            <td>Detalles:</td>
-                            <td>
-                                <p>{{ room.asigment.details }}</p>
-                            </td>
-                        </tr>
-                    </table>
-                </a>
+                        <table>
+                            <tr>
+                                <td>Nivel:</td>
+                                <td>{{ room.asigment.level.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Categoria:</td>
+                                <td>{{ room.asigment.category.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Archivos:</td>
+                                <td>{{ room.asigment.total_files }}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalles:</td>
+                                <td>
+                                    <p>{{ room.asigment.details }}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </article>
             </div>
         </div>
 
@@ -98,13 +99,15 @@
             </h4>
 
             <div v-else class="row justify-content-center margin-top--two">
-                <a
+                <article
                     class="col-xs-12 col-sm-8 col-lg-6"
                     v-for="({ asigment }, index) in invitations"
                     :key="index"
-                    :href="route('invitation.show', asigment.id)"
                 >
-                    <div class="card">
+                    <a
+                        class="card"
+                        :href="route('invitation.show', asigment.id)"
+                    >
                         <span class="card__budget">
                             {{ APP_CURRENCY_SYMBOL }}{{ asigment.budget }}
                         </span>
@@ -134,8 +137,8 @@
                             <i class="icon icon-clock"></i>
                             {{ asigment.formated_created_at }}</span
                         >
-                    </div>
-                </a>
+                    </a>
+                </article>
             </div>
         </div>
 
