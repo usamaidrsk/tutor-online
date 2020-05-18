@@ -37,7 +37,7 @@ export default {
     },
 
     computed: {
-        hours: () => range(5, 12 + 5),
+        hours: () => range(5, 12 + 11),
         weekdays: () => ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
     },
 
