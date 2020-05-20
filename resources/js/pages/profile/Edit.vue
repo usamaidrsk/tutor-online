@@ -160,23 +160,26 @@
             />
         </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <Input
-                    v-model="form.bank.entity"
-                    class="bank-name-field"
-                    label="Entidad financiera"
-                />
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <Input
-                    v-model="form.bank.account_number"
-                    label="Número de cuenta bancaria"
-                />
+        <div class="margin-top--two">
+            <h3 class="margin-bottom--zero">Cuenta bancaria</h3>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <Input
+                        v-model="form.bank.entity"
+                        class="bank-name-field"
+                        label="Entidad financiera"
+                    />
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <Input
+                        v-model="form.bank.account_number"
+                        label="Número de cuenta bancaria"
+                    />
+                </div>
             </div>
         </div>
 
-        <footer class="margin-top--two">
+        <footer class="margin-top--three">
             <Button type="submit" :loading="loading">Guardar</Button>
         </footer>
     </form>
