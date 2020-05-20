@@ -13,7 +13,7 @@
                         <h2 class="segment__title">¿Eres estudiante?</h2>
                         <p class="segment__text">
                             Sube tus ejercicios de matemáticas, física o
-                            química, y te contactaremos con docentes
+                            química, y te contactaremos con instructores
                             especializados para desarrollarlos.
                         </p>
 
@@ -37,11 +37,12 @@
 
                 <div class="col-xs-12 col-sm-6">
                     <div class="segment__container">
-                        <h2 class="segment__title">¿Eres docente?</h2>
+                        <h2 class="segment__title">¿Quieres enseñar?</h2>
                         <p class="segment__text">
-                            Sé el mejor docente en tu materia, se evalúa tu
-                            desempeño por tu paciencia en la clase, el escuchar
-                            al alumno, y el uso adecuado de las tecnología.
+                            Sé nuestro mejor tutor en matemáticas, física, y
+                            química, se evaluará tu paciencia en la clase, el
+                            escuchar al alumno, y el uso adecuado de las
+                            tecnologías.
                         </p>
 
                         <div>

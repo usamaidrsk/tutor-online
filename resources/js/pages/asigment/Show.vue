@@ -1,7 +1,7 @@
 <template>
     <div>
         <span v-if="isNew && shouldShowMessage" class="info" role="alert">
-            Se han enviado invitaciones a todos los docentes disponibles
+            Se han enviado invitaciones a todos los instructores disponibles
         </span>
 
         <template v-if="teachers.length">
@@ -26,11 +26,11 @@
         <div v-else class="placeholder">
             <div>
                 <h1 class="margin-bottom--one text--light">
-                    Los docentes han sido invitados
+                    Los instructores han sido invitados
                 </h1>
                 <p>
-                    Aquí se mostrará la relación de docentes que vayan aceptando
-                    tu propuesta, paciencia por favor.
+                    Aquí se mostrará la relación de instructores que vayan
+                    aceptando tu propuesta, paciencia por favor.
                 </p>
 
                 <button class="reloader" @click="refresh" title="Actualizar">
