@@ -21,6 +21,7 @@
             'APP_NAME' => config('app.name'),
             'APP_CURRENCY_CODE' => config('app.currency_code'),
             'APP_CURRENCY_SYMBOL' => config('app.currency_symbol'),
+            'APP_SERVICE_TAX' => config('app.service_tax'),
         ]) }}
         data-auth="{{ json_encode(['user' => Auth::user() ?? null]) }}"
     ></div>

@@ -27,6 +27,8 @@ return [
 
     'currency_symbol' => env('APP_CURRENCY_SYMBOL', '$'),
 
+    'service_tax' => env('APP_SERVICE_TAX', '3.00'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

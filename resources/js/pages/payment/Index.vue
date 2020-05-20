@@ -3,13 +3,28 @@
         <span v-if="error" class="error" role="alert">{{ error }}</span>
 
         <header>
-            <h1 class="margin-bottom--one">Pago</h1>
+            <h1 class="margin-bottom--one">Abonar pago por el servicio</h1>
         </header>
 
-        <div class="total">
-            <h4 class="total__label">TOTAL</h4>
-            <h2 class="total__amount">{{ APP_CURRENCY_SYMBOL }}{{ amount }}</h2>
-        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Servicio de tutoría academica</td>
+                    <td>{{ APP_CURRENCY_SYMBOL }} {{ amount }}</td>
+                </tr>
+                <tr>
+                    <td>Uso de la plataforma</td>
+                    <td>{{ APP_CURRENCY_SYMBOL }} {{ APP_SERVICE_TAX }}</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>TOTAL:</td>
+                    <td>{{ APP_CURRENCY_SYMBOL }} {{ total }}</td>
+                </tr>
+            </tfoot>
+        </table>
 
         <form
             method="post"
@@ -31,6 +46,13 @@ export default {
     props: ['amount', 'error'],
 
     data: () => ({ loading: false }),
+
+    computed: {
+        total() {
+            const total = parseFloat(this.amount) + parseFloat(APP_SERVICE_TAX)
+            return total.toFixed(2)
+        },
+    },
 }
 </script>
 
@@ -41,23 +63,27 @@ export default {
     text-align: center;
 }
 
-.total {
-    margin-top: 1.85rem;
-    margin-bottom: 2rem;
-}
+table {
+    margin: 1.5rem auto 2rem;
 
-.total__label,
-.total__amount {
-    margin: 0;
-}
+    td {
+        text-align: left;
+        padding: 0.5rem 1rem;
+    }
 
-.total__label {
-    font-weight: get('regular', $font-weights) !important;
-}
+    tbody td {
+        border-bottom: 1px solid color('gray');
+    }
 
-.total__amount {
-    font-weight: get('light', $font-weights) !important;
-    font-size: 3.5rem !important;
+    tbody td:last-child,
+    tfoot td {
+        text-align: right;
+    }
+
+    tfoot td {
+        font-size: 1.5rem;
+        font-weight: get('bold', $font-weights);
+    }
 }
 
 .paypal-button {

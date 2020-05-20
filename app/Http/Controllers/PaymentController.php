@@ -90,26 +90,35 @@ class PaymentController extends Controller
         $asigment = $this->getAsigment();
 
         $currency = config('app.currency_code');
-        $amount_payable = $asigment->budget;
+        $tax = (float) config('app.service_tax');
+        $budget = (float) $asigment->budget;
         $invoice_number = uniqid();
         $description = 'Clase online';
+        $total = $budget + $tax;
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $item = new Item();
         $item
-            ->setName('Servicio de tutoría académica.')
+            ->setName('Servicio de tutoría académica')
             ->setCurrency($currency)
             ->setQuantity(1)
-            ->setPrice($amount_payable);
+            ->setPrice($budget);
+
+        $tax_item = new Item();
+        $tax_item
+            ->setName('Uso de la plataforma')
+            ->setCurrency($currency)
+            ->setQuantity(1)
+            ->setPrice($tax);
 
         $item_list = new ItemList();
-        $item_list->setItems([$item]);
+        $item_list->setItems([$item, $tax_item]);
 
         // Create and setup the total amount.
         $amount = new Amount();
-        $amount->setCurrency($currency)->setTotal($amount_payable);
+        $amount->setCurrency($currency)->setTotal($total);
 
         // Create a transaction and amount and description.
         $transaction = new Transaction();
