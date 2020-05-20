@@ -52,9 +52,12 @@ class ProfileController extends Controller
         }
 
         $id = auth()->user()->id;
-        $teacher = Teacher::with('levels', 'categories', 'address')->findOrFail(
-            $id
-        );
+        $teacher = Teacher::with(
+            'levels',
+            'categories',
+            'address',
+            'bank'
+        )->findOrFail($id);
 
         return view()->component(
             'profile.edit',
@@ -119,7 +122,7 @@ class ProfileController extends Controller
         );
 
         $teacher->address()->update(request()->input('address'));
-
+        $teacher->bank()->updateOrCreate(request()->input('bank'));
         $teacher->levels()->sync(request()->input('levels'));
         $teacher->categories()->sync(request()->input('categories'));
     }

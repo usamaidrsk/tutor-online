@@ -160,6 +160,22 @@
             />
         </div>
 
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <Input
+                    v-model="form.bank.entity"
+                    class="bank-name-field"
+                    label="Entidad financiera"
+                />
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <Input
+                    v-model="form.bank.account_number"
+                    label="Número de cuenta bancaria"
+                />
+            </div>
+        </div>
+
         <footer class="margin-top--two">
             <Button type="submit" :loading="loading">Guardar</Button>
         </footer>
@@ -178,6 +194,7 @@ export default {
             address: {},
             levels: [],
             categories: [],
+            bank: {},
         },
 
         loading: false,
@@ -189,6 +206,12 @@ export default {
 
         form.first_name = teacher.first_name
         form.last_name = teacher.last_name
+
+        const { bank } = teacher
+        if (bank) {
+            form.bank.entity = bank.entity
+            form.bank.account_number = bank.account_number
+        }
 
         const birthday = new Date(teacher.birthday)
 
@@ -226,6 +249,8 @@ export default {
             try {
                 const data = { ...this.form }
 
+                data.bank.entity = data.bank.entity.toUpperCase()
+
                 const { birthday } = data
 
                 data.birthday = new Date(
@@ -247,3 +272,9 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+.bank-name-field input {
+    text-transform: uppercase !important;
+}
+</style>
