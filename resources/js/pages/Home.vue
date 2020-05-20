@@ -13,7 +13,7 @@
                         <h2 class="segment__title">¿Eres estudiante?</h2>
                         <p class="segment__text">
                             Sube tus ejercicios de matemáticas, física o
-                            química, y te contactaremos con instructores
+                            química, y te contactaremos con tutores
                             especializados para desarrollarlos.
                         </p>
 
