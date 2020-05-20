@@ -296,7 +296,8 @@ class AsigmentController extends Controller
             'details' => 'required|max:300|min:25',
             'level_id' => 'required|exists:levels,id',
             'category_id' => 'required|exists:categories,id',
-            'date' => 'required|date|after:today',
+            'date' => 'required|date',
+            // 'date' => 'required|date|after:today',
             'files' => 'required|array|min:1|max:' . $this::MAX_FILE_NUM,
             'files.*' =>
                 'mimes:' .
@@ -309,6 +310,7 @@ class AsigmentController extends Controller
             'budget.min' => 'El presupuesto mínimo es de $' . $this::MIN_BUDGET,
             'level_id.required' => 'Debes elegir el nivel de educación.',
             'category_id.required' => 'Debes elegir una materia.',
+            // 'date.after' => 'La fecha debe ser un día y hora en el futuro.',
             'files.required' =>
                 'Debes adjuntar al menos un archivo relacionado.',
             'files.min' => 'Debes adjuntar al menos un archivo relacionado.',

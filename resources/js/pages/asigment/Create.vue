@@ -248,7 +248,7 @@ export default {
             phone: '',
             date: null,
             time: null,
-            budget: 5,
+            budget: 20,
         },
 
         files: [],
@@ -303,6 +303,22 @@ export default {
             date.setDate(date.getDate() + 1)
             date.setHours(hours, minutes, 0, 0)
             date.setMinutes(date.getMinutes() - date.getTimezoneOffset())
+
+            const today = new Date()
+            today.setMinutes(today.getMinutes() - today.getTimezoneOffset())
+
+            if (date < today) {
+                const errors = {
+                    date: ['La fecha debe ser un día y hora en el futuro.'],
+                }
+
+                const validationErrors = handleFormError({
+                    response: { data: { errors } },
+                })
+
+                this.errors.set(validationErrors)
+                this.loading = false
+            }
 
             Object.keys(form).forEach(key => data.append(key, form[key]))
             data.set('date', date.toISOString())
