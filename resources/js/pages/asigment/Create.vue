@@ -93,22 +93,6 @@
             </div>
         </div>
 
-        <div>
-            <h4 class="margin-bottom--zero">Detalles</h4>
-            <p>
-                Por favor, especificar cuales son los ejercicios a desarrollar.
-            </p>
-
-            <Input
-                class="margin-top--one"
-                v-model="form.details"
-                :error="errors.first('details')"
-                textarea
-                rows="3"
-                placeholder="Escribe aquí..."
-            />
-        </div>
-
         <div class="margin-top--two">
             <h4 class="margin-bottom--one">
                 ¿Cuando te gustaría tener la clase?
@@ -189,6 +173,22 @@
                     />
                 </div>
             </div>
+        </div>
+
+        <div class="margin-top--three">
+            <h4 class="margin-bottom--zero">Detalles</h4>
+            <p>
+                Por favor, especificar cuales son los ejercicios a desarrollar.
+            </p>
+
+            <Input
+                class="margin-top--one"
+                v-model="form.details"
+                :error="errors.first('details')"
+                textarea
+                rows="3"
+                placeholder="Escribe aquí..."
+            />
         </div>
 
         <footer class="col-xs-11 col-sm-6 margin-top--three">

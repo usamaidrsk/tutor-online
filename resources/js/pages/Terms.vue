@@ -5,8 +5,8 @@
         <p>
             Imagine Technologic S.A.C pone a disposición este aplicativo web
             llamado mathias20 para la enseñanza de matemáticas, física, y
-            química. Para registrarte como usuario instructor debes tener al
-            menos dieciocho años de edad, o la mayoría de edad legal en tu
+            química. Para registrarte como usuario tutor debes tener al menos
+            dieciocho años de edad, o la mayoría de edad legal en tu
             jurisdicción, y poseer la autoridad legal, el derecho y la libertad
             para participar en estos Términos como un acuerdo vinculante. No
             tienes permitido utilizar esta página web y / o recibir servicios si
@@ -17,50 +17,50 @@
         <h3>Términos comerciales ofrecidos a los clientes</h3>
 
         <p>
-            El instructor hará uso de esta plataforma de manera gratuita. Sin
-            embargo, el instructor deberá esmerarse en ofrecer un servicio de
-            calidad que será evaluado por el alumno al finalizar cada clase, los
+            El tutor hará uso de esta plataforma de manera gratuita. Sin
+            embargo, el tutor deberá esmerarse en ofrecer un servicio de calidad
+            que será evaluado por el alumno al finalizar cada clase, los
             criterios de evaluación son:
         </p>
 
         <ul>
             <li>
-                Paciencia en el dictado de la clase: El instructor debe ser
-                paciente, pausado, y claro en el dictado de la clase, evitando
-                el avance rápido y abrupto.
+                Paciencia en el dictado de la clase: El tutor debe ser paciente,
+                pausado, y claro en el dictado de la clase, evitando el avance
+                rápido y abrupto.
             </li>
             <li>
-                Escuchar al alumno: El instructor mientras va desarrollando el
+                Escuchar al alumno: El tutor mientras va desarrollando el
                 ejercicio debe interactuar con el alumno, para así darse cuenta
                 el nivel que este tiene, y quizás sea necesario iniciar con
                 teorías, conceptos, o fórmulas necesarias para su entendimiento.
             </li>
             <li>
-                Uso adecuado de las tecnologías: El instructor debe tener los
-                mejores dispositivos para dar una clase de alto nivel, y de
-                calidad; para que esta sea comprensible, nos referimos a un buen
-                sonido, video, y conectividad.
+                Uso adecuado de las tecnologías: El tutor debe tener los mejores
+                dispositivos para dar una clase de alto nivel, y de calidad;
+                para que esta sea comprensible, nos referimos a un buen sonido,
+                video, y conectividad.
             </li>
         </ul>
 
         <p>
-            Si el instructor acepta el dictado de una clase, será responsable de
+            Si el tutor acepta el dictado de una clase, será responsable de
             estar treinta minutos antes del día y la hora pactada con el alumno,
             con la finalidad de prever cualquier impase técnico o personal que
             pueda producirse y solucionarlo.
         </p>
 
         <p>
-            En caso que el instructor tenga algún imprevisto que le impida el
-            dictado de la clase, deberá comunicárnoslo por lo menos con cuatro
-            horas anticipadas, ese tiempo es necesario para poder buscar un
-            instructor sustituto. La comunicación deberá hacerla por llamada al
-            celular, o por mensaje al whatsapp al +51 920279242 indicando la
-            fecha, hora y motivo del imprevisto.
+            En caso que el tutor tenga algún imprevisto que le impida el dictado
+            de la clase, deberá comunicárnoslo por lo menos con cuatro horas
+            anticipadas, ese tiempo es necesario para poder buscar un tutor
+            sustituto. La comunicación deberá hacerla por llamada al celular, o
+            por mensaje al whatsapp al +51 920279242 indicando la fecha, hora y
+            motivo del imprevisto.
         </p>
 
         <p>
-            Solo se podrá crear una cuenta por instructor, es por ello que se le
+            Solo se podrá crear una cuenta por tutor, es por ello que se le
             solicitará su número de documento de identidad con su
             correspondiente sustento digital.
         </p>
@@ -69,8 +69,8 @@
 
         <p>
             En caso que el cliente esté insatisfecho por alguna clase recibida,
-            se le descontará al instructor el mismo valor facturado, y se le
-            retribuirá a otro instructor bajo las mismas condiciones.
+            se le descontará al tutor el mismo valor facturado, y se le
+            retribuirá a otro tutor bajo las mismas condiciones.
         </p>
 
         <h3>Retención del derecho a cambiar de oferta</h3>

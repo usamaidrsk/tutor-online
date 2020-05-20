@@ -174,7 +174,7 @@
 
         <p>
             También recolectamos información que nos proporcionen los aspirantes
-            a los empleos en Mathias20 (“instructor”), correo electrónico o de
+            a los empleos en Mathias20 (“tutor”), correo electrónico o de
             cualquier otra forma, para alguno de los puestos vacantes publicados
             en https://www.mathias20.com.
         </p>
@@ -398,8 +398,8 @@
 
         <p>
             Mathias20 da la bienvenida a todos los Solicitantes calificados para
-            aspirar como instructor en https://mathias20.com/register, mediante
-            el envío de sus datos de contacto, mediante el Formulario de
+            aspirar como tutor en https://mathias20.com/register, mediante el
+            envío de sus datos de contacto, mediante el Formulario de
             Registro correspondiente en nuestro Sitio Web, o por cualquier otro
             medio previsto por nosotros.
         </p>
