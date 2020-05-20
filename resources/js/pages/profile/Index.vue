@@ -109,7 +109,7 @@
                         :href="route('invitation.show', asigment.id)"
                     >
                         <span class="card__budget">
-                            {{ APP_CURRENCY_SYMBOL }}{{ asigment.budget }}
+                            {{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}
                         </span>
 
                         <table>

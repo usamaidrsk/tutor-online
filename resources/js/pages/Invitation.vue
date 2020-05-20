@@ -12,7 +12,7 @@
         <div class="container">
             <div class="margin-bottom--two">
                 <span class="budget"
-                    >{{ APP_CURRENCY_SYMBOL }}{{ asigment.budget }}</span
+                    >{{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}</span
                 >
                 <div class="time">
                     <i class="icon icon-clock"></i>
