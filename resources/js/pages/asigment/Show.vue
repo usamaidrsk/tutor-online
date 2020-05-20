@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                     <td>Presupuesto:</td>
-                    <td>${{ asigment.budget }}</td>
+                    <td>{{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}</td>
                 </tr>
                 <tr>
                     <td>Fecha:</td>
