@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Teacher;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,7 +65,7 @@ class RegisterController extends Controller
                     'string',
                     'email',
                     'max:50',
-                    'unique:teachers',
+                    'unique:users',
                 ],
                 'password' => ['required', 'string', 'min:6'],
             ],
@@ -77,11 +77,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Teacher
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        return Teacher::create([
+        return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],

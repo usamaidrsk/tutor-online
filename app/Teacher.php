@@ -2,56 +2,30 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Propaganistas\LaravelPhone\PhoneNumber;
+use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Teacher extends Authenticatable
+class Teacher extends Model
 {
     use Notifiable;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'password',
-        'phone',
+        'picture',
+        'document',
         'birthday',
+        'answered_questions',
     ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $casts = ['birthday' => 'date'];
 
-    protected $casts = [
-        'birthday' => 'date',
-        'email_verified_at' => 'datetime',
-    ];
-
-    protected $appends = ['full_name', 'formatted_birthday', 'stars', 'scores'];
-
-    public function getFullNameAttribute()
-    {
-        return $this->first_name . ' ' . $this->last_name;
-    }
+    protected $appends = ['formatted_birthday', 'stars', 'scores'];
 
     public function getFormattedBirthdayAttribute()
     {
         $date = $this->attributes['birthday'];
         return Carbon::create($date)->isoFormat('D \d\e MMMM, YYYY');
-    }
-
-    public function getPhoneAttribute()
-    {
-        if ($phone = $this->attributes['phone']) {
-            try {
-                $phone = PhoneNumber::make($phone)->formatInternational();
-            } catch (\Throwable $th) {
-                report($th);
-            }
-        }
-
-        return $phone;
     }
 
     public function getStarsAttribute()
