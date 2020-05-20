@@ -76,6 +76,8 @@ export default {
                     data.errors.email[0] ||
                     data.errors.password[0] ||
                     data.message
+            } finally {
+                this.loading = false
             }
         },
     },
