@@ -3,81 +3,193 @@
         <h1 class="text--center">Términos y Condiciones</h1>
 
         <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas earum
-            fuga ipsa quaerat officiis voluptatem impedit! Rerum, eum enim illo
-            ullam maiores minima, cupiditate qui, omnis corrupti ad autem
-            quod?Porro quasi in reiciendis voluptatem, molestiae maiores
-            quisquam asperiores, ipsam est molestias quae pariatur excepturi
-            consequatur! Eligendi soluta, error reprehenderit provident ipsa
-            quasi reiciendis fugit natus ratione consequuntur, voluptate maxime!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel
-            itaque officia atque ipsum, qui ea laudantium nam quasi quia,
-            consequatur reiciendis voluptates provident praesentium dolor
-            pariatur consectetur beatae modi? Totam accusamus laboriosam qui
-            tempore reiciendis hic laudantium deleniti ipsum inventore alias!
-            Distinctio voluptatibus, dolores nihil expedita nulla in nemo
-            quibusdam odio labore veniam vero porro vitae natus modi ratione.
-            Dolorem corrupti quae sed quasi nobis maxime nam, dolores minus
-            ullam voluptate dolore, reiciendis labore voluptatibus dolor modi
-            omnis quisquam mollitia et quas doloribus? Quae voluptates dolor
+            Imagine Technologic S.A.C pone a disposición este aplicativo web
+            llamado mathias20 para la enseñanza de matemáticas, física, y
+            química. Para registrarte como usuario instructor debes tener al
+            menos dieciocho años de edad, o la mayoría de edad legal en tu
+            jurisdicción, y poseer la autoridad legal, el derecho y la libertad
+            para participar en estos Términos como un acuerdo vinculante. No
+            tienes permitido utilizar esta página web y / o recibir servicios si
+            hacerlo está prohibido en tu país o en virtud de cualquier ley o
+            regulación aplicable a tu caso.
         </p>
 
-        <h3>Alias maiores, inventore dolorem</h3>
+        <h3>Términos comerciales ofrecidos a los clientes</h3>
 
         <p>
-            corporis culpa! Cum? Error laborum neque vitae labore repellat quam
-            quia voluptatem? Repellendus illum ex maxime consequatur pariatur
-            sequi quo sint dolorum? Repudiandae expedita asperiores similique
-            mollitia in nisi non autem nulla commodi. Corporis corrupti at
-            libero sapiente deleniti totam atque neque nostrum ratione sed,
-            dolorum eos, est rem, dignissimos quod et consequatur maiores eaque
-            voluptas. Alias maiores, inventore dolorem asperiores aliquam nihil!
-            Amet ea velit provident saepe perspiciatis nostrum excepturi
-            necessitatibus est, aspernatur commodi odio autem quasi, ducimus
-            ullam labore distinctio non quae repudiandae ex aperiam maiores
-            quia? Quo vero maxime voluptates. Velit itaque ad maiores quas, ab,
-            temporibus quibusdam non fugit autem ratione quod dolores eum quia
-            exercitationem minima assumenda tenetur est aliquid. Molestias est
-            cupiditate id sed facere sapiente nobis. Sed veniam, temporibus
-            asperiores repellat tempore, id, cum enim animi nesciunt commodi
-            similique corporis! Exercitationem provident cupiditate consequuntur
-            optio omnis ipsam, assumenda natus eum minima nobis beatae
-            recusandae id quidem.
+            El instructor hará uso de esta plataforma de manera gratuita. Sin
+            embargo, el instructor deberá esmerarse en ofrecer un servicio de
+            calidad que será evaluado por el alumno al finalizar cada clase, los
+            criterios de evaluación son:
         </p>
 
-        <h3>Sed veniam, temporibus asperiores</h3>
+        <ul>
+            <li>
+                Paciencia en el dictado de la clase: El instructor debe ser
+                paciente, pausado, y claro en el dictado de la clase, evitando
+                el avance rápido y abrupto.
+            </li>
+            <li>
+                Escuchar al alumno: El instructor mientras va desarrollando el
+                ejercicio debe interactuar con el alumno, para así darse cuenta
+                el nivel que este tiene, y quizás sea necesario iniciar con
+                teorías, conceptos, o fórmulas necesarias para su entendimiento.
+            </li>
+            <li>
+                Uso adecuado de las tecnologías: El instructor debe tener los
+                mejores dispositivos para dar una clase de alto nivel, y de
+                calidad; para que esta sea comprensible, nos referimos a un buen
+                sonido, video, y conectividad.
+            </li>
+        </ul>
 
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequuntur repellendus commodi nobis tempora dolorum explicabo
-            omnis reiciendis delectus vitae, minima est voluptate iure optio
-            corrupti nulla voluptatum. Voluptates, obcaecati
-            voluptatibus!Maiores quo, consequatur delectus, officia est culpa
-            error omnis harum similique iure impedit ullam neque ut. Ea quos
-            laudantium error tenetur maxime consequatur quae veniam. Culpa,
-            quae? Porro, repudiandae deserunt.
+            Si el instructor acepta el dictado de una clase, será responsable de
+            estar treinta minutos antes del día y la hora pactada con el alumno,
+            con la finalidad de prever cualquier impase técnico o personal que
+            pueda producirse y solucionarlo.
         </p>
 
-        <h3>Consectetur adipisicing elit</h3>
+        <p>
+            En caso que el instructor tenga algún imprevisto que le impida el
+            dictado de la clase, deberá comunicárnoslo por lo menos con cuatro
+            horas anticipadas, ese tiempo es necesario para poder buscar un
+            instructor sustituto. La comunicación deberá hacerla por llamada al
+            celular, o por mensaje al whatsapp al +51 920279242 indicando la
+            fecha, hora y motivo del imprevisto.
+        </p>
 
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            adipisci quod, voluptatem, quam reiciendis odio distinctio velit
-            porro illum facere veniam. Itaque laborum velit cumque quas, porro
-            minus commodi est? Earum voluptatem optio voluptatum ab ratione
-            neque modi cupiditate officiis. Laboriosam facilis accusantium ullam
-            architecto fugiat dolorem porro obcaecati, amet totam, quo eos saepe
-            inventore ipsa! Aspernatur laborum esse rerum. Id ab illum illo
-            laudantium sint obcaecati sequi dolorum, quia cumque non maxime,
-            debitis velit aperiam suscipit possimus, beatae odio nesciunt
-            laboriosam quibusdam fugiat tenetur in assumenda! Tempore, nisi!
-            Eius!
+            Solo se podrá crear una cuenta por instructor, es por ello que se le
+            solicitará su número de documento de identidad con su
+            correspondiente sustento digital.
+        </p>
+
+        <h3>Política de insatisfacción</h3>
+
+        <p>
+            En caso que el cliente esté insatisfecho por alguna clase recibida,
+            se le descontará al instructor el mismo valor facturado, y se le
+            retribuirá a otro instructor bajo las mismas condiciones.
+        </p>
+
+        <h3>Retención del derecho a cambiar de oferta</h3>
+
+        <p>
+            Podemos, sin aviso previo, cambiar los servicios; dejar de
+            proporcionar los servicios o cualquier característica de los
+            servicios que ofrecemos; o crear límites para los servicios.
+            Podemos suspender de manera permanente o temporal el acceso a los
+            servicios sin previo aviso ni responsabilidad por cualquier motivo,
+            o sin ningún motivo.
+        </p>
+
+        <h3>Posesión de propiedad intelectual, derechos de autor y logos.</h3>
+
+        <p>
+            El Servicio y todos los materiales incluidos o transferidos,
+            incluyendo, sin limitación, software, imágenes, texto, gráficos,
+            logotipos, patentes, marcas registradas, marcas de servicio,
+            derechos de autor, fotografías, audio, videos, música y todos los
+            Derechos de Propiedad Intelectual relacionados con ellos, son la
+            propiedad exclusiva de Imagine Technologic S.A.C. Salvo que se
+            indique explícitamente en este documento, no se considerará que nada
+            en estos Términos crea una licencia en o bajo ninguno de dichos
+            Derechos de Propiedad Intelectual, y tu aceptas no vender,
+            licenciar, alquilar, modificar, distribuir, copiar, reproducir,
+            transmitir, exhibir públicamente, realizar públicamente, publicar,
+            adaptar, editar o crear trabajos derivados de los mismos.
+        </p>
+
+        <h3>Derecho a suspender o cancelar la cuenta de usuario</h3>
+
+        <p>
+            Podemos terminar o suspender de manera permanente o temporal tu
+            acceso al servicio sin previo aviso y responsabilidad por cualquier
+            razón, incluso si a nuestra sola determinación tu violas alguna
+            disposición de estos Términos o cualquier ley o regulación
+            aplicable. Puedes descontinuar el uso y solicitar cancelar tu cuenta
+            y / o cualquier servicio en cualquier momento al email
+            admin@mathias20.com. Sin perjuicio de lo contrario en lo que
+            antecede, con respecto a las suscripciones renovadas automáticamente
+            a los servicios pagados, dichas suscripciones se suspenderán solo al
+            vencimiento del período correspondiente por el que ya has realizado
+            el pago.
+        </p>
+
+        <h3>Indemnización</h3>
+
+        <p>
+            Usted acuerda indemnizar y eximir de responsabilidad al propietario
+            del aplicativo web de cualquier demanda, pérdida, responsabilidad,
+            reclamación o gasto (incluidos los honorarios de abogados) que
+            terceros realicen en tu contra como consecuencia de, o derivado de,
+            o en relación con tu uso de la página web o cualquiera de los
+            servicios ofrecidos en la página web.
+        </p>
+
+        <h3>Limitación de responsabilidad</h3>
+
+        <p>
+            En la máxima medida permitida por la ley aplicable, Imagine
+            Technologic S.A.C no asume responsabilidad alguna por (i) errores,
+            errores o inexactitudes de contenido; (ii) lesiones personales o
+            daños a la propiedad, de cualquier naturaleza que sean, como
+            resultado de tu acceso o uso de nuestro servicio; y (iii) cualquier
+            acceso no autorizado o uso de nuestros servidores seguros y / o toda
+            la información personal almacenada en los mismos.
+        </p>
+
+        <h3>Derecho a cambiar y modificar los Términos</h3>
+
+        <p>
+            Nos reservamos el derecho de modificar estos términos de vez en
+            cuando a nuestra entera discreción. Por lo tanto, debes revisar
+            estas páginas periódicamente. Cuando cambiemos los Términos de una
+            manera material, te notificaremos que se han realizado cambios
+            importantes en los Términos. El uso continuado de la página web o
+            nuestro servicio después de dicho cambio constituye tu aceptación de
+            los nuevos Términos. Si no aceptas alguno de estos términos o
+            cualquier versión futura de los Términos, no uses o accedas (o
+            continúes accediendo) a la página web o al servicio.
+        </p>
+
+        <h3>Emails de promociones y contenido</h3>
+
+        <p>
+            Acepta recibir de vez en cuando nuestros mensajes y materiales de
+            promoción, por correo postal, correo electrónico o cualquier otro
+            formulario de contacto que nos proporciones (incluido tu número de
+            teléfono para llamadas o mensajes de texto). Si no deseas recibir
+            dichos materiales o avisos de promociones, simplemente avísanos en
+            cualquier momento.
+        </p>
+
+        <h3>Preferencia de ley y resolución de disputas</h3>
+
+        <p>
+            Estos Términos, los derechos y recursos provistos aquí, y todos y
+            cada uno de los reclamos y disputas relacionados con este y / o los
+            servicios, se regirán, interpretarán y aplicarán en todos los
+            aspectos única y exclusivamente de conformidad con las leyes
+            sustantivas internas de Perú, sin respeto a sus principios de
+            conflicto de leyes. Todos los reclamos y disputas se presentarán y
+            usted acepta que sean decididos exclusivamente por un tribunal de
+            jurisdicción competente ubicada en Lima. La aplicación de la
+            Convención de Contratos de las Naciones Unidas para la Venta
+            Internacional de Bienes queda expresamente excluida.
         </p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-p {
+p,
+ul {
     margin-bottom: 1rem;
+}
+
+ul {
+    padding-left: 1rem;
+    list-style: disc;
 }
 </style>
