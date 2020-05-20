@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
@@ -14,6 +16,7 @@ use PayPal\Api\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 use App\Asigment;
@@ -94,6 +97,16 @@ class PaymentController extends Controller
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
+        $item = new Item();
+        $item
+            ->setName('Servicio de tutoría académica.')
+            ->setCurrency($currency)
+            ->setQuantity(1)
+            ->setPrice($amount_payable);
+
+        $item_list = new ItemList();
+        $item_list->setItems([$item]);
+
         // Create and setup the total amount.
         $amount = new Amount();
         $amount->setCurrency($currency)->setTotal($amount_payable);
@@ -102,6 +115,7 @@ class PaymentController extends Controller
         $transaction = new Transaction();
         $transaction
             ->setAmount($amount)
+            ->setItemList($item_list)
             ->setDescription($description)
             ->setInvoiceNumber($invoice_number);
 
@@ -190,11 +204,46 @@ class PaymentController extends Controller
         // respond to the invitation don't see the outdated invitation
         $asigment->invitations()->delete();
 
+        // Send an email to user with the bill
+        $this->sendBill($payment);
+
         // Create room
         $asigment->room()->create([
             'token' => Str::random(10),
             'teacher_id' => session()->get('teacher_id'),
         ]);
+    }
+
+    private function sendBill($payment)
+    {
+        $transaction = $payment->transactions[0];
+        $payer = $payment->payer->payer_info;
+
+        $items = [];
+
+        foreach ($transaction->item_list->items as $item) {
+            $items[] = [
+                'name' => $item->name,
+                'price' => $item->price,
+                'currency' => $item->currency,
+                'quantity' => $item->quantity,
+            ];
+        }
+
+        $bill = [
+            'payer' => [
+                'first_name' => $payer->first_name,
+                'last_name' => $payer->last_name,
+            ],
+            'invoice_number' => $payment->getId(),
+            'items' => $items,
+            'currency' => $transaction->amount->currency,
+            'subtotal' => $transaction->amount->total,
+            'total' => $transaction->amount->details->subtotal,
+        ];
+
+        $email = $this->getAsigment()->email;
+        Mail::to($email)->queue(new \App\Mail\Bill($bill));
     }
 
     private function getAsigment()
