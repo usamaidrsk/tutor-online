@@ -135,7 +135,7 @@
 
                         <span class="card__date">
                             <i class="icon icon-clock"></i>
-                            {{ asigment.formated_created_at }}</span
+                            {{ formatDistance(asigment.date) }}</span
                         >
                     </a>
                 </article>

@@ -114,7 +114,7 @@ return [
         'Este campo debe comenzar con uno de los siguientes valores: :values',
     'string' => 'Este campo debe ser una cadena de caracteres.',
     'timezone' => 'Este campo debe ser una zona horaria válida.',
-    'unique' => 'El valor dEste campo ya está en uso.',
+    'unique' => 'El valor de este campo ya está en uso.',
     'uploaded' => 'Este campo no se pudo subir.',
     'url' => 'El formato dEste campo es inválido.',
     'uuid' => 'Este campo debe ser un UUID válido.',

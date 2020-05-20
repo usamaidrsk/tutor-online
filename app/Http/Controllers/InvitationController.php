@@ -23,6 +23,11 @@ class InvitationController extends Controller
         // was'nt invited to
         abort_unless($invitation, 403);
 
+        // Do not show an invitations that was already accepted
+        if ($invitation->is_accepted) {
+            return redirect()->route('profile');
+        }
+
         return view()->component(
             'invitation',
             ['title' => 'Invitación'],
