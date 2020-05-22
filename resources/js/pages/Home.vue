@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="segment">
+        <section class="segment">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <figure class="segment__image">
@@ -25,9 +25,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="segment">
+        <section class="segment">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 first-xs last-sm">
                     <figure class="segment__image">
@@ -64,7 +64,29 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="contact">
+            <header class="margin-bottom--two">
+                <h1 class="margin-bottom--zero">Contactanos</h1>
+                <p>
+                    No dudes en contactarnos si tienes alguna duda o si tienes
+                    algo que decirnos.
+                </p>
+            </header>
+
+            <ul class="contact__info">
+                <li>
+                    <i class="icon icon-phone"></i>
+                    <a href="tel:+51-920279242">+51-920279242</a>
+                </li>
+
+                <li>
+                    <i class="icon icon-mail"></i>
+                    <a href="mailto:admin@mathias20.com">admin@mathias20.com</a>
+                </li>
+            </ul>
+        </section>
     </div>
 </template>
 
@@ -130,6 +152,26 @@
 
     @include breakpoint('md') {
         display: inline;
+    }
+}
+
+.contact {
+    border-top: 1px solid color('gray', 50);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.contact__info {
+    text-align: left;
+
+    li {
+    }
+
+    .icon {
+        vertical-align: middle;
+        margin-right: 0.25rem;
+        color: color('primary');
+        font-size: 1.5rem;
     }
 }
 </style>
