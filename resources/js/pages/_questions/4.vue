@@ -75,7 +75,7 @@ export default {
     data: () => ({
         form: {
             document: null,
-            picture: null,
+            avatar: null,
         },
         image: null,
         error: '',
@@ -92,15 +92,15 @@ export default {
         toList: arr => arr.map(s => s.toUpperCase()).join(', '),
 
         handleSubmit() {
-            if (!this.form.picture) {
+            if (!this.form.avatar) {
                 this.error = 'Por favor elige una foto para tu perfil'
                 return
             }
 
             const data = new FormData()
-            const { document, picture } = this.form
+            const { document, avatar } = this.form
             data.append('document', document)
-            data.append('picture', picture)
+            data.append('avatar', avatar)
 
             this.$emit('submit', data)
         },
@@ -126,7 +126,7 @@ export default {
             reader.onload = e => (this.image = e.target.result)
             reader.readAsDataURL(image)
 
-            this.form.picture = image
+            this.form.avatar = image
         },
     },
 }

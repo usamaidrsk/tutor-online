@@ -157,7 +157,7 @@ class QuestionsController extends Controller
                 $max_size = $this::MAX_PICTURE_SIZE / 1024;
 
                 $rules = [
-                    'picture' => "required|image|mimes:$image_mimes|max:$max_size",
+                    'avatar' => "required|image|mimes:$image_mimes|max:$max_size",
                     'document' => 'required|mimes:' . $document_mimes,
                 ];
                 break;
@@ -179,7 +179,7 @@ class QuestionsController extends Controller
         $user = auth()->user();
         $answers = session()->get('answers');
         $input = array_merge($answers[0], $answers[1], $answers[2]);
-        $picture = request()->file('picture');
+        $avatar = request()->file('avatar');
         $document = request()->file('document');
 
         // #1 | Store general information
@@ -223,18 +223,18 @@ class QuestionsController extends Controller
 
         $user->schedule()->createMany($schedule);
 
-        // #4.1 | Resize and save user picture
+        // #4.1 | Resize and save user avatar
 
-        $image_path = "pictures/{$user->id}.jpg";
+        $image_path = "avatars/{$user->id}.jpg";
         $image_full_path = storage_path("app/public/$image_path");
 
-        Storage::makeDirectory('/pictures');
+        Storage::makeDirectory('/avatars');
 
-        Image::make($picture)
+        \Image::make($avatar)
             ->fit(216)
             ->save($image_full_path, 75);
 
-        $user->picture = "/storage/$image_path";
+        $user->avatar = "/storage/$image_path";
 
         // #4.2 | Store given identification document
 

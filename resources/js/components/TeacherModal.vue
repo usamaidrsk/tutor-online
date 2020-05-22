@@ -8,7 +8,7 @@
 
                 <div class="modal__body row">
                     <figure class="modal__image image">
-                        <img :src="teacher.picture" alt="" />
+                        <img :src="teacher.avatar" />
                     </figure>
 
                     <div class="modal__content">

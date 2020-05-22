@@ -9,12 +9,7 @@ class Teacher extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = [
-        'picture',
-        'document',
-        'birthday',
-        'answered_questions',
-    ];
+    protected $fillable = ['document', 'birthday', 'answered_questions'];
 
     protected $casts = ['birthday' => 'date'];
 

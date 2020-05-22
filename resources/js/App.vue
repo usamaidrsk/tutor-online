@@ -16,7 +16,7 @@
                         >
 
                         <figure class="navbar__avatar image">
-                            <img :src="user.picture" />
+                            <img :src="user.avatar" />
                         </figure>
 
                         <i

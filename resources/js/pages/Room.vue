@@ -51,8 +51,8 @@
             <h4 class="margin-bottom--zero">Docente:</h4>
 
             <div class="teacher">
-                <figure class="teacher__picture image">
-                    <img :src="teacher.picture" />
+                <figure class="teacher__avatar image">
+                    <img :src="teacher.avatar" />
                 </figure>
                 <p class="teacher__name">{{ teacher.full_name }}</p>
             </div>
@@ -331,7 +331,7 @@ hr {
     margin-left: 0.5rem;
 }
 
-.teacher__picture {
+.teacher__avatar {
     @include size(55px);
     border-radius: 50%;
 }

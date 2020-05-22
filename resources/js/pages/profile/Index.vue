@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div>
                 <figure class="picture image">
-                    <img :src="picture" />
+                    <img :src="avatar" />
                 </figure>
             </div>
 

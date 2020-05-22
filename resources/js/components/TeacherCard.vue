@@ -2,7 +2,7 @@
     <article class="card">
         <div class="card__body">
             <figure class="card__image image">
-                <img :src="teacher.picture" />
+                <img :src="teacher.avatar" />
             </figure>
             <Stars class="card__stars" :value="teacher.stars" />
         </div>

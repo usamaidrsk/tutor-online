@@ -10,7 +10,6 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('picture')->nullable();
             $table->string('document')->nullable();
             $table->date('birthday')->nullable();
             $table->boolean('answered_questions')->default(false);

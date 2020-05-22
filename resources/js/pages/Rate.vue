@@ -8,7 +8,7 @@
         </p>
 
         <figure class="margin-top--two margin-top--two image">
-            <img :src="teacher.picture" />
+            <img :src="teacher.avatar" />
         </figure>
 
         <div class="row margin-top--three justify-content-center">
