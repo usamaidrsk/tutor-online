@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Propaganistas\LaravelPhone\PhoneNumber;
 use Illuminate\Support\Facades\Storage;
-use DB;
-use Image;
 
 class QuestionsController extends Controller
 {
@@ -50,7 +48,7 @@ class QuestionsController extends Controller
         switch ($step) {
             case 1:
             case 2:
-                $countries = DB::table('countries')->get();
+                $countries = \DB::table('countries')->get();
 
                 // Map countries array to be usable by Select component
                 $mapped = $countries->map(function ($country) {
@@ -64,8 +62,8 @@ class QuestionsController extends Controller
 
             case 1:
                 $props += [
-                    'categories' => DB::table('categories')->get(),
-                    'levels' => DB::table('levels')->get(),
+                    'categories' => \DB::table('categories')->get(),
+                    'levels' => \DB::table('levels')->get(),
                 ];
                 break;
 
@@ -119,7 +117,7 @@ class QuestionsController extends Controller
                 break;
 
             case 2:
-                $codes = DB::table('countries')
+                $codes = \DB::table('countries')
                     ->select('code')
                     ->get()
                     ->map(function ($country) {

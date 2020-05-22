@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Teacher;
-use DB;
 
 class RatesController extends Controller
 {
@@ -19,8 +17,8 @@ class RatesController extends Controller
             'rate',
             ['title' => 'Puntuar clase'],
             [
-                'teacher' => Teacher::findOrFail($id),
-                'criterias' => DB::table('criterias')->get(),
+                'teacher' => \App\Teacher::findOrFail($id),
+                'criterias' => \DB::table('criterias')->get(),
             ]
         );
     }
