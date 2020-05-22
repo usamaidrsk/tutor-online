@@ -177,17 +177,18 @@ class QuestionsController extends Controller
         // Finally, if last step was submited store all given answers
 
         $user = auth()->user();
+        $teacher = \App\Teacher::findOrFail($user->userable_id);
         $answers = session()->get('answers');
-        $input = array_merge($answers[0], $answers[1], $answers[2]);
+        $input = array_reduce($answers, 'array_merge', []);
         $avatar = request()->file('avatar');
         $document = request()->file('document');
 
         // #1 | Store general information
 
-        $user->country_id = $input['country'];
-        $user->birthday = \Carbon\Carbon::parse($input['birthday']);
-        $user->levels()->sync($input['levels']);
-        $user->categories()->sync($input['categories']);
+        $teacher->country_id = $input['country'];
+        $teacher->birthday = \Carbon\Carbon::parse($input['birthday']);
+        $teacher->levels()->sync($input['levels']);
+        $teacher->categories()->sync($input['categories']);
 
         // #2 | Store given phone and address
 
@@ -196,7 +197,7 @@ class QuestionsController extends Controller
 
         $address = $input['address'];
 
-        $user->address()->create([
+        $teacher->address()->create([
             'line' => $address['line'],
             'state' => $address['state'],
             'city' => $address['city'],
@@ -221,7 +222,7 @@ class QuestionsController extends Controller
             }
         }
 
-        $user->schedule()->createMany($schedule);
+        $teacher->schedule()->createMany($schedule);
 
         // #4.1 | Resize and save user avatar
 
@@ -241,11 +242,12 @@ class QuestionsController extends Controller
         Storage::makeDirectory('/documents');
 
         $document_path = $document->store('documents');
-        $user->document = $document_path;
+        $teacher->document = $document_path;
 
         // Finaly | Save teacher's changes
 
-        $user->answered_questions = true;
+        $teacher->answered_questions = true;
+        $teacher->save();
         $user->save();
 
         session()->forget('answers');
