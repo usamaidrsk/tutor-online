@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Factory as ViewFactory;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,5 +38,10 @@ class AppServiceProvider extends ServiceProvider
                 ['name' => $name, 'data' => $componentData] + $viewData
             );
         });
+
+        Relation::morphMap([
+            'student' => 'App\Student',
+            'teacher' => 'App\Teacher',
+        ]);
     }
 }

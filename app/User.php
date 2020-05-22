@@ -42,4 +42,9 @@ class User extends Authenticatable
 
         return $phone;
     }
+
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 }
