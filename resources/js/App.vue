@@ -17,6 +17,7 @@
 
                         <figure class="navbar__avatar image">
                             <img :src="user.avatar" />
+                            <i class="icon icon-user"></i>
                         </figure>
 
                         <i
@@ -138,9 +139,18 @@ main {
 .navbar__avatar {
     @include size(35px);
 
-    background: color('gray', 50);
+    position: relative;
+    box-shadow: 0 0 0 1px color('gray', 600) inset;
     border-radius: 50%;
     margin: 0 0.5rem;
+
+    .icon {
+        position: absolute;
+        top: 0;
+        left: -1px;
+        font-size: 1.5rem;
+        z-index: -1;
+    }
 }
 
 .navbar__button {
