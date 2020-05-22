@@ -7,8 +7,6 @@ use Carbon\Carbon;
 
 class Teacher extends Model
 {
-    use Notifiable;
-
     public $timestamps = false;
 
     protected $fillable = [
