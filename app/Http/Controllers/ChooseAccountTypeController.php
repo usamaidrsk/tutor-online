@@ -16,7 +16,7 @@ class ChooseAccountTypeController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->userable_type) {
+        if ($user->is('teacher') || $user->is('student') || $user->isAdmin()) {
             return redirect()->route('dashboard.index');
         }
 

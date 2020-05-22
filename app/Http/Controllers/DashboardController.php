@@ -16,44 +16,35 @@ class DashboardController extends Controller
         $user = auth()->user();
         $type = $user->userable_type;
 
-        if (!$type) {
+        if ($user->isNot('teacher') && $user->isNot('student')) {
             return redirect()->route('choose-account-type');
         }
 
         $props = [];
 
-        switch ($type) {
-            case 'teacher':
-                $teacher = \App\Teacher::findOrFail($user->userable_id);
+        if ($user->is('teacher')) {
+            $teacher = \App\Teacher::findOrFail($user->userable_id);
 
-                if (!$teacher->answered_questions) {
-                    return redirect()->route('questions', 1);
-                }
+            if (!$teacher->answered_questions) {
+                return redirect()->route('questions', 1);
+            }
 
-                $teacher->address;
-                $teacher->schedule;
+            $teacher->address;
+            $teacher->schedule;
 
-                $props = [
-                    'teacher' => array_merge(
-                        $user->toArray(),
-                        $teacher->toArray()
-                    ),
-                    'invitations' => $teacher
-                        ->invitations()
-                        ->with('asigment')
-                        ->where('is_acepted', false)
-                        ->orderBy('created_at', 'desc')
-                        ->get(),
-                    'rooms' => $teacher
-                        ->rooms()
-                        ->with('asigment')
-                        ->get(),
-                ];
-                break;
-
-            default:
-                # code...
-                break;
+            $props = [
+                'teacher' => array_merge($user->toArray(), $teacher->toArray()),
+                'invitations' => $teacher
+                    ->invitations()
+                    ->with('asigment')
+                    ->where('is_acepted', false)
+                    ->orderBy('created_at', 'desc')
+                    ->get(),
+                'rooms' => $teacher
+                    ->rooms()
+                    ->with('asigment')
+                    ->get(),
+            ];
         }
 
         return view()->component(
@@ -67,7 +58,7 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->userable_type !== 'teacher') {
+        if ($user->isNot('teacher')) {
             return redirect()->back();
         }
 

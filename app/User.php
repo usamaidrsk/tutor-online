@@ -44,6 +44,21 @@ class User extends Authenticatable
         return $phone;
     }
 
+    public function is($type)
+    {
+        return $this->attributes['userable_type'] === $type;
+    }
+
+    public function isNot($type)
+    {
+        return $this->attributes['userable_type'] !== $type;
+    }
+
+    public function isAdmin()
+    {
+        return !!$this->attributes['is_admin'];
+    }
+
     public function userable()
     {
         return $this->morphTo();
