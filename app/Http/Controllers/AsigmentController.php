@@ -11,7 +11,6 @@ use Propaganistas\LaravelPhone\PhoneNumber;
 use Carbon\Carbon;
 use App\Asigment;
 use App\Teacher;
-use DB;
 
 class AsigmentController extends Controller
 {
@@ -32,8 +31,8 @@ class AsigmentController extends Controller
             'asigment.create',
             ['title' => 'Nueva propuesta'],
             [
-                'levels' => DB::table('levels')->get(),
-                'categories' => DB::table('categories')->get(),
+                'levels' => \DB::table('levels')->get(),
+                'categories' => \DB::table('categories')->get(),
                 'ALLOWED_FILE_EXTENSIONS' => $this::ALLOWED_FILE_EXTENSIONS,
                 'MAX_FILE_SIZE' => $this::MAX_FILE_SIZE,
                 'MAX_FILE_NUM' => $this::MAX_FILE_NUM,
@@ -271,7 +270,7 @@ class AsigmentController extends Controller
 
     public function validator()
     {
-        $codes = DB::table('countries')
+        $codes = \DB::table('countries')
             ->select('code')
             ->get()
             ->map(function ($country) {

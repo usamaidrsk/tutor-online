@@ -237,9 +237,10 @@ class QuestionsController extends Controller
         $document_path = $document->store('documents');
         $teacher->document = $document_path;
 
-        // Finaly | Save teacher's changes
+        // Finally | Save teacher's changes
 
         $teacher->answered_questions = true;
+
         $teacher->save();
         $user->save();
 

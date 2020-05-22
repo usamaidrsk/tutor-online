@@ -16,7 +16,7 @@ class ChooseAccountTypeController extends Controller
         }
 
         return view()->component('choose-account-type', [
-            'title' => 'Tipo de cuenta',
+            'title' => 'Elegir tipo de cuenta',
         ]);
     }
 
