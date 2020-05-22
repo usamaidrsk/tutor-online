@@ -10,10 +10,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if (auth()->check()) {
-            return redirect()->route('dashboard.index');
-        }
-
         if ($email = Cookie::get('email')) {
             if (Asigment::where('email', $email)->exists()) {
                 return redirect()->route('asigment.index');

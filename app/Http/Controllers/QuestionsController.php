@@ -13,11 +13,6 @@ class QuestionsController extends Controller
     const ALLOWED_DOCUMENT_EXTENSIONS = ['pdf', 'png', 'jpg', 'jpeg'];
     const TOTAL_STEPS = 4;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(int $step)
     {
         // Redirect to dashboard if user has already

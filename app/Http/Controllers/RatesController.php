@@ -8,11 +8,6 @@ class RatesController extends Controller
 {
     public function index($id)
     {
-        // Teachers can not rate each other
-        if (auth()->user()->userable_type === 'teacher') {
-            return redirect()->route('dashboard.index');
-        }
-
         return view()->component(
             'rate',
             ['title' => 'Puntuar clase'],

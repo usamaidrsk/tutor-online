@@ -22,11 +22,6 @@ class AsigmentController extends Controller
 
     public function create()
     {
-        // Teacher can not create new asigments
-        if (auth()->check()) {
-            return redirect('profile');
-        }
-
         if ($email = Cookie::get('email')) {
             if (Asigment::where('email', $email)->exists()) {
                 return redirect()->route('asigment.index');
@@ -48,10 +43,6 @@ class AsigmentController extends Controller
 
     public function index()
     {
-        if (auth()->check()) {
-            return redirect('profile');
-        }
-
         $email = Cookie::get('email');
         $asigment = Asigment::with('level', 'category', 'files')
             ->where('email', $email)

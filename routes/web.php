@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')
+    ->middleware('guest')
+    ->name('home');
 
 Route::name('choose-account-type')
     ->prefix('/choose-account-type')
+    ->middleware('auth')
     ->group(function () {
         Route::get('/', 'ChooseAccountTypeController@index');
         Route::post('/', 'ChooseAccountTypeController@decide');
@@ -15,6 +18,7 @@ Route::name('choose-account-type')
 
 Route::name('dashboard.')
     ->prefix('/dashboard')
+    ->middleware('auth')
     ->group(function () {
         Route::get('/', 'DashboardController@index')->name('index');
         Route::get('/edit', 'DashboardController@edit')->name('edit');
@@ -26,11 +30,13 @@ Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
     'privacy-policy'
 );
 
-Route::get('/room/{token?}', 'RoomController@index')->name('room');
+Route::get('/room/{token?}', 'RoomController@index')
+    ->middleware('auth')
+    ->name('room');
 
 Route::name('invitation.')
     ->prefix('invitation/')
-    ->middleware('auth')
+    ->middleware('is:teacher')
     ->group(function () {
         Route::get('/{id}', 'InvitationController@show')->name('show');
         Route::put('/{id}/{answer}', 'InvitationController@update')
@@ -40,6 +46,7 @@ Route::name('invitation.')
 
 Route::name('payment.')
     ->prefix('/payment')
+    ->middleware('is:student')
     ->group(function () {
         Route::get('/', 'PaymentController@index')->name('index');
         Route::get('/success', 'PaymentController@success')->name('success');
@@ -55,26 +62,31 @@ Route::name('teacher.')
 
 Route::name('questions')
     ->prefix('questions/{step}')
+    ->middleware('is:teacher')
     ->group(function () {
         Route::get('/', 'QuestionsController@index')->where('step', '[1-4]');
         Route::post('/', 'QuestionsController@store')->where('step', '[1-4]');
     });
 
-Route::name('asigment.')->group(function () {
-    Route::get('/my-asigment', 'AsigmentController@index')->name('index');
-    Route::put('/my-asigment', 'AsigmentController@update')->name('update');
-    Route::delete('/my-asigment', 'AsigmentController@delete')->name('delete');
+Route::name('asigment.')
+    ->middleware('is:student')
+    ->group(function () {
+        Route::get('/my-asigment', 'AsigmentController@index')->name('index');
+        Route::put('/my-asigment', 'AsigmentController@update')->name('update');
+        Route::delete('/my-asigment', 'AsigmentController@delete')->name(
+            'delete'
+        );
+        Route::get('/new', 'AsigmentController@create')->name('create');
+        Route::post('/new', 'AsigmentController@store')->name('store');
 
-    Route::get('/new', 'AsigmentController@create')->name('create');
-    Route::post('/new', 'AsigmentController@store')->name('store');
-
-    Route::post('/conflict/{action}', 'AsigmentController@conflict')->name(
-        'conflict'
-    );
-});
+        Route::post('/conflict/{action}', 'AsigmentController@conflict')->name(
+            'conflict'
+        );
+    });
 
 Route::name('rate.')
     ->prefix('rate/{id}')
+    ->middleware('is:student')
     ->group(function () {
         Route::get('/', 'RatesController@index')->name('index');
         Route::post('/', 'RatesController@create')->name('create');
