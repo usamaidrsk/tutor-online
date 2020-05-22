@@ -70,12 +70,17 @@ export default {
                 const response = await this.$http.post('login', this.form)
                 window.location.href = route('dashboard.index')
             } catch (error) {
-                this.loading = false
-                const { data } = error.response
-                this.error =
-                    data.errors.email[0] ||
-                    data.errors.password[0] ||
-                    data.message
+                console.error(error.response || error)
+
+                if (error.response) {
+                    const { data } = error.response
+                    if (data.errors) {
+                        this.error =
+                            data.errors.email[0] ||
+                            data.errors.password[0] ||
+                            data.message
+                    }
+                }
             } finally {
                 this.loading = false
             }
