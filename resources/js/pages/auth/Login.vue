@@ -68,7 +68,7 @@ export default {
             try {
                 this.loading = true
                 const response = await this.$http.post('login', this.form)
-                window.location.href = route('profile.index')
+                window.location.href = route('dashboard.index')
             } catch (error) {
                 this.loading = false
                 const { data } = error.response

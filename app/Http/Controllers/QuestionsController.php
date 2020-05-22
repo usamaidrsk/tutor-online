@@ -22,10 +22,10 @@ class QuestionsController extends Controller
 
     public function index(int $step)
     {
-        // Redirect to profile if user has already
+        // Redirect to dashboard if user has already
         //  completed this process
-        if (auth()->user()->answered_questions) {
-            return redirect('profile');
+        if (auth()->user()->userable->answered_questions) {
+            return redirect('dashboard.index');
         }
 
         // Set `answers` session variable to an array

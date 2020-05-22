@@ -10,8 +10,9 @@ class RatesController extends Controller
 {
     public function index($id)
     {
-        if (auth()->check()) {
-            return redirect()->route('profile');
+        // Teachers can not rate each other
+        if (auth()->user()->userable_type === 'teacher') {
+            return redirect()->route('dashboard.index');
         }
 
         return view()->component(

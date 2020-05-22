@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import handleFormError from '../../utils/handleFormError'
+import handleFormError from '../../../utils/handleFormError'
 
 export default {
     props: ['teacher', 'levels', 'categories', 'countries'],

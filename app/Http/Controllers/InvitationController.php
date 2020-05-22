@@ -25,7 +25,7 @@ class InvitationController extends Controller
 
         // Do not show an invitations that was already accepted
         if ($invitation->is_accepted) {
-            return redirect()->route('profile');
+            return redirect()->route('dashboard.index');
         }
 
         return view()->component(

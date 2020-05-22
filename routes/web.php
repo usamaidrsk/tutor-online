@@ -6,12 +6,19 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::name('profile.')
-    ->prefix('/profile')
+Route::name('choose-account-type')
+    ->prefix('/choose-account-type')
     ->group(function () {
-        Route::get('/', 'ProfileController@index')->name('index');
-        Route::get('/edit', 'ProfileController@edit')->name('edit');
-        Route::put('/edit', 'ProfileController@update')->name('update');
+        Route::get('/', 'ChooseAccountTypeController@index');
+        Route::post('/', 'ChooseAccountTypeController@decide');
+    });
+
+Route::name('dashboard.')
+    ->prefix('/dashboard')
+    ->group(function () {
+        Route::get('/', 'DashboardController@index')->name('index');
+        Route::get('/edit', 'DashboardController@edit')->name('edit');
+        Route::put('/edit', 'DashboardController@update')->name('update');
     });
 
 Route::get('/terms', 'TermsController@index')->name('terms');

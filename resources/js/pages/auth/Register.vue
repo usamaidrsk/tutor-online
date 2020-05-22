@@ -102,7 +102,7 @@ export default {
             try {
                 this.loading = true
                 await this.$http.post('register', this.form)
-                window.location.href = route('questions', 1)
+                window.location.href = route('choose-account-type')
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)

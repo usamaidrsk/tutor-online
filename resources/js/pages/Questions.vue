@@ -51,7 +51,7 @@ export default {
                 window.location.href =
                     this.step < this.TOTAL_STEPS
                         ? route('questions', this.step + 1)
-                        : route('profile.index')
+                        : route('dashboard.index')
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)
