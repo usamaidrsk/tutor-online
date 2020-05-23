@@ -47,7 +47,7 @@ class Teacher extends Model
 
     public function user()
     {
-        $this->morphOne(User::class, 'userable');
+        return $this->morphOne(User::class, 'userable');
     }
 
     public function invitations()
