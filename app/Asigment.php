@@ -35,6 +35,11 @@ class Asigment extends Model
         return $this->files->count();
     }
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

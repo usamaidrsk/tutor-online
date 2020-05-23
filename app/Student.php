@@ -12,4 +12,9 @@ class Student extends Model
     {
         $this->morphOne(User::class, 'userable');
     }
+
+    public function asigments()
+    {
+        return $this->hasMany(Asigment::class);
+    }
 }

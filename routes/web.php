@@ -36,7 +36,7 @@ Route::get('/room/{token?}', 'RoomController@index')
 
 Route::name('invitation.')
     ->prefix('invitation/')
-    ->middleware('is:teacher')
+    ->middleware('is:teacher', 'owns:teacher,invitation')
     ->group(function () {
         Route::get('/{id}', 'InvitationController@show')->name('show');
         Route::put('/{id}/{answer}', 'InvitationController@update')
@@ -74,11 +74,13 @@ Route::name('asigment.')
         Route::get('/new', 'AsigmentController@create')->name('create');
         Route::post('/new', 'AsigmentController@store')->name('store');
 
-        Route::prefix('/asigment/{id}')->group(function () {
-            Route::get('/', 'AsigmentController@index')->name('index');
-            Route::put('/', 'AsigmentController@update')->name('update');
-            Route::delete('/', 'AsigmentController@delete')->name('delete');
-        });
+        Route::prefix('/asigment/{id}')
+            ->middleware('owns:student,asigment')
+            ->group(function () {
+                Route::get('/', 'AsigmentController@index')->name('index');
+                Route::put('/', 'AsigmentController@update')->name('update');
+                Route::delete('/', 'AsigmentController@delete')->name('delete');
+            });
     });
 
 Route::name('rate.')
