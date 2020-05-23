@@ -58,7 +58,7 @@ class AsigmentController extends Controller
             ->get();
 
         return view()->component(
-            'asigment.show',
+            'asigment.index',
             ['title' => 'Propuesta'],
             [
                 'asigment' => $asigment,
