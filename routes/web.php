@@ -8,14 +8,6 @@ Route::get('/', 'HomeController@index')
     ->middleware('guest')
     ->name('home');
 
-Route::name('choose-account-type')
-    ->prefix('/choose-account-type')
-    ->middleware('auth')
-    ->group(function () {
-        Route::get('/', 'ChooseAccountTypeController@index');
-        Route::post('/', 'ChooseAccountTypeController@decide');
-    });
-
 Route::name('dashboard.')
     ->prefix('/dashboard')
     ->middleware('auth')
@@ -23,49 +15,6 @@ Route::name('dashboard.')
         Route::get('/', 'DashboardController@index')->name('index');
         Route::get('/edit', 'DashboardController@edit')->name('edit');
         Route::put('/edit', 'DashboardController@update')->name('update');
-    });
-
-Route::get('/terms', 'TermsController@index')->name('terms');
-Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
-    'privacy-policy'
-);
-
-Route::get('/room/{token?}', 'RoomController@index')
-    ->middleware('auth')
-    ->name('room');
-
-Route::name('invitation.')
-    ->prefix('invitation/')
-    ->middleware('is:teacher', 'owns:teacher,invitation')
-    ->group(function () {
-        Route::get('/{id}', 'InvitationController@show')->name('show');
-        Route::put('/{id}/{answer}', 'InvitationController@update')
-            ->name('update')
-            ->where('answer', '[0-1]');
-    });
-
-Route::name('payment.')
-    ->prefix('/payment')
-    ->middleware('is:student')
-    ->group(function () {
-        Route::get('/', 'PaymentController@index')->name('index');
-        Route::get('/success', 'PaymentController@success')->name('success');
-        Route::post('/create', 'PaymentController@create')->name('create');
-        Route::get('/execute', 'PaymentController@execute')->name('execute');
-    });
-
-Route::name('teacher.')
-    ->prefix('teacher/{id}')
-    ->group(function () {
-        Route::put('schedule', 'TeachersController@update')->name('schedule');
-    });
-
-Route::name('questions')
-    ->prefix('questions/{step}')
-    ->middleware('is:teacher')
-    ->group(function () {
-        Route::get('/', 'QuestionsController@index')->where('step', '[1-4]');
-        Route::post('/', 'QuestionsController@store')->where('step', '[1-4]');
     });
 
 Route::name('asigment.')
@@ -83,6 +32,46 @@ Route::name('asigment.')
             });
     });
 
+Route::name('payment.')
+    ->prefix('/payment')
+    ->middleware('is:student')
+    ->group(function () {
+        Route::get('/', 'PaymentController@index')->name('index');
+        Route::get('/success', 'PaymentController@success')->name('success');
+        Route::post('/create', 'PaymentController@create')->name('create');
+        Route::get('/execute', 'PaymentController@execute')->name('execute');
+    });
+
+Route::get('/room/{token?}', 'RoomController@index')
+    ->middleware('auth')
+    ->name('room');
+
+Route::name('invitation.')
+    ->prefix('invitation/')
+    ->middleware('is:teacher', 'owns:teacher,invitation')
+    ->group(function () {
+        Route::get('/{id}', 'InvitationController@show')->name('show');
+        Route::put('/{id}/{answer}', 'InvitationController@update')
+            ->name('update')
+            ->where('answer', '[0-1]');
+    });
+
+Route::name('choose-account-type')
+    ->prefix('/choose-account-type')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', 'ChooseAccountTypeController@index');
+        Route::post('/', 'ChooseAccountTypeController@decide');
+    });
+
+Route::name('questions')
+    ->prefix('questions/{step}')
+    ->middleware('is:teacher')
+    ->group(function () {
+        Route::get('/', 'QuestionsController@index')->where('step', '[1-4]');
+        Route::post('/', 'QuestionsController@store')->where('step', '[1-4]');
+    });
+
 Route::name('rate.')
     ->prefix('rate/{id}')
     ->middleware('is:student')
@@ -90,3 +79,14 @@ Route::name('rate.')
         Route::get('/', 'RatesController@index')->name('index');
         Route::post('/', 'RatesController@create')->name('create');
     });
+
+Route::name('teacher.')
+    ->prefix('teacher/{id}')
+    ->group(function () {
+        Route::put('schedule', 'TeachersController@update')->name('schedule');
+    });
+
+Route::get('/terms', 'TermsController@index')->name('terms');
+Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name(
+    'privacy-policy'
+);
