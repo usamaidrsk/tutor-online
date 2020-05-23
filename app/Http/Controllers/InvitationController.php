@@ -6,7 +6,6 @@ use App\Teacher;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Asigment;
 use App\Invitation;
 
 class InvitationController extends Controller
