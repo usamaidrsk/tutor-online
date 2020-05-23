@@ -24,7 +24,7 @@ class InvitationController extends Controller
         abort_unless($invitation, 403);
 
         // Do not show an invitations that was already accepted
-        if ($invitation->is_accepted) {
+        if ($invitation->status === 'accepted') {
             return redirect()->route('dashboard.index');
         }
 
@@ -38,19 +38,16 @@ class InvitationController extends Controller
     public function update($id, int $answer)
     {
         $invitation = Invitation::findOrFail($id);
+        $invitation->status = $answer ? 'accepted' : 'denied';
+        $invitation->save();
 
         if ($answer) {
-            $invitation->is_acepted = true;
-            $invitation->save();
-
             try {
                 $mail = new \App\Mail\Notification();
                 Mail::to($invitation->asigment->email)->queue($mail);
             } catch (\Throwable $th) {
                 report($th);
             }
-        } else {
-            $invitation->delete();
         }
 
         return $invitation;

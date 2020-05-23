@@ -11,6 +11,9 @@ class CreateInvitationsTable extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_acepted')->default(false);
+            $table
+                ->enum('status', ['pending', 'accepted', 'denied'])
+                ->default('pending');
             $table->unsignedBigInteger('asigment_id');
             $table->unsignedBigInteger('teacher_id');
 

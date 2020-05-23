@@ -32,7 +32,7 @@ class DashboardController extends Controller
                 'invitations' => $teacher
                     ->invitations()
                     ->with('asigment')
-                    ->where('is_acepted', false)
+                    ->where('status', 'pending')
                     ->orderBy('created_at', 'desc')
                     ->get(),
                 'rooms' => $teacher

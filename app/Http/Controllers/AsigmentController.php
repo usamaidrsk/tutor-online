@@ -58,8 +58,11 @@ class AsigmentController extends Controller
         $id = $asigment->id;
 
         $avalible_teachers = Teacher::select('teachers.*')
-            ->join('invitations', 'teachers.id', '=', 'teacher_id')
-            ->where([['asigment_id', $id], ['is_acepted', true]])
+            ->join('invitations as i', function ($join) use ($id) {
+                $join
+                    ->where('i.asigment_id', '=', $id)
+                    ->where('i.status', '=', 'accepted');
+            })
             ->get();
 
         return view()->component(
@@ -193,7 +196,7 @@ class AsigmentController extends Controller
     private function invite_teachers(Asigment $asigment)
     {
         // This is the number of minutes of a class session
-        // Theacer should not be invited if they acepted
+        // Theacer should not be invited if they accepted
         // another invitation to a class appointed to the same
         // day and hour
         $max_minutes = 60;
@@ -229,7 +232,7 @@ class AsigmentController extends Controller
             ) {
                 $query
                     ->whereNull('a.id')
-                    ->orWhere('i.is_acepted', false)
+                    ->orWhere('i.status', '<>', 'accepted')
                     ->orWhere(function ($query) use (
                         $max_minutes,
                         $day_of_week,
