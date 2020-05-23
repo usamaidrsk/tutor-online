@@ -43,8 +43,12 @@ class InvitationController extends Controller
             $invitation->is_acepted = true;
             $invitation->save();
 
-            $mail = new \App\Mail\Notification();
-            Mail::to($invitation->asigment->email)->queue($mail);
+            try {
+                $mail = new \App\Mail\Notification();
+                Mail::to($invitation->asigment->email)->queue($mail);
+            } catch (\Throwable $th) {
+                report($th);
+            }
         } else {
             $invitation->delete();
         }
