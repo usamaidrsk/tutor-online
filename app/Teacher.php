@@ -55,11 +55,6 @@ class Teacher extends Model
         return $this->hasMany(Invitation::class);
     }
 
-    public function rooms()
-    {
-        return $this->hasMany(Room::class);
-    }
-
     public function rates()
     {
         return $this->hasMany(Rate::class);

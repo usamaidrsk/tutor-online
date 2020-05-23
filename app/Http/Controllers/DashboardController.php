@@ -35,10 +35,7 @@ class DashboardController extends Controller
                     ->where('status', 'pending')
                     ->orderBy('created_at', 'desc')
                     ->get(),
-                'rooms' => $teacher
-                    ->rooms()
-                    ->with('asigment')
-                    ->get(),
+                'rooms' => [],
             ];
         }
 
