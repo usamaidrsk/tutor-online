@@ -86,10 +86,10 @@ class AsigmentController extends Controller
         $asigment = Asigment::create($data);
 
         try {
-            $this->store_files($asigment);
-            $this->invite_teachers($asigment);
+            $this->storeAttachments($asigment);
+            $this->inviteTeachers($asigment);
         } catch (\Throwable $th) {
-            $this->delete_files($asigment);
+            $this->deleteAttachments($asigment);
             $asigment->delete();
             throw $th;
         }
@@ -101,7 +101,7 @@ class AsigmentController extends Controller
     {
         $asigment = Asigment::findOrFail($id);
 
-        $this->delete_files($asigment);
+        $this->deleteAttachments($asigment);
         $asigment->delete();
 
         return $asigment;
@@ -110,7 +110,7 @@ class AsigmentController extends Controller
     // Store in disk all files uploaded by user one by one
     // and at the same time store file details in database
 
-    private function store_files(Asigment $asigment)
+    private function storeAttachments(Asigment $asigment)
     {
         $folder = "attachments/{$asigment->id}";
 
@@ -132,7 +132,7 @@ class AsigmentController extends Controller
         }
     }
 
-    private function delete_files(Asigment $asigment)
+    private function deleteAttachments(Asigment $asigment)
     {
         $folder = "attachments/{$asigment->id}";
         Storage::deleteDirectory($folder);
@@ -142,7 +142,7 @@ class AsigmentController extends Controller
     // match with the asigment level, category and time
     // of the asigment and mail then an invitation
 
-    private function invite_teachers(Asigment $asigment)
+    private function inviteTeachers(Asigment $asigment)
     {
         // This is the number of minutes of a class session
         // Theacer should not be invited if they accepted
