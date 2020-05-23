@@ -10,13 +10,21 @@ class CreateAsigmentsTable extends Migration
     {
         Schema::create('asigments', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 50)->unique();
-            $table->string('phone', 15);
             $table->string('details', 300);
             $table->decimal('budget', 8, 2);
             $table->timestamp('date');
+            $table
+                ->enum('status', [
+                    'evaluating',
+                    'waiting-for-class',
+                    'finished',
+                    'canceled',
+                ])
+                ->default('evaluating');
             $table->unsignedTinyInteger('level_id');
             $table->unsignedTinyInteger('category_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('teacher_id')->nullable();
 
             $table
                 ->foreign('level_id')
@@ -27,6 +35,16 @@ class CreateAsigmentsTable extends Migration
                 ->foreign('category_id')
                 ->references('id')
                 ->on('categories')
+                ->onDelete('cascade');
+            $table
+                ->foreign('student_id')
+                ->references('id')
+                ->on('students')
+                ->onDelete('cascade');
+            $table
+                ->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
                 ->onDelete('cascade');
 
             $table->timestamps();
