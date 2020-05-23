@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Propaganistas\LaravelPhone\PhoneNumber;
@@ -21,12 +20,6 @@ class AsigmentController extends Controller
 
     public function create()
     {
-        if ($email = Cookie::get('email')) {
-            if (Asigment::where('email', $email)->exists()) {
-                return redirect()->route('asigment.index');
-            }
-        }
-
         return view()->component(
             'asigment.create',
             ['title' => 'Nueva propuesta'],
@@ -40,22 +33,11 @@ class AsigmentController extends Controller
         );
     }
 
-    public function index()
+    public function index($id)
     {
-        $email = Cookie::get('email');
-        $asigment = Asigment::with('level', 'category', 'files')
-            ->where('email', $email)
-            ->first();
-
-        if (!$asigment) {
-            return redirect()->route('asigment.create');
-        }
-
-        if ($asigment->payment) {
-            return redirect()->route('room');
-        }
-
-        $id = $asigment->id;
+        $asigment = Asigment::with('level', 'category', 'files')->findOrFail(
+            $id
+        );
 
         $available_teachers = Teacher::select(
             'u.first_name as first_name',
@@ -90,9 +72,7 @@ class AsigmentController extends Controller
     {
         $this->validator()->validate();
 
-        $input = request()->only([
-            'email',
-            'phone',
+        $data = request()->only([
             'budget',
             'details',
             'date',
@@ -100,16 +80,10 @@ class AsigmentController extends Controller
             'category_id',
         ]);
 
-        if (Asigment::where('email', $input['email'])->exists()) {
-            return response(['message' => 'duplicate email'], 422); // Unprocessable Entity
-        }
+        $data['date'] = Carbon::parse($data['date']);
+        $data['student_id'] = auth()->user()->userable->id;
 
-        $input['date'] = Carbon::parse($input['date']);
-
-        $phone = request()->input('phone_prefix') . $input['phone'];
-        $input['phone'] = (string) PhoneNumber::make($phone);
-
-        $asigment = Asigment::create($input);
+        $asigment = Asigment::create($data);
 
         try {
             $this->store_files($asigment);
@@ -120,52 +94,17 @@ class AsigmentController extends Controller
             throw $th;
         }
 
-        return $this->response_with_cookie($asigment);
+        return $asigment->id;
     }
 
-    public function delete()
+    public function delete($id)
     {
-        $email = Cookie::get('email');
-        $asigment = Asigment::where('email', $email)->first();
-
-        abort_if(!$asigment, 404);
+        $asigment = Asigment::findOrFail($id);
 
         $this->delete_files($asigment);
         $asigment->delete();
 
         return $asigment;
-    }
-
-    public function conflict($action)
-    {
-        $email = request()->input('email');
-        $asigment = Asigment::where('email', $email)->first();
-
-        abort_if(!$asigment, 404);
-
-        switch ($action) {
-            case 'RECOVER':
-                // For now there is nothing special needed to
-                // recover old asigment, just return the
-                // `email` cookie
-                break;
-
-            case 'OVERWRITE':
-                $asigment->delete();
-                $this->store();
-                break;
-        }
-
-        return $this->response_with_cookie($asigment);
-    }
-
-    private function response_with_cookie(Asigment $asigment)
-    {
-        $response = \Response::make($asigment->id);
-        $cookie = cookie()->forever('email', $asigment->email);
-        $response->withCookie($cookie);
-
-        return $response;
     }
 
     // Store in disk all files uploaded by user one by one
@@ -297,15 +236,11 @@ class AsigmentController extends Controller
             ->toArray();
 
         $rules = [
-            'email' => 'required|email',
-            'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
-            'phone' => 'required|phone:AUTO,' . implode(',', $codes),
             'budget' => 'required|numeric|min:' . $this::MIN_BUDGET,
             'details' => 'required|max:300|min:25',
             'level_id' => 'required|exists:levels,id',
             'category_id' => 'required|exists:categories,id',
             'date' => 'required|date',
-            // 'date' => 'required|date|after:today',
             'files' => 'required|array|min:1|max:' . $this::MAX_FILE_NUM,
             'files.*' =>
                 'mimes:' .

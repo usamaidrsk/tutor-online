@@ -71,17 +71,14 @@ Route::name('questions')
 Route::name('asigment.')
     ->middleware('is:student')
     ->group(function () {
-        Route::get('/my-asigment', 'AsigmentController@index')->name('index');
-        Route::put('/my-asigment', 'AsigmentController@update')->name('update');
-        Route::delete('/my-asigment', 'AsigmentController@delete')->name(
-            'delete'
-        );
         Route::get('/new', 'AsigmentController@create')->name('create');
         Route::post('/new', 'AsigmentController@store')->name('store');
 
-        Route::post('/conflict/{action}', 'AsigmentController@conflict')->name(
-            'conflict'
-        );
+        Route::prefix('/asigment/{id}')->group(function () {
+            Route::get('/', 'AsigmentController@index')->name('index');
+            Route::put('/', 'AsigmentController@update')->name('update');
+            Route::delete('/', 'AsigmentController@delete')->name('delete');
+        });
     });
 
 Route::name('rate.')

@@ -1,52 +1,6 @@
 <template>
-    <Conflict
-        v-if="isDuplicated"
-        :email="form.email"
-        :options="options"
-        :loading="loading"
-        @answer="handleConflict"
-    />
-
-    <form v-else @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit">
         <h1 class="text--center margin-bottom--three">Propuesta del alumno</h1>
-
-        <div class="margin-bottom--two col-xs-12 col-sm-6">
-            <h3 class="margin-bottom--zero">Datos del alumno</h3>
-
-            <Input
-                v-model="form.email"
-                :error="errors.first('email')"
-                label="email"
-                type="email"
-            />
-
-            <div>
-                <span
-                    v-if="errors.has('phone_prefix') || errors.has('phone')"
-                    class="error"
-                    role="alert"
-                    >{{
-                        errors.first('phone_prefix') || errors.first('phone')
-                    }}</span
-                >
-
-                <label for="" class="input__label">Telefono</label>
-                <div class="d-flex">
-                    <Input
-                        style="width: 55px;"
-                        placeholder="+00"
-                        required
-                        class="margin-right--one"
-                        v-model="form.phone_prefix"
-                    />
-                    <Input
-                        style="flex-grow: 1;"
-                        v-model="form.phone"
-                        type="tel"
-                    />
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-sm-4 margin-bottom--one">
@@ -221,15 +175,7 @@
 <script>
 import handleFormError from '../../utils/handleFormError'
 
-const OPTIONS = {
-    RECOVER:
-        'Recuperar la propuesta antigüa descartando la recién creada propuesta',
-    OVERWRITE: 'Crear una nueva propuesta y olvidar la antigüa',
-}
-
 export default {
-    components: { Conflict: require('./_create/Conflict').default },
-
     props: [
         'levels',
         'categories',
@@ -243,17 +189,12 @@ export default {
             // level_id: undefined,
             // category_id: undefined,
             details: null,
-            email: '',
-            phone_prefix: '',
-            phone: '',
             date: null,
             time: null,
             budget: 20,
         },
 
         files: [],
-        formData: null,
-        isDuplicated: false,
         loading: false,
         errors: new ErrorBag(),
     }),
@@ -282,8 +223,6 @@ export default {
             if (size < 700) return size + 'KB'
             else return size / 1024 + 'MB'
         },
-
-        options: () => OPTIONS,
     },
 
     methods: {
@@ -327,48 +266,16 @@ export default {
                 data.append(`files[${index}]`, file)
             )
 
-            this.formData = data
-
             try {
                 const url = route('asigment.store')
-                await this.$http.post(url, data)
-
-                window.location.href = route('asigment.index', { 'is-new': 1 })
+                const { data: id } = await this.$http.post(url, data)
+                window.location.href = route('asigment.index', {
+                    id,
+                    'is-new': 1,
+                })
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)
-
-                if (this.errors.keys.length) return
-
-                const message = error.response && error.response.data.message
-                if (!message) return false
-
-                this.isDuplicated = /duplicate email/.test(message)
-            } finally {
-                this.loading = false
-            }
-        },
-
-        async handleConflict(action) {
-            if (this.loading) return
-
-            let data
-
-            if (action === 'OVERWRITE') {
-                data = this.formData
-            } else {
-                const email = this.formData.get('email')
-                data = new FormData()
-                data.set('email', email)
-            }
-
-            try {
-                this.loading = true
-                const url = route('asigment.conflict', action)
-                await this.$http.post(url, data)
-                window.location.href = route('asigment.index')
-            } catch (error) {
-                console.error(error.response || error)
             } finally {
                 this.loading = false
             }
