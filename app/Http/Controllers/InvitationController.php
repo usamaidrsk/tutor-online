@@ -13,15 +13,7 @@ class InvitationController extends Controller
 {
     public function show($id)
     {
-        $asigment = Asigment::with('files')->findOrfail($id);
-        $invitation = $asigment
-            ->invitations()
-            ->where('teacher_id', auth()->id())
-            ->first();
-
-        // Abort if the user is trying to see an asigmente that he
-        // was'nt invited to
-        abort_unless($invitation, 403);
+        $invitation = Invitation::findOrFail($id);
 
         // Do not show an invitations that was already accepted
         if ($invitation->status === 'accepted') {
@@ -31,7 +23,10 @@ class InvitationController extends Controller
         return view()->component(
             'invitation',
             ['title' => 'Invitación'],
-            ['asigment' => $asigment, 'invitation' => $invitation]
+            [
+                'invitation' => $invitation,
+                'asigment' => $invitation->asigment,
+            ]
         );
     }
 

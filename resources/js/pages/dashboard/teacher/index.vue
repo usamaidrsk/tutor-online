@@ -101,41 +101,42 @@
             <div v-else class="row justify-content-center margin-top--two">
                 <article
                     class="col-xs-12 col-sm-8 col-lg-6"
-                    v-for="({ asigment }, index) in invitations"
+                    v-for="(invitation, index) in invitations"
                     :key="index"
                 >
                     <a
                         class="card"
-                        :href="route('invitation.show', asigment.id)"
+                        :href="route('invitation.show', invitation.id)"
                     >
                         <span class="card__budget">
-                            {{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}
+                            {{ APP_CURRENCY_SYMBOL }}
+                            {{ invitation.asigment.budget }}
                         </span>
 
                         <table>
                             <tr>
                                 <td>Nivel:</td>
-                                <td>{{ asigment.level.name }}</td>
+                                <td>{{ invitation.asigment.level.name }}</td>
                             </tr>
                             <tr>
                                 <td>Categoria:</td>
-                                <td>{{ asigment.category.name }}</td>
+                                <td>{{ invitation.asigment.category.name }}</td>
                             </tr>
                             <tr>
                                 <td>Archivos:</td>
-                                <td>{{ asigment.total_files }}</td>
+                                <td>{{ invitation.asigment.total_files }}</td>
                             </tr>
                             <tr>
                                 <td>Detalles:</td>
                                 <td>
-                                    <p>{{ asigment.details }}</p>
+                                    <p>{{ invitation.asigment.details }}</p>
                                 </td>
                             </tr>
                         </table>
 
                         <span class="card__date">
                             <i class="icon icon-clock"></i>
-                            {{ formatDistance(asigment.date) }}</span
+                            {{ formatDistance(invitation.asigment.date) }}</span
                         >
                     </a>
                 </article>

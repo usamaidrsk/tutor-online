@@ -17,6 +17,10 @@ class Invitation extends Model
 
     public function asigment()
     {
-        return $this->belongsTo(Asigment::class)->with('level', 'category');
+        return $this->belongsTo(Asigment::class)->with(
+            'level',
+            'category',
+            'files'
+        );
     }
 }
