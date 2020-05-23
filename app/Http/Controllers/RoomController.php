@@ -4,48 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use App\Room;
-use App\Asigment;
-use App\Teacher;
 
 class RoomController extends Controller
 {
-    public function index($token = null)
+    public function index($id)
     {
-        if ($token) {
-            $room = Room::where('token', $token)->first();
-            abort_if(!$room, 404);
-            $asigment = Asigment::findOrFail($room->asigment_id);
-            $teacher = Teacher::findOrFail($room->teacher_id);
-        } else {
-            $email = Cookie::get('email');
-            $asigment = Asigment::where('email', $email)->first();
+        $asigment = \App\Asigment::findOrFail($id);
 
-            if (!$asigment) {
-                return redirect()->route('asigment.create');
-            }
+        // Only can enter class room if the asigment is between `evaluating` and `finished`
+        // and that is `waiting-for-class` status.
+        abort_if($asigment->status !== 'waiting-for-class', 404);
 
-            $room = $asigment->room;
+        $user = auth()->user();
 
-            if (!$room) {
-                return redirect()->route('asigment.index');
-            }
-
-            $token = $room->token;
-            $teacher = Teacher::findOrFail($room->teacher_id);
+        // Fetch teacher
+        if ($user->isNot('teacher')) {
+            $teacher = \App\Teacher::findOrFail($asigment->teacher_id);
+            $teacher = array_merge(
+                $teacher->user->toArray(),
+                $teacher->toArray()
+            );
         }
 
         return view()->component(
             'room',
             ['title' => 'Clase online'],
             [
-                'roomName' => "Clase online | $token",
-                'displayName' => auth()->check()
-                    ? $teacher->full_name
-                    : 'Estudiante',
-
+                'roomName' => "Clase online | $id",
+                'displayName' => $user->full_name,
                 'asigment' => $asigment,
-                'teacher' => $teacher,
+                'teacher' => $teacher ?? null,
             ]
         );
     }

@@ -47,7 +47,7 @@
 
         <hr />
 
-        <div v-if="!$auth.user" class="margin-bottom--two">
+        <div v-if="teacher" class="margin-bottom--two">
             <h4 class="margin-bottom--zero">Docente:</h4>
 
             <div class="teacher">

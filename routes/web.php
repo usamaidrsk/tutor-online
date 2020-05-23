@@ -47,12 +47,12 @@ Route::prefix('/asigment/{id}/checkout')
         );
     });
 
-Route::get('/room/{token?}', 'RoomController@index')
+Route::get('/asigment/{id}/room', 'RoomController@index')
     ->middleware('auth')
     ->name('room');
 
 Route::name('invitation.')
-    ->prefix('invitation/')
+    ->prefix('/invitation')
     ->middleware('is:teacher', 'owns:teacher,invitation')
     ->group(function () {
         Route::get('/{id}', 'InvitationController@show')->name('show');
