@@ -149,7 +149,7 @@ export default {
 
                     const { id } = this.teacher
                     window.location.href = this.$auth.user
-                        ? route('profile.index')
+                        ? route('dashboard.index')
                         : route('rate.index', id)
                 } catch (error) {
                     console.error(error.response || error)

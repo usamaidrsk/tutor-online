@@ -45,7 +45,7 @@ export default {
             try {
                 const data = this.form
                 await this.$http.post(route('password.confirm'), data)
-                // window.location.href = route('profile.index')
+                // window.location.href = route('dashboard.index')
             } catch (error) {
                 if (error.response) {
                     console.error(error.response)

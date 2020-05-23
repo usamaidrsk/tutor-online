@@ -77,7 +77,7 @@ export default {
                 const url = route('invitation.update', { id, answer })
                 await this.$http.put(url)
 
-                window.location.href = route('profile.index')
+                window.location.href = route('dashboard.index')
             } catch (error) {
                 console.error(error.response || error)
             } finally {
