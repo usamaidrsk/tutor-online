@@ -15,7 +15,6 @@ use PayPal\Api\Transaction;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -23,7 +22,7 @@ use App\Asigment;
 use App\Teacher;
 use App\Room;
 
-class PaymentController extends Controller
+class CheckoutController extends Controller
 {
     private $api_context;
 
@@ -38,18 +37,14 @@ class PaymentController extends Controller
         $this->api_context->setConfig(config('paypal.settings'));
     }
 
-    public function index()
+    public function index($id)
     {
-        $asigment = $this->getAsigment();
-
-        if (!$asigment) {
-            return redirect()->route('asigment.create');
-        }
+        $asigment = Asigment::findOrFail($id);
 
         // If the asigment is already paid, redicrect to chat page
-        if ($asigment->payment) {
-            return redirect()->route('room', $asigment->room->token);
-        }
+        // if ($asigment->payment) {
+        //     return redirect()->route('room', $asigment->room->token);
+        // }
 
         $teacher_id = request()->query('teacher_id');
 
@@ -69,25 +64,25 @@ class PaymentController extends Controller
         session()->forget('error');
 
         return view()->component(
-            'payment.index',
-            ['title' => 'Pago'],
+            'checkout.index',
+            ['title' => 'Abonar pago por servicio'],
             [
-                'amount' => $asigment->budget,
+                'asigment' => $asigment,
                 'error' => $error,
             ]
         );
     }
 
-    public function success()
+    public function success($id)
     {
-        return view()->component('payment.success', [
+        return view()->component('checkout.success', [
             'title' => 'Pago exitoso',
         ]);
     }
 
-    public function create()
+    public function prepare($id)
     {
-        $asigment = $this->getAsigment();
+        $asigment = Asigment::findOrFail($id);
 
         $currency = config('app.currency_code');
         $tax = (float) config('app.service_tax');
@@ -131,8 +126,8 @@ class PaymentController extends Controller
         // Create a redirect urls, cancel url brings us back to current page, return url takes us to confirm payment.
         $redirect_urls = new RedirectUrls();
         $redirect_urls
-            ->setReturnUrl(route('payment.execute'))
-            ->setCancelUrl(route('payment.index'));
+            ->setReturnUrl(route('payment.execute', $asigment->id))
+            ->setCancelUrl(route('checkout.index', $asigment->id));
 
         // We set up the payment with the payer, urls and transactions.
         $payment = new Payment();
@@ -164,7 +159,7 @@ class PaymentController extends Controller
         return $this->handleError();
     }
 
-    public function execute()
+    public function execute($id)
     {
         $request = request();
 
@@ -189,19 +184,17 @@ class PaymentController extends Controller
         try {
             // Then we execute the payment.
             $payment->execute($execution, $this->api_context);
-            $this->afterPaymentExecute($payment);
+            $this->afterPaymentExecute(Asigment::findOrFail($id), $payment);
         } catch (\Exception $e) {
             report($e);
             return $this->handleError();
         }
 
-        return redirect()->route('payment.success');
+        return redirect()->route('checkout.success');
     }
 
-    private function afterPaymentExecute($payment)
+    private function afterPaymentExecute(Asigment $asigment, $payment)
     {
-        $asigment = $this->getAsigment();
-
         // Store payment in database
         $asigment->payment()->create([
             'transaction_id' => $payment->getId(),
@@ -214,7 +207,7 @@ class PaymentController extends Controller
         $asigment->invitations()->delete();
 
         // Send an email to user with the bill
-        $this->sendBill($payment);
+        $this->sendBill($asigment->email, $payment);
 
         // Create room
         $asigment->room()->create([
@@ -223,7 +216,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    private function sendBill($payment)
+    private function sendBill($email, $payment)
     {
         $transaction = $payment->transactions[0];
         $payer = $payment->payer->payer_info;
@@ -251,19 +244,13 @@ class PaymentController extends Controller
             'total' => $transaction->amount->details->subtotal,
         ];
 
-        $email = $this->getAsigment()->email;
         Mail::to($email)->queue(new \App\Mail\Bill($bill));
-    }
-
-    private function getAsigment()
-    {
-        return Asigment::where('email', Cookie::get('email'))->first();
     }
 
     private function handleError(
         $message = 'Hubo un error al procesar su pago. Disculpe el inconveniente.'
     ) {
         session()->put('error', $message);
-        return redirect()->route('payment.index');
+        return redirect()->route('checkout.index');
     }
 }

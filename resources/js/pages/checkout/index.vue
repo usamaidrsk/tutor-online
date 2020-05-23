@@ -10,7 +10,7 @@
             <tbody>
                 <tr>
                     <td>Servicio de tutoría academica</td>
-                    <td>{{ APP_CURRENCY_SYMBOL }} {{ amount }}</td>
+                    <td>{{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}</td>
                 </tr>
                 <tr>
                     <td>Uso de la plataforma</td>
@@ -28,7 +28,7 @@
 
         <form
             method="post"
-            :action="route('payment.create')"
+            :action="route('payment.create', asigment.id)"
             @submit="loading = true"
         >
             <input type="hidden" name="_token" :value="CSRF_TOKEN" />
@@ -43,13 +43,14 @@
 
 <script>
 export default {
-    props: ['amount', 'error'],
+    props: ['asigment', 'error'],
 
     data: () => ({ loading: false }),
 
     computed: {
         total() {
-            const total = parseFloat(this.amount) + parseFloat(APP_SERVICE_TAX)
+            const subtotal = this.asigment.budget
+            const total = parseFloat(subtotal) + parseFloat(APP_SERVICE_TAX)
             return total.toFixed(2)
         },
     },

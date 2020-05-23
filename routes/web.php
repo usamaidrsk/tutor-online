@@ -32,14 +32,19 @@ Route::name('asigment.')
             });
     });
 
-Route::name('payment.')
-    ->prefix('/payment')
+Route::prefix('/asigment/{id}/checkout')
     ->middleware('is:student')
     ->group(function () {
-        Route::get('/', 'PaymentController@index')->name('index');
-        Route::get('/success', 'PaymentController@success')->name('success');
-        Route::post('/create', 'PaymentController@create')->name('create');
-        Route::get('/execute', 'PaymentController@execute')->name('execute');
+        Route::get('/', 'CheckoutController@index')->name('checkout.index');
+        Route::get('/success', 'CheckoutController@success')->name(
+            'checkout.success'
+        );
+        Route::post('/create', 'CheckoutController@prepare')->name(
+            'payment.create'
+        );
+        Route::get('/execute', 'CheckoutController@execute')->name(
+            'payment.execute'
+        );
     });
 
 Route::get('/room/{token?}', 'RoomController@index')
