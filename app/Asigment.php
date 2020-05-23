@@ -17,7 +17,7 @@ class Asigment extends Model
 
     public function getFormatedDateAttribute()
     {
-        $date = Carbon::create($this->attributes['date']);
+        $date = Carbon::parse($this->attributes['date']);
 
         return $date->isoFormat('D \d\e MMMM') .
             ', a las ' .
