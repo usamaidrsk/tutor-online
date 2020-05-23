@@ -39,6 +39,14 @@ class AsigmentController extends Controller
             $id
         );
 
+        switch ($asigment->status) {
+            case 'waiting-for-class':
+                return redirect()->route('room', $id);
+            case 'finished':
+            case 'canceled':
+                return redirect()->route('asigment.create');
+        }
+
         $available_teachers = Teacher::select(
             'u.first_name as first_name',
             'u.last_name as last_name',
