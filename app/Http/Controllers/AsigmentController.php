@@ -57,11 +57,21 @@ class AsigmentController extends Controller
 
         $id = $asigment->id;
 
-        $avalible_teachers = Teacher::select('teachers.*')
+        $available_teachers = Teacher::select(
+            'u.first_name as first_name',
+            'u.last_name as last_name',
+            'u.avatar as avatar',
+            'teachers.*'
+        )
             ->join('invitations as i', function ($join) use ($id) {
                 $join
                     ->where('i.asigment_id', '=', $id)
                     ->where('i.status', '=', 'accepted');
+            })
+            ->join('users as u', function ($join) {
+                $join
+                    ->on('u.userable_id', '=', 'teachers.id')
+                    ->where('u.userable_type', '=', 'teacher');
             })
             ->get();
 
@@ -70,7 +80,7 @@ class AsigmentController extends Controller
             ['title' => 'Propuesta'],
             [
                 'asigment' => $asigment,
-                'teachers' => $avalible_teachers,
+                'teachers' => $available_teachers,
                 'isNew' => request()->query('is-new', '0'),
             ]
         );
@@ -210,8 +220,13 @@ class AsigmentController extends Controller
         $time = $date->format('H:i');
 
         $matched_teachers = \DB::table('teachers as t')
-            ->select('t.id as id', 't.email as email')
+            ->select('t.id as id', 'u.email as email')
             ->distinct()
+            ->join('users as u', function ($join) {
+                $join
+                    ->on('u.userable_id', '=', 't.id')
+                    ->where('u.userable_type', 'teacher');
+            })
             ->join('level_teacher as l_t', 't.id', '=', 'l_t.teacher_id')
             ->join('category_teacher as c_t', 't.id', '=', 'c_t.teacher_id')
             ->join('schedules as s', 't.id', '=', 's.teacher_id')
