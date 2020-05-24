@@ -48,13 +48,14 @@
         <hr />
 
         <div v-if="teacher" class="margin-bottom--two">
-            <h4 class="margin-bottom--zero">Docente:</h4>
-
-            <div class="teacher">
+            <div class="d-flex">
                 <figure class="teacher__avatar image">
                     <img :src="teacher.avatar" />
                 </figure>
-                <p class="teacher__name">{{ teacher.full_name }}</p>
+                <div class="margin-left--halve">
+                    <p class="teacher__name">{{ teacher.full_name }}</p>
+                    <Stars :value="teacher.stars" />
+                </div>
             </div>
         </div>
 
@@ -320,15 +321,6 @@ hr {
     0% {
         transform: scale(1);
     }
-}
-
-.teacher {
-    display: flex;
-    align-items: center;
-}
-
-.teacher__name {
-    margin-left: 0.5rem;
 }
 
 .teacher__avatar {
