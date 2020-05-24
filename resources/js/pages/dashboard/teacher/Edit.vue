@@ -262,7 +262,8 @@ export default {
                     birthday[0] //Date
                 )
 
-                const url = route('dashboard.edit')
+                const { id } = this.teacher
+                const url = route('teacher.update', id)
                 await this.$http.put(url, data)
                 window.location.href = route('dashboard.index')
             } catch (error) {

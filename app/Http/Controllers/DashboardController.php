@@ -135,46 +135,4 @@ class DashboardController extends Controller
             ]
         );
     }
-
-    public function update()
-    {
-        request()->validate(
-            [
-                'first_name' => ['required', 'string', 'min:4', 'max:25'],
-                'last_name' => ['required', 'string', 'min:4', 'max:25'],
-                'country_id' => 'required|numeric|exists:countries,id',
-                'birthday' => 'required|date',
-
-                // 'phone_prefix' => 'required|regex:/^(\+)([1-9]{2})$/',
-                // 'phone' => 'phone:AUTO,' . implode(',', $codes),
-
-                'address.country_id' => 'required|numeric|exists:countries,id',
-                'address.city' => 'required|max:50',
-                'address.line' => 'required|max:100',
-                'address.zip_code' => 'required|max:10',
-                'address.state' => 'required|max:50',
-
-                'levels' => 'required|array|exists:levels,id',
-                'categories' => 'required|array|exists:categories,id',
-            ],
-            [
-                // 'phone_prefix.regex' =>
-                //         'Debes suministrar un código de país valido.',
-                'levels.required' =>
-                    'Debes elegir al menos un nivel de educación',
-                'categories.required' =>
-                    'Deber elegir al menos una especialidad',
-            ]
-        );
-
-        $user = auth()->user();
-        $user->update(request()->only(['first_name', 'last_name']));
-
-        $teacher = \App\Teacher::findOrFail($user->userable_id);
-        $teacher->update(request()->only(['country_id', 'birthday']));
-        $teacher->address()->update(request()->input('address'));
-        $teacher->bank()->updateOrCreate(request()->input('bank'));
-        $teacher->levels()->sync(request()->input('levels'));
-        $teacher->categories()->sync(request()->input('categories'));
-    }
 }

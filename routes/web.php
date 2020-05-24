@@ -88,7 +88,10 @@ Route::name('rate.')
 Route::name('teacher.')
     ->prefix('teacher/{id}')
     ->group(function () {
-        Route::put('schedule', 'TeachersController@update')->name('schedule');
+        Route::put('/', 'TeachersController@update')->name('update');
+        Route::put('schedule', 'TeachersController@updateSchedule')->name(
+            'schedule'
+        );
     });
 
 Route::get('/terms', 'TermsController@index')->name('terms');
