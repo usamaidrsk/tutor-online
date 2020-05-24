@@ -44,6 +44,35 @@
                                 }}</span>
                             </a>
 
+                            <label
+                                :for="'toggler-' + index"
+                                class="card__toggler"
+                            >
+                                Mas opciones...
+                            </label>
+
+                            <input
+                                class="card__checkbox"
+                                type="checkbox"
+                                :id="'toggler-' + index"
+                            />
+
+                            <div class="card__actions">
+                                <Button
+                                    rounded
+                                    outline
+                                    color="red"
+                                    :loading="loading"
+                                    @click="doDiscart(id)"
+                                >
+                                    <span>Descartar</span>
+                                    <i class="icon icon-x"></i>
+                                </Button>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+
                 <div class="go-to-create">
                     <a :href="route('asigment.create')">
                         <h3 class="go-to-create__title">
@@ -116,6 +145,24 @@ export default {
     }),
 
     methods: {
+        async doDiscart(id) {
+            if (this.loading) return
+
+            if (confirm('¿Seguro de que deseas descartar esta propuesta?')) {
+                this.loading = true
+
+                try {
+                    const url = route('asigment.delete', id)
+                    await this.$http.delete(url, id)
+                    window.location.reload(true)
+                } catch (error) {
+                    console.log(error.response || error)
+                } finally {
+                    this.loading = false
+                }
+            }
+        },
+
         formatDistance: date =>
             formatDistance(new Date(date), Date.now(), {
                 locale: es,
@@ -162,6 +209,28 @@ export default {
         font-size: 1.5rem;
         vertical-align: middle;
         color: color('primary');
+    }
+}
+
+.card__toggler {
+    display: block;
+    text-align: center;
+    color: color('primary');
+    margin-top: 1rem;
+    font-weight: get('bold', $font-weights);
+    cursor: pointer;
+}
+
+.card__checkbox {
+    @include hide-visually;
+}
+
+.card__actions {
+    display: none;
+    padding-top: 1rem;
+
+    .card__checkbox:checked + & {
+        display: block;
     }
 }
 

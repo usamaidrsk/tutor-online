@@ -108,11 +108,12 @@ class AsigmentController extends Controller
     public function delete($id)
     {
         $asigment = Asigment::findOrFail($id);
+        $asigment->status = 'canceled';
+        $asigment->save();
 
         $this->deleteAttachments($asigment);
-        $asigment->delete();
 
-        return $asigment;
+        return;
     }
 
     // Store in disk all files uploaded by user one by one
