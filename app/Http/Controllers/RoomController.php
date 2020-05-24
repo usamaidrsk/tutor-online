@@ -9,7 +9,7 @@ class RoomController extends Controller
 {
     public function index($id)
     {
-        $asigment = \App\Asigment::findOrFail($id);
+        $asigment = \App\Asigment::with('files')->findOrFail($id);
 
         // Only can enter class room if the asigment is between `evaluating` and `finished`
         // and that is `waiting-for-class` status.

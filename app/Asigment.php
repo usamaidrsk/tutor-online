@@ -9,11 +9,7 @@ class Asigment extends Model
 {
     public $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $appends = [
-        'total_files',
-        'formated_date',
-        'formated_created_at',
-    ];
+    protected $appends = ['formated_date', 'formated_created_at'];
 
     public function getFormatedDateAttribute()
     {
@@ -28,11 +24,6 @@ class Asigment extends Model
     {
         $date = Carbon::parse($this->attributes['created_at']);
         return $date->isoFormat('D \d\e MMMM');
-    }
-
-    public function getTotalFilesAttribute()
-    {
-        return $this->files->count();
     }
 
     public function student()

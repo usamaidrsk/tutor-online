@@ -42,10 +42,10 @@
             </div>
         </div>
 
-        <div class="rooms margin-top--two">
+        <div class="margin-top--two">
             <h2 class="text--center margin-bottom--zero">Proximas clases</h2>
             <h4
-                v-if="!rooms.length"
+                v-if="!scheduledClasses.length"
                 class="text--center text--gray text--light"
             >
                 No hay clases planificadas
@@ -54,31 +54,28 @@
             <div v-else class="row justify-content-center margin-top--two">
                 <article
                     class="col-xs-12 col-sm-8 col-lg-6"
-                    v-for="(room, index) in rooms"
+                    v-for="({ id, date, level, category, details },
+                    index) in scheduledClasses"
                     :key="index"
                 >
-                    <a class="card" :href="route('room', room.token)">
+                    <a class="card" :href="route('room', id)">
                         <h4 class="text--uppercase">
-                            {{ formatDistance(room.asigment.date) }}
+                            {{ formatDistance(date) }}
                         </h4>
 
                         <table>
                             <tr>
                                 <td>Nivel:</td>
-                                <td>{{ room.asigment.level.name }}</td>
+                                <td>{{ level.name }}</td>
                             </tr>
                             <tr>
                                 <td>Categoria:</td>
-                                <td>{{ room.asigment.category.name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Archivos:</td>
-                                <td>{{ room.asigment.total_files }}</td>
+                                <td>{{ category.name }}</td>
                             </tr>
                             <tr>
                                 <td>Detalles:</td>
                                 <td>
-                                    <p>{{ room.asigment.details }}</p>
+                                    <p>{{ details }}</p>
                                 </td>
                             </tr>
                         </table>
@@ -101,42 +98,46 @@
             <div v-else class="row justify-content-center margin-top--two">
                 <article
                     class="col-xs-12 col-sm-8 col-lg-6"
-                    v-for="(invitation, index) in invitations"
+                    v-for="({
+                        invitation_id,
+                        budget,
+                        level,
+                        category,
+                        details,
+                        date,
+                    },
+                    index) in invitations"
                     :key="index"
                 >
                     <a
                         class="card"
-                        :href="route('invitation.show', invitation.id)"
+                        :href="route('invitation.show', invitation_id)"
                     >
                         <span class="card__budget">
                             {{ APP_CURRENCY_SYMBOL }}
-                            {{ invitation.asigment.budget }}
+                            {{ budget }}
                         </span>
 
                         <table>
                             <tr>
                                 <td>Nivel:</td>
-                                <td>{{ invitation.asigment.level.name }}</td>
+                                <td>{{ level.name }}</td>
                             </tr>
                             <tr>
                                 <td>Categoria:</td>
-                                <td>{{ invitation.asigment.category.name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Archivos:</td>
-                                <td>{{ invitation.asigment.total_files }}</td>
+                                <td>{{ category.name }}</td>
                             </tr>
                             <tr>
                                 <td>Detalles:</td>
                                 <td>
-                                    <p>{{ invitation.asigment.details }}</p>
+                                    <p>{{ details }}</p>
                                 </td>
                             </tr>
                         </table>
 
                         <span class="card__date">
                             <i class="icon icon-clock"></i>
-                            {{ formatDistance(invitation.asigment.date) }}</span
+                            {{ formatDistance(date) }}</span
                         >
                     </a>
                 </article>
@@ -184,7 +185,7 @@ import formatDistance from 'date-fns/formatDistance'
 import { es } from 'date-fns/locale'
 
 export default {
-    props: ['teacher', 'invitations', 'rooms'],
+    props: ['teacher', 'invitations', 'scheduledClasses'],
 
     data: ({ teacher }) => ({
         ...teacher,

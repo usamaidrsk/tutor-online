@@ -10,6 +10,7 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $type = $user->userable_type;
+        $id = $user->userable_id;
 
         if ($user->isNot('teacher') && $user->isNot('student')) {
             return redirect()->route('choose-account-type');
@@ -29,13 +30,26 @@ class DashboardController extends Controller
 
             $props = [
                 'teacher' => array_merge($user->toArray(), $teacher->toArray()),
-                'invitations' => $teacher
-                    ->invitations()
-                    ->with('asigment')
-                    ->where('status', 'pending')
-                    ->orderBy('created_at', 'desc')
+                'invitations' => \App\Asigment::select(
+                    'asigments.*',
+                    'i.id as invitation_id'
+                )
+                    ->with('level', 'category')
+                    ->join('invitations as i', function ($join) use ($id) {
+                        $join->where([
+                            ['i.teacher_id', $id],
+                            ['i.status', 'pending'],
+                        ]);
+                    })
+                    ->where('asigments.status', 'evaluating')
+                    ->orderBy('asigments.created_at', 'desc')
                     ->get(),
-                'rooms' => [],
+                'scheduledClasses' => \App\Asigment::with('level', 'category')
+                    ->where([
+                        ['teacher_id', $id],
+                        ['status', 'waiting-for-class'],
+                    ])
+                    ->get(),
             ];
         }
 
