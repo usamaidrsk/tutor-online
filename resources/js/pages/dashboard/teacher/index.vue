@@ -276,11 +276,6 @@ export default {
     }
 }
 
-.invitations,
-.rooms {
-    min-height: 45vh;
-}
-
 .card {
     position: relative;
     display: block;

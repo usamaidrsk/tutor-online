@@ -42,20 +42,20 @@ class CheckoutController extends Controller
         $asigment = Asigment::findOrFail($id);
 
         // If the asigment is already paid, redicrect to chat page
-        // if ($asigment->payment) {
-        //     return redirect()->route('room', $asigment->room->token);
-        // }
+        if ($asigment->status === 'waiting-for-class') {
+            return redirect()->route('room', $asigment);
+        }
 
         $teacher_id = request()->query('teacher_id');
 
         // Make sure that teacher exist and was invitated to this asigment
-        $invitation = $asigment
-            ->invitations()
-            ->where('teacher_id', $teacher_id)
-            ->first();
-
-        if (!$invitation) {
-            return redirect()->route('asigment.index');
+        if (
+            !$asigment
+                ->invitations()
+                ->where('teacher_id', $teacher_id)
+                ->exists()
+        ) {
+            return redirect()->route('asigment.index', $id);
         }
 
         session()->put('teacher_id', $teacher_id);
@@ -142,7 +142,7 @@ class CheckoutController extends Controller
             $payment->create($this->api_context);
         } catch (Exception $e) {
             report($e);
-            return $this->handleError();
+            return $this->handleError($asigment->id);
         }
 
         foreach ($payment->getLinks() as $link) {
@@ -156,7 +156,7 @@ class CheckoutController extends Controller
             return redirect()->away($redirect_url);
         }
 
-        return $this->handleError();
+        return $this->handleError($asigment->id);
     }
 
     public function execute($id)
@@ -168,7 +168,7 @@ class CheckoutController extends Controller
             empty($request->query('paymentId')) ||
             empty($request->query('PayerID'))
         ) {
-            return $this->handleError();
+            return $this->handleError($id);
         }
 
         // We retrieve the payment from the paymentId.
@@ -187,7 +187,7 @@ class CheckoutController extends Controller
             $this->afterPaymentExecute(Asigment::findOrFail($id), $payment);
         } catch (\Exception $e) {
             report($e);
-            return $this->handleError();
+            return $this->handleError($id);
         }
 
         return redirect()->route('checkout.success');
@@ -206,14 +206,15 @@ class CheckoutController extends Controller
         // respond to the invitation don't see the outdated invitation
         $asigment->invitations()->delete();
 
+        // Update asigment status
+        $asigment->status = 'waiting-for-class';
+        $asigment->teacher_id = session()->get('teacher_id');
+        session()->forget('teacher_id');
+
+        $asigment->save();
+
         // Send an email to user with the bill
         $this->sendBill($asigment->email, $payment);
-
-        // Create room
-        $asigment->room()->create([
-            'token' => Str::random(10),
-            'teacher_id' => session()->get('teacher_id'),
-        ]);
     }
 
     private function sendBill($email, $payment)
@@ -248,9 +249,10 @@ class CheckoutController extends Controller
     }
 
     private function handleError(
+        $asigment_id,
         $message = 'Hubo un error al procesar su pago. Disculpe el inconveniente.'
     ) {
         session()->put('error', $message);
-        return redirect()->route('checkout.index');
+        return redirect()->route('checkout.index', $asigment_id);
     }
 }
