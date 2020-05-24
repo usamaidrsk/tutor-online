@@ -204,7 +204,7 @@ class CheckoutController extends Controller
 
         // Delete all related invitations, that way teachers that did'nt
         // respond to the invitation don't see the outdated invitation
-        $asigment->invitations()->delete();
+        $asigment->invitations()->update(['status' => 'obsolete']);
 
         // Update asigment status
         $asigment->status = 'waiting-for-class';

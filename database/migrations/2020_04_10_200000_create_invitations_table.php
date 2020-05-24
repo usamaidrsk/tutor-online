@@ -12,7 +12,13 @@ class CreateInvitationsTable extends Migration
             $table->id();
             $table->boolean('is_acepted')->default(false);
             $table
-                ->enum('status', ['pending', 'accepted', 'denied'])
+                ->enum('status', [
+                    'pending',
+                    'accepted',
+                    'denied',
+                    'canceled',
+                    'obsolete',
+                ])
                 ->default('pending');
             $table->unsignedBigInteger('asigment_id');
             $table->unsignedBigInteger('teacher_id');

@@ -109,6 +109,7 @@ class AsigmentController extends Controller
     {
         $asigment = Asigment::findOrFail($id);
         $asigment->status = 'canceled';
+        $asigment->invitations()->update(['status' => 'canceled']);
         $asigment->save();
 
         $this->deleteAttachments($asigment);
