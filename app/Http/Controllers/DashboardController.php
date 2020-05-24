@@ -18,8 +18,46 @@ class DashboardController extends Controller
 
         $props = [];
 
-        if ($user->is('teacher')) {
-            $teacher = \App\Teacher::findOrFail($user->userable_id);
+        if ($user->is('student')) {
+            $student = \App\Student::findOrFail($id);
+            $asigments = \App\Asigment::where('student_id', $id)
+                ->where(function ($query) {
+                    $query
+                        ->where('status', 'evaluating')
+                        ->orWhere('status', 'waiting-for-class');
+                })
+                ->get();
+
+            $openAsigments = $asigments
+                ->filter(function ($asigment) {
+                    return $asigment->status === 'evaluating';
+                })
+                ->map(function ($asigment) {
+                    $asigment->invitations = $asigment
+                        ->invitations()
+                        ->where('status', 'accepted')
+                        ->count();
+                    return $asigment;
+                });
+
+            $scheduledClasses = $asigments
+                ->filter(function ($asigment) {
+                    return $asigment->status === 'waiting-for-class';
+                })
+                ->map(function ($asigment) {
+                    $teacher = \App\Teacher::find($asigment->teacher_id);
+                    $asigment->teacher = array_merge(
+                        $teacher->user->toArray(),
+                        $teacher->toArray()
+                    );
+                    return $asigment;
+                });
+
+            $student = array_merge($user->toArray(), $student->toArray());
+
+            $props = compact('student', 'openAsigments', 'scheduledClasses');
+        } elseif ($user->is('teacher')) {
+            $teacher = \App\Teacher::findOrFail($id);
 
             if (!$teacher->answered_questions) {
                 return redirect()->route('questions', 1);
