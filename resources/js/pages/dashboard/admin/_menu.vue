@@ -1,24 +1,33 @@
 <template>
     <aside class="menu">
-        <header class="menu__header">
-            <h2 class="menu__title">{{ APP_NAME }}</h2>
-        </header>
+        <div class="menu__container">
+            <header class="menu__header">
+                <h2 class="menu__title">{{ APP_NAME }}</h2>
+            </header>
 
-        <nav class="menu__nav">
-            <ul>
-                <li
-                    :class="{
-                        nav__item: true,
-                        'nav__item--is-active': name === value,
-                    }"
-                    v-for="({ label, name }, index) in items"
-                    :key="index"
-                    @click="handleClick(name)"
-                >
-                    {{ label }}
-                </li>
-            </ul>
-        </nav>
+            <nav class="menu__nav">
+                <ul>
+                    <li
+                        :class="{
+                            nav__item: true,
+                            'nav__item--is-active': name === value,
+                        }"
+                        v-for="({ label, name }, index) in items"
+                        :key="index"
+                        @click="handleClick(name)"
+                    >
+                        {{ label }}
+                    </li>
+                </ul>
+            </nav>
+
+            <footer class="menu__footer">
+                <button class="menu__logout" @click="doLogout">
+                    <i class="icon icon-logout"></i>
+                    <span>Salir</span>
+                </button>
+            </footer>
+        </div>
     </aside>
 </template>
 
@@ -37,6 +46,11 @@ export default {
         handleClick(name) {
             this.$emit('input', name)
         },
+
+        async doLogout() {
+            await this.$http.post('logout')
+            window.location.href = route('home')
+        },
     },
 }
 </script>
@@ -45,13 +59,37 @@ export default {
 @import '~@/sass/_globals.scss';
 
 .menu {
-    padding: 2rem 0;
     width: 245px;
+    padding: 2rem 0;
     border-right: 1px solid color('gray', 50);
+}
+
+.menu__container {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
 }
 
 .menu__header {
     padding: 0 1.25rem;
+}
+
+.menu__nav {
+    flex-grow: 1;
+}
+
+.menu__footer {
+    padding: 0 1.25rem;
+    // text-align: right;
+}
+
+.menu__logout {
+    font-size: 1.15rem;
+    color: color('red');
+
+    .icon {
+        font-size: 1.25rem;
+    }
 }
 
 .menu__title {
