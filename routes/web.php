@@ -87,6 +87,7 @@ Route::name('rate.')
 
 Route::name('teacher.')
     ->prefix('teacher/{id}')
+    ->middleware('is:admin,teacher')
     ->group(function () {
         Route::put('/', 'TeachersController@update')->name('update');
         Route::put('schedule', 'TeachersController@updateSchedule')->name(

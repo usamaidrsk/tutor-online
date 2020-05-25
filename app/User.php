@@ -49,7 +49,8 @@ class User extends Authenticatable
 
     public function is($type)
     {
-        return $this->attributes['userable_type'] === $type;
+        return $this->attributes['userable_type'] === $type ||
+            ($type === 'admin' && $this->attributes['is_admin']);
     }
 
     public function isNot($type)

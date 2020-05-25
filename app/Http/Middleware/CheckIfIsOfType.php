@@ -13,15 +13,16 @@ class CheckIfIsOfType
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $type)
+    public function handle($request, Closure $next, ...$types)
     {
-        if (
-            auth()->check() &&
-            auth()
-                ->user()
-                ->is($type)
-        ) {
-            return $next($request);
+        if (auth()->check()) {
+            $user = auth()->user();
+
+            foreach ($types as $type) {
+                if ($user->is($type)) {
+                    return $next($request);
+                }
+            }
         }
 
         return redirect()->route('login');
