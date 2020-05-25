@@ -67,7 +67,7 @@ layouts.keys().forEach(key => {
 Vue.config.productionTip = false
 
 const Page = Vue.component(dataset.pageName.replace(/\./g, '_'))
-const Layout = Vue.component(dataset.routeData.layout || 'default')
+const Layout = Vue.component(dataset.layout)
 const props = JSON.parse(dataset.routeData) || {}
 
 const app = new Vue({

@@ -15,6 +15,7 @@
 <body>
     <div id="app"
         data-page-name="{{ $name }}"
+        data-layout="{{ $layout }}"
         data-route-data="{{ json_encode($data) }}"
         data-csrf-token="{{ csrf_token() }}"
         data-constants={{ json_encode([
