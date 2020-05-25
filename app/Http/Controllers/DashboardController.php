@@ -12,76 +12,99 @@ class DashboardController extends Controller
         $type = $user->userable_type;
         $id = $user->userable_id;
 
-        if ($user->isNot('teacher') && $user->isNot('student')) {
+        if (
+            $user->isNot('teacher') &&
+            $user->isNot('student') &&
+            !$user->isAdmin()
+        ) {
             return redirect()->route('choose-account-type');
         }
 
-        $props = [];
+        $method = 'show' . ucfirst($type ?? 'admin') . 'Dashboard';
+        return $this->$method($id);
+    }
 
-        if ($user->is('student')) {
-            $student = \App\Student::findOrFail($id);
-            $asigments = \App\Asigment::where('student_id', $id)
-                ->where(function ($query) {
-                    $query
-                        ->where('status', 'evaluating')
-                        ->orWhere('status', 'waiting-for-class');
-                })
-                ->get();
+    private function showAdminDashboard($id)
+    {
+        return view()->component(
+            'dashboard.admin.index',
+            ['title' => 'Dashboard'],
+            []
+        );
+    }
 
-            $openAsigments = $asigments
-                ->filter(function ($asigment) {
-                    return $asigment->status === 'evaluating';
-                })
-                ->map(function ($asigment) {
-                    $asigment->invitations = $asigment
-                        ->invitations()
-                        ->where('status', 'accepted')
-                        ->count();
-                    return $asigment;
-                });
+    private function showStudentDashboard($id)
+    {
+        $user = auth()->user();
+        $student = \App\Student::findOrFail($id);
 
-            $scheduledClasses = $asigments
-                ->filter(function ($asigment) {
-                    return $asigment->status === 'waiting-for-class';
-                })
-                ->map(function ($asigment) {
-                    $teacher = \App\Teacher::find($asigment->teacher_id);
-                    $asigment->teacher = array_merge(
-                        $teacher->user->toArray(),
-                        $teacher->toArray()
-                    );
-                    return $asigment;
-                });
+        $asigments = \App\Asigment::where('student_id', $id)
+            ->where(function ($query) {
+                $query
+                    ->where('status', 'evaluating')
+                    ->orWhere('status', 'waiting-for-class');
+            })
+            ->get();
 
-            $student = array_merge($user->toArray(), $student->toArray());
+        $openAsigments = $asigments
+            ->filter(function ($asigment) {
+                return $asigment->status === 'evaluating';
+            })
+            ->map(function ($asigment) {
+                $asigment->invitations = $asigment
+                    ->invitations()
+                    ->where('status', 'accepted')
+                    ->count();
+                return $asigment;
+            });
 
-            $props = compact('student', 'openAsigments', 'scheduledClasses');
-        } elseif ($user->is('teacher')) {
-            $teacher = \App\Teacher::findOrFail($id);
+        $scheduledClasses = $asigments
+            ->filter(function ($asigment) {
+                return $asigment->status === 'waiting-for-class';
+            })
+            ->map(function ($asigment) {
+                $teacher = \App\Teacher::find($asigment->teacher_id);
+                $asigment->teacher = array_merge(
+                    $teacher->user->toArray(),
+                    $teacher->toArray()
+                );
+                return $asigment;
+            });
 
-            if (!$teacher->answered_questions) {
-                return redirect()->route('questions', 1);
-            }
-
-            $teacher->address;
-            $teacher->schedule;
-            $teacher = array_merge($user->toArray(), $teacher->toArray());
-
-            $invitations = \App\Invitation::with('asigment')
-                ->where([['teacher_id', $id], ['status', 'pending']])
-                ->get();
-
-            $scheduledClasses = \App\Asigment::with('level', 'category')
-                ->where([['teacher_id', $id], ['status', 'waiting-for-class']])
-                ->get();
-
-            $props = compact('teacher', 'invitations', 'scheduledClasses');
-        }
+        $student = array_merge($user->toArray(), $student->toArray());
 
         return view()->component(
-            "dashboard.{$type}.index",
+            'dashboard.student.index',
             ['title' => 'Dashboard'],
-            $props
+            compact('student', 'openAsigments', 'scheduledClasses')
+        );
+    }
+
+    private function showTeacherDashboard($id)
+    {
+        $user = auth()->user();
+        $teacher = \App\Teacher::findOrFail($id);
+
+        if (!$teacher->answered_questions) {
+            return redirect()->route('questions', 1);
+        }
+
+        $teacher->address;
+        $teacher->schedule;
+        $teacher = array_merge($user->toArray(), $teacher->toArray());
+
+        $invitations = \App\Invitation::with('asigment')
+            ->where([['teacher_id', $id], ['status', 'pending']])
+            ->get();
+
+        $scheduledClasses = \App\Asigment::with('level', 'category')
+            ->where([['teacher_id', $id], ['status', 'waiting-for-class']])
+            ->get();
+
+        return view()->component(
+            'dashboard.teacher.index',
+            ['title' => 'Dashboard'],
+            compact('teacher', 'invitations', 'scheduledClasses')
         );
     }
 
