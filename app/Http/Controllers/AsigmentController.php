@@ -182,6 +182,7 @@ class AsigmentController extends Controller
             ->leftJoin('invitations as i', 't.id', '=', 'i.teacher_id')
             ->leftJoin('asigments as a', 'a.id', '=', 'i.asigment_id')
             ->where([
+                ['t.status', '=', 'active'],
                 ['l_t.level_id', '=', $level_id],
                 ['c_t.category_id', '=', $category_id],
                 ['s.start', '<=', $time],
@@ -216,8 +217,13 @@ class AsigmentController extends Controller
             })
             ->get();
 
+        if ($matched_teachers->isEmpty()) {
+            return;
+        }
+
         // Now create invitations in database
         $invitations = [];
+
         foreach ($matched_teachers as $teacher) {
             $invitations[] = [
                 'asigment_id' => $asigment->id,

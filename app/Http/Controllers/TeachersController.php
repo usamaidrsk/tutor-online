@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Teacher;
 
 class TeachersController extends Controller
 {
+    public function index()
+    {
+        return \App\Teacher::with('address')
+            ->orderBy('status')
+            ->get()
+            ->map(function ($teacher) {
+                return array_merge(
+                    $teacher->user->toArray(),
+                    $teacher->toArray()
+                );
+            });
+    }
+
     public function update($id)
     {
         request()->validate(
@@ -51,7 +63,7 @@ class TeachersController extends Controller
 
     public function updateSchedule($id)
     {
-        $teacher = Teacher::findOrfail($id);
+        $teacher = \App\Teacher::findOrfail($id);
         $new_schedule = [];
 
         foreach (request()->input('schedule') as $key => $value) {
@@ -69,5 +81,12 @@ class TeachersController extends Controller
 
         $teacher->schedule()->delete();
         $teacher->schedule()->createMany($new_schedule);
+    }
+
+    public function updateStatus($id)
+    {
+        $teacher = \App\Teacher::findOrFail($id);
+        $teacher->status = request()->input('status');
+        $teacher->save();
     }
 }

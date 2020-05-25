@@ -13,6 +13,9 @@ class CreateTeachersTable extends Migration
             $table->string('document')->nullable();
             $table->date('birthday')->nullable();
             $table->boolean('answered_questions')->default(false);
+            $table
+                ->enum('status', ['fresh', 'active', 'inactive'])
+                ->default('fresh');
             $table->unsignedTinyInteger('country_id')->nullable();
 
             $table

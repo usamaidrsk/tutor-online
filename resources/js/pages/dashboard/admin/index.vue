@@ -36,6 +36,7 @@ export default {
 }
 
 main {
-    padding: 2rem 3rem;
+    padding: 2rem 5rem;
+    flex-grow: 1;
 }
 </style>
