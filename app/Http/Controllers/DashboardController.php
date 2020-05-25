@@ -26,11 +26,10 @@ class DashboardController extends Controller
 
     private function showAdminDashboard($id)
     {
-        return view()->component(
-            'dashboard.admin.index',
-            ['title' => 'Dashboard'],
-            []
-        );
+        return view()->component('dashboard.admin.index', [
+            'title' => 'Dashboard',
+            'layout' => 'full-page',
+        ]);
     }
 
     private function showStudentDashboard($id)
