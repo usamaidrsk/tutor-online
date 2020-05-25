@@ -55,12 +55,30 @@ pages.keys().forEach(key => {
     Vue.component(name, () => pages(key))
 })
 
+const layouts = require.context('./layouts', true, /\.vue$/, 'lazy')
+
+layouts.keys().forEach(key => {
+    const name = kebabCase(
+        key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'))
+    )
+    Vue.component(name, () => layouts(key))
+})
+
 Vue.config.productionTip = false
 
 const Page = Vue.component(dataset.pageName.replace(/\./g, '_'))
+const Layout = Vue.component(dataset.routeData.layout || 'default')
 const props = JSON.parse(dataset.routeData) || {}
 
 const app = new Vue({
     el: root,
-    render: h => h(App, { scopedSlots: { default: () => h(Page, { props }) } }),
+    render: h =>
+        h(App, {
+            scopedSlots: {
+                default: () =>
+                    h(Layout, {
+                        scopedSlots: { default: () => h(Page, { props }) },
+                    }),
+            },
+        }),
 })

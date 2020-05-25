@@ -35,7 +35,10 @@ class AppServiceProvider extends ServiceProvider
         ) {
             return view()->make(
                 'app',
-                ['name' => $name, 'data' => $componentData] + $viewData
+                [
+                    'name' => $name,
+                    'data' => $componentData,
+                ] + $viewData
             );
         });
 
