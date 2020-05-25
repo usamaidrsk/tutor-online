@@ -214,10 +214,11 @@ class CheckoutController extends Controller
         $asigment->save();
 
         // Send an email to user with the bill
-        $this->sendBill($asigment->email, $payment);
+        $recipient = auth()->user();
+        $this->sendBill($recipient, $payment);
     }
 
-    private function sendBill($email, $payment)
+    private function sendBill($recipient, $payment)
     {
         $transaction = $payment->transactions[0];
         $payer = $payment->payer->payer_info;
@@ -245,7 +246,7 @@ class CheckoutController extends Controller
             'total' => $transaction->amount->details->subtotal,
         ];
 
-        Mail::to($email)->queue(new \App\Mail\Bill($bill));
+        Mail::to($recipient)->queue(new \App\Mail\Bill($bill));
     }
 
     private function handleError(
