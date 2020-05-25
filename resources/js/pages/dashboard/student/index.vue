@@ -29,12 +29,12 @@
 
                                 <div class="card__footer">
                                     <div>
-                                        <i class="icon icon-user"></i>
+                                        <i class="icon icon-users"></i>
                                         <span>{{ invitations }}</span>
                                     </div>
 
                                     <div>
-                                        <i class="icon icon-clock"></i>
+                                        <i class="icon icon-calendar"></i>
                                         <span>{{ formated_date }}</span>
                                     </div>
                                 </div>

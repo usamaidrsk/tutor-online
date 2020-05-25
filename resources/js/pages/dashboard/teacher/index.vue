@@ -129,7 +129,7 @@
                         </table>
 
                         <span class="card__date">
-                            <i class="icon icon-clock"></i>
+                            <i class="icon icon-calendar"></i>
                             {{ formatDistance(date) }}</span
                         >
                     </a>

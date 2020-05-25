@@ -15,7 +15,7 @@
                     >{{ APP_CURRENCY_SYMBOL }} {{ asigment.budget }}</span
                 >
                 <div class="time">
-                    <i class="icon icon-clock"></i>
+                    <i class="icon icon-calendar"></i>
                     <span>{{ asigment.formated_date }}</span>
                 </div>
             </div>
