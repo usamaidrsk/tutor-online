@@ -12,11 +12,17 @@
         <Button
             class="margin-top--two"
             color="green"
-            :href="route('asigment.index')"
+            :href="route('asigment.index', asigment.id)"
             >Continuar</Button
         >
     </div>
 </template>
+
+<script>
+export default {
+    props: ['asigment'],
+}
+</script>
 
 <style lang="scss" scoped>
 @import '~@/sass/_globals.scss';

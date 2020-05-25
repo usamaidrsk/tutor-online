@@ -65,30 +65,17 @@ class DashboardController extends Controller
 
             $teacher->address;
             $teacher->schedule;
+            $teacher = array_merge($user->toArray(), $teacher->toArray());
 
-            $props = [
-                'teacher' => array_merge($user->toArray(), $teacher->toArray()),
-                'invitations' => \App\Asigment::select(
-                    'asigments.*',
-                    'i.id as invitation_id'
-                )
-                    ->with('level', 'category')
-                    ->join('invitations as i', function ($join) use ($id) {
-                        $join->where([
-                            ['i.teacher_id', $id],
-                            ['i.status', 'pending'],
-                        ]);
-                    })
-                    ->where('asigments.status', 'evaluating')
-                    ->orderBy('asigments.created_at', 'desc')
-                    ->get(),
-                'scheduledClasses' => \App\Asigment::with('level', 'category')
-                    ->where([
-                        ['teacher_id', $id],
-                        ['status', 'waiting-for-class'],
-                    ])
-                    ->get(),
-            ];
+            $invitations = \App\Invitation::with('asigment')
+                ->where([['teacher_id', $id], ['status', 'pending']])
+                ->get();
+
+            $scheduledClasses = \App\Asigment::with('level', 'category')
+                ->where([['teacher_id', $id], ['status', 'waiting-for-class']])
+                ->get();
+
+            $props = compact('teacher', 'invitations', 'scheduledClasses');
         }
 
         return view()->component(

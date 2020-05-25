@@ -75,9 +75,11 @@ class CheckoutController extends Controller
 
     public function success($id)
     {
-        return view()->component('checkout.success', [
-            'title' => 'Pago exitoso',
-        ]);
+        return view()->component(
+            'checkout.success',
+            ['title' => 'Pago exitoso'],
+            ['asigment' => Asigment::findOrFail($id)]
+        );
     }
 
     public function prepare($id)
@@ -184,16 +186,16 @@ class CheckoutController extends Controller
         try {
             // Then we execute the payment.
             $payment->execute($execution, $this->api_context);
-            $this->afterPaymentExecute(Asigment::findOrFail($id), $payment);
         } catch (\Exception $e) {
             report($e);
             return $this->handleError($id);
         }
 
-        return redirect()->route('checkout.success');
+        $this->finish(Asigment::findOrFail($id), $payment);
+        return redirect()->route('checkout.success', $id);
     }
 
-    private function afterPaymentExecute(Asigment $asigment, $payment)
+    private function finish(Asigment $asigment, $payment)
     {
         // Store payment in database
         $asigment->payment()->create([

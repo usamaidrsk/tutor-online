@@ -99,20 +99,13 @@
                 <article
                     class="col-xs-12 col-sm-8 col-lg-6"
                     v-for="({
-                        invitation_id,
-                        budget,
-                        level,
-                        category,
-                        details,
-                        date,
+                        id,
+                        asigment: { budget, level, category, details, date },
                     },
                     index) in invitations"
                     :key="index"
                 >
-                    <a
-                        class="card"
-                        :href="route('invitation.show', invitation_id)"
-                    >
+                    <a class="card" :href="route('invitation.show', id)">
                         <span class="card__budget">
                             {{ APP_CURRENCY_SYMBOL }}
                             {{ budget }}
