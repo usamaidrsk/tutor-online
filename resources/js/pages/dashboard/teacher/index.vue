@@ -1,5 +1,20 @@
 <template>
     <div>
+        <div v-if="status === 'inactive'" class="big-alert">
+            <h3 class="margin-bottom--halve big-alert__title">
+                <i class="big-alert__icon icon icon-alert"></i>
+                <span>Tu cuenta esta inhabilitada</span>
+            </h3>
+            <p>
+                Actualmente tu cuenta esta inhabilitada, esto significa que no
+                recibirás notificaciones de nuevas propuestas creadas. <br />
+                Cualquier consulta la puedes realizar a
+                <a class="link" href="mailto:admin@mathias20.com"
+                    >admin@mathias20.com</a
+                >
+            </p>
+        </div>
+
         <div class="wrapper">
             <div>
                 <figure class="picture image">
@@ -242,6 +257,17 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/sass/_globals.scss';
+
+.big-alert {
+    padding: 1.75rem;
+    border: 1px solid color('red');
+    margin-bottom: 2.5rem;
+    border-radius: 5px;
+}
+
+.big-alert__title {
+    color: color('red');
+}
 
 .wrapper {
     display: flex;
