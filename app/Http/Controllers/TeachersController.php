@@ -6,19 +6,6 @@ use Illuminate\Http\Request;
 
 class TeachersController extends Controller
 {
-    public function index()
-    {
-        return \App\Teacher::with('address')
-            ->orderBy('status')
-            ->get()
-            ->map(function ($teacher) {
-                return array_merge(
-                    $teacher->user->toArray(),
-                    $teacher->toArray()
-                );
-            });
-    }
-
     public function update($id)
     {
         request()->validate(

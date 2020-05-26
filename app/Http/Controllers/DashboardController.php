@@ -26,10 +26,30 @@ class DashboardController extends Controller
 
     private function showAdminDashboard($id)
     {
-        return view()->component('dashboard.admin.index', [
-            'title' => 'Dashboard',
-            'layout' => 'full-page',
-        ]);
+        $tab = request()->query('tab');
+        $tab = preg_match('/teachers|payments/', $tab) ? $tab : 'teachers';
+        $data = [];
+
+        switch ($tab) {
+            case 'teachers':
+                $data['teachers'] = \App\Teacher::with('address')
+                    ->orderBy('status')
+                    ->get()
+                    ->map(function ($teacher) {
+                        return array_merge(
+                            $teacher->user->toArray(),
+                            $teacher->toArray()
+                        );
+                    });
+                break;
+                break;
+        }
+
+        return view()->component(
+            'dashboard.admin.index',
+            ['title' => 'Dashboard', 'layout' => 'full-page'],
+            ['tab' => $tab, 'data' => $data]
+        );
     }
 
     private function showStudentDashboard($id)

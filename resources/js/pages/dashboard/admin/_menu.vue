@@ -8,15 +8,17 @@
             <nav class="menu__nav">
                 <ul>
                     <li
-                        :class="{
-                            nav__item: true,
-                            'nav__item--is-active': name === value,
-                        }"
-                        v-for="({ label, name }, index) in items"
+                        v-for="({ label, name, href }, index) in items"
                         :key="index"
-                        @click="handleClick(name)"
                     >
-                        {{ label }}
+                        <a
+                            :class="{
+                                nav__item: true,
+                                'nav__item--is-active': name === activeItem,
+                            }"
+                            :href="href"
+                            >{{ label }}</a
+                        >
                     </li>
                 </ul>
             </nav>
@@ -39,14 +41,10 @@ export default {
             required: true,
         },
 
-        value: null,
+        activeItem: String,
     },
 
     methods: {
-        handleClick(name) {
-            this.$emit('input', name)
-        },
-
         async doLogout() {
             await this.$http.post('logout')
             window.location.href = route('home')
@@ -80,7 +78,6 @@ export default {
 
 .menu__footer {
     padding: 0 1.25rem;
-    // text-align: right;
 }
 
 .menu__logout {
@@ -97,6 +94,7 @@ export default {
 }
 
 .nav__item {
+    display: block;
     text-transform: uppercase;
     font-weight: get('bold', $font-weights);
     border: 0 solid transparent;

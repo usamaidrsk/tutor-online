@@ -89,14 +89,9 @@ Route::name('teacher.')
     ->prefix('/teachers')
     ->middleware('is:admin,teacher')
     ->group(function () {
-        Route::middleware('is:admin')->group(function () {
-            Route::get('/', 'TeachersController@index')->name('index');
-            Route::post(
-                '/{id}/status',
-                'TeachersController@updateStatus'
-            )->name('status');
-        });
-
+        Route::post('/{id}/status', 'TeachersController@updateStatus')->name(
+            'status'
+        );
         Route::put('/{id}', 'TeachersController@update')->name('update');
         Route::put('/{id}/schedule', 'TeachersController@updateSchedule')->name(
             'schedule'

@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper">
-        <Menu :items="navItems" v-model="currentTab" />
+        <Menu :items="navItems" :active-item="tab" />
 
         <main>
-            <component :is="currentTab"></component>
+            <component :is="tab || 'teachers'" v-bind="data"></component>
         </main>
     </div>
 </template>
@@ -16,14 +16,20 @@ export default {
         payments: require('./_tabs/_payments').default,
     },
 
-    data: () => ({
-        currentTab: 'teachers',
-    }),
+    props: ['tab', 'data'],
 
     computed: {
         navItems: () => [
-            { label: 'Docentes', name: 'teachers' },
-            { label: 'Pagos', name: 'payments' },
+            {
+                label: 'Docentes',
+                name: 'teachers',
+                href: route('dashboard.index', { tab: 'teachers' }),
+            },
+            {
+                label: 'Pagos',
+                name: 'payments',
+                href: route('dashboard.index', { tab: 'payments' }),
+            },
         ],
     },
 }

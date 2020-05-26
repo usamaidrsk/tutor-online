@@ -103,15 +103,12 @@
 
 <script>
 export default {
+    props: ['teachers'],
+
     data: () => ({
-        teachers: [],
         currentTeacher: {},
         shouldShowDetails: false,
     }),
-
-    created() {
-        this.fetch()
-    },
 
     computed: {
         status: () => ({
@@ -134,15 +131,6 @@ export default {
     },
 
     methods: {
-        async fetch() {
-            try {
-                const { data } = await this.$http.get(route('teacher.index'))
-                this.teachers = data
-            } catch (error) {
-                console.error(error.response || error)
-            }
-        },
-
         showDetails(teacher) {
             this.currentTeacher = teacher
             this.shouldShowDetails = true
