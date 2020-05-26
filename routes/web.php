@@ -18,7 +18,7 @@ Route::name('dashboard.')
     });
 
 Route::name('asigment.')
-    ->middleware('is:student')
+    ->middleware('is:student,admin')
     ->group(function () {
         Route::get('/new', 'AsigmentController@create')->name('create');
         Route::post('/new', 'AsigmentController@store')->name('store');
@@ -29,6 +29,15 @@ Route::name('asigment.')
                 Route::get('/', 'AsigmentController@index')->name('index');
                 Route::put('/', 'AsigmentController@update')->name('update');
                 Route::delete('/', 'AsigmentController@delete')->name('delete');
+            });
+
+        Route::prefix('/asigment/{id}')
+            ->middleware('is:admin')
+            ->group(function () {
+                Route::post(
+                    '/deposit-voucher',
+                    'AsigmentController@storeDepositVoucher'
+                )->name('deposit-voucher');
             });
     });
 

@@ -42,6 +42,25 @@ class DashboardController extends Controller
                         );
                     });
                 break;
+
+            case 'payments':
+                $data['unpaidAsigments'] = \App\Asigment::with(
+                    'teacher',
+                    'level',
+                    'category'
+                )
+                    ->where('status', 'finished')
+                    ->get()
+                    ->map(function ($asigment) {
+                        $teacher = $asigment->teacher;
+                        $user = $teacher->user;
+
+                        $teacher->full_name = $user->full_name;
+                        $teacher->avatar = $user->avatar;
+                        $asigment->teacher = $teacher;
+
+                        return $asigment;
+                    });
                 break;
         }
 

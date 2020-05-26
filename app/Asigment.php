@@ -26,9 +26,19 @@ class Asigment extends Model
         return $date->isoFormat('D \d\e MMMM');
     }
 
+    public function depositVoucher()
+    {
+        return $this->hasOne(DepositVoucher::class);
+    }
+
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
     }
 
     public function category()

@@ -18,6 +18,7 @@ class CreateAsigmentsTable extends Migration
                     'evaluating',
                     'waiting-for-class',
                     'finished',
+                    'paid',
                     'canceled',
                 ])
                 ->default('evaluating');

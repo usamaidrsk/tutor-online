@@ -106,6 +106,24 @@ class AsigmentController extends Controller
         return $asigment->id;
     }
 
+    public function storeDepositVoucher($id)
+    {
+        request()->validate([
+            'file' =>
+                'required|mimes:' .
+                implode(',', $this::ALLOWED_FILE_EXTENSIONS),
+        ]);
+
+        $asigment = \App\Asigment::findOrFail($id);
+
+        $file = request()->file('file');
+        $filename = $file->store('/vouchers');
+        $path = "/storage/$filename";
+
+        $asigment->update(['status' => 'paid']);
+        $asigment->depositVoucher()->create(['path' => $path]);
+    }
+
     public function delete($id)
     {
         $asigment = Asigment::findOrFail($id);
