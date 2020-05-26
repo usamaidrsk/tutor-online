@@ -19,7 +19,7 @@
 
                         <Button
                             class="segment__button"
-                            :href="route('asigment.create')"
+                            :href="route('register', { type: 'student' })"
                             >Crea tu propuesta</Button
                         >
                     </div>
@@ -48,7 +48,7 @@
                         <div>
                             <Button
                                 class="segment__button"
-                                :href="route('register')"
+                                :href="route('register', { type: 'teacher' })"
                                 >Unete a nosotros</Button
                             >
 

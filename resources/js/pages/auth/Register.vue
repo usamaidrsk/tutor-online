@@ -101,8 +101,17 @@ export default {
 
             try {
                 this.loading = true
-                await this.$http.post('register', this.form)
-                window.location.href = route('choose-account-type')
+
+                const uri = window.location.search.substring(1)
+                const params = new URLSearchParams(uri)
+                const query = params.get('type')
+                const type = /student|teacher/.test(query) ? query : null
+
+                await this.$http.post('register', { ...this.form, type })
+
+                window.location.href = type
+                    ? route('dashboard.index')
+                    : route('choose-account-type')
             } catch (error) {
                 const validationErrors = handleFormError(error)
                 this.errors.set(validationErrors)

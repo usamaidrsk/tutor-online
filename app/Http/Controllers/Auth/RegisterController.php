@@ -81,11 +81,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if (
+            ($type = strtolower($data['type'])) &&
+            preg_match('/student|teacher/i', $type)
+        ) {
+            $id = \DB::table($type . 's')->insertGetId([]);
+            $user->userable_type = $type;
+            $user->userable_id = $id;
+            $user->save();
+        }
+
+        return $user;
     }
 }

@@ -27,7 +27,7 @@
                         ></i>
                     </template>
                     <template v-else>
-                        <a
+                        <!-- <a
                             class="navbar__button"
                             :class="{
                                 'navbar__button--is-active': isCurrent(
@@ -36,7 +36,7 @@
                             }"
                             :href="route('register')"
                             >Registrarse</a
-                        >
+                        > -->
                         <a
                             class="navbar__button"
                             :class="{
