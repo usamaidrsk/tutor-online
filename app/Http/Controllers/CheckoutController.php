@@ -192,6 +192,7 @@ class CheckoutController extends Controller
         }
 
         $this->finish(Asigment::findOrFail($id), $payment);
+
         return redirect()->route('checkout.success', $id);
     }
 
@@ -209,11 +210,12 @@ class CheckoutController extends Controller
         $asigment->invitations()->update(['status' => 'obsolete']);
 
         // Update asigment status
-        $asigment->status = 'waiting-for-class';
-        $asigment->teacher_id = session()->get('teacher_id');
-        session()->forget('teacher_id');
+        $asigment->update([
+            'status' => 'waiting-for-class',
+            'teacher_id' => session()->get('teacher_id'),
+        ]);
 
-        $asigment->save();
+        session()->forget('teacher_id');
 
         // Send an email to user with the bill
         $recipient = auth()->user();

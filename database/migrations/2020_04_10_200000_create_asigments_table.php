@@ -12,7 +12,7 @@ class CreateAsigmentsTable extends Migration
             $table->id();
             $table->string('details', 300);
             $table->decimal('budget', 8, 2);
-            $table->timestamp('date');
+            $table->dateTime('date');
             $table
                 ->enum('status', [
                     'evaluating',
