@@ -47,7 +47,7 @@ class AsigmentController extends Controller
                 return redirect()->route('asigment.create');
         }
 
-        $available_teachers = Teacher::select(
+        $available_teachers = \App\Teacher::select(
             'u.first_name as first_name',
             'u.last_name as last_name',
             'u.avatar as avatar',
@@ -55,12 +55,13 @@ class AsigmentController extends Controller
         )
             ->join('invitations as i', function ($join) use ($id) {
                 $join
+                    ->on('i.teacher_id', 'teachers.id')
                     ->where('i.asigment_id', '=', $id)
                     ->where('i.status', '=', 'accepted');
             })
             ->join('users as u', function ($join) {
                 $join
-                    ->on('u.userable_id', '=', 'teachers.id')
+                    ->on('u.userable_id', 'teachers.id')
                     ->where('u.userable_type', '=', 'teacher');
             })
             ->get();
