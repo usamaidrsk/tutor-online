@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $viewData = [],
             $componentData = []
         ) {
-            $viewData['layout'] ??= 'default';
+            $viewData['layout'] = $viewData['layout'] ?? 'default';
 
             return view()->make(
                 'app',
