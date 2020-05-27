@@ -10,7 +10,6 @@ class CreateInvitationsTable extends Migration
     {
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_acepted')->default(false);
             $table
                 ->enum('status', [
                     'pending',
