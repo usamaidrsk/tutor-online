@@ -128,6 +128,24 @@ class AsigmentController extends Controller
     {
         $asigment = Asigment::findOrFail($id);
         $asigment->status = 'canceled';
+
+        foreach (
+            $asigment
+                ->invitations()
+                ->where('status', 'accepted')
+                ->get()
+            as $invitation
+        ) {
+            $receipt = $invitation->teacher->user;
+            $mail = new \App\Mail\CanceledNotification();
+
+            try {
+                Mail::to($receipt)->queue($mail);
+            } catch (\Throwable $th) {
+                report($th);
+            }
+        }
+
         $asigment->invitations()->update(['status' => 'canceled']);
         $asigment->save();
 
