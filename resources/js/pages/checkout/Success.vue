@@ -1,5 +1,7 @@
 <template>
     <div class="wrapper padding-top--three text--center">
+        <TimeLine now="checkout" />
+
         <div class="check">
             <i class="icon icon-ok"></i>
         </div>

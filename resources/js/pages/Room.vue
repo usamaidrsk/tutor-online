@@ -1,5 +1,7 @@
 <template>
     <div>
+        <TimeLine now="class" />
+
         <div class="wrapper">
             <div id="video-chat"></div>
             <div class="loading" v-if="isLoading">

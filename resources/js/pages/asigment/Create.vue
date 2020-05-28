@@ -1,5 +1,7 @@
 <template>
     <form @submit.prevent="handleSubmit">
+        <TimeLine now="creation" />
+
         <h1 class="text--center margin-bottom--three">Propuesta del alumno</h1>
 
         <div class="row">

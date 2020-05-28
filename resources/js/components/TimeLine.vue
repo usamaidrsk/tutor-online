@@ -21,13 +21,15 @@
 <script>
 const STEPS = {
     creation: 0,
-    checkout: 1,
-    class: 2,
+    review: 1,
+    checkout: 2,
+    class: 3,
 }
 
 const SPANISH = {
     creation: 'Creación de propuesta',
-    checkout: 'Abonar pago',
+    review: 'Revisión de respuestas',
+    checkout: 'Pago',
     class: 'Ver clase',
 }
 
@@ -69,7 +71,7 @@ $gray: tint(color('gray', 50), 60%);
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2.25rem;
+    margin-bottom: 3.5rem;
 }
 
 .time-line__line,

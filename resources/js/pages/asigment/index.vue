@@ -1,5 +1,7 @@
 <template>
     <div>
+        <TimeLine now="review" />
+
         <span v-if="isNew && shouldShowMessage" class="info" role="alert">
             Se han enviado invitaciones a todos los tutores disponibles
         </span>

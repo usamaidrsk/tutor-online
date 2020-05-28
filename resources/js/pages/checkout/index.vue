@@ -1,5 +1,7 @@
 <template>
     <div class="wrapper">
+        <TimeLine now="checkout" />
+
         <span v-if="error" class="error" role="alert">{{ error }}</span>
 
         <header>
