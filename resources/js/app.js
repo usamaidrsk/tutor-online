@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import App from './App.vue'
 import ErrorBag from './ErrorBag'
+import '../sass/blank.scss'
 
 window.ErrorBag = ErrorBag
 
