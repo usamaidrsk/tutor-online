@@ -37,6 +37,19 @@
                             :href="route('register')"
                             >Registrarse</a
                         > -->
+
+                        <a
+                            class="navbar__button"
+                            :href="route('register', { type: 'teacher' })"
+                            >Tutor</a
+                        >
+
+                        <a
+                            class="navbar__button"
+                            :href="route('register', { type: 'student' })"
+                            >Alumno</a
+                        >
+
                         <a
                             class="navbar__button"
                             :class="{

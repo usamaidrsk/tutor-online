@@ -3,7 +3,13 @@
         <form class="register__form" @submit.prevent="handleSubmit">
             <header class="text--center margin-bottom--two">
                 <h1 class="margin-bottom--quarter">
-                    Unete a nuestra plataforma
+                    {{
+                        !type
+                            ? 'Unete a nuestra plataforma'
+                            : type === 'teacher'
+                            ? 'Registrate como docente'
+                            : 'Registrate como estudiante'
+                    }}
                 </h1>
                 <p>
                     <span>¿Ya eres miembro?</span>
@@ -90,11 +96,21 @@ export default {
                 password: null,
                 accepTerms: false,
             },
+            type: null,
             loading: false,
             error: null,
             errors: new ErrorBag(),
         }
     },
+
+    created() {
+        const uri = window.location.search.substring(1)
+        const params = new URLSearchParams(uri)
+        const query = params.get('type')
+
+        this.type = /student|teacher/.test(query) ? query : null
+    },
+
     methods: {
         async handleSubmit() {
             if (this.loading) return
@@ -102,12 +118,8 @@ export default {
             try {
                 this.loading = true
 
-                const uri = window.location.search.substring(1)
-                const params = new URLSearchParams(uri)
-                const query = params.get('type')
-                const type = /student|teacher/.test(query) ? query : null
-
-                await this.$http.post('register', { ...this.form, type })
+                const { type, form } = this
+                await this.$http.post('register', { ...form, type })
 
                 window.location.href = type
                     ? route('dashboard.index')
