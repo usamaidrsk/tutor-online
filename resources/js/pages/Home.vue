@@ -17,11 +17,22 @@
                             especializados para desarrollarlos.
                         </p>
 
-                        <Button
-                            class="segment__button"
-                            :href="route('register', { type: 'student' })"
-                            >Crea tu propuesta</Button
-                        >
+                        <div>
+                            <Button
+                                class="segment__button"
+                                :href="route('register', { type: 'student' })"
+                                >Crea tu propuesta</Button
+                            >
+
+                            <span class="separator">o</span>
+
+                            <Button
+                                class="segment__button"
+                                :href="route('login')"
+                                outline
+                                >Inicia sesión</Button
+                            >
+                        </div>
                     </div>
                 </div>
             </div>

@@ -50,14 +50,14 @@
                             >Alumno</a
                         >
 
-                        <a
+                        <!-- <a
                             class="navbar__button"
                             :class="{
                                 'navbar__button--is-active': isCurrent('login'),
                             }"
                             :href="route('login')"
                             >Iniciar</a
-                        >
+                        > -->
                     </template>
                 </div>
             </div>
