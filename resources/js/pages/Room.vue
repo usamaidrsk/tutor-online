@@ -147,13 +147,15 @@ export default {
                 this.loading = true
 
                 try {
-                    const url = route('asigment.delete')
+                    const { id } = this.asigment
+                    const url = route('asigment.delete', id)
                     await this.$http.delete(url)
 
                     const { id } = this.teacher
-                    window.location.href = this.$auth.user
-                        ? route('dashboard.index')
-                        : route('rate.index', id)
+                    window.location.href =
+                        this.$auth.user.userable_type === 'teacher'
+                            ? route('dashboard.index')
+                            : route('rate.index', id)
                 } catch (error) {
                     console.error(error.response || error)
                 } finally {

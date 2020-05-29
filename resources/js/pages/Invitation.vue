@@ -2,7 +2,7 @@
     <div>
         <header class="text--center margin-bottom--three">
             <h1 class="margin-bottom--zero">
-                Invitación para enseñar en tiempo real
+                Invitación para enseñar en en linea
             </h1>
             <h3 class="text--light">
                 Muestra tus habilidades desarrollando ejercicios

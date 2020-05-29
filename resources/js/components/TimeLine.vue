@@ -27,8 +27,8 @@ const STEPS = {
 }
 
 const SPANISH = {
-    creation: 'Creación de propuesta',
-    review: 'Revisión de respuestas',
+    creation: 'Crea tu propuesta',
+    review: 'Revisa tu propuesta',
     checkout: 'Pago',
     class: 'Ver clase',
 }

@@ -73,7 +73,7 @@ export default {
 
             try {
                 await this.$http.post(url, data)
-                location.href = route('home')
+                location.href = route('dashboard.index')
             } catch (error) {
                 console.error(error.response || error)
             } finally {

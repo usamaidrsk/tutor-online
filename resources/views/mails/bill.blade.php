@@ -92,8 +92,8 @@
         <h1>{{ config('app.name') }}</h1>
 
         <div class="banner">
-            <h2>Gracias por tu pedido, {{ $payer['first_name'] }}.</h2>
-            <p>Revisa tu factura/recibo. Aquí está tu confirmación de el pago de tu servicio {{ $invoice_number }}.</p>
+            <h2>{{ $payer['first_name'] }}, gracias por elegirnos.</h2>
+            <p>Revisa tu factura. La confirmación del pago de tu servicio es:</p>
         </div>
 
         <h3>Número de pedido: {{ $invoice_number }}</h3>
