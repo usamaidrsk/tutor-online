@@ -260,22 +260,22 @@ class AsigmentController extends Controller
 
         // Now create invitations in database
         $invitations = [];
+        $mail = new \App\Mail\Invitation($asigment);
 
         foreach ($matched_teachers as $teacher) {
             $invitations[] = [
                 'asigment_id' => $asigment->id,
                 'teacher_id' => $teacher->id,
             ];
+
+            try {
+                Mail::to($teacher)->queue($mail);
+            } catch (\Throwable $th) {
+                report($th);
+            }
         }
 
         $asigment->invitations()->createMany($invitations);
-
-        try {
-            $mail = new \App\Mail\Invitation($asigment);
-            Mail::to($matched_teachers)->queue($mail);
-        } catch (\Throwable $th) {
-            report($th);
-        }
     }
 
     public function validator()
