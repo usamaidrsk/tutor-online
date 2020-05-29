@@ -7,7 +7,7 @@
                         !type
                             ? 'Unete a nuestra plataforma'
                             : type === 'teacher'
-                            ? 'Registrate como docente'
+                            ? 'Registrate como tutor'
                             : 'Registrate como estudiante'
                     }}
                 </h1>
