@@ -151,11 +151,10 @@ export default {
                     const url = route('asigment.delete', id)
                     await this.$http.delete(url)
 
-                    const { id } = this.teacher
                     window.location.href =
                         this.$auth.user.userable_type === 'teacher'
                             ? route('dashboard.index')
-                            : route('rate.index', id)
+                            : route('rate.index', this.teacher.id)
                 } catch (error) {
                     console.error(error.response || error)
                 } finally {
